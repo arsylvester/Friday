@@ -1,0 +1,19 @@
+title: TestNPC
+tags: 
+colorID: 0
+position: 860,368
+---
+<<if visited("TestNPC") is false>>
+    NPC: Hi! I'm a character!
+    ->Nice to meet you!
+        NPC: Nice to meet you too!
+    ->Hi there "a character"!
+        NPC: That's not funny...
+<<else>>
+    NPC: Hello again!
+    Player: Hi!
+<<endif>>
+<<startkey Journal keytext1>>
+NPC: Hey, this is important text.
+<<endkey Journal>>
+===
