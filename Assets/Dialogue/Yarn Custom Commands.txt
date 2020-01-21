@@ -1,5 +1,11 @@
-Hi there! Here is a quick reference guide to all custom commands in Friday:
+Hi there! Here is a quick reference guide to all custom Yarn commands in Friday:
 
 Node Visited
 Description: This command returns whether or not a specific node has been visited before.
-Use: <<if visited("NodeName") is false>> 
+Use: <<if visited("NodeName") is false>>
+
+startkey and endkey
+Description: This command indicates that the following dialogue is key important text. Used for questioning purposes.
+Use:<<startkey Journal keytext1>>
+	NPC: Hey, this is important text.
+	<<endkey Journal>>
