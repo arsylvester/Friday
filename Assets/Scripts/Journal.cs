@@ -38,6 +38,7 @@ public class Journal : MonoBehaviour
         {
             GameObject newJournalText =  Instantiate(journalTextPrefab, dialogJournal.transform);
             newJournalText.GetComponentInChildren<Text>().text = dialogText.text;
+            
             if (keyDialog)
             {
                 newJournalText.GetComponent<DialogueJournalElement>().isKeyDialogue = true;
