@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 using Yarn.Unity.Example;
+using UnityEngine.Events;
 
 public class Interact : MonoBehaviour
 {

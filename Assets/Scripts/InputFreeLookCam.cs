@@ -5,7 +5,9 @@ using Cinemachine;
 
 public class InputFreeLookCam : MonoBehaviour
 {
-    private bool isFreeLookActive;
+    bool isTalking = false;
+
+    bool isFreeLookActive;
 
     public int cameraZoomIn;
     public int cameraZoomOut;
@@ -17,16 +19,18 @@ public class InputFreeLookCam : MonoBehaviour
     private void Start()
     {
         CinemachineCore.GetInputAxis = GetInputAxis;
-
         cam = GetComponent<CinemachineFreeLook>();
     }
 
     private void Update()
     {
-        // allow player to rotate camera with right click
-        isFreeLookActive = Input.GetMouseButton(1);
+        if (!isTalking)
+        {
+            // allow player to rotate camera with right click
+            isFreeLookActive = Input.GetMouseButton(1);
 
-        CameraZoom();
+            CameraZoom();
+        }
     }
 
     float GetInputAxis(string axisName)
@@ -51,5 +55,19 @@ public class InputFreeLookCam : MonoBehaviour
         // zoom out
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
             cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, cameraZoomOut, Time.deltaTime * cameraZoomSmoothing);
+    }
+
+    public void StartDialogue()
+    {
+        isTalking = true;
+
+        // zoom in camera
+    }
+
+    public void EndDialogue()
+    {
+        isTalking = false;
+
+        // zoom out camera
     }
 }
