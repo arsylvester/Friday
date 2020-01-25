@@ -102,7 +102,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -121,7 +121,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7779487380919107127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5539241674788353324}
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &4069200832120550226
@@ -158,6 +169,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isKeyDialogue: 0
   keyName: 
+  isHighlighted: 0
+  highlightedColors:
+    m_NormalColor: {r: 0.9056604, g: 0.8903148, b: 0.11961554, a: 1}
+    m_HighlightedColor: {r: 0.9110589, g: 0.9245283, b: 0.32271272, a: 1}
+    m_PressedColor: {r: 0.8584906, g: 0.8301157, b: 0.21867214, a: 1}
+    m_SelectedColor: {r: 1, g: 0.92206496, b: 0.23584908, a: 1}
+    m_DisabledColor: {r: 0.9339623, g: 0.8977957, b: 0.7048772, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
 --- !u!1 &8841663360759553052
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,4 +256,6 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 'Sample Text
+
+'

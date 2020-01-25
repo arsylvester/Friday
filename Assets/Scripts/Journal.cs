@@ -13,10 +13,13 @@ public class Journal : MonoBehaviour
     [SerializeField] Text dialogText;
     [SerializeField] GameObject journalTextPrefab;
     [SerializeField] GameObject charSectionPrefab;
+    [SerializeField] GameObject deleteButton;
+    [SerializeField] GameObject unhighlightAllButton;
 
     private bool dialogSaveable = false;
     private bool keyDialog = false;
     private string keyName = "";
+    public List<GameObject> highlightedText;
 
     void Start()
     {
@@ -91,6 +94,49 @@ public class Journal : MonoBehaviour
     {
         itemJournal.SetActive(true);
         dialogJournal.SetActive(true);
+    }
+
+    public void AddHighlighted(GameObject entry)
+    {
+        highlightedText.Add(entry);
+        if(!deleteButton.activeInHierarchy)
+        {
+            deleteButton.SetActive(true);
+            unhighlightAllButton.SetActive(true);
+        }
+    }
+
+    public void RemoveHighlighted(GameObject entry)
+    {
+        highlightedText.Remove(entry);
+
+        if(highlightedText.Count <= 0)
+        {
+            deleteButton.SetActive(false);
+            unhighlightAllButton.SetActive(false);
+        }
+    }
+
+    public void DeleteAllHighlighted()
+    {
+        foreach(GameObject lit in highlightedText)
+        {
+            Destroy(lit);
+        }
+        highlightedText.Clear();
+        deleteButton.SetActive(false);
+        unhighlightAllButton.SetActive(false);
+    }
+
+    public void UnhighlightAll()
+    {
+        foreach (GameObject lit in highlightedText)
+        {
+            lit.GetComponent<DialogueJournalElement>().Unhighlight();
+        }
+        highlightedText.Clear();
+        deleteButton.SetActive(false);
+        unhighlightAllButton.SetActive(false);
     }
 
     [YarnCommand("startkey")]
