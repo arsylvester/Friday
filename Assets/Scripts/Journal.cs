@@ -27,11 +27,43 @@ public class Journal : MonoBehaviour
     private InMemoryVariableStorage varStorage;
     public List<GameObject> highlightedText;
 
+    // The dialogue runner that we want to attach the 'visited' function to
+    [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
+
     void Start()
     {
         itemJournal.SetActive(false);
         dialogJournal.SetActive(false);
         varStorage = FindObjectOfType<InMemoryVariableStorage>();
+
+        // Register a function on startup called "question" that lets Yarn
+        // scripts check if questioned right or not.
+        dialogueRunner.RegisterFunction("question", 2, delegate (Yarn.Value[] parameters)
+        {
+            bool correct1 = false, correct2 = false;
+            foreach (GameObject question in highlightedText)
+            {
+                string currentKey = question.GetComponent<DialogueJournalElement>().keyName;
+                if (currentKey == parameters[0].AsString)
+                {
+                    correct1 = true;
+                }
+                else if (currentKey == parameters[1].AsString)
+                {
+                    correct2 = true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            if (correct1 && correct2)
+            {
+                print("That was correct!");
+                return true;
+            }
+            return false;
+        });
     }
 
     void Update()
@@ -177,11 +209,9 @@ public class Journal : MonoBehaviour
     }
 
     [YarnCommand("startquestioning")]
-    public void StartQuestioning(string key1, string key2)
+    public void StartQuestioning()
     {
         isQuestioning = true;
-        keyText1 = key1;
-        keyText2 = key2;
         dialogJournal.SetActive(true);
         dialogQuestioningBox.SetActive(true);
         UnhighlightAll();
@@ -192,35 +222,6 @@ public class Journal : MonoBehaviour
     {
         UnhighlightAll();
         isQuestioning = false;
-        keyText1 = "";
-        keyText2 = "";
         dialogQuestioningBox.SetActive(false);
-    }
-
-    [YarnCommand("testquestions")]
-    public void TestQuestions()
-    {
-        bool correct1 = false, correct2 = false;
-        foreach (GameObject question in highlightedText)
-        {
-            string currentKey = question.GetComponent<DialogueJournalElement>().keyName;
-            if(currentKey == keyText1)
-            {
-                correct1 = true;
-            }
-            else if(currentKey == keyText2)
-            {
-                correct2 = true;
-            }
-            else
-            {
-                break;
-            }
-        }
-        if(correct1 && correct2)
-        {
-            print("That was correct!");
-            varStorage.SetValue("TNPCQ", true);
-        }
     }
 }

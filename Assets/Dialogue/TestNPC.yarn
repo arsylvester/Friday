@@ -4,7 +4,7 @@ colorID: 0
 position: 860,368
 ---
 <<if visited("TestNPC") is false>>
-	<<set $TNPCQ to false>>
+	//<<set $TNPCQ to false>>
     NPC: Hi! I'm a character!
     ->Nice to meet you!
         NPC: Nice to meet you too!
@@ -33,6 +33,9 @@ position: 860,368
     NPC: Hello again!
     Player: Hi!
 <<endif>>
+<<if $TNPCQ is true>>
+	NPC: You got the questioning right last time we spoke!
+<<endif>>
 <<startkey Journal keytext1>>
 NPC: Hey, this is important text.
 <<startkey Journal keytext2>>
@@ -48,12 +51,14 @@ tags:
 colorID: 0
 position: 860,368
 ---
-<<startquestioning Journal keytext1 keytext2>>
+<<startquestioning Journal>>
 NPC: Questions!
 ->Confirm Questioning Choices
-	<<testquestions Journal>>
-	<<if $TNPCQ == true>>
+	<<if question("keytext1", "keytext2") is true>>
+		<<set $TNPCQ to true>>
 		NPC: Great, that's correct!
+		<<stopquestioning Journal>>
+		[[Leave]]
 	<<else>>
 		NPC: Sorry, try again.
 		[[TestQuestions]]
