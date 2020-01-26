@@ -30,11 +30,13 @@ public class InspectorAgent : MonoBehaviour
         {
             if(Input.GetButtonDown(InteractKey))
             {
+                
                 Ray cameraRay = InspectorCamera.ScreenPointToRay(Input.mousePosition);
                 bool hit = Physics.Raycast(cameraRay, out RaycastHit rayInfo, 100F, ~LayerMask.NameToLayer("Inspector"));
 
                 if (!hit || rayInfo.collider.gameObject != target.gameObject)
                 {
+                    Debug.Log("A");
                     Release();
                 }
             }
