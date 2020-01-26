@@ -9,6 +9,7 @@ public class DialogueJournalElement : MonoBehaviour
     public string keyName = "";
     public bool isHighlighted = false;
     public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
+    public Transform journalParent;
 
     private Button button;
     private Journal journal;

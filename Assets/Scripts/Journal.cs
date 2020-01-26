@@ -8,6 +8,8 @@ public class Journal : MonoBehaviour
 {
     [SerializeField] GameObject itemJournal;
     [SerializeField] GameObject dialogJournal;
+    [SerializeField] GameObject dialogQuestioningBox;
+    [SerializeField] Transform dialogQuestioningContent;
     [SerializeField] Transform contentPanel;
     [SerializeField] List<Text> charSections;
     [SerializeField] Text dialogText;
@@ -19,60 +21,67 @@ public class Journal : MonoBehaviour
     private bool dialogSaveable = false;
     private bool keyDialog = false;
     private string keyName = "";
+    private bool isQuestioning = false;
+    private string keyText1 = "";
+    private string keyText2 = "";
+    private InMemoryVariableStorage varStorage;
     public List<GameObject> highlightedText;
 
     void Start()
     {
         itemJournal.SetActive(false);
         dialogJournal.SetActive(false);
+        varStorage = FindObjectOfType<InMemoryVariableStorage>();
     }
 
     void Update()
     {
         // Open Journal panels
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !isQuestioning)
         {
             itemJournal.SetActive(!itemJournal.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !isQuestioning)
         {
             dialogJournal.SetActive(!dialogJournal.activeSelf);
+            UnhighlightAll();
         }
 
         //Add dialogue to journal
-        if(dialogSaveable && Input.GetKeyDown(KeyCode.F))
+        if (dialogSaveable && Input.GetKeyDown(KeyCode.F))
         {
             string savedText = dialogText.text;
             string speaker = savedText.Substring(0, savedText.IndexOf(':'));
             Transform character = null;
             //Find the character subsection
-            foreach(Text name in charSections)
+            foreach (Text name in charSections)
             {
-                if(speaker.ToLower() == name.text.ToLower())
+                if (speaker.ToLower() == name.text.ToLower())
                 {
                     character = name.transform;
                     break;
                 }
             }
             //If character is not already in the journal;
-            if(character == null)
+            if (character == null)
             {
                 character = Instantiate(charSectionPrefab, contentPanel).transform;
                 character.GetComponentInChildren<Text>().text = speaker;
                 charSections.Add(character.GetComponent<Text>());
             }
             //Check if text has been saved before or not. Delete it if so.
-            foreach(Text dialog in character.GetComponentsInChildren<Text>())
+            foreach (Text dialog in character.GetComponentsInChildren<Text>())
             {
-                if(savedText == dialog.text)
+                if (savedText == dialog.text)
                 {
                     Destroy(dialog.transform.parent.gameObject);
                     break;
                 }
             }
             //Create the dialog in the journal
-            GameObject newJournalText =  Instantiate(journalTextPrefab, character);
+            GameObject newJournalText = Instantiate(journalTextPrefab, character);
             newJournalText.GetComponentInChildren<Text>().text = savedText;
+            newJournalText.GetComponent<DialogueJournalElement>().journalParent = character;
             //Mark it as important if key.
             if (keyDialog)
             {
@@ -99,7 +108,11 @@ public class Journal : MonoBehaviour
     public void AddHighlighted(GameObject entry)
     {
         highlightedText.Add(entry);
-        if(!deleteButton.activeInHierarchy)
+        if(isQuestioning)
+        {
+            entry.transform.SetParent(dialogQuestioningContent);
+        }
+        else if (!deleteButton.activeInHierarchy)
         {
             deleteButton.SetActive(true);
             unhighlightAllButton.SetActive(true);
@@ -109,8 +122,11 @@ public class Journal : MonoBehaviour
     public void RemoveHighlighted(GameObject entry)
     {
         highlightedText.Remove(entry);
-
-        if(highlightedText.Count <= 0)
+        if (isQuestioning)
+        {
+            entry.transform.SetParent(entry.GetComponent<DialogueJournalElement>().journalParent);
+        }
+        else if (highlightedText.Count <= 0)
         {
             deleteButton.SetActive(false);
             unhighlightAllButton.SetActive(false);
@@ -119,7 +135,7 @@ public class Journal : MonoBehaviour
 
     public void DeleteAllHighlighted()
     {
-        foreach(GameObject lit in highlightedText)
+        foreach (GameObject lit in highlightedText)
         {
             Destroy(lit);
         }
@@ -130,6 +146,13 @@ public class Journal : MonoBehaviour
 
     public void UnhighlightAll()
     {
+        if(isQuestioning)
+        {
+            foreach (GameObject lit in highlightedText)
+            {
+                lit.transform.SetParent(lit.GetComponent<DialogueJournalElement>().journalParent);
+            }
+        }
         foreach (GameObject lit in highlightedText)
         {
             lit.GetComponent<DialogueJournalElement>().Unhighlight();
@@ -151,5 +174,53 @@ public class Journal : MonoBehaviour
     {
         keyDialog = false;
         keyName = "";
+    }
+
+    [YarnCommand("startquestioning")]
+    public void StartQuestioning(string key1, string key2)
+    {
+        isQuestioning = true;
+        keyText1 = key1;
+        keyText2 = key2;
+        dialogJournal.SetActive(true);
+        dialogQuestioningBox.SetActive(true);
+        UnhighlightAll();
+    }
+
+    [YarnCommand("stopquestioning")]
+    public void StopQuestioning()
+    {
+        UnhighlightAll();
+        isQuestioning = false;
+        keyText1 = "";
+        keyText2 = "";
+        dialogQuestioningBox.SetActive(false);
+    }
+
+    [YarnCommand("testquestions")]
+    public void TestQuestions()
+    {
+        bool correct1 = false, correct2 = false;
+        foreach (GameObject question in highlightedText)
+        {
+            string currentKey = question.GetComponent<DialogueJournalElement>().keyName;
+            if(currentKey == keyText1)
+            {
+                correct1 = true;
+            }
+            else if(currentKey == keyText2)
+            {
+                correct2 = true;
+            }
+            else
+            {
+                break;
+            }
+        }
+        if(correct1 && correct2)
+        {
+            print("That was correct!");
+            varStorage.SetValue("TNPCQ", true);
+        }
     }
 }

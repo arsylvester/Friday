@@ -4,6 +4,7 @@ colorID: 0
 position: 860,368
 ---
 <<if visited("TestNPC") is false>>
+	<<set $TNPCQ to false>>
     NPC: Hi! I'm a character!
     ->Nice to meet you!
         NPC: Nice to meet you too!
@@ -34,5 +35,38 @@ position: 860,368
 <<endif>>
 <<startkey Journal keytext1>>
 NPC: Hey, this is important text.
+<<startkey Journal keytext2>>
+NPC: And this is another key text.
 <<endkey Journal>>
+[[Have Conversation Again|TestNPC]]
+[[Start Questioning|TestQuestions]]
+[[Leave Conversation|Leave]]
+===
+
+title: TestQuestions
+tags: 
+colorID: 0
+position: 860,368
+---
+<<startquestioning Journal keytext1 keytext2>>
+NPC: Questions!
+->Confirm Questioning Choices
+	<<testquestions Journal>>
+	<<if $TNPCQ == true>>
+		NPC: Great, that's correct!
+	<<else>>
+		NPC: Sorry, try again.
+		[[TestQuestions]]
+	<<endif>>
+->Quit Questioning
+	<<stopquestioning Journal>>
+	[[Leave]]
+===
+
+title: Leave
+tags: 
+colorID: 0
+position: 860,368
+---
+NPC: Bye!
 ===
