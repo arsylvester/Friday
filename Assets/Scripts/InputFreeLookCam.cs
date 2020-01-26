@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class InputFreeLookCam : MonoBehaviour
 {
-    bool isTalking = false;
+    bool isStopped = false;
 
     bool isFreeLookActive;
 
@@ -24,12 +24,12 @@ public class InputFreeLookCam : MonoBehaviour
 
     private void Update()
     {
-        if (!isTalking)
+        if (!isStopped)
         {
             // allow player to rotate camera with right click
             isFreeLookActive = Input.GetMouseButton(1);
 
-            CameraZoom();
+            // CameraZoom();
         }
     }
 
@@ -57,17 +57,13 @@ public class InputFreeLookCam : MonoBehaviour
             cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, cameraZoomOut, Time.deltaTime * cameraZoomSmoothing);
     }
 
-    public void StartDialogue()
+    public void FreezeCamera()
     {
-        isTalking = true;
-
-        // zoom in camera
+        isStopped = true;
     }
 
-    public void EndDialogue()
+    public void UnfreezeCamera()
     {
-        isTalking = false;
-
-        // zoom out camera
+        isStopped = false;
     }
 }

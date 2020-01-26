@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    bool isTalking = false;
+    bool isStopped;
 
     public float moveSpeed;
     public float sprintSpeed;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isTalking)
+        if (!isStopped)
         {
             Movement();
             Rotation();
@@ -70,13 +70,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void StartDialogue()
+    public void StopMovement()
     {
-        isTalking = true;
+        isStopped = true;
     }
 
-    public void EndDialogue()
+    public void ResumeMovement()
     {
-        isTalking = false;
+        isStopped = false;
     }
 }

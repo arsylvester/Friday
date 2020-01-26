@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public void GoToGame()
     {
-        SceneManager.LoadScene("Vinson_Movement_Cam_1");
+        SceneManager.LoadScene("Abby_Apartment");
     }
 
     public void GoToSettings()
