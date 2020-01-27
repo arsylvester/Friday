@@ -4,16 +4,74 @@ colorID: 0
 position: 860,368
 ---
 <<if visited("TestNPC") is false>>
+	//<<set $TNPCQ to false>>
     NPC: Hi! I'm a character!
     ->Nice to meet you!
         NPC: Nice to meet you too!
     ->Hi there "a character"!
         NPC: That's not funny...
+	NPC: Would you like some extra lines?
+	->Yes please!
+		NPC: Bet!
+		NPC: Here...
+		NPC: Are...
+		NPC: Some...
+		NPC: Extra...
+		NPC: Lines...
+		NPC: This is a long line to test how large we can make the sentences and see how they fit in the journal. Hopefully well enough. 
+		NPC: And...
+		NPC: Some...
+		NPC: Even...
+		NPC: More...
+		NPC: For...
+		NPC: Your...
+		NPC: Testing...
+		Player: Awesome, thanks!
+	->No thank you!
+		NPC: Alright.
 <<else>>
     NPC: Hello again!
     Player: Hi!
 <<endif>>
+<<if $TNPCQ is true>>
+	NPC: You got the questioning right last time we spoke!
+<<endif>>
 <<startkey Journal keytext1>>
 NPC: Hey, this is important text.
+<<startkey Journal keytext2>>
+NPC: And this is another key text.
 <<endkey Journal>>
+[[Have Conversation Again|TestNPC]]
+[[Start Questioning|TestQuestions]]
+[[Leave Conversation|Leave]]
+===
+
+title: TestQuestions
+tags: 
+colorID: 0
+position: 860,368
+---
+<<startquestioning Journal>>
+NPC: Questions!
+->Confirm Questioning Choices
+	<<if question("keytext1", "keytext2") is true>>
+		<<set $TNPCQ to true>>
+		NPC: Great, that's correct!
+		<<stopquestioning Journal>>
+		[[Leave]]
+	<<else>>
+		NPC: Sorry, try again.
+		[[TestQuestions]]
+	<<endif>>
+->Quit Questioning
+	<<stopquestioning Journal>>
+	[[Leave]]
+===
+
+title: Leave
+tags: 
+colorID: 0
+position: 860,368
+---
+NPC: Bye!
 ===
