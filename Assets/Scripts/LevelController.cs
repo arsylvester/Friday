@@ -15,6 +15,12 @@ public class LevelController : MonoBehaviour
         cam = FindObjectOfType<InputFreeLookCam>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("MainMenu");
+    }
+
     public void GoToAbbysApartment()
     {
         SceneManager.LoadScene("Abby_Apartment");
