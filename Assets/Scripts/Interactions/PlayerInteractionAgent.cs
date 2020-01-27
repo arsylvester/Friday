@@ -1,0 +1,89 @@
+﻿using System.Collections;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+
+[Serializable] public class PlayerSideInteractionEvent : UnityEvent<Interactable> { }
+
+public class PlayerInteractionAgent : MonoBehaviour
+{
+    public string InteractKey;
+    public Text NameTag;
+
+    private Camera mainCamera;
+    private Interactable lastHovered;
+
+    public PlayerSideInteractionEvent OnInteract;
+    public PlayerSideInteractionEvent OnHoverStart;
+    public PlayerSideInteractionEvent OnHoverEnd;
+
+    void Start()
+    {
+        mainCamera = GetComponent<Camera>();
+    }
+
+    void Update()
+    {
+        Ray cameraRay = mainCamera.ScreenPointToRay(Input.mousePosition);
+        bool hit = Physics.Raycast(cameraRay, out RaycastHit rayInfo);
+
+        if (hit)
+        {
+            GameObject objectHit = rayInfo.collider.gameObject;
+            Interactable interactable = objectHit.GetComponent<Interactable>();
+
+            if(interactable != null)
+            {
+                if (lastHovered != null && lastHovered != interactable)
+                {
+                    OnHoverEnd.Invoke(lastHovered);
+                    lastHovered.OnHoverEnd.Invoke();
+                    OnHoverStart.Invoke(interactable);
+                    interactable.OnHoverStart.Invoke();
+                }
+
+                lastHovered = interactable;
+                NameTag.text = interactable.DisplayName;
+
+                if (Input.GetButtonDown(InteractKey))
+                {
+                    OnInteract.Invoke(interactable);
+                    interactable.OnInteract.Invoke();
+                }
+            }
+            else
+            {
+                if (lastHovered != null)
+                {
+                    OnHoverEnd.Invoke(lastHovered);
+                    lastHovered.OnHoverEnd.Invoke();
+                    NameTag.text = "";
+                    lastHovered = null;
+                }
+            }
+        }
+        else
+        {
+            if(lastHovered != null)
+            {
+                OnHoverEnd.Invoke(lastHovered);
+                lastHovered.OnHoverEnd.Invoke();
+                NameTag.text = "";
+                lastHovered = null;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (lastHovered != null)
+        {
+            OnHoverEnd.Invoke(lastHovered);
+            lastHovered.OnHoverEnd.Invoke();
+            NameTag.text = "";
+            lastHovered = null;
+        }
+    }
+}

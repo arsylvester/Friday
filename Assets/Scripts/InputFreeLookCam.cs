@@ -6,8 +6,13 @@ using Cinemachine;
 public class InputFreeLookCam : MonoBehaviour
 {
     bool isStopped = false;
+    private bool isFreeLookActive;
+    public string ActiveChannel;
 
-    bool isFreeLookActive;
+    public void SwapChannel(string channel)
+    {
+        ActiveChannel = channel;
+    }
 
     public int cameraZoomIn;
     public int cameraZoomOut;
@@ -35,11 +40,13 @@ public class InputFreeLookCam : MonoBehaviour
 
     float GetInputAxis(string axisName)
     {
-        if (!isFreeLookActive)
+        string mx = "Mouse X " + ActiveChannel;
+        string my = "Mouse Y " + ActiveChannel;
+        if (!isFreeLookActive || (mx != axisName && my != axisName))
             return 0;
         else
         {
-            if (axisName == "Mouse Y")
+            if (axisName == my)
                 return Input.GetAxis("Mouse Y");
             else
                 return Input.GetAxis("Mouse X");
