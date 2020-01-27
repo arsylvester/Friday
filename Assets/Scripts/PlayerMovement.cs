@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    bool isStopped;
+
     public float moveSpeed;
     public float sprintSpeed;
     public float rotationSmoothing;
@@ -19,14 +21,18 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         charController = GetComponent<CharacterController>();
+
         tmpSpeed = moveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
-        Rotation();
+        if (!isStopped)
+        {
+            Movement();
+            Rotation();
+        }
     }
 
     void Movement()
@@ -62,5 +68,15 @@ public class PlayerMovement : MonoBehaviour
             dir.y = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), rotationSmoothing);
         }
+    }
+
+    public void StopMovement()
+    {
+        isStopped = true;
+    }
+
+    public void ResumeMovement()
+    {
+        isStopped = false;
     }
 }
