@@ -14,6 +14,9 @@ public class InspectorAgent : MonoBehaviour
     public float FocusTime;
     public Text FlavorText;
     public string InteractKey;
+    public string VerticalRotationAxis;
+    public string HorizontalRotationAxis;
+    public string DragKey;
     public Camera InspectorCamera;
 
     public PlayerSideInspectEvent OnFocused;
@@ -21,10 +24,10 @@ public class InspectorAgent : MonoBehaviour
 
     private IEnumerator focusCoroutine;
     private Inspectable target;
-    private Quaternion originalRotation;
-    private Vector3 originalPosition;
 
     private Dictionary<Inspectable, IEnumerator> unfocusCoroutines = new Dictionary<Inspectable, IEnumerator>();
+    private Dictionary<Inspectable, Quaternion> originalRotations = new Dictionary<Inspectable, Quaternion>();
+    private Dictionary<Inspectable, Vector3> originalPositions = new Dictionary<Inspectable, Vector3>();
 
     private Camera mainCamera;
     void Start()
@@ -48,7 +51,11 @@ public class InspectorAgent : MonoBehaviour
                 }
             }
 
-            
+            if(Input.GetButton(DragKey))
+            {
+                target.transform.Rotate(transform.right, Input.GetAxis(VerticalRotationAxis), Space.World);
+                target.transform.Rotate(transform.up, Input.GetAxis(HorizontalRotationAxis), Space.World);
+            }
         }
     }
 
@@ -69,11 +76,13 @@ public class InspectorAgent : MonoBehaviour
             {
                 StopCoroutine(unfocusCoroutines[inspectable]);
             }
-
-            Transform originalTransform = target.transform;
-            originalPosition = originalTransform.position;
-            originalRotation = originalTransform.rotation;
-
+            else
+            {
+                Transform originalTransform = target.transform;
+                originalPositions[inspectable] = originalTransform.position;
+                originalRotations[inspectable] = originalTransform.rotation;
+            }
+            
             FlavorText.text = target.InspectorText;
             OnFocused.Invoke(target);
             focusCoroutine = FocusObject(target.gameObject);
@@ -92,10 +101,10 @@ public class InspectorAgent : MonoBehaviour
         {
             t += Time.deltaTime;
             targetPosition = transform.position + transform.forward * InspectionDistance;
-            target.transform.position = Vector3.Lerp(startPosition, targetPosition, Sirp(0, 1, t));
+            target.transform.position = Vector3.Lerp(startPosition, targetPosition, Sirp(0, 1, t / FocusTime));
             yield return null;
 
-        } while (!Mathf.Approximately((targetPosition - target.transform.position).sqrMagnitude, 0.0F));
+        } while (t < FocusTime);
 
         Debug.Log("Focused");
     }
@@ -111,14 +120,13 @@ public class InspectorAgent : MonoBehaviour
         do
         {
             t += Time.deltaTime;
-            target.transform.position = Vector3.Lerp(startingPosition, originalPosition, Sirp(0, 1, t));
+            target.transform.position = Vector3.Lerp(startingPosition, originalPosition, Sirp(0, 1, t / FocusTime));
             Vector3 eulerRotation = target.transform.rotation.eulerAngles;
-            eulerRotation.x = Sirp(startingEuler.x, originalEuler.x, t);
-            eulerRotation.y = Sirp(startingEuler.y, originalEuler.y, t);
-            eulerRotation.z = Sirp(startingEuler.z, originalEuler.z, t);
+            eulerRotation.x = Sirp(startingEuler.x, originalEuler.x, t / FocusTime);
+            eulerRotation.y = Sirp(startingEuler.y, originalEuler.y, t / FocusTime);
+            eulerRotation.z = Sirp(startingEuler.z, originalEuler.z, t / FocusTime);
             yield return null;
-        } while (!Mathf.Approximately((originalPosition - target.transform.position).sqrMagnitude, 0.0F) ||
-            !Mathf.Approximately(Quaternion.Angle(target.transform.rotation, originalRotation), 0.0F));
+        } while (t < FocusTime);
 
         target.layer = LayerMask.NameToLayer("Default");
         Debug.Log("Unfocused");
@@ -134,7 +142,7 @@ public class InspectorAgent : MonoBehaviour
         OnUnfocused.Invoke(target);
         FlavorText.text = "";
 
-        IEnumerator unfocusCoroutine = UnfocusObject(target.gameObject, originalRotation, originalPosition);
+        IEnumerator unfocusCoroutine = UnfocusObject(target.gameObject, originalRotations[target], originalPositions[target]);
         unfocusCoroutines[target] = unfocusCoroutine;
         StartCoroutine(unfocusCoroutine);
         target = null;
