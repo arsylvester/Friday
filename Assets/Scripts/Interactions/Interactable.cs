@@ -10,4 +10,5 @@ public class Interactable : MonoBehaviour
     public UnityEvent OnHoverEnd;
 
     public string DisplayName;
+    public Vector2 DisplayOffset;
 }

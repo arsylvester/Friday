@@ -54,7 +54,7 @@ public class InspectorAgent : MonoBehaviour
             if(Input.GetButton(DragKey))
             {
                 target.transform.Rotate(transform.right, Input.GetAxis(VerticalRotationAxis), Space.World);
-                target.transform.Rotate(transform.up, Input.GetAxis(HorizontalRotationAxis), Space.World);
+                target.transform.Rotate(transform.up, -Input.GetAxis(HorizontalRotationAxis), Space.World);
             }
         }
     }
@@ -83,7 +83,7 @@ public class InspectorAgent : MonoBehaviour
                 originalRotations[inspectable] = originalTransform.rotation;
             }
             
-            FlavorText.text = target.InspectorText;
+            //FlavorText.text = target.InspectorText;
             OnFocused.Invoke(target);
             focusCoroutine = FocusObject(target.gameObject);
             StartCoroutine(focusCoroutine);
@@ -122,9 +122,10 @@ public class InspectorAgent : MonoBehaviour
             t += Time.deltaTime;
             target.transform.position = Vector3.Lerp(startingPosition, originalPosition, Sirp(0, 1, t / FocusTime));
             Vector3 eulerRotation = target.transform.rotation.eulerAngles;
-            eulerRotation.x = Sirp(startingEuler.x, originalEuler.x, t / FocusTime);
-            eulerRotation.y = Sirp(startingEuler.y, originalEuler.y, t / FocusTime);
-            eulerRotation.z = Sirp(startingEuler.z, originalEuler.z, t / FocusTime);
+            eulerRotation.x = Mathf.LerpAngle(startingEuler.x, originalEuler.x, Sirp(0, 1, t / FocusTime));
+            eulerRotation.y = Mathf.LerpAngle(startingEuler.y, originalEuler.y, Sirp(0, 1, t / FocusTime));
+            eulerRotation.z = Mathf.LerpAngle(startingEuler.z, originalEuler.z, Sirp(0, 1, t / FocusTime));
+            target.transform.rotation = Quaternion.Euler(eulerRotation);
             yield return null;
         } while (t < FocusTime);
 
