@@ -17,7 +17,9 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject charSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
+    [SerializeField] int maxNumOfLinesSaveable = 50;
 
+    private int linesSaved = 0;
     private bool dialogSaveable = false;
     private bool keyDialog = false;
     private string keyName = "";
@@ -57,7 +59,7 @@ public class Journal : MonoBehaviour
                     return false;
                 }
             }
-            if (correct1 && correct2)
+            if (correct1 && (correct2 || parameters[1].AsString == ""))
             {
                 print("That was correct!");
                 return true;
@@ -80,7 +82,7 @@ public class Journal : MonoBehaviour
         }
 
         //Add dialogue to journal
-        if (dialogSaveable && Input.GetKeyDown(KeyCode.F))
+        if (dialogSaveable && linesSaved < maxNumOfLinesSaveable && Input.GetKeyDown(KeyCode.F))
         {
             string savedText = dialogText.text;
             string speaker = savedText.Substring(0, savedText.IndexOf(':'));
@@ -120,6 +122,7 @@ public class Journal : MonoBehaviour
                 newJournalText.GetComponent<DialogueJournalElement>().isKeyDialogue = true;
                 newJournalText.GetComponent<DialogueJournalElement>().keyName = keyName;
             }
+            linesSaved++;
             CanSaveDialogue(false);
         }
     }
@@ -169,6 +172,7 @@ public class Journal : MonoBehaviour
     {
         foreach (GameObject lit in highlightedText)
         {
+            linesSaved--;
             Destroy(lit);
         }
         highlightedText.Clear();
