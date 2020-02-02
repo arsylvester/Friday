@@ -16,6 +16,6 @@ Use: <<startquestioning Journal>> //Before you start question dialogue
 	 <<stopquestioning Journal>> //Exit questioning and return to normal journal layout.
 
 Ask Question
-Description: This command passes in two strings and returns a bool. Each string is the key identifier string corresponding to the dialogue wanted. If the second string is "", the function will only test for the first parameter. Returns if the question was right or not.
+Description: This command passes in two strings and returns a bool. Each string is the key identifier string corresponding to the dialogue wanted. If the second string is "-", the function will only test for the first parameter. Returns if the question was right or not.
 Use: <<if question("keytext1", "keytext2") is true>>
-or - <<if question("keytext1", "") is true>>
+or - <<if question("keytext1", "-") is true>>

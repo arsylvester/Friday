@@ -11,6 +11,10 @@ public class ItemJournalElement : MonoBehaviour
     public string keyID = "";
     public Sprite itemPhoto;
 
+    [SerializeField] Text nameTextbox;
+    [SerializeField] Text descTextbox;
+    [SerializeField] Image itemImageBox;
+
     public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
     public Transform journalParent;
 
@@ -32,22 +36,28 @@ public class ItemJournalElement : MonoBehaviour
         itemPhoto = sprite;
         keyID = ID;
         journalParent = parent;
+
+        nameTextbox.text = itemName;
+        descTextbox.text = description;
+        itemImageBox.sprite = itemPhoto;
     }
 
     public void Clicked()
     {
-        isHighlighted = !isHighlighted;
-
-        if (isHighlighted)
+        if (!isHighlighted)
         {
-            button.colors = highlightedColors;
-            journal.AddHighlighted(gameObject);
+            journal.AddHighlighted(gameObject, false);
         }
         else
         {
-            button.colors = ColorBlock.defaultColorBlock;
-            journal.RemoveHighlighted(gameObject);
+            journal.RemoveHighlighted(gameObject, false);
         }
+    }
+
+    public void Highlight()
+    {
+        isHighlighted = true;
+        button.colors = highlightedColors;
     }
 
     public void Unhighlight()

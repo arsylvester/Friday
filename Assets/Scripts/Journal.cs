@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using UnityEngine.Events;
 
 public class Journal : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject dialogJournal;
     [SerializeField] GameObject dialogQuestioningBox;
     [SerializeField] Transform dialogQuestioningContent;
+    [SerializeField] GameObject itemQuestioningBox;
+    [SerializeField] Transform itemQuestioningContent;
     [SerializeField] Transform contentPanel;
     [SerializeField] Transform itemContentPanel;
     [SerializeField] List<Text> charSections;
@@ -33,9 +36,14 @@ public class Journal : MonoBehaviour
     private string keyText2 = "";
     private InMemoryVariableStorage varStorage;
     public List<GameObject> highlightedText;
+    public List<GameObject> highlightedItems;
+
+    public UnityEvent OnQuestionStart;
+    public UnityEvent OnQuestionStop;
 
     //TESTING
-    public Sprite testSprite;
+    public Sprite testSprite1;
+    public Sprite testSprite2;
 
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
@@ -67,7 +75,23 @@ public class Journal : MonoBehaviour
                     return false;
                 }
             }
-            if (correct1 && (correct2 || parameters[1].AsString == ""))
+            foreach (GameObject question in highlightedItems)
+            {
+                string currentKey = question.GetComponent<ItemJournalElement>().keyID;
+                if (currentKey == parameters[0].AsString)
+                {
+                    correct1 = true;
+                }
+                else if (currentKey == parameters[1].AsString)
+                {
+                    correct2 = true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            if (correct1 && (correct2 || parameters[1].AsString == "-"))
             {
                 print("That was correct!");
                 return true;
@@ -76,7 +100,8 @@ public class Journal : MonoBehaviour
         });
 
         //TEST:
-        SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite, "KeyVase");
+        SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
+        SaveItem("Yarn", "A ball of yarn.", "What differentiates yarn, string, twine, and rope?", testSprite2, "KeyYarn");
     }
 
     void Update()
@@ -191,42 +216,73 @@ public class Journal : MonoBehaviour
         dialogJournal.SetActive(true);
     }
 
-    public void AddHighlighted(GameObject entry)
+    public void AddHighlighted(GameObject entry, bool isDialogue)
     {
-        
-        if(isQuestioning)
+        if (isDialogue)
         {
-            if (NumOfEvidenceQuestioned < maxNumOfEvidenceQuestioned)
+            highlightedText.Add(entry);
+            if (isQuestioning)
             {
-                entry.transform.SetParent(dialogQuestioningContent);
-                NumOfEvidenceQuestioned++;
-                highlightedText.Add(entry);
+                if (NumOfEvidenceQuestioned < maxNumOfEvidenceQuestioned)
+                {
+                    entry.transform.SetParent(dialogQuestioningContent);
+                    NumOfEvidenceQuestioned++;
+
+                }
+                else
+                {
+                    entry.GetComponent<DialogueJournalElement>().Unhighlight();
+                    highlightedText.Remove(entry);
+                }
             }
-            else
+            else if (!deleteButton.activeInHierarchy)
             {
-                entry.GetComponent<DialogueJournalElement>().Unhighlight();
+                deleteButton.SetActive(true);
+                unhighlightAllButton.SetActive(true);
             }
         }
-        else if (!deleteButton.activeInHierarchy)
+        //Is an item
+        else
         {
-            deleteButton.SetActive(true);
-            unhighlightAllButton.SetActive(true);
-            highlightedText.Add(entry);
+            if (isQuestioning)
+            {
+                if (NumOfEvidenceQuestioned < maxNumOfEvidenceQuestioned)
+                {
+                    highlightedItems.Add(entry);
+                    entry.GetComponent<ItemJournalElement>().Highlight();
+                    entry.transform.SetParent(itemQuestioningContent);
+                    NumOfEvidenceQuestioned++;
+                }
+            }
         }
     }
 
-    public void RemoveHighlighted(GameObject entry)
+    public void RemoveHighlighted(GameObject entry, bool isDialogue)
     {
-        highlightedText.Remove(entry);
-        if (isQuestioning)
+        if (isDialogue)
         {
-            entry.transform.SetParent(entry.GetComponent<DialogueJournalElement>().journalParent);
-            NumOfEvidenceQuestioned--;
+            highlightedText.Remove(entry);
+            if (isQuestioning)
+            {
+                entry.transform.SetParent(entry.GetComponent<DialogueJournalElement>().journalParent);
+                NumOfEvidenceQuestioned--;
+            }
+            else if (highlightedText.Count <= 0)
+            {
+                deleteButton.SetActive(false);
+                unhighlightAllButton.SetActive(false);
+            }
         }
-        else if (highlightedText.Count <= 0)
+        //Is an item
+        else
         {
-            deleteButton.SetActive(false);
-            unhighlightAllButton.SetActive(false);
+            if (isQuestioning)
+            {
+                highlightedItems.Remove(entry);
+                entry.GetComponent<ItemJournalElement>().Unhighlight();
+                entry.transform.SetParent(entry.GetComponent<ItemJournalElement>().journalParent);
+                NumOfEvidenceQuestioned--;
+            }
         }
     }
 
@@ -244,17 +300,27 @@ public class Journal : MonoBehaviour
 
     public void UnhighlightAll()
     {
-        if(isQuestioning)
+        if (isQuestioning)
         {
             foreach (GameObject lit in highlightedText)
             {
                 lit.transform.SetParent(lit.GetComponent<DialogueJournalElement>().journalParent);
+                lit.GetComponent<DialogueJournalElement>().Unhighlight();
+            }
+            foreach (GameObject item in highlightedItems)
+            {
+                item.transform.SetParent(item.GetComponent<ItemJournalElement>().journalParent);
+                item.GetComponent<ItemJournalElement>().Unhighlight();
             }
             NumOfEvidenceQuestioned = 0;
+            highlightedItems.Clear();
         }
-        foreach (GameObject lit in highlightedText)
+        else
         {
-            lit.GetComponent<DialogueJournalElement>().Unhighlight();
+            foreach (GameObject lit in highlightedText)
+            {
+                lit.GetComponent<DialogueJournalElement>().Unhighlight();
+            }
         }
         highlightedText.Clear();
         deleteButton.SetActive(false);
@@ -278,17 +344,21 @@ public class Journal : MonoBehaviour
     [YarnCommand("startquestioning")]
     public void StartQuestioning()
     {
+        OnQuestionStart.Invoke();
         isQuestioning = true;
-        dialogJournal.SetActive(true);
+        OpenJournals();
         dialogQuestioningBox.SetActive(true);
+        itemQuestioningBox.SetActive(true);
         UnhighlightAll();
     }
 
     [YarnCommand("stopquestioning")]
     public void StopQuestioning()
     {
+        OnQuestionStop.Invoke();
         UnhighlightAll();
         isQuestioning = false;
         dialogQuestioningBox.SetActive(false);
+        itemQuestioningBox.SetActive(false);
     }
 }

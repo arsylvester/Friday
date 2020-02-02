@@ -62,7 +62,7 @@ position: 860,368
 <<startquestioning Journal>>
 NPC: Questions!
 ->Confirm Questioning Choices
-	<<if question("keytext1", "") is true>>
+	<<if question("keytext1", "KeyVase") is true>>
 		<<set $TNPCQ to true>>
 		NPC: Great, that's correct!
 		<<stopquestioning Journal>>

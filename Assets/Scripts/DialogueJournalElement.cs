@@ -30,12 +30,12 @@ public class DialogueJournalElement : MonoBehaviour
         {
             button.colors = highlightedColors;
             //journal.highlightedText.Add(gameObject);
-            journal.AddHighlighted(gameObject);
+            journal.AddHighlighted(gameObject, true);
         }
         else
         {
             button.colors = ColorBlock.defaultColorBlock;
-            journal.RemoveHighlighted(gameObject);
+            journal.RemoveHighlighted(gameObject, true);
         }
     }
 
