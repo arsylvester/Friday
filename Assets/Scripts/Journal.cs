@@ -11,15 +11,20 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject dialogQuestioningBox;
     [SerializeField] Transform dialogQuestioningContent;
     [SerializeField] Transform contentPanel;
+    [SerializeField] Transform itemContentPanel;
     [SerializeField] List<Text> charSections;
+    [SerializeField] List<Text> LocSections;
     [SerializeField] Text dialogText;
     [SerializeField] GameObject journalTextPrefab;
+    [SerializeField] GameObject journalItemPrefab;
     [SerializeField] GameObject charSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
     [SerializeField] int maxNumOfLinesSaveable = 50;
+    [SerializeField] int maxNumOfEvidenceQuestioned = 2;
 
     private int linesSaved = 0;
+    private int NumOfEvidenceQuestioned = 0;
     private bool dialogSaveable = false;
     private bool keyDialog = false;
     private string keyName = "";
@@ -28,6 +33,9 @@ public class Journal : MonoBehaviour
     private string keyText2 = "";
     private InMemoryVariableStorage varStorage;
     public List<GameObject> highlightedText;
+
+    //TESTING
+    public Sprite testSprite;
 
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
@@ -66,6 +74,9 @@ public class Journal : MonoBehaviour
             }
             return false;
         });
+
+        //TEST:
+        SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite, "KeyVase");
     }
 
     void Update()
@@ -84,47 +95,87 @@ public class Journal : MonoBehaviour
         //Add dialogue to journal
         if (dialogSaveable && linesSaved < maxNumOfLinesSaveable && Input.GetKeyDown(KeyCode.F))
         {
-            string savedText = dialogText.text;
-            string speaker = savedText.Substring(0, savedText.IndexOf(':'));
-            Transform character = null;
-            //Find the character subsection
-            foreach (Text name in charSections)
-            {
-                if (speaker.ToLower() == name.text.ToLower())
-                {
-                    character = name.transform;
-                    break;
-                }
-            }
-            //If character is not already in the journal;
-            if (character == null)
-            {
-                character = Instantiate(charSectionPrefab, contentPanel).transform;
-                character.GetComponentInChildren<Text>().text = speaker;
-                charSections.Add(character.GetComponent<Text>());
-            }
-            //Check if text has been saved before or not. Delete it if so.
-            foreach (Text dialog in character.GetComponentsInChildren<Text>())
-            {
-                if (savedText == dialog.text)
-                {
-                    Destroy(dialog.transform.parent.gameObject);
-                    break;
-                }
-            }
-            //Create the dialog in the journal
-            GameObject newJournalText = Instantiate(journalTextPrefab, character);
-            newJournalText.GetComponentInChildren<Text>().text = savedText;
-            newJournalText.GetComponent<DialogueJournalElement>().journalParent = character;
-            //Mark it as important if key.
-            if (keyDialog)
-            {
-                newJournalText.GetComponent<DialogueJournalElement>().isKeyDialogue = true;
-                newJournalText.GetComponent<DialogueJournalElement>().keyName = keyName;
-            }
-            linesSaved++;
-            CanSaveDialogue(false);
+            SaveDialogue();
         }
+    }
+
+    private void SaveDialogue()
+    {
+        string savedText = dialogText.text;
+        string speaker = savedText.Substring(0, savedText.IndexOf(':'));
+        Transform character = null;
+        //Find the character subsection
+        foreach (Text name in charSections)
+        {
+            if (speaker.ToLower() == name.text.ToLower())
+            {
+                character = name.transform;
+                break;
+            }
+        }
+        //If character is not already in the journal;
+        if (character == null)
+        {
+            character = Instantiate(charSectionPrefab, contentPanel).transform;
+            character.GetComponentInChildren<Text>().text = speaker;
+            charSections.Add(character.GetComponent<Text>());
+        }
+        //Check if text has been saved before or not. Delete it if so.
+        foreach (Text dialog in character.GetComponentsInChildren<Text>())
+        {
+            if (savedText == dialog.text)
+            {
+                Destroy(dialog.transform.parent.gameObject);
+                break;
+            }
+        }
+        //Create the dialog in the journal
+        GameObject newJournalText = Instantiate(journalTextPrefab, character);
+        newJournalText.GetComponentInChildren<Text>().text = savedText;
+        newJournalText.GetComponent<DialogueJournalElement>().journalParent = character;
+        //Mark it as important if key.
+        if (keyDialog)
+        {
+            newJournalText.GetComponent<DialogueJournalElement>().isKeyDialogue = true;
+            newJournalText.GetComponent<DialogueJournalElement>().keyName = keyName;
+        }
+        linesSaved++;
+        CanSaveDialogue(false);
+    }
+
+    private void SaveItem(string itemName, string desc, string flavor, Sprite sprite, string keyID)
+    {
+        string location = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        print(location);
+        Transform locSubsection = null;
+        //Find the location subsection
+        foreach (Text name in LocSections)
+        {
+            if (location.ToLower() == name.text.ToLower())
+            {
+                locSubsection = name.transform;
+                break;
+            }
+        }
+        //If location is not already in the journal;
+        if (locSubsection == null)
+        {
+            locSubsection = Instantiate(charSectionPrefab, itemContentPanel).transform;
+            locSubsection.GetComponentInChildren<Text>().text = location;
+            LocSections.Add(locSubsection.GetComponent<Text>());
+        }
+        //Check if item has been saved before or not. Delete it if so.
+        foreach (ItemJournalElement element in locSubsection.GetComponentsInChildren<ItemJournalElement>())
+        {
+            if (itemName == element.itemName)
+            {
+                Destroy(element.transform.parent.gameObject);
+                break;
+            }
+        }
+        //Create the item in the journal
+        GameObject newJournalItem = Instantiate(journalItemPrefab, locSubsection);
+        newJournalItem.GetComponent<ItemJournalElement>().SetUpEntry(itemName, desc, flavor, sprite, keyID, locSubsection);
     }
 
     //Toggle the ability to save current dialog to the journal.
@@ -142,15 +193,25 @@ public class Journal : MonoBehaviour
 
     public void AddHighlighted(GameObject entry)
     {
-        highlightedText.Add(entry);
+        
         if(isQuestioning)
         {
-            entry.transform.SetParent(dialogQuestioningContent);
+            if (NumOfEvidenceQuestioned < maxNumOfEvidenceQuestioned)
+            {
+                entry.transform.SetParent(dialogQuestioningContent);
+                NumOfEvidenceQuestioned++;
+                highlightedText.Add(entry);
+            }
+            else
+            {
+                entry.GetComponent<DialogueJournalElement>().Unhighlight();
+            }
         }
         else if (!deleteButton.activeInHierarchy)
         {
             deleteButton.SetActive(true);
             unhighlightAllButton.SetActive(true);
+            highlightedText.Add(entry);
         }
     }
 
@@ -160,6 +221,7 @@ public class Journal : MonoBehaviour
         if (isQuestioning)
         {
             entry.transform.SetParent(entry.GetComponent<DialogueJournalElement>().journalParent);
+            NumOfEvidenceQuestioned--;
         }
         else if (highlightedText.Count <= 0)
         {
@@ -188,6 +250,7 @@ public class Journal : MonoBehaviour
             {
                 lit.transform.SetParent(lit.GetComponent<DialogueJournalElement>().journalParent);
             }
+            NumOfEvidenceQuestioned = 0;
         }
         foreach (GameObject lit in highlightedText)
         {
