@@ -48,14 +48,16 @@ public class ItemAgent : MonoBehaviour
                 Sprite capture = Sprite.Create(td, new Rect(0, 0, rt.width, rt.height), new Vector2(rt.width / 2.0F, rt.height / 2.0F));
                 DebugOutput.sprite = capture;
 
-                if(secret != null)
+                Journal jrnl = FindObjectOfType<Journal>();
+
+                if (secret != null)
                 {
                     Debug.Log("Secret");
-                    //TODO Pass secret to journal
+                    jrnl.SaveItem(secret.EntryName, secret.Description, secret.FlavorText, capture, secret.Keyname);
                 }
                 else
                 {
-                    //TODO Pass item to journal
+                    jrnl.SaveItem(item.EntryName, item.Description, item.FlavorText, capture, item.Keyname);
                 }
             }
         }

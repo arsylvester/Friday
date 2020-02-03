@@ -168,7 +168,7 @@ public class Journal : MonoBehaviour
         CanSaveDialogue(false);
     }
 
-    private void SaveItem(string itemName, string desc, string flavor, Sprite sprite, string keyID)
+    public void SaveItem(string itemName, string desc, string flavor, Sprite sprite, string keyID)
     {
         string location = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         print(location);
