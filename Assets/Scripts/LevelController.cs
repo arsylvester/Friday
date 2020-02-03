@@ -23,27 +23,27 @@ public class LevelController : MonoBehaviour
 
     public void GoToAbbysApartment()
     {
-        SceneManager.LoadScene("Abby_Apartment");
+        SceneManager.LoadScene("Abby_Apartment_Test");
     }
 
     public void GoToTristansApartment()
     {
-        SceneManager.LoadScene("Tristan_Apartment");
+        SceneManager.LoadScene("Tristan_Apartment_Test");
     }
 
     public void GoToBernardsApartment()
     {
-        SceneManager.LoadScene("Bernard_Apartment");
+        SceneManager.LoadScene("Bernard_Apartment_Test");
     }
 
     public void ManagementOffice()
     {
-        SceneManager.LoadScene("Management_Office");
+        SceneManager.LoadScene("Management_Office_Test");
     }
 
     public void OwnersSuite()
     {
-        SceneManager.LoadScene("Owner_Suite");
+        SceneManager.LoadScene("Owner_Suite_Test");
     }
 
     private void OnTriggerEnter(Collider other)

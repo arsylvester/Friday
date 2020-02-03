@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8044455454347963172}
   - component: {fileID: 8044455454347963173}
   - component: {fileID: 8044455454347963174}
-  - component: {fileID: 8044455454347963175}
   - component: {fileID: 8044455454347963168}
   - component: {fileID: 8044455454347963178}
   m_Layer: 0
@@ -95,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8044455454347963175
+--- !u!114 &8044455454347963168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,7 +103,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8044455454347963169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbcce018edc725048b17b5934510ed43, type: 3}
+  m_Script: {fileID: 11500000, guid: 44865af5177578649a78931622cebf44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8044455454347963178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8044455454347963169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffff9d94203afb44c87620f99f9bb433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnInteract:
@@ -134,30 +145,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DisplayName: Dummy Interactable
---- !u!114 &8044455454347963168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8044455454347963169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44865af5177578649a78931622cebf44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8044455454347963178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8044455454347963169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffff9d94203afb44c87620f99f9bb433, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  DisplayOffset: {x: 0, y: 0}
   OnFocused:
     m_PersistentCalls:
       m_Calls: []

@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class Interact : MonoBehaviour
 {
     private DialogueRunner dialogue;
+    public float range;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class Interact : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Input.GetMouseButtonDown(0) && !dialogue.isDialogueRunning && Physics.Raycast(ray, out hit, 1000))
+        if (Input.GetMouseButtonDown(0) && !dialogue.isDialogueRunning && Physics.Raycast(ray, out hit, range))
         {
             print("Interacting with: " + hit);
             var target = hit.transform.GetComponent<NPC>();
