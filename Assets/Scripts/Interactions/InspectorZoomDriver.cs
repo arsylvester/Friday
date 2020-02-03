@@ -5,17 +5,17 @@ using Cinemachine;
 
 public class InspectorZoomDriver : MonoBehaviour
 {
-    private CinemachineVirtualCamera current;
-    public CinemachineFreeLook Target;
+    private Camera current;
+    public Camera Target;
     // Start is called before the first frame update
     void Start()
     {
-        current = GetComponent<CinemachineVirtualCamera>();
+        current = GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        current.m_Lens.FieldOfView = Target.m_Lens.FieldOfView;
+        current.fieldOfView = Target.fieldOfView;
     }
 }

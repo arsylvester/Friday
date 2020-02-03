@@ -8,7 +8,6 @@ public class ItemAgent : MonoBehaviour
     public string RecordKey;
     public Camera CaptureCamera;
     public Text FlavorText;
-    public Image DebugOutput;
 
     private Item item;
     public void FocusItem(Inspectable item)
@@ -46,7 +45,6 @@ public class ItemAgent : MonoBehaviour
                 td.Apply(false);
                 Graphics.CopyTexture(rt, td);
                 Sprite capture = Sprite.Create(td, new Rect(0, 0, rt.width, rt.height), new Vector2(rt.width / 2.0F, rt.height / 2.0F));
-                DebugOutput.sprite = capture;
 
                 Journal jrnl = FindObjectOfType<Journal>();
 
