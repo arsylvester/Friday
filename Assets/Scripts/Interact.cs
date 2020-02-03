@@ -10,12 +10,9 @@ public class Interact : MonoBehaviour
     private DialogueRunner dialogue;
     public float range;
 
-    MovePlayerToLocation player;
-
     private void Start()
     {
         dialogue = FindObjectOfType<DialogueRunner>();
-        player = FindObjectOfType<MovePlayerToLocation>();
     }
 
     private void Update()
@@ -27,10 +24,7 @@ public class Interact : MonoBehaviour
             print("Interacting with: " + hit);
             var target = hit.transform.GetComponent<NPC>();
             if (target != null)
-            {
                 dialogue.StartDialogue(target.talkToNode);
-                player.MovePlayer();
-            }
         }
     }
 }

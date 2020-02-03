@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
 {
     public void GoToGame()
     {
-        SceneManager.LoadScene("Abby_Apartment");
+        SceneManager.LoadScene("Abby_Apartment_Test");
     }
 
     public void GoToSettings()
