@@ -12,7 +12,6 @@ public class InspectorAgent : MonoBehaviour
 
     public float InspectionDistance;
     public float FocusTime;
-    public Text FlavorText;
     public string InteractKey;
     public string VerticalRotationAxis;
     public string HorizontalRotationAxis;
@@ -95,7 +94,10 @@ public class InspectorAgent : MonoBehaviour
         float t = 0;
         Vector3 targetPosition;
         Vector3 startPosition = target.transform.position;
-        target.layer = LayerMask.NameToLayer("Inspector");
+        foreach (Transform child in target.GetComponentsInChildren<Transform>())
+        {
+            child.gameObject.layer = LayerMask.NameToLayer("Inspector");
+        }
 
         do
         {
@@ -129,7 +131,10 @@ public class InspectorAgent : MonoBehaviour
             yield return null;
         } while (t < FocusTime);
 
-        target.layer = LayerMask.NameToLayer("Default");
+        foreach(Transform child in target.GetComponentsInChildren<Transform>())
+        {
+            child.gameObject.layer = LayerMask.NameToLayer("Default");
+        }
         Debug.Log("Unfocused");
     }
 
@@ -141,7 +146,6 @@ public class InspectorAgent : MonoBehaviour
         }
 
         OnUnfocused.Invoke(target);
-        FlavorText.text = "";
 
         IEnumerator unfocusCoroutine = UnfocusObject(target.gameObject, originalRotations[target], originalPositions[target]);
         unfocusCoroutines[target] = unfocusCoroutine;

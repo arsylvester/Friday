@@ -47,6 +47,10 @@ public class PlayerInteractionAgent : MonoBehaviour
                 lastHovered = interactable;
                 NameTag.text = interactable.DisplayName;
 
+                Vector3 tpos = mainCamera.WorldToViewportPoint(interactable.transform.position + transform.right * interactable.DisplayOffset.x + transform.up * interactable.DisplayOffset.y);
+                Vector2 canvasSize = NameTag.transform.parent.GetComponentInParent<RectTransform>().rect.size;
+                NameTag.rectTransform.anchoredPosition = new Vector2(canvasSize.x * tpos.x, canvasSize.y * tpos.y);
+
                 if (Input.GetButtonDown(InteractKey))
                 {
                     OnInteract.Invoke(interactable);
