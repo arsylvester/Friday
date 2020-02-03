@@ -41,6 +41,14 @@ NPC: Hey, this is important text.
 <<startkey Journal keytext2>>
 NPC: And this is another key text.
 <<endkey Journal>>
+[[Options]]
+===
+
+title: Options
+tags:
+colorID: 0
+position: 400,400
+---
 [[Have Conversation Again|TestNPC]]
 [[Start Questioning|TestQuestions]]
 [[Leave Conversation|Leave]]
@@ -54,18 +62,18 @@ position: 860,368
 <<startquestioning Journal>>
 NPC: Questions!
 ->Confirm Questioning Choices
-	<<if question("keytext1", "keytext2") is true>>
+	<<if question("keytext1", "KeyVase") is true>>
 		<<set $TNPCQ to true>>
 		NPC: Great, that's correct!
 		<<stopquestioning Journal>>
-		[[Leave]]
+		[[Options]]
 	<<else>>
 		NPC: Sorry, try again.
 		[[TestQuestions]]
 	<<endif>>
 ->Quit Questioning
 	<<stopquestioning Journal>>
-	[[Leave]]
+	[[Options]]
 ===
 
 title: Leave
