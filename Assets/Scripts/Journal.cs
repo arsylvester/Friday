@@ -194,7 +194,7 @@ public class Journal : MonoBehaviour
         {
             if (itemName == element.itemName)
             {
-                Destroy(element.transform.parent.gameObject);
+                Destroy(element.gameObject);
                 break;
             }
         }
