@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110328866282934943}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.056193303, y: 0.0025325918, z: 0.0042403517}
+  m_LocalPosition: {x: -0.051, y: 0.0025325918, z: 0.0042}
   m_LocalScale: {x: 0.5745773, y: 0.4888675, z: 0.92887014}
   m_Children: []
   m_Father: {fileID: 4643163781534859963}
@@ -275,6 +275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 589304344905678866}
+  - component: {fileID: 8125215953842894681}
   m_Layer: 0
   m_Name: Friday_FilingCabinet-Normal
   m_TagString: Untagged
@@ -299,6 +300,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &8125215953842894681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4501058608773231105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15550727, y: 0.2569148, z: 0.16131188}
+  m_Center: {x: 0.00831902, y: -0.00014659762, z: -0.0043069124}
 --- !u!1 &6896290598581167678
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6896290598581167678}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.056193303, y: 0.0025325918, z: 0.0042403517}
+  m_LocalPosition: {x: -0.0519, y: 0.0025325918, z: 0.0042}
   m_LocalScale: {x: 0.5745773, y: 0.4888675, z: 0.92887014}
   m_Children: []
   m_Father: {fileID: 5106149995001260409}
