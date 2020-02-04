@@ -170,6 +170,7 @@ public class Journal : MonoBehaviour
 
     public void SaveItem(string itemName, string desc, string flavor, Sprite sprite, string keyID)
     {
+        OpenJournals();
         string location = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         print(location);
         Transform locSubsection = null;

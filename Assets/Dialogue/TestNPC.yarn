@@ -60,7 +60,6 @@ colorID: 0
 position: 860,368
 ---
 <<startquestioning Journal>>
-NPC: Questions!
 ->Confirm Questioning Choices
 	<<if question("keytext1", "KeyVase") is true>>
 		<<set $TNPCQ to true>>
