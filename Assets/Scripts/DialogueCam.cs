@@ -63,7 +63,7 @@ public class DialogueCam : MonoBehaviour
         var moveDir = movement;
         moveDir.y = 0;
 
-        if (movement != Vector3.zero)
+        if (Vector3.Distance(transform.position, target.position) > 1)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), rotationSmoothing);
         else
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.parent.position), rotationSmoothing);

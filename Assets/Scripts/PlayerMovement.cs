@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraTransform;
 
     CharacterController charController;
-    Vector3 moveDirection;
+    public Vector3 moveDirection;
     float gravity = 1000;
     float tmpSpeed;
 
