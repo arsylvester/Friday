@@ -44,7 +44,7 @@ public class InspectorAgent : MonoBehaviour
                 Ray cameraRay = InspectorCamera.ScreenPointToRay(Input.mousePosition);
                 bool hit = Physics.Raycast(cameraRay, out RaycastHit rayInfo, 100F, ~LayerMask.NameToLayer("Inspector"));
 
-                if (!hit || rayInfo.collider.gameObject != target.gameObject)
+                if (!hit || LeastCommonAncestor(target.transform, rayInfo.collider.transform) != target.transform)
                 {
                     Release();
                 }
@@ -151,5 +151,26 @@ public class InspectorAgent : MonoBehaviour
         unfocusCoroutines[target] = unfocusCoroutine;
         StartCoroutine(unfocusCoroutine);
         target = null;
+    }
+
+    public static Transform LeastCommonAncestor(Transform lhs, Transform rhs)
+    {
+        HashSet<Transform> lhsAncestors = new HashSet<Transform>();
+        while(lhs != null)
+        {
+            lhsAncestors.Add(lhs);
+            lhs = lhs.parent;
+        }
+
+        while (rhs != null)
+        {
+            if (lhsAncestors.Contains(rhs))
+            {
+                return rhs;
+            }
+            rhs = rhs.parent;
+        }
+
+        return null;
     }
 }
