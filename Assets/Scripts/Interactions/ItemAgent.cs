@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemAgent : MonoBehaviour
 {
-    public string RecordKey;
+    //public string RecordKey;
     public Camera CaptureCamera;
     public Text FlavorText;
 
@@ -27,7 +27,8 @@ public class ItemAgent : MonoBehaviour
         {
             FlavorText.text = item.FlavorText;
 
-            if(Input.GetButtonDown(RecordKey))
+            //if(Input.GetButtonDown(RecordKey))
+            if(Input.GetKeyDown(KeyCode.F))
             {
                 SecretItem secret = null;
                 foreach (SecretItem s in item.GetComponentsInChildren<SecretItem>())
