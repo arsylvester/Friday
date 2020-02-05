@@ -20,15 +20,17 @@ public class ItemJournalElement : MonoBehaviour
 
     private Button button;
     private Journal journal;
+    private ItemPhotograph itemPhotograph;
     private bool isHighlighted = false;
 
     private void Awake()
     {
         button = GetComponent<Button>();
         journal = GetComponentInParent<Journal>();
+        itemPhotograph = FindObjectOfType<ItemPhotograph>();
     }
 
-    public void SetUpEntry(string name, string desc, string flavor, Sprite sprite, string ID, Transform parent)
+    public void SetUpEntry(string name, string desc, string flavor, Sprite sprite, string ID, Transform parent, ItemPhotograph photo)
     {
         itemName = name;
         description = desc;
@@ -36,6 +38,7 @@ public class ItemJournalElement : MonoBehaviour
         itemPhoto = sprite;
         keyID = ID;
         journalParent = parent;
+        itemPhotograph = photo;
 
         nameTextbox.text = itemName;
         descTextbox.text = description;
@@ -64,5 +67,10 @@ public class ItemJournalElement : MonoBehaviour
     {
         isHighlighted = false;
         button.colors = ColorBlock.defaultColorBlock;
+    }
+
+    public void ImageClicked()
+    {
+        itemPhotograph.ExpandImage(itemPhoto, flavorText);
     }
 }

@@ -23,6 +23,7 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject charSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
+    [SerializeField] GameObject Photograph;
     [SerializeField] int maxNumOfLinesSaveable = 50;
     [SerializeField] int maxNumOfEvidenceQuestioned = 2;
 
@@ -201,7 +202,7 @@ public class Journal : MonoBehaviour
         }
         //Create the item in the journal
         GameObject newJournalItem = Instantiate(journalItemPrefab, locSubsection);
-        newJournalItem.GetComponent<ItemJournalElement>().SetUpEntry(itemName, desc, flavor, sprite, keyID, locSubsection);
+        newJournalItem.GetComponent<ItemJournalElement>().SetUpEntry(itemName, desc, flavor, sprite, keyID, locSubsection, Photograph.GetComponent<ItemPhotograph>());
     }
 
     //Toggle the ability to save current dialog to the journal.
