@@ -2370,7 +2370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.00037497652, y: -0.000023218528}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &43695211803926320
@@ -3493,7 +3493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -4074,7 +4074,7 @@ RectTransform:
   m_GameObject: {fileID: 7131352248768799575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 7131352248228264134}
   - {fileID: 7131352249584576434}
@@ -4088,7 +4088,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 534.17, y: 275.9985}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &7131352248768799573
 MonoBehaviour:
@@ -5211,7 +5211,7 @@ RectTransform:
   m_GameObject: {fileID: 8889415149879423118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2121204218764353754}
   - {fileID: 4508640942028844459}
@@ -5222,8 +5222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -89}
-  m_SizeDelta: {x: 420, y: -364.7}
+  m_AnchoredPosition: {x: 0, y: -61.48999}
+  m_SizeDelta: {x: 420, y: 8.51001}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8060453897846914280
 CanvasRenderer:
@@ -5417,10 +5417,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4964224107801123308, guid: cac1734eb139b304084b28f918ed8144,
+    - target: {fileID: 4964224108217105468, guid: cac1734eb139b304084b28f918ed8144,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.7000122
+      propertyPath: m_FontData.m_FontSize
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac1734eb139b304084b28f918ed8144, type: 3}
