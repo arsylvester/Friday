@@ -7,12 +7,14 @@ public class LevelController : MonoBehaviour
 {
     public GameObject mapUI;
     InputFreeLookCam cam;
+    PlayerMovement playerMove;
 
     public void Start()
     {
         mapUI.SetActive(false);
 
         cam = FindObjectOfType<InputFreeLookCam>();
+        playerMove = FindObjectOfType<PlayerMovement>();
     }
 
     private void Update()
@@ -24,26 +26,31 @@ public class LevelController : MonoBehaviour
     public void GoToAbbysApartment()
     {
         SceneManager.LoadScene("Abby_Apartment_Test");
+        CloseMap();
     }
 
     public void GoToTristansApartment()
     {
         SceneManager.LoadScene("Tristan_Apartment_Test");
+        CloseMap();
     }
 
     public void GoToBernardsApartment()
     {
         SceneManager.LoadScene("Bernard_Apartment_Test");
+        CloseMap();
     }
 
     public void ManagementOffice()
     {
         SceneManager.LoadScene("Management_Office_Test");
+        CloseMap();
     }
 
     public void OwnersSuite()
     {
         SceneManager.LoadScene("Owner_Suite_Test");
+        CloseMap();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,10 +59,18 @@ public class LevelController : MonoBehaviour
         {
             mapUI.SetActive(true);
 
-            PlayerMovement p = other.GetComponent<PlayerMovement>();
-            p.StopMovement();
+            playerMove.StopMovement();
 
             cam.FreezeCamera();
         }
+    }
+
+    private void CloseMap()
+    {
+        mapUI.SetActive(false);
+
+        playerMove.ResumeMovement();
+
+        cam.UnfreezeCamera();
     }
 }
