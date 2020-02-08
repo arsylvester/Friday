@@ -1085,7 +1085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000038146973}
+  m_AnchoredPosition: {x: 0, y: -0.0000022649765}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1083466751
@@ -1659,7 +1659,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 858354201}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2370,7 +2370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00037497652, y: -0.000023218528}
+  m_AnchoredPosition: {x: -0.00037497652, y: -0.00004362315}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &43695211803926320
@@ -3035,8 +3035,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1528131922467716723}
   m_HandleRect: {fileID: 577589809160169710}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.7132
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3610,6 +3610,7 @@ GameObject:
   - component: {fileID: 7131352248238010802}
   - component: {fileID: 7131352248238010803}
   - component: {fileID: 7131352248238010804}
+  - component: {fileID: 4648331865127158064}
   - component: {fileID: 7131352248238010805}
   - component: {fileID: 3501524948106912893}
   m_Layer: 0
@@ -3864,6 +3865,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Yarn.Unity.DialogueRunner+StringUnityEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4648331865127158064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7131352248238010806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df089cf2a9d132d4580012912f29d361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7131352248238010805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4088,7 +4101,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 534.17, y: 275.9985}
+  m_SizeDelta: {x: 534.17, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &7131352248768799573
 MonoBehaviour:
@@ -5302,16 +5315,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1488429429768490342}
     m_Modifications:
-    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
-        type: 3}
-      propertyPath: m_Name
-      value: Item Photograph
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4964224107818473282, guid: cac1734eb139b304084b28f918ed8144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5416,6 +5419,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
+        type: 3}
+      propertyPath: m_Name
+      value: Item Photograph
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4964224108217105468, guid: cac1734eb139b304084b28f918ed8144,
         type: 3}

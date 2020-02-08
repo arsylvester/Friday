@@ -233,6 +233,12 @@ namespace Yarn.Unity {
         {
             onDialogueEnd?.Invoke();
 
+            // Hide all the buttons
+            foreach (var button in optionButtons)
+            {
+                button.gameObject.SetActive(false);
+            }
+
             // Hide the dialogue interface.
             if (dialogueContainer != null)
                 dialogueContainer.SetActive(false);
