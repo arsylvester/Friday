@@ -19,6 +19,8 @@ public class DialogueCam : MonoBehaviour
     public GameObject dialogueCam;
     public GameObject questioningCam;
 
+    bool isQuestioning = false;
+
     private void Start()
     {
         charController = GetComponent<CharacterController>();
@@ -60,7 +62,11 @@ public class DialogueCam : MonoBehaviour
         }
         else
         {
-            SwitchToDialogueCam();
+            if (!isQuestioning)
+                SwitchToDialogueCam();
+            else
+                SwitchToQuestioningCam();
+
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
             npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y - 200, npc.transform.rotation.z), rotationSmoothing);
         }
@@ -76,6 +82,8 @@ public class DialogueCam : MonoBehaviour
 
     public void SwitchToDialogueCam()
     {
+        isQuestioning = false;
+
         gameCam.SetActive(false);
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(true);
@@ -84,6 +92,8 @@ public class DialogueCam : MonoBehaviour
 
     public void SwitchToQuestioningCam()
     {
+        isQuestioning = true;
+
         gameCam.SetActive(false);
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
