@@ -11,14 +11,18 @@ public class DialogueJournalElement : MonoBehaviour
     public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
     public Transform journalParent;
     public RectTransform textRect;
+    public Color markedColor;
 
     private Button button;
     private Journal journal;
+    private Text text;
+    private bool isMarked = false;
 
     private void Awake()
     {
         button = GetComponent<Button>();
         journal = GetComponentInParent<Journal>();
+        text = GetComponentInChildren<Text>();
         //GetComponent<RectTransform>().rect.height = textRect.rect.height
     }
 
@@ -43,5 +47,20 @@ public class DialogueJournalElement : MonoBehaviour
     {
         isHighlighted = false;
         button.colors = ColorBlock.defaultColorBlock;
+    }
+
+    public void MarkImportant()
+    {
+        if (isMarked)
+        {
+            text.fontStyle = FontStyle.Normal;
+            text.color = Color.black;
+        }
+        else
+        {
+            text.fontStyle = FontStyle.BoldAndItalic;
+            text.color = markedColor;
+        }
+        isMarked = !isMarked;
     }
 }

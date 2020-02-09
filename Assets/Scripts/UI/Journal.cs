@@ -23,6 +23,7 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject charSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
+    [SerializeField] GameObject markImportantButton;
     [SerializeField] GameObject Photograph;
     [SerializeField] int maxNumOfLinesSaveable = 50;
     [SerializeField] int maxNumOfEvidenceQuestioned = 2;
@@ -239,8 +240,7 @@ public class Journal : MonoBehaviour
             }
             else if (!deleteButton.activeInHierarchy)
             {
-                deleteButton.SetActive(true);
-                unhighlightAllButton.SetActive(true);
+                ToggleButtonsOn();
             }
         }
         //Is an item
@@ -271,8 +271,7 @@ public class Journal : MonoBehaviour
             }
             else if (highlightedText.Count <= 0)
             {
-                deleteButton.SetActive(false);
-                unhighlightAllButton.SetActive(false);
+                ToggleButtonsOff();
             }
         }
         //Is an item
@@ -296,11 +295,19 @@ public class Journal : MonoBehaviour
             Destroy(lit);
         }
         highlightedText.Clear();
-        deleteButton.SetActive(false);
-        unhighlightAllButton.SetActive(false);
+        ToggleButtonsOff();
     }
 
-    public void UnhighlightAll()
+    public void MarkImportant()
+    {
+        foreach (GameObject lit in highlightedText)
+        {
+            lit.GetComponent<DialogueJournalElement>().MarkImportant();
+        }
+        UnhighlightAll();
+    }
+
+        public void UnhighlightAll()
     {
         if (isQuestioning)
         {
@@ -325,8 +332,21 @@ public class Journal : MonoBehaviour
             }
         }
         highlightedText.Clear();
+        ToggleButtonsOff();
+    }
+
+    private void ToggleButtonsOn()
+    {
+        deleteButton.SetActive(true);
+        unhighlightAllButton.SetActive(true);
+        markImportantButton.SetActive(true);
+    }
+
+    private void ToggleButtonsOff()
+    {
         deleteButton.SetActive(false);
         unhighlightAllButton.SetActive(false);
+        markImportantButton.SetActive(false);
     }
 
     [YarnCommand("startkey")]
