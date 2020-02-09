@@ -3,53 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueJournalElement : MonoBehaviour
+public class DialogueJournalElement : JournalElement
 {
-    public bool isKeyDialogue = false;
-    public string keyName = "";
-    public bool isHighlighted = false;
-    public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
-    public Transform journalParent;
+    //public string keyName = "";
+    //public bool isHighlighted = false;
+   // public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
+   // public Transform journalParent;
     public RectTransform textRect;
     public Color markedColor;
 
     private Button button;
     private Journal journal;
     private Text text;
-    private bool isMarked = false;
+   // private bool isMarked = false;
 
     private void Awake()
     {
         button = GetComponent<Button>();
         journal = GetComponentInParent<Journal>();
         text = GetComponentInChildren<Text>();
-        //GetComponent<RectTransform>().rect.height = textRect.rect.height
     }
 
-    public void Clicked()
+    public override void Clicked()
     {
-        isHighlighted = !isHighlighted;
-
-        if(isHighlighted)
+        if (!isHighlighted)
         {
-            button.colors = highlightedColors;
-            //journal.highlightedText.Add(gameObject);
             journal.AddHighlighted(gameObject, true);
         }
         else
         {
-            button.colors = ColorBlock.defaultColorBlock;
-            journal.RemoveHighlighted(gameObject, true);
+            journal.RemoveHighlighted(gameObject);
         }
     }
 
-    public void Unhighlight()
+    public override void Highlight()
+    {
+        isHighlighted = true;
+        button.colors = highlightedColors;
+    }
+
+    public override void Unhighlight()
     {
         isHighlighted = false;
         button.colors = ColorBlock.defaultColorBlock;
     }
 
-    public void MarkImportant()
+    public override void MarkImportant()
     {
         if (isMarked)
         {

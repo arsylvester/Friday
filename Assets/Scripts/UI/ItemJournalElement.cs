@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemJournalElement : MonoBehaviour
+public class ItemJournalElement : JournalElement
 {
     public string itemName = "";
     public string description = "";
     public string flavorText = "";
-    public string keyID = "";
+    //public string keyID = "";
     public Sprite itemPhoto;
 
     [SerializeField] Text nameTextbox;
     [SerializeField] Text descTextbox;
     [SerializeField] Image itemImageBox;
+    [SerializeField] GameObject markedImage;
 
-    public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
-    public Transform journalParent;
+   // public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
+   // public Transform journalParent;
 
     private Button button;
     private Journal journal;
     private ItemPhotograph itemPhotograph;
-    private bool isHighlighted = false;
+   // private bool isHighlighted = false;
 
     private void Awake()
     {
@@ -45,7 +46,7 @@ public class ItemJournalElement : MonoBehaviour
         itemImageBox.sprite = itemPhoto;
     }
 
-    public void Clicked()
+    public override void Clicked()
     {
         if (!isHighlighted)
         {
@@ -53,20 +54,25 @@ public class ItemJournalElement : MonoBehaviour
         }
         else
         {
-            journal.RemoveHighlighted(gameObject, false);
+            journal.RemoveHighlighted(gameObject);
         }
     }
 
-    public void Highlight()
+    public override void Highlight()
     {
         isHighlighted = true;
         button.colors = highlightedColors;
     }
 
-    public void Unhighlight()
+    public override void Unhighlight()
     {
         isHighlighted = false;
         button.colors = ColorBlock.defaultColorBlock;
+    }
+
+    public override void MarkImportant()
+    {
+        markedImage.SetActive(!markedImage.activeInHierarchy);
     }
 
     public void ImageClicked()
