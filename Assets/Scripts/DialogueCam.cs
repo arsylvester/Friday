@@ -12,20 +12,21 @@ public class DialogueCam : MonoBehaviour
     public bool movePlayer;
     public float rotationSmoothing;
 
-    public GameObject[] camerasToTurnOff;
-    public GameObject cutscene3rdPersonCam;
-    public GameObject cutscene1stPersonCam;
+    public GameObject npc;
+
+    public GameObject gameCam;
+    public GameObject cutsceneCam;
+    public GameObject dialogueCam;
+    public GameObject questioningCam;
 
     private void Start()
     {
         charController = GetComponent<CharacterController>();
 
-        foreach (GameObject cam in camerasToTurnOff)
-        {
-            cam.SetActive(true);
-        }
-        cutscene3rdPersonCam.SetActive(false);
-        cutscene1stPersonCam.SetActive(false);
+        gameCam.SetActive(true);
+        cutsceneCam.SetActive(false);
+        dialogueCam.SetActive(false);
+        questioningCam.SetActive(false);
     }
 
     void Update()
@@ -34,16 +35,6 @@ public class DialogueCam : MonoBehaviour
         {
             MoveToLocation();
         }
-
-        // testing
-        if (Input.GetKey(KeyCode.Alpha1))
-            SwitchToDialogueCutsceneCam();
-
-        if (Input.GetKey(KeyCode.Alpha2))
-            SwitchToQuestioningCutsceneCam();
-
-        if (Input.GetKey(KeyCode.Alpha3))
-            SwitchToGameCam();
     }
 
     public void MoveToLocation()
@@ -64,33 +55,47 @@ public class DialogueCam : MonoBehaviour
         moveDir.y = 0;
 
         if (Vector3.Distance(transform.position, target.position) > 1)
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), rotationSmoothing);
-        else
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.parent.position), rotationSmoothing);
-    }
-
-    public void SwitchToDialogueCutsceneCam()
-    {
-        foreach (GameObject cam in camerasToTurnOff)
         {
-            cam.SetActive(false);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), rotationSmoothing);
         }
-        cutscene3rdPersonCam.SetActive(true);
+        else
+        {
+            SwitchToDialogueCam();
+            transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
+            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y - 200, npc.transform.rotation.z), rotationSmoothing);
+        }
     }
 
-    public void SwitchToQuestioningCutsceneCam()
+    public void SwitchToCutsceneCam()
     {
-        cutscene3rdPersonCam.SetActive(false);
-        cutscene1stPersonCam.SetActive(true);
+        gameCam.SetActive(false);
+        cutsceneCam.SetActive(true);
+        dialogueCam.SetActive(false);
+        questioningCam.SetActive(false);
+    }
+
+    public void SwitchToDialogueCam()
+    {
+        gameCam.SetActive(false);
+        cutsceneCam.SetActive(false);
+        dialogueCam.SetActive(true);
+        questioningCam.SetActive(false);
+    }
+
+    public void SwitchToQuestioningCam()
+    {
+        gameCam.SetActive(false);
+        cutsceneCam.SetActive(false);
+        dialogueCam.SetActive(false);
+        questioningCam.SetActive(true);
     }
 
     public void SwitchToGameCam()
     {
-        foreach (GameObject cam in camerasToTurnOff)
-        {
-            cam.SetActive(true);
-        }
-        cutscene3rdPersonCam.SetActive(false);
+        gameCam.SetActive(true);
+        cutsceneCam.SetActive(false);
+        dialogueCam.SetActive(false);
+        questioningCam.SetActive(false);
     }
 
     public void MovePlayer()
