@@ -13,8 +13,6 @@ public class DialogueCam : MonoBehaviour
     public float rotationSmoothing;
 
     public GameObject npc;
-    public float npcRotationOffset;
-    public float npcOrigRotationOffset;
 
     public GameObject gameCam;
     public GameObject cutsceneCam;
@@ -22,8 +20,6 @@ public class DialogueCam : MonoBehaviour
     public GameObject questioningCam;
 
     bool isQuestioning = false;
-
-    PlayerAnimController playerAnimController;
 
     private void Start()
     {
@@ -33,8 +29,6 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
-
-        playerAnimController = FindObjectOfType<PlayerAnimController>();
     }
 
     void Update()
@@ -65,7 +59,6 @@ public class DialogueCam : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) > 1)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), rotationSmoothing);
-            playerAnimController.SetAnimator(2);
         }
         else
         {
@@ -75,8 +68,7 @@ public class DialogueCam : MonoBehaviour
                 SwitchToQuestioningCam();
 
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
-
-            playerAnimController.SetAnimator(1);
+            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y - 200, npc.transform.rotation.z), rotationSmoothing);
         }
     }
 
@@ -96,8 +88,6 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(true);
         questioningCam.SetActive(false);
-
-        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOffset, npc.transform.rotation.z), rotationSmoothing);
     }
 
     public void SwitchToQuestioningCam()
@@ -116,8 +106,6 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
-
-        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcOrigRotationOffset, npc.transform.rotation.z), rotationSmoothing);
     }
 
     public void MovePlayer()
