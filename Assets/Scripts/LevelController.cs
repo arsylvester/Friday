@@ -75,7 +75,7 @@ public class LevelController : MonoBehaviour
 
     public void OwnersSuite()
     {
-        location = "Owner_Suite";
+        location = "Owner_Suite_Test";
         confirmLocationText.text = "Owner's Suite?";
         confirmLocationUI.SetActive(true);
     }
