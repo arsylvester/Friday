@@ -11,6 +11,8 @@ public class PlayerInteractionAgent : MonoBehaviour
 {
     public string InteractKey;
     public Text NameTag;
+    public float InteractRange;
+    public Transform Player;
 
     private Camera mainCamera;
     private Interactable lastHovered;
@@ -51,7 +53,7 @@ public class PlayerInteractionAgent : MonoBehaviour
                 Vector2 canvasSize = NameTag.transform.parent.GetComponentInParent<RectTransform>().rect.size;
                 NameTag.rectTransform.anchoredPosition = new Vector2(canvasSize.x * tpos.x, canvasSize.y * tpos.y);
 
-                if (Input.GetButtonDown(InteractKey))
+                if (Input.GetButtonDown(InteractKey) && Vector3.Distance(Player.position, interactable.transform.position) <= InteractRange)
                 {
                     OnInteract.Invoke(interactable);
                     interactable.OnInteract.Invoke();
