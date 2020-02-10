@@ -18,13 +18,13 @@ public class InputFreeLookCam : MonoBehaviour
     public int cameraZoomOut;
     public float cameraZoomSmoothing;
 
-    CinemachineFreeLook cam;
+    CinemachineFreeLook cineDynamicCam;
 
     // Use this for initialization
     private void Start()
     {
         CinemachineCore.GetInputAxis = GetInputAxis;
-        cam = GetComponent<CinemachineFreeLook>();
+        cineDynamicCam = GetComponent<CinemachineFreeLook>();
     }
 
     private void Update()
@@ -57,11 +57,11 @@ public class InputFreeLookCam : MonoBehaviour
     {
         // zoom in
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
-            cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, cameraZoomIn, Time.deltaTime * cameraZoomSmoothing);
+            cineDynamicCam.m_Lens.FieldOfView = Mathf.Lerp(cineDynamicCam.m_Lens.FieldOfView, cameraZoomIn, Time.deltaTime * cameraZoomSmoothing);
 
         // zoom out
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
-            cam.m_Lens.FieldOfView = Mathf.Lerp(cam.m_Lens.FieldOfView, cameraZoomOut, Time.deltaTime * cameraZoomSmoothing);
+            cineDynamicCam.m_Lens.FieldOfView = Mathf.Lerp(cineDynamicCam.m_Lens.FieldOfView, cameraZoomOut, Time.deltaTime * cameraZoomSmoothing);
     }
 
     public void FreezeCamera()

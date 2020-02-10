@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour
 {
-    public enum NPCState { none, idle, talking }
+    public enum NPCState { none, idle, moving, talking }
     public NPCState npcState;
 
     private Animator animator;
@@ -21,8 +21,8 @@ public class PlayerAnimController : MonoBehaviour
     private void Update()
     {
         if (playerMovement.moveDirection.x == 0 && playerMovement.moveDirection.z == 0)
-            animator.SetInteger("isIdle", (int)NPCState.idle);
+            animator.SetInteger("MainCharAnim", (int)NPCState.idle);
         else
-            animator.SetInteger("isIdle", (int)NPCState.none);
+            animator.SetInteger("MainCharAnim", (int)NPCState.moving);
     }
 }
