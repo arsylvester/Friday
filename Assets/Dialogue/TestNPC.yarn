@@ -51,7 +51,7 @@ position: 400,400
 ---
 [[Have Conversation Again|TestNPC]]
 [[Start Questioning|TestQuestions]]
-[[Leave Conversation|Leave]]
+//[[Leave Conversation|Leave]]
 ===
 
 title: TestQuestions
@@ -60,7 +60,9 @@ colorID: 0
 position: 860,368
 ---
 <<startquestioning Journal>>
-NPC: Questions!
+<<if $tryagain is false>>
+	NPC: What do you want to know?
+<<endif>>
 ->Confirm Questioning Choices
 	<<if question("keytext1", "KeyVase") is true>>
 		<<set $TNPCQ to true>>
@@ -69,10 +71,12 @@ NPC: Questions!
 		[[Options]]
 	<<else>>
 		NPC: Sorry, try again.
+		<<set $tryagain to true>>
 		[[TestQuestions]]
 	<<endif>>
 ->Quit Questioning
 	<<stopquestioning Journal>>
+	<<set $tryagain to false>>
 	[[Options]]
 ===
 
