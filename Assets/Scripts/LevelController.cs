@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelController : MonoBehaviour
 {
     public GameObject pauseUI;
     public GameObject mapUI;
+    public GameObject confirmLocationUI;
+    public TextMeshProUGUI confirmLocationText;
+    string location;
     InputFreeLookCam cam;
 
     public void Start()
     {
         pauseUI.SetActive(false);
         mapUI.SetActive(false);
+        confirmLocationUI.SetActive(false);
 
         cam = FindObjectOfType<InputFreeLookCam>();
     }
@@ -40,27 +45,47 @@ public class LevelController : MonoBehaviour
 
     public void GoToAbbysApartment()
     {
-        SceneManager.LoadScene("Abby_Room");
+        location = "Abby_Room";
+        confirmLocationText.text = "Abby's Apartment?";
+        confirmLocationUI.SetActive(true);
     }
 
     public void GoToTristansApartment()
     {
-        SceneManager.LoadScene("Tristan_Apartment");
+        location = "Tristan_Room";
+        confirmLocationText.text = "Tristan's Apartment?";
+        confirmLocationUI.SetActive(true);
     }
 
     public void GoToBernardsApartment()
     {
-        SceneManager.LoadScene("Bernard_Apartment");
+        location = "Bernard_Room";
+        confirmLocationText.text = "Bernard's Apartment?";
+        confirmLocationUI.SetActive(true);
     }
 
     public void ManagementOffice()
     {
-        SceneManager.LoadScene("Management_Office");
+        location = "Management_Office";
+        confirmLocationText.text = "Management Office?";
+        confirmLocationUI.SetActive(true);
     }
 
     public void OwnersSuite()
     {
-        SceneManager.LoadScene("Owner_Suite");
+        location = "Owner_Suite";
+        confirmLocationText.text = "Owner's Suite?";
+        confirmLocationUI.SetActive(true);
+    }
+
+    public void GoToLocation()
+    {
+        SceneManager.LoadScene(location);
+    }
+
+    public void ReturnToMap()
+    {
+        confirmLocationUI.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
