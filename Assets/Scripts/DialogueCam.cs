@@ -21,6 +21,11 @@ public class DialogueCam : MonoBehaviour
 
     bool isQuestioning = false;
 
+    PlayerAnimController playerAnimController;
+
+    public float npcRotationOffset;
+    public float npcRotationOriginalOffset;
+
     private void Start()
     {
         charController = GetComponent<CharacterController>();
@@ -29,6 +34,8 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
+
+        playerAnimController = FindObjectOfType<PlayerAnimController>();
     }
 
     void Update()
@@ -58,6 +65,7 @@ public class DialogueCam : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.position) > 1)
         {
+            playerAnimController.ChangePlayerAnim(2);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), rotationSmoothing);
         }
         else
@@ -67,8 +75,8 @@ public class DialogueCam : MonoBehaviour
             else
                 SwitchToQuestioningCam();
 
+            playerAnimController.ChangePlayerAnim(1);
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
-            npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y - 200, npc.transform.rotation.z), rotationSmoothing);
         }
     }
 
@@ -88,6 +96,8 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(true);
         questioningCam.SetActive(false);
+
+        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOffset, npc.transform.rotation.z), rotationSmoothing);
     }
 
     public void SwitchToQuestioningCam()
@@ -106,6 +116,8 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
+
+        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOriginalOffset, npc.transform.rotation.z), rotationSmoothing);
     }
 
     public void MovePlayer()

@@ -25,4 +25,9 @@ public class PlayerAnimController : MonoBehaviour
         else
             animator.SetInteger("MainCharAnim", (int)NPCState.moving);
     }
+
+    public void ChangePlayerAnim(int anim)
+    {
+        animator.SetInteger("MainCharAnim", anim);
+    }
 }
