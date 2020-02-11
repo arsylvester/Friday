@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Yarn.Unity;
 
 [Serializable] public class PlayerSideInteractionEvent : UnityEvent<Interactable> { }
 
@@ -21,9 +22,14 @@ public class PlayerInteractionAgent : MonoBehaviour
     public PlayerSideInteractionEvent OnHoverStart;
     public PlayerSideInteractionEvent OnHoverEnd;
 
+    DialogueUI runner;
+
     void Start()
     {
         mainCamera = GetComponent<Camera>();
+
+        runner = FindObjectOfType<DialogueUI>();
+        runner.onDialogueEnd.AddListener(AllowInteraction);
     }
 
     void Update()
@@ -91,5 +97,10 @@ public class PlayerInteractionAgent : MonoBehaviour
             NameTag.text = "";
             lastHovered = null;
         }
+    }
+
+    public void AllowInteraction()
+    {
+        this.enabled = true;
     }
 }

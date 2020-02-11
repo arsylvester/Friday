@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,12 +18,18 @@ public class PlayerMovement : MonoBehaviour
     float gravity = 1000;
     float tmpSpeed;
 
+    DialogueUI runner;
+
     // Start is called before the first frame update
     void Start()
     {
         charController = GetComponent<CharacterController>();
 
         tmpSpeed = moveSpeed;
+
+        runner = FindObjectOfType<DialogueUI>();
+        runner.onDialogueStart.AddListener(StopMovement);
+        runner.onDialogueEnd.AddListener(ResumeMovement);
     }
 
     // Update is called once per frame

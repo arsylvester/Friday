@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Yarn.Unity;
 
 public class DialogueCam : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class DialogueCam : MonoBehaviour
     public float npcRotationOffset;
     public float npcRotationOriginalOffset;
 
+    private Journal journal;
+    DialogueUI runner;
+
     private void Start()
     {
         charController = GetComponent<CharacterController>();
@@ -36,6 +40,16 @@ public class DialogueCam : MonoBehaviour
         questioningCam.SetActive(false);
 
         playerAnimController = FindObjectOfType<PlayerAnimController>();
+
+        journal = FindObjectOfType<Journal>();
+        journal.OnQuestionStart.AddListener(SwitchToQuestioningCam);
+        journal.OnQuestionStop.AddListener(SwitchToDialogueCam);
+
+        runner = FindObjectOfType<DialogueUI>();
+        runner.onDialogueStart.AddListener(SwitchToCutsceneCam);
+        runner.onDialogueStart.AddListener(MovePlayer);
+        runner.onDialogueEnd.AddListener(SwitchToGameCam);
+        runner.onDialogueEnd.AddListener(StopMovingPlayer);
     }
 
     void Update()

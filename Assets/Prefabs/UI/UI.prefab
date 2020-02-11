@@ -76,7 +76,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 210, y: -61.489807}
+  m_AnchoredPosition: {x: 210, y: -61.489822}
   m_SizeDelta: {x: 420, y: 326.98}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &140743762
@@ -874,7 +874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000030521605, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 0.00029923, y: 0.0018910822}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1083466751
@@ -1691,8 +1691,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 858354202}
   m_HandleRect: {fileID: 858354201}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999959
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2748,7 +2748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00037497652, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 0.00008439448, y: 0.0018910822}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &43695211803926320
@@ -2826,7 +2826,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134.75, y: -251.95001}
+  m_AnchoredPosition: {x: -134.75, y: -251.95}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6265530618261611819
@@ -3078,17 +3078,6 @@ MonoBehaviour:
   OnQuestionStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SwitchToQuestioningCutsceneCam
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1778149956}
         m_MethodName: SetActive
         m_Mode: 6
@@ -3105,17 +3094,6 @@ MonoBehaviour:
   OnQuestionStop:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SwitchToDialogueCutsceneCam
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1778149956}
         m_MethodName: SetActive
         m_Mode: 6
@@ -3669,8 +3647,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1528131922467716723}
   m_HandleRect: {fileID: 577589809160169710}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.9999959
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4182,9 +4160,9 @@ Canvas:
   m_GameObject: {fileID: 7131352248160755430}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 0.11
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4392,7 +4370,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04317fce65da54f4997a5c4465b4e93c, type: 3}
-  m_Name: 
+  m_Name: UI
   m_EditorClassIdentifier: 
   dialogueContainer: {fileID: 7131352248768799575}
   textSpeed: 0.025
@@ -4438,7 +4416,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_MethodName: SwitchToDialogueCutsceneCam
+        m_MethodName: SwitchToCutsceneCam
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6038,7 +6016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -61.489807}
+  m_AnchoredPosition: {x: 0, y: -61.489822}
   m_SizeDelta: {x: 420, y: 326.98}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &8060453897846914280
@@ -6118,6 +6096,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1488429429768490342}
     m_Modifications:
+    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
+        type: 3}
+      propertyPath: m_Name
+      value: Item Photograph
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4964224107818473282, guid: cac1734eb139b304084b28f918ed8144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6223,20 +6211,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
+    - target: {fileID: 4964224107801123308, guid: cac1734eb139b304084b28f918ed8144,
         type: 3}
-      propertyPath: m_Name
-      value: Item Photograph
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964224107818473281, guid: cac1734eb139b304084b28f918ed8144,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964224108217105468, guid: cac1734eb139b304084b28f918ed8144,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 18
+      propertyPath: m_AnchoredPosition.y
+      value: 36.199997
       objectReference: {fileID: 0}
     - target: {fileID: 4964224108217105467, guid: cac1734eb139b304084b28f918ed8144,
         type: 3}
@@ -6252,6 +6230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 362.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964224108217105468, guid: cac1734eb139b304084b28f918ed8144,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac1734eb139b304084b28f918ed8144, type: 3}

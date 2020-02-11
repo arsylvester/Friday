@@ -7,15 +7,15 @@ public class InteractableNPC : Interactable
 {
     public string EntryNode;
 
-    [Header("Optional")]
-    public YarnProgram ScriptToLoad;
+   // [Header("Optional")]
+    //public YarnProgram ScriptToLoad;
 
-    void Start()
+  /*  void Start()
     {
         DialogueRunner runner = FindObjectOfType<DialogueRunner>();
         if(runner != null)
         {
             runner.Add(ScriptToLoad);
         }
-    }
+    }*/
 }

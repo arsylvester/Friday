@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Yarn.Unity;
 
 public class InputFreeLookCam : MonoBehaviour
 {
@@ -20,11 +21,17 @@ public class InputFreeLookCam : MonoBehaviour
 
     CinemachineFreeLook cineDynamicCam;
 
+    DialogueUI runner;
+
     // Use this for initialization
     private void Start()
     {
         CinemachineCore.GetInputAxis = GetInputAxis;
         cineDynamicCam = GetComponent<CinemachineFreeLook>();
+
+        runner = FindObjectOfType<DialogueUI>();
+        runner.onDialogueStart.AddListener(FreezeCamera);
+        runner.onDialogueEnd.AddListener(UnfreezeCamera);
     }
 
     private void Update()
