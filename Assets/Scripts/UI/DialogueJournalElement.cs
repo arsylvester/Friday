@@ -28,7 +28,7 @@ public class DialogueJournalElement : JournalElement
     {
         if (!isHighlighted)
         {
-            journal.AddHighlighted(gameObject, true);
+            journal.AddHighlighted(gameObject);
         }
         else
         {
