@@ -547,6 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InspectionDistance: 3
   FocusTime: 1
+  DragSpeed: 8
   InteractKey: Fire1
   VerticalRotationAxis: Mouse Y
   HorizontalRotationAxis: Mouse X
@@ -1042,6 +1043,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1239524183481180635}
     m_Modifications:
+    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
+        type: 3}
+      propertyPath: m_Name
+      value: Inspector Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604870099146060764, guid: cc7a0a095b84268439ebb0ce4596d28a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1095,16 +1106,6 @@ PrefabInstance:
     - target: {fileID: 8604870099146060764, guid: cc7a0a095b84268439ebb0ce4596d28a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
-        type: 3}
-      propertyPath: m_Name
-      value: Inspector Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
-        type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
