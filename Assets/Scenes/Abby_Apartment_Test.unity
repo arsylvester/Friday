@@ -1579,6 +1579,20 @@ Transform:
   m_Father: {fileID: 152181300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2043438846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9060236997297742641, guid: bad00f610cb8b724188ea05bf6e77074,
+    type: 3}
+  m_PrefabInstance: {fileID: 7822683450221923812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &2043438847
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043438846}
+  m_Enabled: 1
 --- !u!1001 &7822683450221923812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1999,7 +2013,7 @@ PrefabInstance:
     - target: {fileID: 9060236996518765646, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: field of view
-      value: 45
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7236688212648914310, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
