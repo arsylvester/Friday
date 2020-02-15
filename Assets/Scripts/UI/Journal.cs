@@ -9,8 +9,6 @@ public class Journal : MonoBehaviour
 {
     [SerializeField] GameObject itemJournal;
     [SerializeField] GameObject dialogJournal;
-    [SerializeField] GameObject dialogQuestioningBox;
-    [SerializeField] Transform dialogQuestioningContent;
     [SerializeField] GameObject itemQuestioningBox;
     [SerializeField] Transform itemQuestioningContent;
     [SerializeField] Transform contentPanel;
@@ -28,6 +26,9 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject Photograph;
     [SerializeField] int maxNumOfLinesSaveable = 50;
     [SerializeField] int maxNumOfEvidenceQuestioned = 2;
+    [SerializeField] GameObject deductionElementPrefab;
+    [SerializeField] Transform deductionPanel;
+    [SerializeField] DeductionSummary deductionSummary;
 
     private int linesSaved = 0;
     private int NumOfEvidenceQuestioned = 0;
@@ -41,6 +42,8 @@ public class Journal : MonoBehaviour
     //public List<GameObject> highlightedText;
     //public List<GameObject> highlightedItems;
     public List<GameObject> highlightedEntries;
+
+    public List<GameObject> keyEntries;
 
     public UnityEvent OnQuestionStart;
     public UnityEvent OnQuestionStop;
@@ -83,6 +86,26 @@ public class Journal : MonoBehaviour
                 return true;
             }
             return false;
+        });
+
+        //Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
+        dialogueRunner.RegisterFunction("deduction", 6, delegate (Yarn.Value[] parameters)
+        {
+            for (int x = 0; x < keyEntries.Count; x++)
+            {
+                string currentKey = keyEntries[x].GetComponent<JournalElement>().keyID;
+                if(currentKey == parameters[2].AsString ||
+                    currentKey == parameters[3].AsString ||
+                    currentKey == parameters[4].AsString ||
+                    currentKey == parameters[5].AsString)
+                {
+                    GameObject temp = keyEntries[x];
+                    keyEntries.Remove(temp);
+                    Destroy(temp);
+                }
+            }
+            var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
+            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary);
         });
 
         //TEST:
@@ -149,6 +172,7 @@ public class Journal : MonoBehaviour
         if (keyDialog)
         {
             newJournalText.GetComponent<DialogueJournalElement>().keyID = keyName;
+            keyEntries.Add(newJournalText);
         }
         linesSaved++;
         CanSaveDialogue(false);
@@ -188,6 +212,11 @@ public class Journal : MonoBehaviour
         //Create the item in the journal
         GameObject newJournalItem = Instantiate(journalItemPrefab, locSubsection);
         newJournalItem.GetComponent<ItemJournalElement>().SetUpEntry(itemName, desc, flavor, sprite, keyID, locSubsection, Photograph.GetComponent<ItemPhotograph>());
+
+        if(keyID != "" && keyID != null)
+        {
+            keyEntries.Add(newJournalItem);
+        }
     }
 
     //Toggle the ability to save current dialog to the journal.
@@ -326,7 +355,6 @@ public class Journal : MonoBehaviour
         OnQuestionStart.Invoke();
         isQuestioning = true;
         OpenJournals();
-        dialogQuestioningBox.SetActive(true);
         itemQuestioningBox.SetActive(true);
         UnhighlightAll();
     }
@@ -337,7 +365,26 @@ public class Journal : MonoBehaviour
         OnQuestionStop.Invoke();
         UnhighlightAll();
         isQuestioning = false;
-        dialogQuestioningBox.SetActive(false);
         itemQuestioningBox.SetActive(false);
     }
+/*
+    [YarnCommand("deduction")]
+    public void Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
+    {
+        for (int x = 0; x < keyEntries.Count; x++)
+            {
+                string currentKey = keyEntries[x].GetComponent<JournalElement>().keyID;
+                if(currentKey == key1 ||
+                    currentKey == key2 ||
+                    currentKey == key3 ||
+                    currentKey == key4)
+                {
+                    GameObject temp = keyEntries[x];
+                    keyEntries.Remove(temp);
+                    Destroy(temp);
+                }
+            }
+        var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
+        newDedElement.GetComponent<DeductionElement>().SetUpDeduction(mainText, summaryText);
+    }*/
 }

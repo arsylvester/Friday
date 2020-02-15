@@ -68,6 +68,7 @@ position: 860,368
 		<<set $TNPCQ to true>>
 		NPC: Great, that's correct!
 		<<stopquestioning Journal>>
+		<<deduction("This is Main Text.", "This is the Summary Text.", "keytext1", "KeyVase", "", "")>>
 		[[Options]]
 	<<else>>
 		NPC: Sorry, try again.
