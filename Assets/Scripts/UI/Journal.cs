@@ -21,6 +21,7 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject journalTextPrefab;
     [SerializeField] GameObject journalItemPrefab;
     [SerializeField] GameObject charSectionPrefab;
+    [SerializeField] GameObject itemSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
     [SerializeField] GameObject markImportantButton;
@@ -171,7 +172,7 @@ public class Journal : MonoBehaviour
         //If location is not already in the journal;
         if (locSubsection == null)
         {
-            locSubsection = Instantiate(charSectionPrefab, itemContentPanel).transform;
+            locSubsection = Instantiate(itemSectionPrefab, itemContentPanel).transform;
             locSubsection.GetComponentInChildren<Text>().text = location;
             LocSections.Add(locSubsection.GetComponent<Text>());
         }
@@ -218,7 +219,7 @@ public class Journal : MonoBehaviour
             {
                 highlightedEntries.Add(entry);
                 entry.GetComponent<JournalElement>().Highlight();
-                entry.transform.SetParent(dialogQuestioningContent);
+                entry.transform.SetParent(itemQuestioningContent);
                 NumOfEvidenceQuestioned++;
             }
         }
