@@ -20,7 +20,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664235361320237083}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 664ff2e299f6e7243bbf611a0c808fe8, type: 3}
   m_Name: 
@@ -958,11 +958,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1239524183481180635}
     m_Modifications:
-    - target: {fileID: 2007496396104096151, guid: e83d7858fd817604cbe0373bc4bfbbab,
-        type: 3}
-      propertyPath: m_Name
-      value: Capture Camera
-      objectReference: {fileID: 0}
     - target: {fileID: 2007496396104096139, guid: e83d7858fd817604cbe0373bc4bfbbab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1018,6 +1013,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2007496396104096151, guid: e83d7858fd817604cbe0373bc4bfbbab,
+        type: 3}
+      propertyPath: m_Name
+      value: Capture Camera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e83d7858fd817604cbe0373bc4bfbbab, type: 3}
 --- !u!4 &664235361320237063 stripped
@@ -1045,16 +1045,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1239524183481180635}
     m_Modifications:
-    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
-        type: 3}
-      propertyPath: m_Name
-      value: Inspector Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8604870099146060764, guid: cc7a0a095b84268439ebb0ce4596d28a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1108,6 +1098,16 @@ PrefabInstance:
     - target: {fileID: 8604870099146060764, guid: cc7a0a095b84268439ebb0ce4596d28a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
+        type: 3}
+      propertyPath: m_Name
+      value: Inspector Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604870099146060736, guid: cc7a0a095b84268439ebb0ce4596d28a,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
