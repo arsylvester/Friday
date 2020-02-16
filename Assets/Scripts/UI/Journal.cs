@@ -49,8 +49,8 @@ public class Journal : MonoBehaviour
     public UnityEvent OnQuestionStop;
 
     //TESTING
-    public Sprite testSprite1;
-    public Sprite testSprite2;
+    //public Sprite testSprite1;
+    public Sprite stockingSprite;
 
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
@@ -109,8 +109,8 @@ public class Journal : MonoBehaviour
         });
 
         //TEST:
-        SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
-        SaveItem("Stocking Of Pennies", "The murder weapon.", "What a crude way to kill such an innocent woman.", testSprite2, "pennies");
+        //SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
+        SaveItem("Stocking Of Pennies", "The murder weapon.", "What a crude way to kill such an innocent woman.", stockingSprite, "pennies");
         CloseJournals();
     }
 

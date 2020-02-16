@@ -3,12 +3,16 @@ tags:
 colorID: 0
 position: 861,368
 ---
+<<if visited("AbbyStart") is false>>
 JACE: Let’s get this over with...
 JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 ABBY: Correction. Your crime scene is my apartment. Or it was.
 ABBY: Come in, come in.
 ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
 ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
+<<else>>
+ABBY: What else do you need detective?
+<<endif>>
 [[AbbyMain]]
 ===
 
@@ -22,7 +26,7 @@ position: 1163,357
 <<if $broke_into is true>>
     [[Broke into your apartment?|AbbyQ3]]
 <<endif>>
-<<if $visited_pennies is true and $broke_into is true and $visited_alone is true>>
+<<if $visited_pennies and $broke_into and $visited_alone>>
     [[Where were you when it happened?|AbbyWhere]]
 <<endif>>
 [[Interogate|AbbyInterogation]]
@@ -70,7 +74,7 @@ position: 1163,357
 ->Quit Questioning
 	<<stopquestioning Journal>>
 	<<set $tryagain to false>>
-	[[Options]]
+	[[AbbyMain]]
 ===
 
 title: AbbyQ1
@@ -96,8 +100,8 @@ position: 1163,357
 ---
 ABBY: Gosh no. I don’t enjoy having company over often.
 ABBY: And I’d never have someone else over while handling my appointments.
-JACE: So, Friday was alone?
 <<startkey Journal friday_alone>>
+JACE: So, Friday was alone?
 ABBY: That’s what I’m saying! Friday was alone!
 <<endkey Journal>>
 JACE: Just making sure...
@@ -241,6 +245,7 @@ JACE: I’m sure it does. But could someone enter through that patio door?
 ABBY: They’d need a key if they wanted to enter from the back, but I suppose it’s possible.
 <<endkey>>
 <<set $visited_alone to true>>
+<<deduction("Friday was alone in a locked room when she was murdered.", "Friday was alone and the doors were locked. Altough its not impossible someone could got through the patio with a key.", "friday_alone", "locked_door", "", "")>>
 [[AbbyMain]]
 ===
 
