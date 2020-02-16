@@ -7,7 +7,7 @@ public class PlayerAnimController : MonoBehaviour
     public enum NPCState { none, idle, moving, talking }
     public NPCState npcState;
 
-    private Animator animator;
+    public Animator animator;
 
     PlayerMovement playerMovement;
 

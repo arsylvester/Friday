@@ -15,6 +15,9 @@ public class PlayerInteractionAgent : MonoBehaviour
     public float InteractRange;
     public Transform Player;
 
+    public Texture2D FarCursor;
+    public Texture2D NearCursor;
+
     private Camera mainCamera;
     private Interactable lastHovered;
 
@@ -44,6 +47,18 @@ public class PlayerInteractionAgent : MonoBehaviour
 
             if(interactable != null)
             {
+                bool near = Vector3.Distance(Player.position, interactable.transform.position) <= InteractRange;
+
+                if (near)
+                {
+                    Cursor.SetCursor(NearCursor, Vector2.zero, CursorMode.Auto);
+                }
+                else
+                {
+                    Cursor.SetCursor(FarCursor, Vector2.zero, CursorMode.Auto);
+                }
+
+
                 if (lastHovered != null && lastHovered != interactable)
                 {
                     OnHoverEnd.Invoke(lastHovered);
@@ -59,7 +74,7 @@ public class PlayerInteractionAgent : MonoBehaviour
                 Vector2 canvasSize = NameTag.transform.parent.GetComponentInParent<RectTransform>().rect.size;
                 NameTag.rectTransform.anchoredPosition = new Vector2(canvasSize.x * tpos.x, canvasSize.y * tpos.y);
 
-                if (Input.GetButtonDown(InteractKey) && Vector3.Distance(Player.position, interactable.transform.position) <= InteractRange)
+                if (Input.GetButtonDown(InteractKey) && near)
                 {
                     OnInteract.Invoke(interactable);
                     interactable.OnInteract.Invoke();
@@ -67,6 +82,7 @@ public class PlayerInteractionAgent : MonoBehaviour
             }
             else
             {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 if (lastHovered != null)
                 {
                     OnHoverEnd.Invoke(lastHovered);
@@ -78,6 +94,7 @@ public class PlayerInteractionAgent : MonoBehaviour
         }
         else
         {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             if(lastHovered != null)
             {
                 OnHoverEnd.Invoke(lastHovered);
@@ -90,6 +107,7 @@ public class PlayerInteractionAgent : MonoBehaviour
 
     private void OnDisable()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         if (lastHovered != null)
         {
             OnHoverEnd.Invoke(lastHovered);

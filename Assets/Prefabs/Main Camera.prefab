@@ -20,7 +20,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664235361320237083}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 664ff2e299f6e7243bbf611a0c808fe8, type: 3}
   m_Name: 
@@ -474,6 +474,8 @@ MonoBehaviour:
   NameTag: {fileID: 1239524182503877569}
   InteractRange: 0
   Player: {fileID: 0}
+  FarCursor: {fileID: 2800000, guid: 76d08d996a288451a9644f52ba7cbf74, type: 3}
+  NearCursor: {fileID: 2800000, guid: a6437d2f3b1bf4da7a9619a6b6446a16, type: 3}
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -547,6 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InspectionDistance: 3
   FocusTime: 1
+  DragSpeed: 8
   InteractKey: Fire1
   VerticalRotationAxis: Mouse Y
   HorizontalRotationAxis: Mouse X
