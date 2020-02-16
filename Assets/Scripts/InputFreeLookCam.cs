@@ -73,11 +73,13 @@ public class InputFreeLookCam : MonoBehaviour
 
     public void FreezeCamera()
     {
+        isFreeLookActive = false;
         isStopped = true;
     }
 
     public void UnfreezeCamera()
     {
+        isFreeLookActive = Input.GetMouseButton(1);
         isStopped = false;
     }
 }
