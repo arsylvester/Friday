@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Yarn.Unity;
+using UnityEngine.UI;
 
 public class DialogueCam : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class DialogueCam : MonoBehaviour
     private Journal journal;
     DialogueUI runner;
 
+    public GameObject fade;
+    Image fadeImage;
+    public float fadeIn;
+    public float fadeTransition;
+    public float fadeOut;
+
     private void Start()
     {
         charController = GetComponent<CharacterController>();
@@ -46,10 +53,14 @@ public class DialogueCam : MonoBehaviour
         journal.OnQuestionStop.AddListener(SwitchToDialogueCam);
 
         runner = FindObjectOfType<DialogueUI>();
-        runner.onDialogueStart.AddListener(SwitchToCutsceneCam);
+        runner.onDialogueStart.AddListener(FadeIn);
         runner.onDialogueStart.AddListener(MovePlayer);
         runner.onDialogueEnd.AddListener(SwitchToGameCam);
         runner.onDialogueEnd.AddListener(StopMovingPlayer);
+
+        fadeImage = fade.GetComponent<Image>();
+        fadeImage.enabled = true;
+        fadeImage.canvasRenderer.SetAlpha(0f);
     }
 
     void Update()
@@ -60,10 +71,11 @@ public class DialogueCam : MonoBehaviour
         }
     }
 
+    
     public void MoveToLocation()
     {
         Vector3 dir = target.position - transform.position;
-        Vector3 movement = dir.normalized * speed * Time.deltaTime;
+        Vector3 movement = dir.normalized * speed * 1.25f * Time.deltaTime;
 
         // limit movement to never pass the target position
         if (movement.magnitude > dir.magnitude) movement = dir;
@@ -71,7 +83,8 @@ public class DialogueCam : MonoBehaviour
         charController.Move(movement);
         Rotation(movement);
     }
-
+    
+    
     void Rotation(Vector3 movement)
     {
         var moveDir = movement;
@@ -91,15 +104,25 @@ public class DialogueCam : MonoBehaviour
 
             playerAnimController.ChangePlayerAnim(1);
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
+            StartCoroutine("FadeOut", fadeTransition);
         }
     }
-
-    public void SwitchToCutsceneCam()
+    
+    public void FadeIn()
     {
+        /*
         gameCam.SetActive(false);
         cutsceneCam.SetActive(true);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
+        */
+        fadeImage.CrossFadeAlpha(1, fadeIn, false);
+    }
+
+    IEnumerator FadeOut(int fadeTransition)
+    {
+        yield return new WaitForSeconds(fadeTransition);
+        fadeImage.CrossFadeAlpha(0, fadeOut, false);
     }
 
     public void SwitchToDialogueCam()
