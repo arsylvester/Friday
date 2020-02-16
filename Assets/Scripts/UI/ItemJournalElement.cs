@@ -50,7 +50,7 @@ public class ItemJournalElement : JournalElement
     {
         if (!isHighlighted)
         {
-            journal.AddHighlighted(gameObject, false);
+            journal.AddHighlighted(gameObject);
         }
         else
         {

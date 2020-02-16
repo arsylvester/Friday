@@ -21,6 +21,7 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject journalTextPrefab;
     [SerializeField] GameObject journalItemPrefab;
     [SerializeField] GameObject charSectionPrefab;
+    [SerializeField] GameObject itemSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
     [SerializeField] GameObject markImportantButton;
@@ -53,8 +54,6 @@ public class Journal : MonoBehaviour
 
     void Start()
     {
-        itemJournal.SetActive(false);
-        dialogJournal.SetActive(false);
         varStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         // Register a function on startup called "question" that lets Yarn
@@ -89,6 +88,7 @@ public class Journal : MonoBehaviour
         //TEST:
         SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
         SaveItem("Yarn", "A ball of yarn.", "What differentiates yarn, string, twine, and rope?", testSprite2, "KeyYarn");
+        CloseJournals();
     }
 
     void Update()
@@ -172,7 +172,7 @@ public class Journal : MonoBehaviour
         //If location is not already in the journal;
         if (locSubsection == null)
         {
-            locSubsection = Instantiate(charSectionPrefab, itemContentPanel).transform;
+            locSubsection = Instantiate(itemSectionPrefab, itemContentPanel).transform;
             locSubsection.GetComponentInChildren<Text>().text = location;
             LocSections.Add(locSubsection.GetComponent<Text>());
         }
@@ -203,7 +203,14 @@ public class Journal : MonoBehaviour
         dialogJournal.SetActive(true);
     }
 
-    public void AddHighlighted(GameObject entry, bool isDialogue)
+    //Close both panels. Meant for when dialogue ends.
+    public void CloseJournals()
+    {
+        itemJournal.SetActive(false);
+        dialogJournal.SetActive(false);
+    }
+
+    public void AddHighlighted(GameObject entry)
     {
             
         if (isQuestioning)
@@ -212,10 +219,7 @@ public class Journal : MonoBehaviour
             {
                 highlightedEntries.Add(entry);
                 entry.GetComponent<JournalElement>().Highlight();
-                if(isDialogue)
-                    entry.transform.SetParent(dialogQuestioningContent);
-                else
-                    entry.transform.SetParent(itemQuestioningContent);
+                entry.transform.SetParent(itemQuestioningContent);
                 NumOfEvidenceQuestioned++;
             }
         }
