@@ -12,6 +12,7 @@ public class InspectorAgent : MonoBehaviour
 
     public float InspectionDistance;
     public float FocusTime;
+    public float DragSpeed = 2;
     public string InteractKey;
     public string VerticalRotationAxis;
     public string HorizontalRotationAxis;
@@ -52,8 +53,8 @@ public class InspectorAgent : MonoBehaviour
 
             if(Input.GetButton(DragKey))
             {
-                target.transform.Rotate(transform.right, Input.GetAxis(VerticalRotationAxis), Space.World);
-                target.transform.Rotate(transform.up, -Input.GetAxis(HorizontalRotationAxis), Space.World);
+                target.transform.Rotate(transform.right, Input.GetAxis(VerticalRotationAxis) * DragSpeed, Space.World);
+                target.transform.Rotate(transform.up, -Input.GetAxis(HorizontalRotationAxis) * DragSpeed, Space.World);
             }
         }
     }
