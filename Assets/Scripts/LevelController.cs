@@ -10,9 +10,13 @@ public class LevelController : MonoBehaviour
     public GameObject mapUI;
     public GameObject confirmLocationUI;
     public TextMeshProUGUI confirmLocationText;
+
+    public bool isPaused = false;
     string location;
     InputFreeLookCam cam;
     PlayerMovement playerMove;
+
+    PlayerInteractionAgent interact;
 
     public void Start()
     {
@@ -22,14 +26,23 @@ public class LevelController : MonoBehaviour
 
         cam = FindObjectOfType<InputFreeLookCam>();
         playerMove = FindObjectOfType<PlayerMovement>();
+
+        interact = FindObjectOfType<PlayerInteractionAgent>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);
+            isPaused = true;
+
+            interact.enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        {
+            ResumeGame();
         }
     }
 
@@ -37,6 +50,9 @@ public class LevelController : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseUI.SetActive(false);
+        isPaused = false;
+
+        interact.enabled = true;
     }
 
     public void BackToMenu()
