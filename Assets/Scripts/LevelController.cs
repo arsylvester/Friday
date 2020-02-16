@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -39,10 +40,53 @@ public class LevelController : MonoBehaviour
             isPaused = true;
 
             interact.enabled = false;
+            DisableEnableJournalForPause(isPaused);
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             ResumeGame();
+            DisableEnableJournalForPause(isPaused);
+        }
+    }
+
+    void DisableEnableJournalForPause(bool isPaused)
+    {
+        Journal journal = FindObjectOfType<Journal>();
+        if (isPaused)
+            journal.enabled = false;
+        else
+            journal.enabled = true;
+
+        GameObject itemJournal = GameObject.Find("Item Journal");
+
+        if (itemJournal != null)
+        {
+            GameObject itemCatalog = itemJournal.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+            Button[] items = itemCatalog.GetComponentsInChildren<Button>();
+
+            foreach (Button b in items)
+            {
+                if (isPaused)
+                    b.interactable = false;
+                else
+                    b.interactable = true;
+            }
+        }
+
+        GameObject dialogueJournal = GameObject.Find("Dialogue Journal");
+
+        if (dialogueJournal != null)
+        {
+            GameObject dialogueCatalog = dialogueJournal.transform.GetChild(0).GetChild(0).gameObject;
+            Button[] items = dialogueCatalog.GetComponentsInChildren<Button>();
+
+            foreach (Button b in items)
+            {
+                if (isPaused)
+                    b.interactable = false;
+                else
+                    b.interactable = true;
+            }
         }
     }
 
@@ -53,12 +97,16 @@ public class LevelController : MonoBehaviour
         isPaused = false;
 
         interact.enabled = true;
+        DisableEnableJournalForPause(isPaused);
     }
 
     public void BackToMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+
+        isPaused = false;
+        DisableEnableJournalForPause(isPaused);
     }
 
     public void GoToAbbysApartment()
