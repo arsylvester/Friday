@@ -22,7 +22,7 @@ position: 1163,357
 <<if $broke_into is true>>
     [[Broke into your apartment?|AbbyQ3]]
 <<endif>>
-<<if visted("AbbyStart") is true and visted("AbbyChalk") is true and visted("AbbyFridayWasAlone") is true>>
+<<if $visited_pennies is true and $broke_into is true and $visited_alone is true>>
     [[Where were you when it happened?|AbbyWhere]]
 <<endif>>
 [[Interogate|AbbyInterogation]]
@@ -35,28 +35,28 @@ position: 1163,357
 ---
 <<startquestioning Journal>>
 <<if $tryagain is false>>
-	ABBY: What do you want to know?
+	ABBY: What is it detective?
 <<endif>>
 ->Confirm Questioning Choices
-	<<if question("old_tv", "") is true>>
+	<<if question("old_tv", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyOldTV]]
-    <<elseif question("gang_violence", "") is true>>
+    <<elseif question("gang_violence", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyGangs]]
-    <<elseif question("bills", "") is true>>
+    <<elseif question("bills", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyBills]]
-    <<elseif question("differ_address", "") is true>>
+    <<elseif question("differ_address", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyDiffAddress]]
-    <<elseif question("manage_bills", "") is true>>
+    <<elseif question("manage_bills", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyManBills]]
-    <<elseif question("pennies", "") is true>>
+    <<elseif question("pennies", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyPennies]]
-    <<elseif question("chalk", "") is true>>
+    <<elseif question("chalk", "-") is true>>
         <<stopquestioning Journal>>
 		[[AbbyChalk]]
     <<elseif question("friday_alone", "locked_door") is true>>
@@ -65,7 +65,7 @@ position: 1163,357
 	<<else>>
 		ABBY: I'm sorry, what are you trying to get at?
 		<<set $tryagain to true>>
-		[[TestQuestions]]
+		[[AbbyInterogation]]
 	<<endif>>
 ->Quit Questioning
 	<<stopquestioning Journal>>
@@ -202,9 +202,10 @@ ABBY: Why would it mean anything to me? It’s not my stocking. I wouldn’t be 
 JACE: I’m asking if anything else in the neighborhood sounds similar? Pennies used in other incidents?
 <<startkey Journal spare_money>>
 ABBY: Look around, Detective. This isn’t exactly the best place. If we had enough money to spare for crimes, we wouldn’t be living here.
+<<endkey Journal>>
 JACE: So you have no idea why it was shoved in Friday’s mouth, then?
 ABBY: I certainly didn’t put it there, if that’s what you mean.
-<<endkey Journal>>
+<<set $visited_pennies to true>>
 [[AbbyMain]]
 ===
 
@@ -239,6 +240,7 @@ JACE: I’m sure it does. But could someone enter through that patio door?
 <<startkey>>
 ABBY: They’d need a key if they wanted to enter from the back, but I suppose it’s possible.
 <<endkey>>
+<<set $visited_alone to true>>
 [[AbbyMain]]
 ===
 

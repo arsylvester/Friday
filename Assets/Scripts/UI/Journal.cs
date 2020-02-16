@@ -110,7 +110,7 @@ public class Journal : MonoBehaviour
 
         //TEST:
         SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
-        SaveItem("Yarn", "A ball of yarn.", "What differentiates yarn, string, twine, and rope?", testSprite2, "KeyYarn");
+        SaveItem("Stocking Of Pennies", "The murder weapon.", "What a crude way to kill such an innocent woman.", testSprite2, "pennies");
         CloseJournals();
     }
 
