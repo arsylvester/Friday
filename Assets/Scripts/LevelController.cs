@@ -166,7 +166,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void CloseMap()
+    public void CloseMap()
     {
         mapUI.SetActive(false);
 
