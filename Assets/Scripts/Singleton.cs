@@ -8,9 +8,11 @@ public class Singleton : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         if (instance == null)
+        {
+            DontDestroyOnLoad(this);
             instance = this;
+        }
         else if (instance != this)
             DestroyImmediate(gameObject);
     }
