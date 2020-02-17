@@ -12,6 +12,8 @@ public class NPCAgent : MonoBehaviour
     }
     public void InitiateDialogue(Interactable interactable)
     {
+        if(dialogueRunner == null)
+            dialogueRunner = FindObjectOfType<DialogueRunner>();
         if(dialogueRunner != null)
         {
             InteractableNPC interactableNPC = interactable.GetComponent<InteractableNPC>();
