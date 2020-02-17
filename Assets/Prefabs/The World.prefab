@@ -331,10 +331,10 @@ MonoBehaviour:
   questioningCam: {fileID: 2513149747526114657}
   npcRotationOffset: -10
   npcRotationOriginalOffset: 90
-  fade: {fileID: 0}
-  fadeIn: 0
-  fadeTransition: 0
-  fadeOut: 0
+  fade: {fileID: 731285796436648261}
+  fadeIn: 0.5
+  fadeTransition: 1
+  fadeOut: 2
 --- !u!114 &186475976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,18 +1672,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da340e44f8d8213499d5c5c502414a49, type: 3}
---- !u!114 &7822683450521502358 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9006657784708188506, guid: da340e44f8d8213499d5c5c502414a49,
-    type: 3}
-  m_PrefabInstance: {fileID: 1184959829486111692}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7822683450521502347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d825f52fbe2dfa048ad60567db0b0646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7822683450521502359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9006657784708188507, guid: da340e44f8d8213499d5c5c502414a49,
@@ -1696,6 +1684,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1184959829486111692}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7822683450521502358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9006657784708188506, guid: da340e44f8d8213499d5c5c502414a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1184959829486111692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7822683450521502347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d825f52fbe2dfa048ad60567db0b0646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3298370810302874059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1992,11 +1992,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5519691607601308501}
     m_Modifications:
-    - target: {fileID: 6790173821212204640, guid: fbdda9338b407e44ea551c9830141a01,
-        type: 3}
-      propertyPath: m_Name
-      value: Fade Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 6790173821212204641, guid: fbdda9338b407e44ea551c9830141a01,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2102,8 +2097,19 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6790173821212204640, guid: fbdda9338b407e44ea551c9830141a01,
+        type: 3}
+      propertyPath: m_Name
+      value: Fade Canvas
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbdda9338b407e44ea551c9830141a01, type: 3}
+--- !u!1 &731285796436648261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6790173820593124811, guid: fbdda9338b407e44ea551c9830141a01,
+    type: 3}
+  m_PrefabInstance: {fileID: 6061149741196579982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &731285797125982959 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6790173821212204641, guid: fbdda9338b407e44ea551c9830141a01,
@@ -2117,16 +2123,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5519691607601308501}
     m_Modifications:
-    - target: {fileID: 8398387786864068645, guid: 3a28574a21b9d814f8a941f89c5ed103,
-        type: 3}
-      propertyPath: m_Name
-      value: CM Virtual Cam- 3rd Person QuestioningCam
-      objectReference: {fileID: 0}
-    - target: {fileID: 8398387786864068645, guid: 3a28574a21b9d814f8a941f89c5ed103,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6642659453695750216, guid: 3a28574a21b9d814f8a941f89c5ed103,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2182,6 +2178,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8398387786864068645, guid: 3a28574a21b9d814f8a941f89c5ed103,
+        type: 3}
+      propertyPath: m_Name
+      value: CM Virtual Cam- 3rd Person QuestioningCam
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398387786864068645, guid: 3a28574a21b9d814f8a941f89c5ed103,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a28574a21b9d814f8a941f89c5ed103, type: 3}
 --- !u!4 &739407033090434316 stripped
@@ -2203,11 +2209,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7822683449164422204}
     m_Modifications:
-    - target: {fileID: 2781218283856877677, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
-        type: 3}
-      propertyPath: m_Name
-      value: Confirm Location UI
-      objectReference: {fileID: 0}
     - target: {fileID: 8881628857602307955, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2262,6 +2263,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781218283856877677, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
+        type: 3}
+      propertyPath: m_Name
+      value: Confirm Location UI
       objectReference: {fileID: 0}
     - target: {fileID: 1541548309666018271, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
         type: 3}
@@ -2470,15 +2476,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8c362cc53b35e43b2bdc0b47d73fee, type: 3}
---- !u!224 &1420147181124695288 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8881628857602307955, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
-    type: 3}
-  m_PrefabInstance: {fileID: 7562812842157261707}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5650994432277191654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2781218283856877677, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7562812842157261707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1420147181124695288 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8881628857602307955, guid: 0e8c362cc53b35e43b2bdc0b47d73fee,
     type: 3}
   m_PrefabInstance: {fileID: 7562812842157261707}
   m_PrefabAsset: {fileID: 0}
@@ -2847,11 +2853,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5519691607601308501}
     m_Modifications:
-    - target: {fileID: 266169378052449278, guid: 16722a015d6011a488e613b0c94108bd,
-        type: 3}
-      propertyPath: m_Name
-      value: Level Controller
-      objectReference: {fileID: 0}
     - target: {fileID: 266169378052449279, guid: 16722a015d6011a488e613b0c94108bd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2927,6 +2928,11 @@ PrefabInstance:
       propertyPath: confirmLocationText
       value: 
       objectReference: {fileID: 3607763691245942653}
+    - target: {fileID: 266169378052449278, guid: 16722a015d6011a488e613b0c94108bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Level Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 266169378052449277, guid: 16722a015d6011a488e613b0c94108bd,
         type: 3}
       propertyPath: m_Size.x
