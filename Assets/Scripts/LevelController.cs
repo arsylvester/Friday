@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class LevelController : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class LevelController : MonoBehaviour
     PlayerMovement playerMove;
 
     PlayerInteractionAgent interact;
+
+    static bool abbyOpen = true;
+    static bool tristanOpen = false;
+    static bool bernardOpen = false;
+    static bool managementOpen = false;
+    bool ownerOpen = false;
 
     public void Start()
     {
@@ -111,37 +118,52 @@ public class LevelController : MonoBehaviour
 
     public void GoToAbbysApartment()
     {
-        location = "Abby_Room";
-        confirmLocationText.text = "Abby's Apartment?";
-        confirmLocationUI.SetActive(true);
+        if(abbyOpen)
+        {
+            location = "Abby_Room";
+            confirmLocationText.text = "Abby's Apartment?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void GoToTristansApartment()
     {
-        location = "Tristan_Room";
-        confirmLocationText.text = "Tristan's Apartment?";
-        confirmLocationUI.SetActive(true);
+        if(tristanOpen)
+        {
+            location = "Tristan_Room";
+            confirmLocationText.text = "Tristan's Apartment?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void GoToBernardsApartment()
     {
-        location = "Bernard_Room";
-        confirmLocationText.text = "Bernard's Apartment?";
-        confirmLocationUI.SetActive(true);
+        if(bernardOpen)
+        {
+            location = "Bernard_Room";
+            confirmLocationText.text = "Bernard's Apartment?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void ManagementOffice()
     {
-        location = "Management_Office";
-        confirmLocationText.text = "Management Office?";
-        confirmLocationUI.SetActive(true);
+        if(managementOpen)
+        {
+            location = "Management_Office";
+            confirmLocationText.text = "Management Office?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void OwnersSuite()
     {
-        location = "Owner_Suite_Test";
-        confirmLocationText.text = "Owner's Suite?";
-        confirmLocationUI.SetActive(true);
+        if(ownerOpen)
+        {
+            location = "Owner_Suite_Test";
+            confirmLocationText.text = "Owner's Suite?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void GoToLocation()
@@ -173,5 +195,30 @@ public class LevelController : MonoBehaviour
         playerMove.ResumeMovement();
 
         cam.UnfreezeCamera();
+    }
+
+    [YarnCommand("openlocation")]
+    public void OpenLocation(string sceneName)
+    {
+        switch(sceneName)
+        {
+            case "Abby_Room":
+                abbyOpen = true;
+                break;
+            case "Tristan_Room":
+                tristanOpen = true;
+                break;
+            case "Bernard_Room":
+                bernardOpen = true;
+                break;
+            case "Management_Office":
+                managementOpen = true;
+                break;
+            case "Owner_Suite_Test":
+                abbyOpen = true;
+                break;
+            default:
+                break;
+        }
     }
 }
