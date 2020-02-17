@@ -91,6 +91,10 @@ public class Journal : MonoBehaviour
         //Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
         dialogueRunner.RegisterFunction("deduction", 6, delegate (Yarn.Value[] parameters)
         {
+            var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
+            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary);
+
+            List<GameObject> tempList = new List<GameObject>();
             for (int x = 0; x < keyEntries.Count; x++)
             {
                 string currentKey = keyEntries[x].GetComponent<JournalElement>().keyID;
@@ -99,13 +103,16 @@ public class Journal : MonoBehaviour
                     currentKey == parameters[4].AsString ||
                     currentKey == parameters[5].AsString)
                 {
-                    GameObject temp = keyEntries[x];
-                    keyEntries.Remove(temp);
-                    Destroy(temp);
+                    tempList.Add(keyEntries[x]);
                 }
             }
-            var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
-            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary);
+
+            for(int y = 0; y < tempList.Count; y++)
+            {
+                GameObject temp = tempList[y];
+                keyEntries.Remove(temp);
+                Destroy(temp);
+            }
         });
 
         //TEST:
