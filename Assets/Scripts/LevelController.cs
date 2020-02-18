@@ -28,6 +28,15 @@ public class LevelController : MonoBehaviour
     static bool managementOpen = false;
     bool ownerOpen = false;
 
+    //TODO Make this visual cue for if a room is locked or not
+    //cleaner
+    public Button AbbyButton;
+    public Button TristanButton;
+    public Button BernardButton;
+    public Button ManagementButton;
+    public Button OwnerButton;
+    //END
+
     public void Start()
     {
         pauseUI.SetActive(false);
@@ -42,6 +51,15 @@ public class LevelController : MonoBehaviour
 
     private void Update()
     {
+        //TODO Make this visual cue for if a room is locked or not
+        //cleaner
+        AbbyButton.interactable = abbyOpen;
+        TristanButton.interactable = tristanOpen;
+        BernardButton.interactable = bernardOpen;
+        ManagementButton.interactable = managementOpen;
+        OwnerButton.interactable = ownerOpen;
+        //END
+
         if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             Time.timeScale = 0;
