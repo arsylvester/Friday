@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractOnStart : MonoBehaviour
 {
-    [SerializeField] NPCAgent agent; 
+    [SerializeField] PlayerInteractionAgent agent; 
     [SerializeField] Interactable NPC;
     [SerializeField] float waitTime = 1f;
 
@@ -17,7 +17,7 @@ public class InteractOnStart : MonoBehaviour
     IEnumerator StartDialogue()
     {
         yield return new WaitForSeconds(waitTime);
-        agent.InitiateDialogue(NPC);
+        agent.Interact(NPC);
     }
 
 }

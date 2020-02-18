@@ -76,8 +76,7 @@ public class PlayerInteractionAgent : MonoBehaviour
 
                 if (Input.GetButtonDown(InteractKey) && near)
                 {
-                    OnInteract.Invoke(interactable);
-                    interactable.OnInteract.Invoke();
+                    
                 }
             }
             else
@@ -103,6 +102,12 @@ public class PlayerInteractionAgent : MonoBehaviour
                 lastHovered = null;
             }
         }
+    }
+
+    public void Interact(Interactable interactable)
+    {
+        OnInteract.Invoke(interactable);
+        interactable.OnInteract.Invoke();
     }
 
     private void OnDisable()
