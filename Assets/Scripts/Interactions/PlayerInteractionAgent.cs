@@ -76,7 +76,7 @@ public class PlayerInteractionAgent : MonoBehaviour
 
                 if (Input.GetButtonDown(InteractKey) && near)
                 {
-                    
+                    Interact(interactable);
                 }
             }
             else
