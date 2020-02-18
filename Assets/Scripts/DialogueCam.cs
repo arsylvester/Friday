@@ -70,6 +70,7 @@ public class DialogueCam : MonoBehaviour
         {
             MoveToLocation();
         }
+        Debug.Log(Vector3.Distance(transform.position, target.position));
     }
 
     public void MoveToLocation()
@@ -106,7 +107,7 @@ public class DialogueCam : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
             Invoke("FadeOutOnDialogueStart", fadeTransition);
 
-            if (Vector3.Distance(transform.position, target.position) < 0.01)
+            if (Vector3.Distance(transform.position, target.position) < 0.1)
             {
                 StopMovingPlayer();
             }
