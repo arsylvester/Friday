@@ -33,9 +33,11 @@ public class DialogueCam : MonoBehaviour
 
     public GameObject fade;
     Image fadeImage;
-    public float fadeIn;
+    public float fadeInOnDialogueStart;
+    public float fadeOutOnDialogueStart;
+    public float fadeInOnDialogueEnd;
+    public float fadeOutOnDialogueEnd;
     public float fadeTransition;
-    public float fadeOut;
 
     private void Start()
     {
@@ -53,10 +55,9 @@ public class DialogueCam : MonoBehaviour
         journal.OnQuestionStop.AddListener(SwitchToDialogueCam);
 
         runner = FindObjectOfType<DialogueUI>();
-        runner.onDialogueStart.AddListener(FadeIn);
+        runner.onDialogueStart.AddListener(FadeInOnDialogueStart);
         runner.onDialogueStart.AddListener(MovePlayer);
         runner.onDialogueEnd.AddListener(SwitchToGameCam);
-        runner.onDialogueEnd.AddListener(StopMovingPlayer);
 
         fadeImage = fade.GetComponent<Image>();
         fadeImage.enabled = true;
@@ -71,10 +72,10 @@ public class DialogueCam : MonoBehaviour
         }
     }
 
-    
     public void MoveToLocation()
     {
         Vector3 dir = target.position - transform.position;
+
         Vector3 movement = dir.normalized * speed * 1.25f * Time.deltaTime;
 
         // limit movement to never pass the target position
@@ -83,7 +84,6 @@ public class DialogueCam : MonoBehaviour
         charController.Move(movement);
         Rotation(movement);
     }
-    
     
     void Rotation(Vector3 movement)
     {
@@ -104,25 +104,33 @@ public class DialogueCam : MonoBehaviour
 
             playerAnimController.ChangePlayerAnim(1);
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
-            StartCoroutine("FadeOut", fadeTransition);
+            Invoke("FadeOutOnDialogueStart", fadeTransition);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.01)
+            {
+                StopMovingPlayer();
+            }
         }
     }
     
-    public void FadeIn()
+    public void FadeInOnDialogueStart()
     {
-        /*
-        gameCam.SetActive(false);
-        cutsceneCam.SetActive(true);
-        dialogueCam.SetActive(false);
-        questioningCam.SetActive(false);
-        */
-        fadeImage.CrossFadeAlpha(1, fadeIn, false);
+        fadeImage.CrossFadeAlpha(1, fadeInOnDialogueStart, false);
     }
 
-    IEnumerator FadeOut(int fadeTransition)
+    public void FadeOutOnDialogueStart()
     {
-        yield return new WaitForSeconds(fadeTransition);
-        fadeImage.CrossFadeAlpha(0, fadeOut, false);
+        fadeImage.CrossFadeAlpha(0, fadeOutOnDialogueStart, false);
+    }
+
+    public void FadeInOnDialogueEnd()
+    {
+        fadeImage.CrossFadeAlpha(1, fadeInOnDialogueEnd, false);
+    }
+
+    public void FadeOutOnDialogueEnd()
+    {
+        fadeImage.CrossFadeAlpha(0, fadeOutOnDialogueEnd, false);
     }
 
     public void SwitchToDialogueCam()
@@ -155,6 +163,9 @@ public class DialogueCam : MonoBehaviour
         questioningCam.SetActive(false);
 
         npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOriginalOffset, npc.transform.rotation.z), rotationSmoothing);
+
+        FadeInOnDialogueEnd();
+        Invoke("FadeOutOnDialogueEnd", fadeTransition);
     }
 
     public void MovePlayer()

@@ -12,6 +12,8 @@ public class LevelController : MonoBehaviour
     public GameObject mapUI;
     public GameObject confirmLocationUI;
     public TextMeshProUGUI confirmLocationText;
+    public GameObject mapBackLocation;
+    bool mapMoveBack = false;
 
     public bool isPaused = false;
     string location;
@@ -53,6 +55,11 @@ public class LevelController : MonoBehaviour
         {
             ResumeGame();
             DisableEnableJournalForPause(isPaused);
+        }
+
+        if (mapMoveBack)
+        {
+            MoveToLocation();
         }
     }
 
@@ -194,7 +201,45 @@ public class LevelController : MonoBehaviour
 
         playerMove.ResumeMovement();
 
+        mapMoveBack = true;
+
         cam.UnfreezeCamera();
+    }
+
+    void MoveToLocation()
+    {
+        CharacterController player = FindObjectOfType<CharacterController>();
+
+        Vector3 dir = mapBackLocation.transform.position - player.gameObject.transform.position;
+
+        Vector3 movement = dir.normalized * player.gameObject.GetComponent<PlayerMovement>().moveSpeed * Time.deltaTime;
+
+        // limit movement to never pass the target position
+        if (movement.magnitude > dir.magnitude) movement = dir;
+
+        player.Move(movement);
+        Rotation(player.gameObject, movement);
+    }
+
+
+    void Rotation(GameObject player, Vector3 movement)
+    {
+        PlayerAnimController playerAnim = player.GetComponent<PlayerAnimController>();
+
+        var moveDir = movement;
+        moveDir.y = 0;
+
+        player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(moveDir), 0.125f);
+
+        if (Vector3.Distance(player.transform.position, mapBackLocation.transform.position) > 1)
+        {
+            playerAnim.ChangePlayerAnim(2);
+        }
+        else
+        {
+            playerAnim.ChangePlayerAnim(1);
+            mapMoveBack = false;
+        }
     }
 
     [YarnCommand("openlocation")]
