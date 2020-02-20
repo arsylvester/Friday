@@ -19,3 +19,7 @@ Ask Question
 Description: This command passes in two strings and returns a bool. Each string is the key identifier string corresponding to the dialogue wanted. If the second string is "-", the function will only test for the first parameter. Returns if the question was right or not.
 Use: <<if question("keytext1", "keytext2") is true>>
 or - <<if question("keytext1", "-") is true>>
+
+Deduction 
+Description: This command creates a deduction and removes the appropriate journal elements.
+Use: <<deduction("This is Main Text.", "This is the Summary Text.", "keytext1", "KeyVase", "", "")>>

@@ -9,8 +9,6 @@ public class Journal : MonoBehaviour
 {
     [SerializeField] GameObject itemJournal;
     [SerializeField] GameObject dialogJournal;
-    [SerializeField] GameObject dialogQuestioningBox;
-    [SerializeField] Transform dialogQuestioningContent;
     [SerializeField] GameObject itemQuestioningBox;
     [SerializeField] Transform itemQuestioningContent;
     [SerializeField] Transform contentPanel;
@@ -21,12 +19,16 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject journalTextPrefab;
     [SerializeField] GameObject journalItemPrefab;
     [SerializeField] GameObject charSectionPrefab;
+    [SerializeField] GameObject itemSectionPrefab;
     [SerializeField] GameObject deleteButton;
     [SerializeField] GameObject unhighlightAllButton;
     [SerializeField] GameObject markImportantButton;
     [SerializeField] GameObject Photograph;
     [SerializeField] int maxNumOfLinesSaveable = 50;
     [SerializeField] int maxNumOfEvidenceQuestioned = 2;
+    [SerializeField] GameObject deductionElementPrefab;
+    [SerializeField] Transform deductionPanel;
+    [SerializeField] DeductionSummary deductionSummary;
 
     private int linesSaved = 0;
     private int NumOfEvidenceQuestioned = 0;
@@ -41,20 +43,20 @@ public class Journal : MonoBehaviour
     //public List<GameObject> highlightedItems;
     public List<GameObject> highlightedEntries;
 
+    public List<GameObject> keyEntries;
+
     public UnityEvent OnQuestionStart;
     public UnityEvent OnQuestionStop;
 
     //TESTING
-    public Sprite testSprite1;
-    public Sprite testSprite2;
+    //public Sprite testSprite1;
+    public Sprite stockingSprite;
 
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
 
     void Start()
     {
-        itemJournal.SetActive(false);
-        dialogJournal.SetActive(false);
         varStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         // Register a function on startup called "question" that lets Yarn
@@ -86,9 +88,37 @@ public class Journal : MonoBehaviour
             return false;
         });
 
+        //Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
+        dialogueRunner.RegisterFunction("deduction", 6, delegate (Yarn.Value[] parameters)
+        {
+            var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
+            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary);
+
+            List<GameObject> tempList = new List<GameObject>();
+            for (int x = 0; x < keyEntries.Count; x++)
+            {
+                string currentKey = keyEntries[x].GetComponent<JournalElement>().keyID;
+                if(currentKey == parameters[2].AsString ||
+                    currentKey == parameters[3].AsString ||
+                    currentKey == parameters[4].AsString ||
+                    currentKey == parameters[5].AsString)
+                {
+                    tempList.Add(keyEntries[x]);
+                }
+            }
+
+            for(int y = 0; y < tempList.Count; y++)
+            {
+                GameObject temp = tempList[y];
+                keyEntries.Remove(temp);
+                Destroy(temp);
+            }
+        });
+
         //TEST:
-        SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
-        SaveItem("Yarn", "A ball of yarn.", "What differentiates yarn, string, twine, and rope?", testSprite2, "KeyYarn");
+        //SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
+        SaveItem("Stocking Of Pennies", "The murder weapon.", "What a crude way to kill such an innocent woman.", stockingSprite, "pennies");
+        CloseJournals();
     }
 
     void Update()
@@ -149,6 +179,7 @@ public class Journal : MonoBehaviour
         if (keyDialog)
         {
             newJournalText.GetComponent<DialogueJournalElement>().keyID = keyName;
+            keyEntries.Add(newJournalText);
         }
         linesSaved++;
         CanSaveDialogue(false);
@@ -172,7 +203,7 @@ public class Journal : MonoBehaviour
         //If location is not already in the journal;
         if (locSubsection == null)
         {
-            locSubsection = Instantiate(charSectionPrefab, itemContentPanel).transform;
+            locSubsection = Instantiate(itemSectionPrefab, itemContentPanel).transform;
             locSubsection.GetComponentInChildren<Text>().text = location;
             LocSections.Add(locSubsection.GetComponent<Text>());
         }
@@ -188,6 +219,11 @@ public class Journal : MonoBehaviour
         //Create the item in the journal
         GameObject newJournalItem = Instantiate(journalItemPrefab, locSubsection);
         newJournalItem.GetComponent<ItemJournalElement>().SetUpEntry(itemName, desc, flavor, sprite, keyID, locSubsection, Photograph.GetComponent<ItemPhotograph>());
+
+        if(keyID != "" && keyID != null)
+        {
+            keyEntries.Add(newJournalItem);
+        }
     }
 
     //Toggle the ability to save current dialog to the journal.
@@ -203,7 +239,14 @@ public class Journal : MonoBehaviour
         dialogJournal.SetActive(true);
     }
 
-    public void AddHighlighted(GameObject entry, bool isDialogue)
+    //Close both panels. Meant for when dialogue ends.
+    public void CloseJournals()
+    {
+        itemJournal.SetActive(false);
+        dialogJournal.SetActive(false);
+    }
+
+    public void AddHighlighted(GameObject entry)
     {
             
         if (isQuestioning)
@@ -212,10 +255,7 @@ public class Journal : MonoBehaviour
             {
                 highlightedEntries.Add(entry);
                 entry.GetComponent<JournalElement>().Highlight();
-                if(isDialogue)
-                    entry.transform.SetParent(dialogQuestioningContent);
-                else
-                    entry.transform.SetParent(itemQuestioningContent);
+                entry.transform.SetParent(itemQuestioningContent);
                 NumOfEvidenceQuestioned++;
             }
         }
@@ -322,7 +362,6 @@ public class Journal : MonoBehaviour
         OnQuestionStart.Invoke();
         isQuestioning = true;
         OpenJournals();
-        dialogQuestioningBox.SetActive(true);
         itemQuestioningBox.SetActive(true);
         UnhighlightAll();
     }
@@ -333,7 +372,26 @@ public class Journal : MonoBehaviour
         OnQuestionStop.Invoke();
         UnhighlightAll();
         isQuestioning = false;
-        dialogQuestioningBox.SetActive(false);
         itemQuestioningBox.SetActive(false);
     }
+/*
+    [YarnCommand("deduction")]
+    public void Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
+    {
+        for (int x = 0; x < keyEntries.Count; x++)
+            {
+                string currentKey = keyEntries[x].GetComponent<JournalElement>().keyID;
+                if(currentKey == key1 ||
+                    currentKey == key2 ||
+                    currentKey == key3 ||
+                    currentKey == key4)
+                {
+                    GameObject temp = keyEntries[x];
+                    keyEntries.Remove(temp);
+                    Destroy(temp);
+                }
+            }
+        var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
+        newDedElement.GetComponent<DeductionElement>().SetUpDeduction(mainText, summaryText);
+    }*/
 }

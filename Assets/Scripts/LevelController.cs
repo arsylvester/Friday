@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+using Yarn.Unity;
 
 public class LevelController : MonoBehaviour
 {
@@ -10,9 +12,30 @@ public class LevelController : MonoBehaviour
     public GameObject mapUI;
     public GameObject confirmLocationUI;
     public TextMeshProUGUI confirmLocationText;
+    public GameObject mapBackLocation;
+    bool mapMoveBack = false;
+
+    public bool isPaused = false;
     string location;
     InputFreeLookCam cam;
     PlayerMovement playerMove;
+
+    PlayerInteractionAgent interact;
+
+    static bool abbyOpen = true;
+    static bool tristanOpen = false;
+    static bool bernardOpen = false;
+    static bool managementOpen = false;
+    bool ownerOpen = false;
+
+    //TODO Make this visual cue for if a room is locked or not
+    //cleaner
+    public Button AbbyButton;
+    public Button TristanButton;
+    public Button BernardButton;
+    public Button ManagementButton;
+    public Button OwnerButton;
+    //END
 
     public void Start()
     {
@@ -22,14 +45,80 @@ public class LevelController : MonoBehaviour
 
         cam = FindObjectOfType<InputFreeLookCam>();
         playerMove = FindObjectOfType<PlayerMovement>();
+
+        interact = FindObjectOfType<PlayerInteractionAgent>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //TODO Make this visual cue for if a room is locked or not
+        //cleaner
+        AbbyButton.interactable = abbyOpen;
+        TristanButton.interactable = tristanOpen;
+        BernardButton.interactable = bernardOpen;
+        ManagementButton.interactable = managementOpen;
+        OwnerButton.interactable = ownerOpen;
+        //END
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);
+            isPaused = true;
+
+            interact.enabled = false;
+            DisableEnableJournalForPause(isPaused);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        {
+            ResumeGame();
+            DisableEnableJournalForPause(isPaused);
+        }
+
+        if (mapMoveBack)
+        {
+            MoveToLocation();
+        }
+    }
+
+    void DisableEnableJournalForPause(bool isPaused)
+    {
+        Journal journal = FindObjectOfType<Journal>();
+        if (isPaused)
+            journal.enabled = false;
+        else
+            journal.enabled = true;
+
+        GameObject itemJournal = GameObject.Find("Item Journal");
+
+        if (itemJournal != null)
+        {
+            GameObject itemCatalog = itemJournal.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
+            Button[] items = itemCatalog.GetComponentsInChildren<Button>();
+
+            foreach (Button b in items)
+            {
+                if (isPaused)
+                    b.interactable = false;
+                else
+                    b.interactable = true;
+            }
+        }
+
+        GameObject dialogueJournal = GameObject.Find("Dialogue Journal");
+
+        if (dialogueJournal != null)
+        {
+            GameObject dialogueCatalog = dialogueJournal.transform.GetChild(0).GetChild(0).gameObject;
+            Button[] items = dialogueCatalog.GetComponentsInChildren<Button>();
+
+            foreach (Button b in items)
+            {
+                if (isPaused)
+                    b.interactable = false;
+                else
+                    b.interactable = true;
+            }
         }
     }
 
@@ -37,47 +126,69 @@ public class LevelController : MonoBehaviour
     {
         Time.timeScale = 1;
         pauseUI.SetActive(false);
+        isPaused = false;
+
+        interact.enabled = true;
+        DisableEnableJournalForPause(isPaused);
     }
 
     public void BackToMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+
+        isPaused = false;
+        DisableEnableJournalForPause(isPaused);
     }
 
     public void GoToAbbysApartment()
     {
-        location = "Abby_Room";
-        confirmLocationText.text = "Abby's Apartment?";
-        confirmLocationUI.SetActive(true);
+        if(abbyOpen)
+        {
+            location = "Abby_Room";
+            confirmLocationText.text = "Abby's Apartment?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void GoToTristansApartment()
     {
-        location = "Tristan_Room";
-        confirmLocationText.text = "Tristan's Apartment?";
-        confirmLocationUI.SetActive(true);
+        if(tristanOpen)
+        {
+            location = "Tristan_Room";
+            confirmLocationText.text = "Tristan's Apartment?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void GoToBernardsApartment()
     {
-        location = "Bernard_Room";
-        confirmLocationText.text = "Bernard's Apartment?";
-        confirmLocationUI.SetActive(true);
+        if(bernardOpen)
+        {
+            location = "Bernard_Room";
+            confirmLocationText.text = "Bernard's Apartment?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void ManagementOffice()
     {
-        location = "Management_Office";
-        confirmLocationText.text = "Management Office?";
-        confirmLocationUI.SetActive(true);
+        if(managementOpen)
+        {
+            location = "Management_Office";
+            confirmLocationText.text = "Management Office?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void OwnersSuite()
     {
-        location = "Owner_Suite_Test";
-        confirmLocationText.text = "Owner's Suite?";
-        confirmLocationUI.SetActive(true);
+        if(ownerOpen)
+        {
+            location = "Owner_Suite_Test";
+            confirmLocationText.text = "Owner's Suite?";
+            confirmLocationUI.SetActive(true);
+        }
     }
 
     public void GoToLocation()
@@ -102,12 +213,75 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void CloseMap()
+    public void CloseMap()
     {
         mapUI.SetActive(false);
 
         playerMove.ResumeMovement();
 
+        mapMoveBack = true;
+
         cam.UnfreezeCamera();
+    }
+
+    void MoveToLocation()
+    {
+        CharacterController player = FindObjectOfType<CharacterController>();
+
+        Vector3 dir = mapBackLocation.transform.position - player.gameObject.transform.position;
+
+        Vector3 movement = dir.normalized * player.gameObject.GetComponent<PlayerMovement>().moveSpeed * Time.deltaTime;
+
+        // limit movement to never pass the target position
+        if (movement.magnitude > dir.magnitude) movement = dir;
+
+        player.Move(movement);
+        Rotation(player.gameObject, movement);
+    }
+
+
+    void Rotation(GameObject player, Vector3 movement)
+    {
+        PlayerAnimController playerAnim = player.GetComponent<PlayerAnimController>();
+
+        var moveDir = movement;
+        moveDir.y = 0;
+
+        player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(moveDir), 0.125f);
+
+        if (Vector3.Distance(player.transform.position, mapBackLocation.transform.position) > 1)
+        {
+            playerAnim.ChangePlayerAnim(2);
+        }
+        else
+        {
+            playerAnim.ChangePlayerAnim(1);
+            mapMoveBack = false;
+        }
+    }
+
+    [YarnCommand("openlocation")]
+    public void OpenLocation(string sceneName)
+    {
+        switch(sceneName)
+        {
+            case "Abby_Room":
+                abbyOpen = true;
+                break;
+            case "Tristan_Room":
+                tristanOpen = true;
+                break;
+            case "Bernard_Room":
+                bernardOpen = true;
+                break;
+            case "Management_Office":
+                managementOpen = true;
+                break;
+            case "Owner_Suite_Test":
+                abbyOpen = true;
+                break;
+            default:
+                break;
+        }
     }
 }

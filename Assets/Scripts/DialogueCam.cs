@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Yarn.Unity;
+using UnityEngine.UI;
 
 public class DialogueCam : MonoBehaviour
 {
@@ -26,6 +28,17 @@ public class DialogueCam : MonoBehaviour
     public float npcRotationOffset;
     public float npcRotationOriginalOffset;
 
+    private Journal journal;
+    DialogueUI runner;
+
+    public GameObject fade;
+    Image fadeImage;
+    public float fadeInOnDialogueStart;
+    public float fadeOutOnDialogueStart;
+    public float fadeInOnDialogueEnd;
+    public float fadeOutOnDialogueEnd;
+    public float fadeTransition;
+
     private void Start()
     {
         charController = GetComponent<CharacterController>();
@@ -36,6 +49,19 @@ public class DialogueCam : MonoBehaviour
         questioningCam.SetActive(false);
 
         playerAnimController = FindObjectOfType<PlayerAnimController>();
+
+        journal = FindObjectOfType<Journal>();
+        journal.OnQuestionStart.AddListener(SwitchToQuestioningCam);
+        journal.OnQuestionStop.AddListener(SwitchToDialogueCam);
+
+        runner = FindObjectOfType<DialogueUI>();
+        runner.onDialogueStart.AddListener(FadeInOnDialogueStart);
+        runner.onDialogueStart.AddListener(MovePlayer);
+        runner.onDialogueEnd.AddListener(SwitchToGameCam);
+
+        fadeImage = fade.GetComponent<Image>();
+        fadeImage.enabled = true;
+        fadeImage.canvasRenderer.SetAlpha(0f);
     }
 
     void Update()
@@ -44,12 +70,14 @@ public class DialogueCam : MonoBehaviour
         {
             MoveToLocation();
         }
+        Debug.Log(Vector3.Distance(transform.position, target.position));
     }
 
     public void MoveToLocation()
     {
         Vector3 dir = target.position - transform.position;
-        Vector3 movement = dir.normalized * speed * Time.deltaTime;
+
+        Vector3 movement = dir.normalized * speed * 1.25f * Time.deltaTime;
 
         // limit movement to never pass the target position
         if (movement.magnitude > dir.magnitude) movement = dir;
@@ -57,7 +85,7 @@ public class DialogueCam : MonoBehaviour
         charController.Move(movement);
         Rotation(movement);
     }
-
+    
     void Rotation(Vector3 movement)
     {
         var moveDir = movement;
@@ -77,15 +105,33 @@ public class DialogueCam : MonoBehaviour
 
             playerAnimController.ChangePlayerAnim(1);
             transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
+            Invoke("FadeOutOnDialogueStart", fadeTransition);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.1)
+            {
+                StopMovingPlayer();
+            }
         }
     }
-
-    public void SwitchToCutsceneCam()
+    
+    public void FadeInOnDialogueStart()
     {
-        gameCam.SetActive(false);
-        cutsceneCam.SetActive(true);
-        dialogueCam.SetActive(false);
-        questioningCam.SetActive(false);
+        fadeImage.CrossFadeAlpha(1, fadeInOnDialogueStart, false);
+    }
+
+    public void FadeOutOnDialogueStart()
+    {
+        fadeImage.CrossFadeAlpha(0, fadeOutOnDialogueStart, false);
+    }
+
+    public void FadeInOnDialogueEnd()
+    {
+        fadeImage.CrossFadeAlpha(1, fadeInOnDialogueEnd, false);
+    }
+
+    public void FadeOutOnDialogueEnd()
+    {
+        fadeImage.CrossFadeAlpha(0, fadeOutOnDialogueEnd, false);
     }
 
     public void SwitchToDialogueCam()
@@ -118,6 +164,9 @@ public class DialogueCam : MonoBehaviour
         questioningCam.SetActive(false);
 
         npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOriginalOffset, npc.transform.rotation.z), rotationSmoothing);
+
+        FadeInOnDialogueEnd();
+        Invoke("FadeOutOnDialogueEnd", fadeTransition);
     }
 
     public void MovePlayer()

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
-    bool isStopped;
+    public bool isStopped;
 
     public float moveSpeed;
     public float sprintSpeed;
@@ -17,12 +18,20 @@ public class PlayerMovement : MonoBehaviour
     float gravity = 1000;
     float tmpSpeed;
 
+    PlayerAnimController playerAnimController;
+    DialogueUI runner;
+
     // Start is called before the first frame update
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        playerAnimController = GetComponent<PlayerAnimController>();
 
         tmpSpeed = moveSpeed;
+
+        runner = FindObjectOfType<DialogueUI>();
+        runner.onDialogueStart.AddListener(StopMovement);
+        runner.onDialogueEnd.AddListener(ResumeMovement);
     }
 
     // Update is called once per frame
@@ -73,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     public void StopMovement()
     {
         isStopped = true;
+        moveDirection = new Vector3(0, 0, 0);
+        playerAnimController.animator.SetInteger("MainCharAnim", 1);
     }
 
     public void ResumeMovement()
