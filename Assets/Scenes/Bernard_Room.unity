@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7468291, g: 1.0577123, b: 1.6837051, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -399,50 +399,50 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.40107337
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.91604596
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 9060236997420576344, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.8999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765645, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9060236996518765646, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: field of view
-      value: 40
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7822683450521502359, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -453,6 +453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683450521502359, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0005011484
       objectReference: {fileID: 0}
     - target: {fileID: 3298370810020090013, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -479,6 +484,11 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2781218285019154619, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -608,6 +618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.x
       value: -0.2671156
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -10.479456
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 4.7054768
       objectReference: {fileID: 0}
     - target: {fileID: 7822683450521502357, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -923,10 +943,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
+    - target: {fileID: 7236688212648914310, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Size.z
+      value: 1.6245575
       objectReference: {fileID: 0}
     - target: {fileID: 9006019017490107327, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -937,6 +957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0062869494
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660620512271939278, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2660620512271939278, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -988,10 +1013,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.0005011484
       objectReference: {fileID: 0}
-    - target: {fileID: 7822683450521502359, guid: bad00f610cb8b724188ea05bf6e77074,
+    - target: {fileID: 3889988787437249918, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0005011484
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7057579919768736871, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -1007,31 +1032,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -372
-      objectReference: {fileID: 0}
-    - target: {fileID: 3889988787437249918, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2660620512271939278, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236688212648914310, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 1.6245575
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -10.479456
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 4.7054768
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
@@ -1133,6 +1133,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90.00001}
+--- !u!1 &99107444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 99107446}
+  - component: {fileID: 99107445}
+  m_Layer: 0
+  m_Name: Audio_object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &99107445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99107444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
+    type: 3}
+  audioPrefabParent: {fileID: 1312156947}
+  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: 476da92cfc1cce242b565da22ef1592c, type: 3}
+  StartVolume: 0.64
+  StereoPan: 0
+  loop: 0
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
+--- !u!4 &99107446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99107444}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1312156953}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &107787316 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 624354356784205412, guid: cd7df5123d3f6cb48a2c2ef3a15a563d,
@@ -1159,11 +1226,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_closetShelf (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 5323311403034422653, guid: 428973bf133d7384d91c9108f1e02f71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1233,6 +1295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15.46586
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_closetShelf (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428973bf133d7384d91c9108f1e02f71, type: 3}
@@ -1460,11 +1527,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 40ae41f33056d814db19f8bde990e85a,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_Toilet
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 40ae41f33056d814db19f8bde990e85a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1534,6 +1596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 9.336878
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 40ae41f33056d814db19f8bde990e85a,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_Toilet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40ae41f33056d814db19f8bde990e85a, type: 3}
@@ -2613,11 +2680,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3716035405177785254, guid: d566bb69ca53b2a4790bfe09de2538e6,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_shotGlass (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 416964890498136501, guid: d566bb69ca53b2a4790bfe09de2538e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2688,8 +2750,80 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 3716035405177785254, guid: d566bb69ca53b2a4790bfe09de2538e6,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_shotGlass (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d566bb69ca53b2a4790bfe09de2538e6, type: 3}
+--- !u!1 &478858331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478858333}
+  - component: {fileID: 478858332}
+  m_Layer: 0
+  m_Name: Audio_interact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &478858332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478858331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
+    type: 3}
+  audioPrefabParent: {fileID: 1312156947}
+  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: ee5f65a28b2afb1488666d5e6b2a967c, type: 3}
+  StartVolume: 1
+  StereoPan: 0
+  loop: 0
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
+--- !u!4 &478858333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478858331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1312156953}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &483009903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5519691607601308501, guid: bad00f610cb8b724188ea05bf6e77074,
@@ -2826,6 +2960,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12768003, y: 0.10259102, z: 0.09328249}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &570956881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570956876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd4b0a331a2e904ebe2609dc0c51111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 570956882}
+--- !u!114 &570956882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570956876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: c14443dcf724fbe4594328dcc43e54a3,
+    type: 3}
+  audioPrefabParent: {fileID: 570956876}
+  mixerTrack: {fileID: 7671558235606071021, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: b2eeb947977b8644e89e1c001bdfef36, type: 3}
+  StartVolume: 0.69
+  StereoPan: 0
+  loop: 1
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
 --- !u!1 &602510035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,11 +3108,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7607108079958848613, guid: fc4dc0035cf583f459f1ee518e11e54c,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_tallGlass (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6902533503500781174, guid: fc4dc0035cf583f459f1ee518e11e54c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3000,6 +3178,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 7607108079958848613, guid: fc4dc0035cf583f459f1ee518e11e54c,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_tallGlass (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc4dc0035cf583f459f1ee518e11e54c, type: 3}
 --- !u!1 &661122787 stripped
@@ -3047,11 +3230,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_closetShelf
-      objectReference: {fileID: 0}
     - target: {fileID: 5323311403034422653, guid: 428973bf133d7384d91c9108f1e02f71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3121,6 +3299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15.46586
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_closetShelf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428973bf133d7384d91c9108f1e02f71, type: 3}
@@ -3844,11 +4027,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 981d3233b856bfe49b5fe551dd410ed8,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_BathroomMirror
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 981d3233b856bfe49b5fe551dd410ed8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3918,6 +4096,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.143655
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 981d3233b856bfe49b5fe551dd410ed8,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_BathroomMirror
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981d3233b856bfe49b5fe551dd410ed8, type: 3}
@@ -4475,11 +4658,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7607108079958848613, guid: fc4dc0035cf583f459f1ee518e11e54c,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_tallGlass (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 6902533503500781174, guid: fc4dc0035cf583f459f1ee518e11e54c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4550,6 +4728,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 7607108079958848613, guid: fc4dc0035cf583f459f1ee518e11e54c,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_tallGlass (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc4dc0035cf583f459f1ee518e11e54c, type: 3}
 --- !u!1001 &1142964100
@@ -4559,11 +4742,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 29f987add5c7fb14592a6012f89840fc,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_Fridge
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 29f987add5c7fb14592a6012f89840fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4633,6 +4811,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.3304415
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 29f987add5c7fb14592a6012f89840fc,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_Fridge
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29f987add5c7fb14592a6012f89840fc, type: 3}
@@ -4798,7 +4981,7 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1312156949}
+      - m_Target: {fileID: 478858332}
         m_MethodName: PlaySound
         m_Mode: 3
         m_Arguments:
@@ -4809,13 +4992,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1312156949}
+      - m_Target: {fileID: 99107445}
         m_MethodName: PlaySound
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4829,18 +5012,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   OnHoverEnd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1312156949}
-        m_MethodName: PlaySound
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   DisplayName: Box o' Booze
@@ -4859,44 +5031,6 @@ MonoBehaviour:
   Description: A box of beer bottles each filled to various degrees.
   FlavorText: '*Hic*'
   Keyname: 
---- !u!114 &1312156949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1312156947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
-    type: 3}
-  audioPrefabParent: {fileID: 1312156947}
-  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
-    type: 2}
-  audioClips:
-  - {fileID: 8300000, guid: ee5f65a28b2afb1488666d5e6b2a967c, type: 3}
-  - {fileID: 8300000, guid: 476da92cfc1cce242b565da22ef1592c, type: 3}
-  - {fileID: 8300000, guid: 0f6a967f698ffa14f9c055ba79fcf997, type: 3}
-  StartVolume: 1
-  StereoPan: 0
-  loop: 0
-  useClipsAsPlaylist: 0
-  playlistClipDelay: 0
-  randomize: 0
-  smartRandomize: 0
-  stopSoundOnFadeOut: 0
-  letClipFinishOnStop: 0
-  FadeInSpeed: 0
-  FadeInEndVolume: 1
-  FadeOutSpeed: 0
-  FadeOutEndVolume: 0
-  RandomVolumeMax: 1
-  RandomVolumeMin: 1
-  RandomPitchMax: 1
-  RandomPitchMin: 1
 --- !u!65 &1312156951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4910,6 +5044,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.10081098, y: 0.05037926, z: 0.09280218}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1312156953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1270677783538808843, guid: 7f9edb1b701fbf240805dc42753a1fae,
+    type: 3}
+  m_PrefabInstance: {fileID: 6113898697470560020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1358359880
 GameObject:
   m_ObjectHideFlags: 0
@@ -5415,6 +5555,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.31563985, y: 0.5864698, z: 0.34504476}
   m_Center: {x: 0, y: -0.000000014901163, z: 0.011552625}
+--- !u!114 &1480878517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480878512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: c14443dcf724fbe4594328dcc43e54a3,
+    type: 3}
+  audioPrefabParent: {fileID: 1480878512}
+  mixerTrack: {fileID: 7671558235606071021, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: 826f0044fa84f7d43957ce2bb55707db, type: 3}
+  StartVolume: 0.034
+  StereoPan: 0
+  loop: 1
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
+--- !u!114 &1480878518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480878512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd4b0a331a2e904ebe2609dc0c51111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 1480878517}
 --- !u!1001 &1527612216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5525,11 +5714,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_closetShelf (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 5323311403034422653, guid: 428973bf133d7384d91c9108f1e02f71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5599,6 +5783,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15.46586
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_closetShelf (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428973bf133d7384d91c9108f1e02f71, type: 3}
@@ -5703,11 +5892,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 380fc857a04287d49ae413b50c6bafae,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_Tub
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 380fc857a04287d49ae413b50c6bafae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5777,6 +5961,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.6254072
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 380fc857a04287d49ae413b50c6bafae,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_Tub
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 380fc857a04287d49ae413b50c6bafae, type: 3}
@@ -6012,11 +6201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7607108079958848613, guid: fc4dc0035cf583f459f1ee518e11e54c,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_tallGlass (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 6902533503500781174, guid: fc4dc0035cf583f459f1ee518e11e54c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6087,6 +6271,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 7607108079958848613, guid: fc4dc0035cf583f459f1ee518e11e54c,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_tallGlass (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc4dc0035cf583f459f1ee518e11e54c, type: 3}
 --- !u!1 &1930093909 stripped
@@ -6115,11 +6304,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7058945465707166501, guid: cfde5b63cf26a8d4492960a595d3ab77,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_sink (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 6317759009533364534, guid: cfde5b63cf26a8d4492960a595d3ab77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6189,6 +6373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 13.145981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7058945465707166501, guid: cfde5b63cf26a8d4492960a595d3ab77,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_sink (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfde5b63cf26a8d4492960a595d3ab77, type: 3}
@@ -6459,11 +6648,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_closetShelf (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5323311403034422653, guid: 428973bf133d7384d91c9108f1e02f71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6533,6 +6717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15.46586
+      objectReference: {fileID: 0}
+    - target: {fileID: 9204067209938329454, guid: 428973bf133d7384d91c9108f1e02f71,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_closetShelf (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 428973bf133d7384d91c9108f1e02f71, type: 3}
@@ -6739,11 +6928,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7058945465707166501, guid: cfde5b63cf26a8d4492960a595d3ab77,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_sink
-      objectReference: {fileID: 0}
     - target: {fileID: 6317759009533364534, guid: cfde5b63cf26a8d4492960a595d3ab77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6814,6 +6998,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 7058945465707166501, guid: cfde5b63cf26a8d4492960a595d3ab77,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_sink
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfde5b63cf26a8d4492960a595d3ab77, type: 3}
 --- !u!1001 &1610822067690483664
@@ -6823,11 +7012,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7312481527869885529, guid: 9c108cb8cdbab7142963f644d389809f,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_blackGoldWineBottle
-      objectReference: {fileID: 0}
     - target: {fileID: 5989927057434132042, guid: 9c108cb8cdbab7142963f644d389809f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6897,6 +7081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 13.145981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7312481527869885529, guid: 9c108cb8cdbab7142963f644d389809f,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_blackGoldWineBottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c108cb8cdbab7142963f644d389809f, type: 3}
@@ -7495,11 +7684,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3716035405177785254, guid: d566bb69ca53b2a4790bfe09de2538e6,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_shotGlass
-      objectReference: {fileID: 0}
     - target: {fileID: 416964890498136501, guid: d566bb69ca53b2a4790bfe09de2538e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7570,6 +7754,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 3716035405177785254, guid: d566bb69ca53b2a4790bfe09de2538e6,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_shotGlass
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d566bb69ca53b2a4790bfe09de2538e6, type: 3}
 --- !u!1001 &4712513960615708085
@@ -7579,11 +7768,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3623105684450515461, guid: 6eedf1c3783558d4c83f338a8ddf4d12,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_labeledBernardBeer
-      objectReference: {fileID: 0}
     - target: {fileID: 296255386829842454, guid: 6eedf1c3783558d4c83f338a8ddf4d12,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7654,6 +7838,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 3623105684450515461, guid: 6eedf1c3783558d4c83f338a8ddf4d12,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_labeledBernardBeer
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6eedf1c3783558d4c83f338a8ddf4d12, type: 3}
 --- !u!1001 &4751239482063393012
@@ -7663,11 +7852,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3660905554657858069, guid: c2a93dddeaa255045b958715eb9b493f,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_corkscrew
-      objectReference: {fileID: 0}
     - target: {fileID: 330310800515538950, guid: c2a93dddeaa255045b958715eb9b493f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7738,6 +7922,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 3660905554657858069, guid: c2a93dddeaa255045b958715eb9b493f,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_corkscrew
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2a93dddeaa255045b958715eb9b493f, type: 3}
 --- !u!1001 &5393352042794881391
@@ -7747,11 +7936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4177339401077042627, guid: d78c35be498b4f74ab6a911888cd6876,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_sakuraWineBottle
-      objectReference: {fileID: 0}
     - target: {fileID: 1126953056125476816, guid: d78c35be498b4f74ab6a911888cd6876,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7822,6 +8006,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 4177339401077042627, guid: d78c35be498b4f74ab6a911888cd6876,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_sakuraWineBottle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d78c35be498b4f74ab6a911888cd6876, type: 3}
 --- !u!1001 &5411488936134715957
@@ -7831,11 +8020,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4051152319648212643, guid: dfadac5e62791064bb1f270c97179fb8,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_wallBed
-      objectReference: {fileID: 0}
     - target: {fileID: 1036896961455150256, guid: dfadac5e62791064bb1f270c97179fb8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7906,6 +8090,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 4051152319648212643, guid: dfadac5e62791064bb1f270c97179fb8,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_wallBed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfadac5e62791064bb1f270c97179fb8, type: 3}
 --- !u!1001 &6011129032795332699
@@ -7915,11 +8104,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2326741528817362002, guid: 3b3b81a77353ee64dbb24a7c1fda0839,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_wineHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 1590165183401563713, guid: 3b3b81a77353ee64dbb24a7c1fda0839,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7990,6 +8174,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 2326741528817362002, guid: 3b3b81a77353ee64dbb24a7c1fda0839,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_wineHolder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b3b81a77353ee64dbb24a7c1fda0839, type: 3}
 --- !u!1001 &6035731468917894759
@@ -7999,11 +8188,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2369690399035932560, guid: 1e2d017a60ecd70458fbea390470ed70,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_knifeBlock
-      objectReference: {fileID: 0}
     - target: {fileID: 1637494988678253955, guid: 1e2d017a60ecd70458fbea390470ed70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8074,6 +8258,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 2369690399035932560, guid: 1e2d017a60ecd70458fbea390470ed70,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_knifeBlock
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e2d017a60ecd70458fbea390470ed70, type: 3}
 --- !u!1001 &6113898697470560020
@@ -8083,11 +8272,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2880337211291159064, guid: 7f9edb1b701fbf240805dc42753a1fae,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_beerBoxOpened
-      objectReference: {fileID: 0}
     - target: {fileID: 1270677783538808843, guid: 7f9edb1b701fbf240805dc42753a1fae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8158,6 +8342,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 2880337211291159064, guid: 7f9edb1b701fbf240805dc42753a1fae,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_beerBoxOpened
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9edb1b701fbf240805dc42753a1fae, type: 3}
 --- !u!1001 &6210745345989748982
@@ -8167,11 +8356,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2670936850559147774, guid: e54c9bff8f90faa458bc615e2e3caf8a,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_posters
-      objectReference: {fileID: 0}
     - target: {fileID: 1390006117354106093, guid: e54c9bff8f90faa458bc615e2e3caf8a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8242,6 +8426,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 13.145981
       objectReference: {fileID: 0}
+    - target: {fileID: 2670936850559147774, guid: e54c9bff8f90faa458bc615e2e3caf8a,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_posters
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54c9bff8f90faa458bc615e2e3caf8a, type: 3}
 --- !u!1001 &6683092349383105671
@@ -8251,11 +8440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3431443862011122888, guid: de45ce25001a6af4fb1ec08d495ce8da,
-        type: 3}
-      propertyPath: m_Name
-      value: Friday_desk
-      objectReference: {fileID: 0}
     - target: {fileID: 1857077183219558107, guid: de45ce25001a6af4fb1ec08d495ce8da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8325,6 +8509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 13.145981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431443862011122888, guid: de45ce25001a6af4fb1ec08d495ce8da,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_desk
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de45ce25001a6af4fb1ec08d495ce8da, type: 3}
@@ -8755,10 +8944,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8993361413475781611, guid: 7c642b4a9270cfd40a923ddd173c5c2f,
+    - target: {fileID: 1061824866512509817, guid: 7c642b4a9270cfd40a923ddd173c5c2f,
         type: 3}
-      propertyPath: m_Name
-      value: Bernard_DiningTable
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2095725847606709933, guid: 7c642b4a9270cfd40a923ddd173c5c2f,
         type: 3}
@@ -8830,10 +9019,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.7895775
       objectReference: {fileID: 0}
-    - target: {fileID: 1061824866512509817, guid: 7c642b4a9270cfd40a923ddd173c5c2f,
+    - target: {fileID: 8993361413475781611, guid: 7c642b4a9270cfd40a923ddd173c5c2f,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_Name
+      value: Bernard_DiningTable
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1061824866512509817, guid: 7c642b4a9270cfd40a923ddd173c5c2f, type: 3}
