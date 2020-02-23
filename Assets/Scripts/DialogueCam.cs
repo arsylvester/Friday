@@ -21,27 +21,27 @@ public class DialogueCam : MonoBehaviour
     public GameObject dialogueCam;
     public GameObject questioningCam;
 
+    bool isDoneTalking = true;
     bool isQuestioning = false;
 
     PlayerAnimController playerAnimController;
 
     public float npcRotationOffset;
-    public float npcRotationOriginalOffset;
 
     private Journal journal;
     DialogueUI runner;
 
+    PlayerMovement playerMovement;
     public GameObject fade;
     Image fadeImage;
-    public float fadeInOnDialogueStart;
-    public float fadeOutOnDialogueStart;
-    public float fadeInOnDialogueEnd;
-    public float fadeOutOnDialogueEnd;
-    public float fadeTransition;
+    public float fadeIn;
+    public float fadeTranstition;
+    public float fadeOut;
 
     private void Start()
     {
         charController = GetComponent<CharacterController>();
+        playerMovement = GetComponent<PlayerMovement>();
 
         gameCam.SetActive(true);
         cutsceneCam.SetActive(false);
@@ -55,83 +55,14 @@ public class DialogueCam : MonoBehaviour
         journal.OnQuestionStop.AddListener(SwitchToDialogueCam);
 
         runner = FindObjectOfType<DialogueUI>();
-        runner.onDialogueStart.AddListener(FadeInOnDialogueStart);
-        runner.onDialogueStart.AddListener(MovePlayer);
-        runner.onDialogueEnd.AddListener(SwitchToGameCam);
+        runner.onDialogueStart.AddListener(DoneTalking);
+        runner.onDialogueStart.AddListener(delegate{StartFade(isDoneTalking);});
+        runner.onDialogueEnd.AddListener(DoneTalking);
+        runner.onDialogueEnd.AddListener(delegate { StartFade(isDoneTalking); });
 
         fadeImage = fade.GetComponent<Image>();
         fadeImage.enabled = true;
         fadeImage.canvasRenderer.SetAlpha(0f);
-    }
-
-    void Update()
-    {
-        if (movePlayer)
-        {
-            MoveToLocation();
-        }
-        Debug.Log(Vector3.Distance(transform.position, target.position));
-    }
-
-    public void MoveToLocation()
-    {
-        Vector3 dir = target.position - transform.position;
-
-        Vector3 movement = dir.normalized * speed * 1.25f * Time.deltaTime;
-
-        // limit movement to never pass the target position
-        if (movement.magnitude > dir.magnitude) movement = dir;
-
-        charController.Move(movement);
-        Rotation(movement);
-    }
-    
-    void Rotation(Vector3 movement)
-    {
-        var moveDir = movement;
-        moveDir.y = 0;
-
-        if (Vector3.Distance(transform.position, target.position) > 1)
-        {
-            playerAnimController.ChangePlayerAnim(2);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir), rotationSmoothing);
-        }
-        else
-        {
-            if (!isQuestioning)
-                SwitchToDialogueCam();
-            else
-                SwitchToQuestioningCam();
-
-            playerAnimController.ChangePlayerAnim(1);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
-            Invoke("FadeOutOnDialogueStart", fadeTransition);
-
-            if (Vector3.Distance(transform.position, target.position) < 0.1)
-            {
-                StopMovingPlayer();
-            }
-        }
-    }
-    
-    public void FadeInOnDialogueStart()
-    {
-        fadeImage.CrossFadeAlpha(1, fadeInOnDialogueStart, false);
-    }
-
-    public void FadeOutOnDialogueStart()
-    {
-        fadeImage.CrossFadeAlpha(0, fadeOutOnDialogueStart, false);
-    }
-
-    public void FadeInOnDialogueEnd()
-    {
-        fadeImage.CrossFadeAlpha(1, fadeInOnDialogueEnd, false);
-    }
-
-    public void FadeOutOnDialogueEnd()
-    {
-        fadeImage.CrossFadeAlpha(0, fadeOutOnDialogueEnd, false);
     }
 
     public void SwitchToDialogueCam()
@@ -143,7 +74,7 @@ public class DialogueCam : MonoBehaviour
         dialogueCam.SetActive(true);
         questioningCam.SetActive(false);
 
-        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOffset, npc.transform.rotation.z), rotationSmoothing);
+        npc.transform.rotation = Quaternion.Lerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOffset, npc.transform.rotation.z), rotationSmoothing  * Time.deltaTime);
     }
 
     public void SwitchToQuestioningCam()
@@ -163,20 +94,46 @@ public class DialogueCam : MonoBehaviour
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
 
-        npc.transform.rotation = Quaternion.Slerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOriginalOffset, npc.transform.rotation.z), rotationSmoothing);
-
-        FadeInOnDialogueEnd();
-        Invoke("FadeOutOnDialogueEnd", fadeTransition);
+        npc.transform.rotation = Quaternion.Lerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y - npcRotationOffset, npc.transform.rotation.z), rotationSmoothing  * Time.deltaTime);
     }
 
-    public void MovePlayer()
+    public void StartFade(bool isDoneTalking)
     {
-        movePlayer = true;
+        playerMovement.StopMovement();
+        playerAnimController.ChangePlayerAnim(1);
+        StartCoroutine("Fade", isDoneTalking);
     }
 
-    public void StopMovingPlayer()
+    public void DoneTalking()
     {
-        movePlayer = false;
+        isDoneTalking = !isDoneTalking;
+    }
+
+    IEnumerator Fade(bool isDoneTalking)
+    {
+        // fade in
+        fadeImage.CrossFadeAlpha(1, fadeIn, false);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
+
+        yield return new WaitForSeconds(fadeIn);
+
+        // fade transition- change cameras when screen is black
+        if (!isDoneTalking)
+            SwitchToDialogueCam();
+        else
+            SwitchToGameCam();
+
+        yield return new WaitForSeconds(fadeTranstition);
+
+        // fade out
+        fadeImage.CrossFadeAlpha(0, fadeOut, false);
+
+        yield return new WaitForSeconds(fadeOut);
+
+        if (isDoneTalking)
+        {
+            playerMovement.ResumeMovement();
+        }
     }
 }
 

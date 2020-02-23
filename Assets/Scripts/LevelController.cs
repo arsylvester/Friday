@@ -217,8 +217,6 @@ public class LevelController : MonoBehaviour
     {
         mapUI.SetActive(false);
 
-        playerMove.ResumeMovement();
-
         mapMoveBack = true;
 
         cam.UnfreezeCamera();
@@ -255,6 +253,8 @@ public class LevelController : MonoBehaviour
         }
         else
         {
+            playerMove.ResumeMovement();
+
             playerAnim.ChangePlayerAnim(1);
             mapMoveBack = false;
         }
