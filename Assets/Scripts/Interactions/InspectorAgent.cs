@@ -24,6 +24,7 @@ public class InspectorAgent : MonoBehaviour
 
     private IEnumerator focusCoroutine;
     private Inspectable target;
+    private bool focused = false;
 
     private Dictionary<Inspectable, IEnumerator> unfocusCoroutines = new Dictionary<Inspectable, IEnumerator>();
     private Dictionary<Inspectable, Quaternion> originalRotations = new Dictionary<Inspectable, Quaternion>();
@@ -84,7 +85,6 @@ public class InspectorAgent : MonoBehaviour
             }
             
             //FlavorText.text = target.InspectorText;
-            OnFocused.Invoke(target);
             focusCoroutine = FocusObject(target.gameObject);
             StartCoroutine(focusCoroutine);
         }
@@ -110,6 +110,8 @@ public class InspectorAgent : MonoBehaviour
         } while (t < FocusTime);
 
         Debug.Log("Focused");
+        focused = true;
+        OnFocused.Invoke(this.target);
     }
 
     public IEnumerator UnfocusObject(GameObject target, Quaternion originalRotation, Vector3 originalPosition)
@@ -119,6 +121,9 @@ public class InspectorAgent : MonoBehaviour
         Vector3 focusAngularVelocity = Vector3.zero;
         Vector3 startingPosition = target.transform.position;
         Vector3 startingEuler = target.transform.rotation.eulerAngles;
+
+        Debug.Log("Unfocused");
+        focused = false;
 
         do
         {
@@ -136,7 +141,6 @@ public class InspectorAgent : MonoBehaviour
         {
             child.gameObject.layer = LayerMask.NameToLayer("Default");
         }
-        Debug.Log("Unfocused");
     }
 
     public void Release()
