@@ -82,8 +82,6 @@ public class PlayerMovement : MonoBehaviour
     public void StopMovement()
     {
         isStopped = true;
-        moveDirection = new Vector3(0, 0, 0);
-        playerAnimController.animator.SetInteger("MainCharAnim", 1);
     }
 
     public void ResumeMovement()

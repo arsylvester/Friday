@@ -225,6 +225,7 @@ public class LevelController : MonoBehaviour
     void MoveToLocation()
     {
         CharacterController player = FindObjectOfType<CharacterController>();
+        PlayerAnimController playerAnim = player.GetComponent<PlayerAnimController>();
 
         Vector3 dir = mapBackLocation.transform.position - player.gameObject.transform.position;
 
@@ -234,28 +235,23 @@ public class LevelController : MonoBehaviour
         if (movement.magnitude > dir.magnitude) movement = dir;
 
         player.Move(movement);
-        Rotation(player.gameObject, movement);
+        playerAnim.ChangePlayerAnim(2);
+        Rotation(player.gameObject, movement, playerAnim);
     }
 
 
-    void Rotation(GameObject player, Vector3 movement)
+    void Rotation(GameObject player, Vector3 movement, PlayerAnimController playerAnim)
     {
-        PlayerAnimController playerAnim = player.GetComponent<PlayerAnimController>();
 
         var moveDir = movement;
         moveDir.y = 0;
 
         player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(moveDir), 0.125f);
 
-        if (Vector3.Distance(player.transform.position, mapBackLocation.transform.position) > 1)
+        if (Vector3.Distance(player.transform.position, mapBackLocation.transform.position) <= 1)
         {
-            playerAnim.ChangePlayerAnim(2);
-        }
-        else
-        {
-            playerMove.ResumeMovement();
-
             playerAnim.ChangePlayerAnim(1);
+            playerMove.ResumeMovement();
             mapMoveBack = false;
         }
     }
