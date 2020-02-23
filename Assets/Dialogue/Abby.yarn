@@ -16,11 +16,26 @@ ABBY: What else do you need detective?
 [[AbbyMain]]
 ===
 
+title: AbbyRepeat
+tags: 
+colorID: 0
+position: 861,368
+---
+JACE: Let’s get this over with...
+JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
+ABBY: Correction. Your crime scene is my apartment. Or it was.
+ABBY: Come in, come in.
+ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
+ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
+[[AbbyMain]]
+===
+
 title: AbbyMain
 tags: 
 colorID: 0
 position: 1163,357
 ---
+[[Repeat conversation|AbbyRepeat]]
 [[What sort of relationship did you have with Friday?|AbbyQ1]]
 [[Was anyone else here when it happened?|AbbyQ2]]
 <<if $broke_into is true>>

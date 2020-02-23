@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISubsection : MonoBehaviour
 {
     private bool isOpen = true;
+    [SerializeField] Image toggleIcon;
+    [SerializeField] Sprite plusSprite;
+    [SerializeField] Sprite minusSprite;
 
     public void ToggleChildern()
     {
@@ -13,5 +17,11 @@ public class UISubsection : MonoBehaviour
         {
             transform.GetChild(x).gameObject.SetActive(isOpen);
         }
+
+        toggleIcon.gameObject.SetActive(true);
+        if(isOpen)
+            toggleIcon.sprite = minusSprite;
+        else
+            toggleIcon.sprite = plusSprite;
     }
 }
