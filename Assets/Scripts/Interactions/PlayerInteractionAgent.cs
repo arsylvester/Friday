@@ -62,8 +62,14 @@ public class PlayerInteractionAgent : MonoBehaviour
                 if (lastHovered != null && lastHovered != interactable)
                 {
                     OnHoverEnd.Invoke(lastHovered);
+                    Debug.Log("UNHOVER");
                     lastHovered.OnHoverEnd.Invoke();
+                }
+
+                if(lastHovered != interactable)
+                {
                     OnHoverStart.Invoke(interactable);
+                    Debug.Log("HOVER");
                     interactable.OnHoverStart.Invoke();
                 }
 
@@ -86,6 +92,7 @@ public class PlayerInteractionAgent : MonoBehaviour
                 {
                     OnHoverEnd.Invoke(lastHovered);
                     lastHovered.OnHoverEnd.Invoke();
+                    Debug.Log("UNHOVER");
                     NameTag.text = "";
                     lastHovered = null;
                 }
@@ -98,6 +105,7 @@ public class PlayerInteractionAgent : MonoBehaviour
             {
                 OnHoverEnd.Invoke(lastHovered);
                 lastHovered.OnHoverEnd.Invoke();
+                Debug.Log("UNHOVER");
                 NameTag.text = "";
                 lastHovered = null;
             }
@@ -117,6 +125,7 @@ public class PlayerInteractionAgent : MonoBehaviour
         {
             OnHoverEnd.Invoke(lastHovered);
             lastHovered.OnHoverEnd.Invoke();
+            Debug.Log("UNHOVER");
             NameTag.text = "";
             lastHovered = null;
         }
