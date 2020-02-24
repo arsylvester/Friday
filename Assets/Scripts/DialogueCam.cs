@@ -101,6 +101,7 @@ public class DialogueCam : MonoBehaviour
     {
         playerMovement.StopMovement();
         playerAnimController.ChangePlayerAnim(1);
+        playerMovement.moveDirection = Vector3.zero;
         StartCoroutine("Fade", isDoneTalking);
     }
 
@@ -113,7 +114,6 @@ public class DialogueCam : MonoBehaviour
     {
         // fade in
         fadeImage.CrossFadeAlpha(1, fadeIn, false);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothing);
 
         yield return new WaitForSeconds(fadeIn);
 
@@ -123,6 +123,9 @@ public class DialogueCam : MonoBehaviour
         else
             SwitchToGameCam();
 
+        transform.position = target.position;
+        transform.rotation = target.rotation;
+
         yield return new WaitForSeconds(fadeTranstition);
 
         // fade out
@@ -131,9 +134,7 @@ public class DialogueCam : MonoBehaviour
         yield return new WaitForSeconds(fadeOut);
 
         if (isDoneTalking)
-        {
             playerMovement.ResumeMovement();
-        }
     }
 }
 
