@@ -12,7 +12,7 @@ public class DialogueCam : MonoBehaviour
 
     CharacterController charController;
     public bool movePlayer;
-    public float rotationSmoothing;
+    public Quaternion tmpNpcRotation;
 
     public GameObject npc;
 
@@ -63,6 +63,8 @@ public class DialogueCam : MonoBehaviour
         fadeImage = fade.GetComponent<Image>();
         fadeImage.enabled = true;
         fadeImage.canvasRenderer.SetAlpha(0f);
+
+        tmpNpcRotation = npc.transform.rotation;
     }
 
     public void SwitchToDialogueCam()
@@ -73,8 +75,6 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(true);
         questioningCam.SetActive(false);
-
-        npc.transform.rotation = Quaternion.Lerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y + npcRotationOffset, npc.transform.rotation.z), rotationSmoothing  * Time.deltaTime);
     }
 
     public void SwitchToQuestioningCam()
@@ -93,8 +93,6 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(false);
-
-        npc.transform.rotation = Quaternion.Lerp(npc.transform.rotation, Quaternion.Euler(npc.transform.rotation.x, npc.transform.rotation.y - npcRotationOffset, npc.transform.rotation.z), rotationSmoothing  * Time.deltaTime);
     }
 
     public void StartFade(bool isDoneTalking)
@@ -119,9 +117,15 @@ public class DialogueCam : MonoBehaviour
 
         // fade transition- change cameras when screen is black
         if (!isDoneTalking)
+        {
             SwitchToDialogueCam();
+            npc.transform.rotation = Quaternion.Euler(0, npcRotationOffset, 0);
+        }
         else
+        {
             SwitchToGameCam();
+            npc.transform.rotation = tmpNpcRotation;
+        }
 
         transform.position = target.position;
         transform.rotation = target.rotation;
