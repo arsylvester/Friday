@@ -1191,7 +1191,8 @@ MonoBehaviour:
   audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
     type: 3}
   audioPrefabParent: {fileID: 285306316}
-  mixerTrack: {fileID: 0}
+  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
   audioClips:
   - {fileID: 8300000, guid: ee5f65a28b2afb1488666d5e6b2a967c, type: 3}
   StartVolume: 1
@@ -4590,7 +4591,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1841016484}
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHoverStart:
@@ -4632,6 +4644,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5180833, y: 0, z: 2.5180833}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1841016484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841016478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
+    type: 3}
+  audioPrefabParent: {fileID: 1841016478}
+  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: ee5f65a28b2afb1488666d5e6b2a967c, type: 3}
+  StartVolume: 1
+  StereoPan: 0
+  loop: 0
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
 --- !u!1 &1866369588
 GameObject:
   m_ObjectHideFlags: 0
@@ -4954,6 +5002,12 @@ PrefabInstance:
       propertyPath: DisplayName
       value: Biils
       objectReference: {fileID: 0}
+    - target: {fileID: 1571321615900812968, guid: 938aee01b24c5f64bbcb0938df08c1ff,
+        type: 3}
+      propertyPath: mixerTrack
+      value: 
+      objectReference: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+        type: 2}
     - target: {fileID: 7882956032840148242, guid: 938aee01b24c5f64bbcb0938df08c1ff,
         type: 3}
       propertyPath: EntryName
