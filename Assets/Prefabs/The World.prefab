@@ -1229,11 +1229,11 @@ MonoBehaviour:
   cutsceneCam: {fileID: 3298370810020090011}
   dialogueCam: {fileID: 7822683450215842206}
   questioningCam: {fileID: 2513149747526114657}
-  npcRotationOffset: -10
+  npcRotationOffset: 75
   fade: {fileID: 731285796436648261}
-  fadeIn: 0
-  fadeTranstition: 0
-  fadeOut: 0
+  fadeIn: 0.5
+  fadeTranstition: 1
+  fadeOut: 2
 --- !u!114 &186475976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2927,6 +2927,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Orbits.Array.data[2].m_Radius
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006657784708188505, guid: da340e44f8d8213499d5c5c502414a49,
+        type: 3}
+      propertyPath: m_Rigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006657784708188505, guid: da340e44f8d8213499d5c5c502414a49,
+        type: 3}
+      propertyPath: m_Rigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006657784708188505, guid: da340e44f8d8213499d5c5c502414a49,
+        type: 3}
+      propertyPath: m_Rigs.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9006657784708188506, guid: da340e44f8d8213499d5c5c502414a49,
         type: 3}
