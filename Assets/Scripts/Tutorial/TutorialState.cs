@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class TutorialState : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class TutorialState : MonoBehaviour
 
     public static void Next()
     {
-        state = STATES[STATES.ToList().FindIndex(x => x == state) + 1];
+        state = STATES[Array.FindIndex(STATES, x => x == state) + 1];
     }
 
     public static string Current
