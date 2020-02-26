@@ -44,7 +44,7 @@ position: 1163,357
 <<if $visited_pennies and $broke_into and $visited_alone>>
     [[Where were you when it happened?|AbbyWhere]]
 <<endif>>
-[[Interogate|AbbyInterogation]]
+[[Interrogate|AbbyInterogation]]
 ===
 
 title: AbbyInterogation
@@ -56,37 +56,45 @@ position: 1163,357
 <<if $tryagain is false>>
 	ABBY: What is it detective?
 <<endif>>
-->Confirm Questioning Choices
+->Confirm Interrogation Choices
 	<<if question("old_tv", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyOldTV]]
     <<elseif question("gang_violence", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyGangs]]
     <<elseif question("bills", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyBills]]
     <<elseif question("differ_address", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyDiffAddress]]
     <<elseif question("manage_bills", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyManBills]]
     <<elseif question("pennies", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyPennies]]
     <<elseif question("chalk", "-") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyChalk]]
     <<elseif question("friday_alone", "locked_door") is true>>
         <<stopquestioning Journal>>
+		<<set $tryagain to false>>
 		[[AbbyFridayWasAlone]]
 	<<else>>
 		ABBY: I'm sorry, what are you trying to get at?
 		<<set $tryagain to true>>
 		[[AbbyInterogation]]
 	<<endif>>
-->Quit Questioning
+->Quit Interrogation
 	<<stopquestioning Journal>>
 	<<set $tryagain to false>>
 	[[AbbyMain]]
