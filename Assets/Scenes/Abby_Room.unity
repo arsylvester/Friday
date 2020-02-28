@@ -1174,8 +1174,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.92904156, y: 0.92332965, z: 0.90574867}
-  m_Center: {x: -0.00000001490116, y: 0.38939068, z: 0}
+  m_Size: {x: 0.9290416, y: 1.5493251, z: 0.90574867}
+  m_Center: {x: 0, y: 0.7023883, z: 0}
 --- !u!114 &285306321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4557,11 +4557,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3913672360434042357, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 11.799988
-      objectReference: {fileID: 0}
     - target: {fileID: 1430756785834273761, guid: ee6c3eee654f0184b83462bf304d0bde,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -4606,6 +4601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913672360434042357, guid: ee6c3eee654f0184b83462bf304d0bde,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 11.799988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee6c3eee654f0184b83462bf304d0bde, type: 3}
@@ -5056,6 +5056,12 @@ PrefabInstance:
       propertyPath: DisplayName
       value: Biils
       objectReference: {fileID: 0}
+    - target: {fileID: 1571321615900812968, guid: 938aee01b24c5f64bbcb0938df08c1ff,
+        type: 3}
+      propertyPath: mixerTrack
+      value: 
+      objectReference: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+        type: 2}
     - target: {fileID: 7882956032840148242, guid: 938aee01b24c5f64bbcb0938df08c1ff,
         type: 3}
       propertyPath: EntryName
@@ -5076,12 +5082,6 @@ PrefabInstance:
       propertyPath: Keyname
       value: manage_bills
       objectReference: {fileID: 0}
-    - target: {fileID: 1571321615900812968, guid: 938aee01b24c5f64bbcb0938df08c1ff,
-        type: 3}
-      propertyPath: mixerTrack
-      value: 
-      objectReference: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938aee01b24c5f64bbcb0938df08c1ff, type: 3}
 --- !u!4 &1891271633 stripped
