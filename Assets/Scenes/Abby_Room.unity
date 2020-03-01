@@ -5918,6 +5918,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -7.3365765
       objectReference: {fileID: 0}
+    - target: {fileID: 2282810648346128304, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
 --- !u!1001 &1891271632
@@ -6692,10 +6697,10 @@ MonoBehaviour:
   StartVolume: 1
   StereoPan: 0
   loop: 0
-  useClipsAsPlaylist: 1
+  useClipsAsPlaylist: 0
   playlistClipDelay: 0
-  randomize: 1
-  smartRandomize: 0
+  randomize: 0
+  smartRandomize: 1
   stopSoundOnFadeOut: 0
   letClipFinishOnStop: 0
   FadeInSpeed: 0
