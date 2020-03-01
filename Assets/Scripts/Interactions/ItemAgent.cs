@@ -20,6 +20,15 @@ public class ItemAgent : MonoBehaviour
         this.item = null;
     }
 
+    ////////////////////////////////////////////
+    ///TUTORIAL ONLY
+    InspectorTutorial tutorial;
+    private void Start()
+    {
+        tutorial = GetComponent<InspectorTutorial>();
+    }
+    ////////////////////////////////////////////
+    
     // Update is called once per frame
     void Update()
     {
@@ -49,9 +58,16 @@ public class ItemAgent : MonoBehaviour
 
                 Journal jrnl = FindObjectOfType<Journal>();
 
+                ////////////////////////////////////////////
+                ///TUTORIAL ONLY
+                tutorial.RecordItem();
+                ////////////////////////////////////////////
                 if (secret != null)
                 {
-                    Debug.Log("Secret");
+                    ////////////////////////////////////////////
+                    ///TUTORIAL ONLY
+                    tutorial.RecordSecret();
+                    ////////////////////////////////////////////
                     jrnl.SaveItem(secret.EntryName, secret.Description, secret.FlavorText, capture, secret.Keyname);
                 }
                 else

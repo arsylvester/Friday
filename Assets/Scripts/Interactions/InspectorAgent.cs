@@ -31,9 +31,17 @@ public class InspectorAgent : MonoBehaviour
     private Dictionary<Inspectable, Vector3> originalPositions = new Dictionary<Inspectable, Vector3>();
 
     private Camera mainCamera;
+    ////////////////////////////////////////////
+    ///TUTORIAL ONLY
+    InspectorTutorial tutorial;
+    ////////////////////////////////////////////
     void Start()
     {
         mainCamera = GetComponent<Camera>();
+        ////////////////////////////////////////////
+        ///TUTORIAL ONLY
+        tutorial = GetComponent<InspectorTutorial>();
+        ////////////////////////////////////////////
     }
 
     private void Update()
@@ -48,6 +56,10 @@ public class InspectorAgent : MonoBehaviour
 
                 if (!hit || LeastCommonAncestor(target.transform, rayInfo.collider.transform) != target.transform)
                 {
+                    ////////////////////////////////////////////
+                    ///TUTORIAL ONLY
+                    tutorial.LeaveItem();
+                    ////////////////////////////////////////////
                     Release();
                 }
             }
@@ -56,6 +68,10 @@ public class InspectorAgent : MonoBehaviour
             {
                 target.transform.Rotate(transform.right, Input.GetAxis(VerticalRotationAxis) * DragSpeed, Space.World);
                 target.transform.Rotate(transform.up, -Input.GetAxis(HorizontalRotationAxis) * DragSpeed, Space.World);
+                ////////////////////////////////////////////
+                ///TUTORIAL ONLY
+                tutorial.RotateItem();
+                ////////////////////////////////////////////
             }
         }
     }

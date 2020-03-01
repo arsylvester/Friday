@@ -39,34 +39,59 @@ public class InspectorTutorial : MonoBehaviour
     {
         //Click bills step
         prompt.StartPrompt(DummyHighlight, BillsPrompt, true);
-        yield return new WaitForSeconds(1);
+        hasBillsBeenSelected = false;
         while (!hasBillsBeenSelected)
         {
             yield return null;
         }
         hasBillsBeenSelected = false;
         prompt.EndPrompt();
+        yield return new WaitForSeconds(0.1F);
 
         //Record item step
         prompt.StartPrompt(DummyHighlight, RecordPrompt, true);
-        yield return new WaitForSeconds(1);
+        hasRecordedItem = false;
+        while(!hasRecordedItem)
+        {
+            yield return null;
+        }
+        hasRecordedItem = false;
         prompt.EndPrompt();
+        yield return new WaitForSeconds(0.1F);
 
         //Rotate item step
         prompt.StartPrompt(DummyHighlight, RotatePrompt, true);
-        yield return new WaitForSeconds(1);
+        hasRotated = false;
+        while(!hasRotated)
+        {
+            yield return null;
+        }
+        hasRotated = false;
         prompt.EndPrompt();
+        yield return new WaitForSeconds(0.1F);
 
         //Record secret item step
         prompt.StartPrompt(DummyHighlight, SecretsPrompt, true);
-        yield return new WaitForSeconds(1);
+        hasRecordedSecret = false;
+        while(!hasRecordedSecret)
+        {
+            yield return null;
+        }
+        hasRecordedSecret = false;
         prompt.EndPrompt();
+        yield return new WaitForSeconds(0.1F);
 
         //Leave item prompt
         prompt.StartPrompt(DummyHighlight, LeavePrompt, true);
-        yield return new WaitForSeconds(1);
+        hasLeftItem = false;
+        while(!hasLeftItem)
+        {
+            yield return null;
+        }
+        hasLeftItem = false;
         prompt.EndPrompt();
-
+        yield return new WaitForSeconds(0.1F);
+        Debug.Log(TutorialState.Current);
         TutorialState.Next();
     }
 
@@ -75,5 +100,29 @@ public class InspectorTutorial : MonoBehaviour
     public void SelectBills()
     {
         hasBillsBeenSelected = true;
+    }
+
+    private bool hasRecordedItem = false;
+    public void RecordItem()
+    {
+        hasRecordedItem = true;
+    }
+
+    private bool hasRotated = false;
+    public void RotateItem()
+    {
+        hasRotated = true;
+    }
+
+    private bool hasRecordedSecret = false;
+    public void RecordSecret()
+    {
+        hasRecordedSecret = true;
+    }
+
+    private bool hasLeftItem = false;
+    public void LeaveItem()
+    {
+        hasLeftItem = true;
     }
 }
