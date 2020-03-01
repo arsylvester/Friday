@@ -29,6 +29,7 @@ public class Journal : MonoBehaviour
     [SerializeField] GameObject deductionElementPrefab;
     [SerializeField] Transform deductionPanel;
     [SerializeField] DeductionSummary deductionSummary;
+    [SerializeField] DilogueTutorialManager dilogueTutorialManager;
 
     private int linesSaved = 0;
     private int NumOfEvidenceQuestioned = 0;
@@ -113,6 +114,12 @@ public class Journal : MonoBehaviour
                 keyEntries.Remove(temp);
                 Destroy(temp);
             }
+
+            if(TutorialState.Current == "deduction")
+            {
+                dilogueTutorialManager.deductionButton = newDedElement.GetComponentInChildren<Button>();
+                dilogueTutorialManager.startDeductionStep();
+            }
         });
 
         //TEST:
@@ -135,7 +142,7 @@ public class Journal : MonoBehaviour
         }
 
         //Add dialogue to journal
-        if (dialogSaveable && linesSaved < maxNumOfLinesSaveable && Input.GetKeyDown(KeyCode.F))
+        if ((TutorialState.Current == "done" || TutorialState.Current == "recordDialogue") && dialogSaveable && linesSaved < maxNumOfLinesSaveable && Input.GetKeyDown(KeyCode.F))
         {
             SaveDialogue();
         }
@@ -183,6 +190,12 @@ public class Journal : MonoBehaviour
         }
         linesSaved++;
         CanSaveDialogue(false);
+
+        if(TutorialState.Current == "recordDialogue")
+        {
+            dilogueTutorialManager.EndTutorial();
+            dilogueTutorialManager.fridayAloneButton = newJournalText.GetComponent<Button>();
+        }
     }
 
     public void SaveItem(string itemName, string desc, string flavor, Sprite sprite, string keyID)
@@ -223,6 +236,11 @@ public class Journal : MonoBehaviour
         if(keyID != "" && keyID != null)
         {
             keyEntries.Add(newJournalItem);
+        }
+
+        if(keyID == "pennies")
+        {
+            dilogueTutorialManager.stockingButton = newJournalItem.GetComponent<Button>();
         }
     }
 

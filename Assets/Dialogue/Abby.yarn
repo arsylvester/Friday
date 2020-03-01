@@ -57,8 +57,10 @@ colorID: 0
 position: 1163,357
 ---
 <<startquestioning Journal>>
+<<tutorialprompt DialogueContainer>>
 <<if $tryagain is false>>
 	ABBY: What is it detective?
+	<<tutorialprompt DialogueContainer>>
 <<endif>>
 ->Confirm Interrogation Choices
 	<<if question("old_tv", "-") is true>>
@@ -129,6 +131,7 @@ ABBY: Gosh no. I don’t enjoy having company over often.
 ABBY: And I’d never have someone else over while handling my appointments.
 <<startkey Journal friday_alone>>
 JACE: So, Friday was alone?
+<<tutorialprompt DialogueContainer>>
 ABBY: That’s what I’m saying! Friday was alone!
 <<endkey Journal>>
 JACE: Just making sure...
@@ -228,6 +231,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<tutorialprompt DialogueContainer>>
 JACE: She was murdered with a stocking full of… pennies. That mean anything to you?
 ABBY: Why would it mean anything to me? It’s not my stocking. I wouldn’t be caught dead in cheap hose like that.
 JACE: I’m asking if anything else in the neighborhood sounds similar? Pennies used in other incidents?

@@ -19,7 +19,8 @@ public class TutorialState : MonoBehaviour
         "interrogate",
         "comboAttempt1",
         "failCombo",
-        "stocking",
+        "free",
+        "deduction",
         "done"
     };
 
@@ -27,7 +28,9 @@ public class TutorialState : MonoBehaviour
 
     public static void Next()
     {
-        state = STATES[Array.FindIndex(STATES, x => x == state) + 1];
+        int index = Array.FindIndex(STATES, x => x == state);
+        if(index + 1 < STATES.Length)
+            state = STATES[Array.FindIndex(STATES, x => x == state) + 1];
     }
 
     public static string Current
