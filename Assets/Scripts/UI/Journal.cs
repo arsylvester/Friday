@@ -142,7 +142,7 @@ public class Journal : MonoBehaviour
         }
 
         //Add dialogue to journal
-        if ((TutorialState.Current == "done" || TutorialState.Current == "recordDialogue") && dialogSaveable && linesSaved < maxNumOfLinesSaveable && Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && dialogSaveable && linesSaved < maxNumOfLinesSaveable && dilogueTutorialManager.canSaveDialogue)
         {
             SaveDialogue();
         }
@@ -307,8 +307,16 @@ public class Journal : MonoBehaviour
     {
         foreach (GameObject lit in highlightedEntries)
         {
-            linesSaved--;
-            Destroy(lit);
+            if(lit.GetComponent<JournalElement>().keyID != "pennies" && lit.GetComponent<JournalElement>().keyID != "friday_alone")
+            {
+                linesSaved--;
+                Destroy(lit.gameObject);
+            }
+            else
+            {
+                lit.GetComponent<JournalElement>().Unhighlight();
+                print("Hey, you can't delete that!");
+            }
         }
         highlightedEntries.Clear();
         ToggleButtonsOff();

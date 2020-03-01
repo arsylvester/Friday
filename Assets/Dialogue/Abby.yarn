@@ -276,7 +276,7 @@ JACE: I’m sure it does. But could someone enter through that patio door?
 ABBY: They’d need a key if they wanted to enter from the back, but I suppose it’s possible.
 <<endkey>>
 <<set $visited_alone to true>>
-<<deduction("Friday was alone in a locked room when she was murdered.", "Friday was alone and the doors were locked. Altough its not impossible someone could got through the patio with a key.", "friday_alone", "locked_door", "", "")>>
+<<deduction("Friday was alone in a locked room when she was murdered.", "Friday was alone and the doors were locked. Altough its not impossible someone could got through the patio door with a key.", "friday_alone", "locked_door", "", "")>>
 [[AbbyMain]]
 ===
 

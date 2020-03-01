@@ -39,18 +39,11 @@ public class DilogueTutorialManager : MonoBehaviour
     private bool stockingPressed = false;
     private bool fridayAlonePressed = false;
     private bool deductionPressed = false;
+    private bool continuePressed = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool canSaveDialogue = false;
+    //testing
+    private bool skipStates = true;
 
     IEnumerator interrogatePrompts()
     {
@@ -86,12 +79,17 @@ public class DilogueTutorialManager : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        while(!Input.GetMouseButtonDown(0))
+        continuePressed = false;
+        tutorialPrompt.StartPrompt(continueButton.gameObject, interrogatePrompt4, true);
+        continueButton.onClick.AddListener(continueClicked);
+
+        while(!continuePressed)
         {
              yield return null;
         }
 
         interrogatePrompt4.SetActive(false);
+        continueButton.onClick.RemoveListener(continueClicked);
 
         EndTutorial();
         //prompt();
@@ -111,6 +109,11 @@ public class DilogueTutorialManager : MonoBehaviour
     public void deductionClicked()
     {
         deductionPressed = !deductionPressed;
+    }
+
+    public void continueClicked()
+    {
+        continuePressed = !continuePressed;
     }
 
     IEnumerator comboAttempt()
@@ -201,6 +204,7 @@ public class DilogueTutorialManager : MonoBehaviour
             case "recordDialogue":
                 continueButton.onClick.SetPersistentListenerState(0, UnityEventCallState.Off);
                 tutorialPrompt.StartPrompt(recDiaHighlight, recDiaPrompt, true);
+                canSaveDialogue = true;
                 break;
             case "mainMenu2":
                 StartCoroutine(waitThenPrompt(interrogateButton.gameObject, MM2Prompt, .05f));
@@ -237,6 +241,7 @@ public class DilogueTutorialManager : MonoBehaviour
                 break;
              case "leaveConvo":
                 leaveButton.onClick.SetPersistentListenerState(4, UnityEventCallState.Off);
+                leaveButton.gameObject.SetActive(false);
                 continueButton.onClick.SetPersistentListenerState(0, UnityEventCallState.RuntimeOnly);
                 break;
             case "followUpQuestions":
@@ -258,6 +263,7 @@ public class DilogueTutorialManager : MonoBehaviour
                 break;
             case "free":
                 continueButton.onClick.SetPersistentListenerState(2, UnityEventCallState.Off);
+                leaveButton.gameObject.SetActive(true);
                 break;
             case "deduction":
                 break;
@@ -273,8 +279,12 @@ public class DilogueTutorialManager : MonoBehaviour
     [YarnCommand("nextTutState")]
     public void nextTutState()
     {
-        TutorialState.Next();
-        TutorialState.Next();
+        if(skipStates)
+        {
+            TutorialState.Next();
+            TutorialState.Next();
+            skipStates = false;
+        }
         print(TutorialState.Current);
     }
 }
