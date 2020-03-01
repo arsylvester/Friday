@@ -4,6 +4,7 @@ colorID: 0
 position: 861,368
 ---
 <<if visited("AbbyStart") is false>>
+<<tutorialprompt DialogueContainer>>
 JACE: Let’s get this over with...
 JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 ABBY: Correction. Your crime scene is my apartment. Or it was.
@@ -11,6 +12,7 @@ ABBY: Come in, come in.
 ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
 ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
 <<else>>
+<<nextTutState DialogueContainer>>
 ABBY: What else do you need detective?
 <<endif>>
 [[AbbyMain]]
@@ -21,6 +23,7 @@ tags:
 colorID: 0
 position: 861,368
 ---
+<<tutorialprompt DialogueContainer>>
 JACE: Let’s get this over with...
 JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 ABBY: Correction. Your crime scene is my apartment. Or it was.
@@ -45,6 +48,7 @@ position: 1163,357
     [[Where were you when it happened?|AbbyWhere]]
 <<endif>>
 [[Interrogate|AbbyInterogation]]
+<<tutorialprompt DialogueContainer>>
 ===
 
 title: AbbyInterogation
@@ -53,8 +57,10 @@ colorID: 0
 position: 1163,357
 ---
 <<startquestioning Journal>>
+<<tutorialprompt DialogueContainer>>
 <<if $tryagain is false>>
 	ABBY: What is it detective?
+	<<tutorialprompt DialogueContainer>>
 <<endif>>
 ->Confirm Interrogation Choices
 	<<if question("old_tv", "-") is true>>
@@ -125,6 +131,7 @@ ABBY: Gosh no. I don’t enjoy having company over often.
 ABBY: And I’d never have someone else over while handling my appointments.
 <<startkey Journal friday_alone>>
 JACE: So, Friday was alone?
+<<tutorialprompt DialogueContainer>>
 ABBY: That’s what I’m saying! Friday was alone!
 <<endkey Journal>>
 JACE: Just making sure...
@@ -224,6 +231,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<tutorialprompt DialogueContainer>>
 JACE: She was murdered with a stocking full of… pennies. That mean anything to you?
 ABBY: Why would it mean anything to me? It’s not my stocking. I wouldn’t be caught dead in cheap hose like that.
 JACE: I’m asking if anything else in the neighborhood sounds similar? Pennies used in other incidents?

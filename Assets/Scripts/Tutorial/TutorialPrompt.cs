@@ -11,6 +11,9 @@ public class TutorialPrompt : MonoBehaviour
     private GameObject highlighted;
     //private float orgDepth;
     private GameObject currentPrompts;
+    private Transform highlightParent;
+    private int sibIndex;
+    private bool shouldHighlightReturn;
     
     // Start is called before the first frame update
     void Start()
@@ -20,10 +23,14 @@ public class TutorialPrompt : MonoBehaviour
         //fadePanel.transform.position = temp;
     }
 
-    public void StartPrompt(GameObject highlightedObject, GameObject prompts)
+    public void StartPrompt(GameObject highlightedObject, GameObject prompts, bool shouldReturn)
     {
         highlighted = highlightedObject;
         currentPrompts = prompts;
+        print(highlightedObject.transform.parent);
+        highlightParent = highlightedObject.transform.parent;
+        sibIndex = highlightedObject.transform.GetSiblingIndex();
+        shouldHighlightReturn = shouldReturn;
         //orgDepth = highlightedObject.position.z;
 
         //Vector3 temp = highlightedObject.position;
@@ -33,7 +40,8 @@ public class TutorialPrompt : MonoBehaviour
         prompts.SetActive(true);
         fadePanel.SetActive(true);
 
-        Instantiate(highlightedObject, transform, true);
+        highlighted.transform.SetParent(transform);
+        //Instantiate(highlightedObject, transform, true);
     }
 
     public void EndPrompt()
@@ -45,7 +53,13 @@ public class TutorialPrompt : MonoBehaviour
         currentPrompts.SetActive(false);
         fadePanel.SetActive(false);
 
-        Destroy(highlighted);
+        //Destroy(highlighted);
+        if(shouldHighlightReturn)
+        {
+            print("Setting back to: " + highlightParent);
+            highlighted.transform.SetParent(highlightParent);
+            highlighted.transform.SetSiblingIndex(sibIndex);
+        }
 
         TutorialState.Next();
     }
