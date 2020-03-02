@@ -282,7 +282,6 @@ public class DilogueTutorialManager : MonoBehaviour
         if(skipStates)
         {
             TutorialState.Next();
-            TutorialState.Next();
             skipStates = false;
         }
         print(TutorialState.Current);
