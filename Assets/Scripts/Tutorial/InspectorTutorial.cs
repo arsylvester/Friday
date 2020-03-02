@@ -48,6 +48,11 @@ public class InspectorTutorial : MonoBehaviour
         prompt.EndPrompt();
         yield return new WaitForSeconds(0.1F);
 
+        //Suppress exit and rotation
+        InspectorAgent agent = GetComponent<InspectorAgent>();
+        agent.SuppressExit = true;
+        agent.SuppressRotation = true;
+
         //Record item step
         prompt.StartPrompt(DummyHighlight, RecordPrompt, true);
         hasRecordedItem = false;
@@ -58,6 +63,9 @@ public class InspectorTutorial : MonoBehaviour
         hasRecordedItem = false;
         prompt.EndPrompt();
         yield return new WaitForSeconds(0.1F);
+
+        //Unsuppress rotation
+        agent.SuppressRotation = false;
 
         //Rotate item step
         prompt.StartPrompt(DummyHighlight, RotatePrompt, true);
@@ -80,6 +88,9 @@ public class InspectorTutorial : MonoBehaviour
         hasRecordedSecret = false;
         prompt.EndPrompt();
         yield return new WaitForSeconds(0.1F);
+
+        //Unsuppress exit
+        agent.SuppressExit = false;
 
         //Leave item prompt
         prompt.StartPrompt(DummyHighlight, LeavePrompt, true);

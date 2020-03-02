@@ -9,6 +9,8 @@ using Cinemachine;
 [Serializable] public class PlayerSideInspectEvent : UnityEvent<Inspectable> { }
 public class InspectorAgent : MonoBehaviour
 {
+    public bool SuppressExit = false;
+    public bool SuppressRotation = false;
 
     public float InspectionDistance;
     public float FocusTime;
@@ -54,7 +56,7 @@ public class InspectorAgent : MonoBehaviour
                 Ray cameraRay = InspectorCamera.ScreenPointToRay(Input.mousePosition);
                 bool hit = Physics.Raycast(cameraRay, out RaycastHit rayInfo, 100F, ~LayerMask.NameToLayer("Inspector"));
 
-                if (!hit || LeastCommonAncestor(target.transform, rayInfo.collider.transform) != target.transform)
+                if ((!hit || LeastCommonAncestor(target.transform, rayInfo.collider.transform) != target.transform) && !SuppressExit)
                 {
                     ////////////////////////////////////////////
                     ///TUTORIAL ONLY
@@ -64,7 +66,7 @@ public class InspectorAgent : MonoBehaviour
                 }
             }
 
-            if(Input.GetButton(DragKey))
+            if(Input.GetButton(DragKey) && !SuppressRotation)
             {
                 target.transform.Rotate(transform.right, Input.GetAxis(VerticalRotationAxis) * DragSpeed, Space.World);
                 target.transform.Rotate(transform.up, -Input.GetAxis(HorizontalRotationAxis) * DragSpeed, Space.World);
