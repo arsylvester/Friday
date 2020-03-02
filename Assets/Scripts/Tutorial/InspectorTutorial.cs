@@ -14,6 +14,9 @@ public class InspectorTutorial : MonoBehaviour
     public GameObject LeavePrompt;
 
     public GameObject DummyHighlight;
+    
+    public InputFreeLookCam cam;
+    public PlayerMovement movement;
     /*
     private void Start()
     {
@@ -37,6 +40,19 @@ public class InspectorTutorial : MonoBehaviour
 
     IEnumerator InspectorTutorialSequence()
     {
+        //Suppress items
+        Interactable[] objs = FindObjectsOfType<Interactable>();
+        foreach (Interactable obj in objs)
+        {
+            if(obj.gameObject.name != "Bills")
+                obj.enabled = false;
+        }
+
+        yield return new WaitForSeconds(2.6F);
+        //Suppress movement and all other interactions
+        movement.StopMovement();
+        cam.FreezeCamera();
+
         //Click bills step
         prompt.StartPrompt(DummyHighlight, BillsPrompt, true);
         hasBillsBeenSelected = false;
@@ -46,7 +62,6 @@ public class InspectorTutorial : MonoBehaviour
         }
         hasBillsBeenSelected = false;
         prompt.EndPrompt();
-        yield return new WaitForSeconds(0.1F);
 
         //Suppress exit and rotation
         InspectorAgent agent = GetComponent<InspectorAgent>();
@@ -62,7 +77,6 @@ public class InspectorTutorial : MonoBehaviour
         }
         hasRecordedItem = false;
         prompt.EndPrompt();
-        yield return new WaitForSeconds(0.1F);
 
         //Unsuppress rotation
         agent.SuppressRotation = false;
@@ -76,7 +90,6 @@ public class InspectorTutorial : MonoBehaviour
         }
         hasRotated = false;
         prompt.EndPrompt();
-        yield return new WaitForSeconds(0.1F);
 
         //Record secret item step
         prompt.StartPrompt(DummyHighlight, SecretsPrompt, true);
@@ -87,10 +100,15 @@ public class InspectorTutorial : MonoBehaviour
         }
         hasRecordedSecret = false;
         prompt.EndPrompt();
-        yield return new WaitForSeconds(0.1F);
 
         //Unsuppress exit
         agent.SuppressExit = false;
+
+        //Unsuppress items
+        foreach(Interactable obj in objs)
+        {
+            obj.enabled = true;
+        }
 
         //Leave item prompt
         prompt.StartPrompt(DummyHighlight, LeavePrompt, true);
@@ -101,9 +119,12 @@ public class InspectorTutorial : MonoBehaviour
         }
         hasLeftItem = false;
         prompt.EndPrompt();
-        yield return new WaitForSeconds(0.1F);
         Debug.Log(TutorialState.Current);
         TutorialState.Next();
+
+        //Unsuppress camera and movement
+        cam.UnfreezeCamera();
+        movement.ResumeMovement();
     }
 
 

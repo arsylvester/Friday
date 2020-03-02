@@ -294,7 +294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &289056191
 Transform:
   m_ObjectHideFlags: 0
@@ -2278,11 +2278,13 @@ MonoBehaviour:
   cutsceneCam: {fileID: 3298370810020090011}
   dialogueCam: {fileID: 7822683450215842206}
   questioningCam: {fileID: 2513149747526114657}
+  isDoneTalking: 1
+  isQuestioning: 0
   npcRotationOffset: -10
   fade: {fileID: 731285796436648261}
   fadeIn: 0.5
   fadeTranstition: 1
-  fadeOut: 2
+  fadeOut: 1
 --- !u!114 &186475976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3657,6 +3659,8 @@ MonoBehaviour:
   SecretsPrompt: {fileID: 259169737}
   LeavePrompt: {fileID: 1287836015}
   DummyHighlight: {fileID: 941395480}
+  cam: {fileID: 7822683450521502358}
+  movement: {fileID: 186475976}
 --- !u!1001 &1568608470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5973,6 +5977,16 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 3023452366150081955}
+    - target: {fileID: 1239524183481180636, guid: 55b6483ad8844c541b3bdf95ed399998,
+        type: 3}
+      propertyPath: InteractCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: a46700c4706173c4f8232dd4876ffaac, type: 3}
+    - target: {fileID: 1239524183481180636, guid: 55b6483ad8844c541b3bdf95ed399998,
+        type: 3}
+      propertyPath: NearCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 3d9d61965509230489631a7ae7ec0698, type: 3}
     - target: {fileID: 1239524183481180636, guid: 55b6483ad8844c541b3bdf95ed399998,
         type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target

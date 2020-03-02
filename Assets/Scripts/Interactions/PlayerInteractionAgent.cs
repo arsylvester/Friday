@@ -46,7 +46,7 @@ public class PlayerInteractionAgent : MonoBehaviour
             GameObject objectHit = rayInfo.collider.gameObject;
             Interactable interactable = objectHit.GetComponent<Interactable>();
 
-            if (interactable != null)
+            if (interactable != null && interactable.enabled)
             {
                 bool near = Vector3.Distance(Player.position, interactable.transform.position) <= InteractRange;
 
@@ -73,14 +73,12 @@ public class PlayerInteractionAgent : MonoBehaviour
                 if (lastHovered != null && lastHovered != interactable)
                 {
                     OnHoverEnd.Invoke(lastHovered);
-                    Debug.Log("UNHOVER");
                     lastHovered.OnHoverEnd.Invoke();
                 }
 
                 if(lastHovered != interactable)
                 {
                     OnHoverStart.Invoke(interactable);
-                    Debug.Log("HOVER");
                     interactable.OnHoverStart.Invoke();
                 }
 
