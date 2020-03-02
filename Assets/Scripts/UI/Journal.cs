@@ -49,6 +49,8 @@ public class Journal : MonoBehaviour
     public UnityEvent OnQuestionStart;
     public UnityEvent OnQuestionStop;
 
+    DialogueCam dialogueCam;
+
     //TESTING
     //public Sprite testSprite1;
     public Sprite stockingSprite;
@@ -59,6 +61,8 @@ public class Journal : MonoBehaviour
     void Start()
     {
         varStorage = FindObjectOfType<InMemoryVariableStorage>();
+
+        dialogueCam = FindObjectOfType<DialogueCam>();
 
         // Register a function on startup called "question" that lets Yarn
         // scripts check if questioned right or not.
@@ -262,9 +266,19 @@ public class Journal : MonoBehaviour
 
     IEnumerator OpenJournalsAfterFade()
     {
-        yield return new WaitForSeconds(1);
-        itemJournal.SetActive(true);
-        dialogJournal.SetActive(true);
+        yield return new WaitForSeconds(0.11f);
+        // wait for fade on entering dialogue
+        if (!dialogueCam.isDoneTalking)
+        {
+            yield return new WaitForSeconds(1);
+            itemJournal.SetActive(true);
+            dialogJournal.SetActive(true);
+        }
+        else
+        {
+            itemJournal.SetActive(true);
+            dialogJournal.SetActive(true);
+        }
     }
 
     IEnumerator StartDialogueAfterFade()
