@@ -138,7 +138,7 @@ public class DilogueTutorialManager : MonoBehaviour
 
     IEnumerator stockingAttempt()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSecondsRealtime(.1f);
         tutorialPrompt.StartPrompt(stockingButton.gameObject, stockingPrompt, false);
 
         //stockingButton.onClick.AddListener(stockingClicked);
@@ -176,7 +176,7 @@ public class DilogueTutorialManager : MonoBehaviour
 
     IEnumerator waitThenPrompt(GameObject highlight, GameObject currrPrompt, float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSecondsRealtime(waitTime);
         tutorialPrompt.StartPrompt(highlight, currrPrompt, true);
     }
 
@@ -196,7 +196,7 @@ public class DilogueTutorialManager : MonoBehaviour
             case "leaveConvo":
                 continueButton.onClick.SetPersistentListenerState(0, UnityEventCallState.Off);
                 leaveButton.gameObject.SetActive(true);
-                StartCoroutine(waitThenPrompt(leaveButton.gameObject, leavePrompt, 1f));
+                StartCoroutine(waitThenPrompt(leaveButton.gameObject, leavePrompt, 1.5f));
                 break;
             case "followUpQuestions":
                 StartCoroutine(waitThenPrompt(followUpQButton.gameObject, FUQPrompt, .05f));
