@@ -97,6 +97,7 @@ namespace Yarn.Unity {
 
         /// Show a line of dialogue, gradually        
         private IEnumerator DoRunLine(Yarn.Line line, IDictionary<string,string> strings, System.Action onComplete) {
+
             onLineStart?.Invoke();
 
             userRequestedNextLine = false;
@@ -223,9 +224,17 @@ namespace Yarn.Unity {
         {
             // Enable the dialogue controls.
             if (dialogueContainer != null)
-                dialogueContainer.SetActive(true);
+            {
+                StartCoroutine(OpenDialogueAfterFade());
+            }
 
             onDialogueStart?.Invoke();            
+        }
+
+        IEnumerator OpenDialogueAfterFade()
+        {
+            yield return new WaitForSeconds(1);
+            dialogueContainer.SetActive(true);
         }
 
         /// Called when the dialogue system has finished running.

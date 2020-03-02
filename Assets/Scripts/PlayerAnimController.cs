@@ -11,18 +11,24 @@ public class PlayerAnimController : MonoBehaviour
 
     PlayerMovement playerMovement;
 
+    DialogueCam dialogueCam;
+    LevelController levelController;
+
     void Start()
     {
         animator = GetComponent<Animator>();
 
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
+
+        dialogueCam = GetComponent<DialogueCam>();
+        levelController = FindObjectOfType<LevelController>();
     }
 
     private void Update()
     {
-        if (playerMovement.moveDirection.x == 0 && playerMovement.moveDirection.z == 0)
+        if (playerMovement.moveDirection.x == 0 && playerMovement.moveDirection.z == 0 && dialogueCam.isDoneTalking && !levelController.mapMoveBack)
             animator.SetInteger("MainCharAnim", (int)NPCState.idle);
-        else
+        else if (dialogueCam.isDoneTalking)
             animator.SetInteger("MainCharAnim", (int)NPCState.moving);
     }
 

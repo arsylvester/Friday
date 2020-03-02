@@ -13,7 +13,7 @@ public class LevelController : MonoBehaviour
     public GameObject confirmLocationUI;
     public TextMeshProUGUI confirmLocationText;
     public GameObject mapBackLocation;
-    bool mapMoveBack = false;
+    public bool mapMoveBack = false;
 
     public bool isPaused = false;
     string location;
@@ -242,13 +242,12 @@ public class LevelController : MonoBehaviour
 
     void Rotation(GameObject player, Vector3 movement, PlayerAnimController playerAnim)
     {
-
         var moveDir = movement;
         moveDir.y = 0;
 
         player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.LookRotation(moveDir), 0.125f);
 
-        if (Vector3.Distance(player.transform.position, mapBackLocation.transform.position) <= 1)
+        if (Vector3.Distance(player.transform.position, mapBackLocation.transform.position) <= 0.25)
         {
             playerAnim.ChangePlayerAnim(1);
             playerMove.ResumeMovement();
