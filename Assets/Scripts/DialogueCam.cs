@@ -21,8 +21,8 @@ public class DialogueCam : MonoBehaviour
     public GameObject dialogueCam;
     public GameObject questioningCam;
 
-    bool isDoneTalking = true;
-    bool isQuestioning = false;
+    public bool isDoneTalking = true;
+    public bool isQuestioning = false;
 
     PlayerAnimController playerAnimController;
 
@@ -75,6 +75,8 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(true);
         questioningCam.SetActive(false);
+
+        playerAnimController.ChangePlayerAnim(3);
     }
 
     public void SwitchToQuestioningCam()
@@ -85,6 +87,8 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(true);
+
+        playerAnimController.ChangePlayerAnim(4);
     }
 
     public void SwitchToGameCam()
@@ -98,8 +102,6 @@ public class DialogueCam : MonoBehaviour
     public void StartFade(bool isDoneTalking)
     {
         playerMovement.StopMovement();
-        playerAnimController.ChangePlayerAnim(1);
-        playerMovement.moveDirection = Vector3.zero;
         StartCoroutine("Fade", isDoneTalking);
     }
 

@@ -15,8 +15,9 @@ public class PlayerInteractionAgent : MonoBehaviour
     public float InteractRange;
     public Transform Player;
 
-    public Texture2D FarCursor;
+    public Texture2D InteractCursor;
     public Texture2D NearCursor;
+    bool isInteracted;
 
     private Camera mainCamera;
     private Interactable lastHovered;
@@ -45,19 +46,29 @@ public class PlayerInteractionAgent : MonoBehaviour
             GameObject objectHit = rayInfo.collider.gameObject;
             Interactable interactable = objectHit.GetComponent<Interactable>();
 
-            if(interactable != null)
+            if (interactable != null)
             {
                 bool near = Vector3.Distance(Player.position, interactable.transform.position) <= InteractRange;
 
-                if (near)
+                if (Input.GetButtonDown(InteractKey) && near)
                 {
-                    Cursor.SetCursor(NearCursor, Vector2.zero, CursorMode.Auto);
-                }
-                else
-                {
-                    Cursor.SetCursor(FarCursor, Vector2.zero, CursorMode.Auto);
+                    isInteracted = true;
+                    Cursor.SetCursor(InteractCursor, Vector2.zero, CursorMode.Auto);
+                    StartCoroutine(StartInteraction(interactable));
                 }
 
+                if (!isInteracted)
+                {
+                    if (near)
+                    {
+                        Cursor.SetCursor(NearCursor, Vector2.zero, CursorMode.Auto);
+                    }
+                    else
+                    {
+                        // Cursor.SetCursor(FarCursor, Vector2.zero, CursorMode.Auto);
+                        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                    }
+                }
 
                 if (lastHovered != null && lastHovered != interactable)
                 {
@@ -79,13 +90,8 @@ public class PlayerInteractionAgent : MonoBehaviour
                 Vector3 tpos = mainCamera.WorldToViewportPoint(interactable.transform.position + transform.right * interactable.DisplayOffset.x + transform.up * interactable.DisplayOffset.y);
                 Vector2 canvasSize = NameTag.transform.parent.GetComponentInParent<RectTransform>().rect.size;
                 NameTag.rectTransform.anchoredPosition = new Vector2(canvasSize.x * tpos.x, canvasSize.y * tpos.y);
-
-                if (Input.GetButtonDown(InteractKey) && near)
-                {
-                    Interact(interactable);
-                }
             }
-            else
+            else if (!isInteracted)
             {
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 if (lastHovered != null)
@@ -110,6 +116,14 @@ public class PlayerInteractionAgent : MonoBehaviour
                 lastHovered = null;
             }
         }
+    }
+
+    IEnumerator StartInteraction(Interactable interactable)
+    {
+        yield return new WaitForSeconds(0.1f);
+        isInteracted = false;
+        Interact(interactable);
+
     }
 
     public void Interact(Interactable interactable)

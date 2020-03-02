@@ -235,8 +235,19 @@ public class Journal : MonoBehaviour
     //Open both panels. Meant for when dialogue begins.
     public void OpenJournals()
     {
+        StartCoroutine(OpenJournalsAfterFade());
+    }
+
+    IEnumerator OpenJournalsAfterFade()
+    {
+        yield return new WaitForSeconds(1);
         itemJournal.SetActive(true);
         dialogJournal.SetActive(true);
+    }
+
+    IEnumerator StartDialogueAfterFade()
+    {
+        yield return new WaitForSeconds(1);
     }
 
     //Close both panels. Meant for when dialogue ends.

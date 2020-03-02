@@ -13,12 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform cameraTransform;
 
+    PlayerAnimController playerAnimController;
     CharacterController charController;
     public Vector3 moveDirection;
     float gravity = 1000;
     float tmpSpeed;
 
-    PlayerAnimController playerAnimController;
     DialogueUI runner;
 
     // Start is called before the first frame update
@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     public void StopMovement()
     {
         isStopped = true;
+        playerAnimController.ChangePlayerAnim(1);
+        moveDirection = Vector3.zero;
     }
 
     public void ResumeMovement()

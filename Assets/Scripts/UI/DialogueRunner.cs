@@ -445,8 +445,6 @@ namespace Yarn.Unity
             this.dialogue.SetNode(startNode);
 
             ContinueDialogue();
-            
-            
         }
 
         /// Clear the dialogue system
