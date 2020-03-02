@@ -518,7 +518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &112347815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4693,6 +4693,167 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3651101, y: 0.2934199, z: 0.8455669}
   m_Center: {x: 0.000000014901161, y: 0, z: 0.000000029802322}
+--- !u!1001 &1721086516
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8224166877101204009, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_Name
+      value: Friday_Abby_TV
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.892
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.231
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.98460716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.1747822
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -200.13199
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.47137028
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934051744204214330, guid: 1a20d95d74cdb474d918273a5d9cb644,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.47137028
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a20d95d74cdb474d918273a5d9cb644, type: 3}
+--- !u!1 &1721086517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8224166877101204009, guid: 1a20d95d74cdb474d918273a5d9cb644,
+    type: 3}
+  m_PrefabInstance: {fileID: 1721086516}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1721086518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721086517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ca35c7f1c36ea4dbc8e6218bf05348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1948606408}
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2049311342}
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2049311342}
+        m_MethodName: StopSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DisplayName: Old TV
+  DisplayOffset: {x: 0, y: 0}
+  OnFocused:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnUnfocused:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  EntryName: Old TV
+  Description: Abby's TV
+  FlavorText: I'm honestly suprised it still works.
+  Keyname: old_tv
 --- !u!1001 &1733881052
 PrefabInstance:
   m_ObjectHideFlags: 0
