@@ -444,6 +444,12 @@ namespace Yarn.Unity
 
             this.dialogue.SetNode(startNode);
 
+            StartCoroutine(StartDialogueAfterFade());
+        }
+
+        IEnumerator StartDialogueAfterFade()
+        {
+            yield return new WaitForSeconds(1.5f);
             ContinueDialogue();
         }
 
