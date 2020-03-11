@@ -12,6 +12,8 @@ public class DialogueJournalElement : JournalElement
     public RectTransform textRect;
     public Color markedColor;
 
+    private ColorBlock unMarkedColors;
+
     private Button button;
     private Journal journal;
     private Text text;
@@ -39,13 +41,14 @@ public class DialogueJournalElement : JournalElement
     public override void Highlight()
     {
         isHighlighted = true;
+        unMarkedColors = button.colors;
         button.colors = highlightedColors;
     }
 
     public override void Unhighlight()
     {
         isHighlighted = false;
-        button.colors = ColorBlock.defaultColorBlock;
+        button.colors = unMarkedColors;
     }
 
     public override void MarkImportant()

@@ -22,6 +22,7 @@ public class ItemJournalElement : JournalElement
     private Button button;
     private Journal journal;
     private ItemPhotograph itemPhotograph;
+    private ColorBlock unMarkedColors;
    // private bool isHighlighted = false;
 
     private void Awake()
@@ -61,13 +62,14 @@ public class ItemJournalElement : JournalElement
     public override void Highlight()
     {
         isHighlighted = true;
+        unMarkedColors = button.colors;
         button.colors = highlightedColors;
     }
 
     public override void Unhighlight()
     {
         isHighlighted = false;
-        button.colors = ColorBlock.defaultColorBlock;
+        button.colors = unMarkedColors;
     }
 
     public override void MarkImportant()

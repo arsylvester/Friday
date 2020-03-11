@@ -102,16 +102,19 @@ public class Journal : MonoBehaviour
             List<GameObject> tempList = new List<GameObject>();
             for (int x = 0; x < keyEntries.Count; x++)
             {
-                JournalElement currentJournalElement = keyEntries[x].GetComponent<JournalElement>();
-                if(currentJournalElement != null)
+                if(keyEntries[x] != null)
                 {
-                    string currentKey = currentJournalElement.keyID;
-                    if(currentKey == parameters[2].AsString ||
-                        currentKey == parameters[3].AsString ||
-                        currentKey == parameters[4].AsString ||
-                        currentKey == parameters[5].AsString)
+                    JournalElement currentJournalElement = keyEntries[x].GetComponent<JournalElement>();
+                    if(currentJournalElement != null)
                     {
-                        tempList.Add(keyEntries[x]);
+                        string currentKey = currentJournalElement.keyID;
+                        if(currentKey == parameters[2].AsString ||
+                            currentKey == parameters[3].AsString ||
+                            currentKey == parameters[4].AsString ||
+                            currentKey == parameters[5].AsString)
+                        {
+                            tempList.Add(keyEntries[x]);
+                        }
                     }
                 }
             }
