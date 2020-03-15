@@ -201,18 +201,6 @@ public class LevelController : MonoBehaviour
         confirmLocationUI.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            mapUI.SetActive(true);
-
-            playerMove.StopMovement();
-
-            cam.FreezeCamera();
-        }
-    }
-
     public void CloseMap()
     {
         mapUI.SetActive(false);
