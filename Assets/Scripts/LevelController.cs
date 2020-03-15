@@ -60,7 +60,7 @@ public class LevelController : MonoBehaviour
         OwnerButton.interactable = ownerOpen;
         //END
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && (cam.gameObject.activeSelf && !mapUI.activeSelf))
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);
