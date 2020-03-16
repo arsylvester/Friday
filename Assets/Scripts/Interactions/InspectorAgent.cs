@@ -56,7 +56,7 @@ public class InspectorAgent : MonoBehaviour
                 Ray cameraRay = InspectorCamera.ScreenPointToRay(Input.mousePosition);
                 bool hit = Physics.Raycast(cameraRay, out RaycastHit rayInfo, 100F, ~LayerMask.NameToLayer("Inspector"));
 
-                if ((!hit || LeastCommonAncestor(target.transform, rayInfo.collider.transform) != target.transform) && !SuppressExit)
+                if (((!hit || LeastCommonAncestor(target.transform, rayInfo.collider.transform) != target.transform) || Input.GetKeyDown(KeyCode.Escape)) && !SuppressExit)
                 {
                     ////////////////////////////////////////////
                     ///TUTORIAL ONLY
