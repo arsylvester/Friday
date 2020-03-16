@@ -5860,11 +5860,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: The Moon
       objectReference: {fileID: 0}
-    - target: {fileID: 2428505498992462752, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3057789201261715598, guid: ee6c3eee654f0184b83462bf304d0bde,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6105,36 +6100,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3107536215584378730, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3107536215584378730, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3107536215584378730, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913672361113284217, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913672361113284217, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913672361113284217, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3913672361059720617, guid: ee6c3eee654f0184b83462bf304d0bde,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -6153,21 +6118,6 @@ PrefabInstance:
     - target: {fileID: 4491261568703743838, guid: ee6c3eee654f0184b83462bf304d0bde,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438929036686614085, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438929036686614085, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7438929036686614085, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8796382829525625086, guid: ee6c3eee654f0184b83462bf304d0bde,
@@ -6239,24 +6189,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658620270, guid: ee6c3eee654f0184b83462bf304d0bde, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 658620270, guid: ee6c3eee654f0184b83462bf304d0bde, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 37.699997
-      objectReference: {fileID: 0}
-    - target: {fileID: 2748365604019633049, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3913672359772916813, guid: ee6c3eee654f0184b83462bf304d0bde,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee6c3eee654f0184b83462bf304d0bde, type: 3}
@@ -6589,11 +6521,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: The World
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5519691607601308501, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -6946,6 +6873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7822683450215842206, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
