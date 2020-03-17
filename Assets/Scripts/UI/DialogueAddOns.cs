@@ -10,12 +10,16 @@ public class DialogueAddOns : MonoBehaviour
     private DialogueUI dialogUI;
     [SerializeField] Journal journal;
 
+    GameObject fadeImage;
+
     private bool linePlaying = false;
 
     private void Start()
     {
         dialogRunnner = GetComponent<DialogueRunner>();
         dialogUI = GetComponent<DialogueUI>();
+
+        fadeImage = GameObject.FindGameObjectWithTag("Fade");
     }
 
     private void Update()
@@ -26,7 +30,8 @@ public class DialogueAddOns : MonoBehaviour
         }
 
         print(dialogRunnner.isDialogueRunning);
-        if (Input.GetKeyDown(KeyCode.Escape) && dialogRunnner.isDialogueRunning && (TutorialState.Current == "deduction" || TutorialState.Current == "done"))
+
+        if (Input.GetKeyDown(KeyCode.Escape) && dialogRunnner.isDialogueRunning && (TutorialState.Current == "deduction" || TutorialState.Current == "done") && !fadeImage.GetComponent<Image>().enabled)
         {
             if (dialogRunnner.currentNodeName == "AbbyInterogation")
             {

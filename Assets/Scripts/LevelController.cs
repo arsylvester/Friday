@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
 {
     public GameObject pauseUI;
     public GameObject mapUI;
+    public GameObject fadeImage;
     public GameObject confirmLocationUI;
     public TextMeshProUGUI confirmLocationText;
     public GameObject mapBackLocation;
@@ -60,7 +61,7 @@ public class LevelController : MonoBehaviour
         OwnerButton.interactable = ownerOpen;
         //END
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && (cam.gameObject.activeSelf && !mapUI.activeSelf))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && (cam.gameObject.activeSelf && !mapUI.activeSelf && !fadeImage.GetComponent<Image>().enabled))
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);

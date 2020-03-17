@@ -61,8 +61,6 @@ public class DialogueCam : MonoBehaviour
         runner.onDialogueEnd.AddListener(delegate { StartFade(isDoneTalking); });
 
         fadeImage = fade.GetComponent<Image>();
-        fadeImage.enabled = true;
-        fadeImage.canvasRenderer.SetAlpha(0f);
 
         tmpNpcRotation = npc.transform.rotation;
     }
@@ -101,7 +99,9 @@ public class DialogueCam : MonoBehaviour
 
     public void StartFade(bool isDoneTalking)
     {
+        fadeImage.enabled = true;
         playerMovement.StopMovement();
+
         StartCoroutine("Fade", isDoneTalking);
     }
 
@@ -112,6 +112,8 @@ public class DialogueCam : MonoBehaviour
 
     IEnumerator Fade(bool isDoneTalking)
     {
+        fadeImage.canvasRenderer.SetAlpha(0f);
+
         // fade in
         fadeImage.CrossFadeAlpha(1, fadeIn, false);
 
@@ -139,8 +141,12 @@ public class DialogueCam : MonoBehaviour
 
         yield return new WaitForSeconds(fadeOut);
 
+        fadeImage.enabled = false;
+
         if (isDoneTalking)
+        {
             playerMovement.ResumeMovement();
+        }
     }
 }
 

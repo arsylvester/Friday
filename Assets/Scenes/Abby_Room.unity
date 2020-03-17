@@ -5131,6 +5131,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.2995446, y: 0.1818856, z: 0.022378046}
   m_Center: {x: 0.020937324, y: 0.014157925, z: -0.006801591}
+--- !u!1 &1481138151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+    type: 3}
+  m_PrefabInstance: {fileID: 1888381197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519704478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
@@ -6190,6 +6196,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8561933822224723584, guid: ee6c3eee654f0184b83462bf304d0bde,
+        type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 1481138151}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee6c3eee654f0184b83462bf304d0bde, type: 3}
 --- !u!114 &1806585387 stripped
@@ -6521,6 +6532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: The World
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5519691607601308501, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -6874,11 +6890,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7822683450215842206, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
@@ -6935,6 +6946,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 1481138151}
+    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fade
+      objectReference: {fileID: 0}
+    - target: {fileID: 731285796436648263, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_Enabled
       value: 0

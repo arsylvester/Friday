@@ -345,11 +345,9 @@ namespace Yarn.Unity
                 dialogue.SetProgram(combinedProgram);
             }
 
-            
             if (startAutomatically) {
                 StartDialogue();
             }
-            
         }
 
         /// Adds a program and its base localisation string table
@@ -420,7 +418,6 @@ namespace Yarn.Unity
         /// Start the dialogue from a given node
         public void StartDialogue (string startNode)
         {
-
             // Stop any processes that might be running already
             dialogueUI.StopAllCoroutines ();
 
@@ -449,7 +446,8 @@ namespace Yarn.Unity
 
         IEnumerator StartDialogueAfterFade()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1);
+
             ContinueDialogue();
         }
 

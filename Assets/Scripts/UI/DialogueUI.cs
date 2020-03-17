@@ -75,7 +75,7 @@ namespace Yarn.Unity {
         public UnityEngine.Events.UnityEvent onOptionsEnd;
 
         public DialogueRunner.StringUnityEvent onCommand;
-        
+
         void Awake ()
         {
             // Start by hiding the container
@@ -234,6 +234,7 @@ namespace Yarn.Unity {
         IEnumerator OpenDialogueAfterFade()
         {
             yield return new WaitForSeconds(1);
+
             dialogueContainer.SetActive(true);
         }
 
