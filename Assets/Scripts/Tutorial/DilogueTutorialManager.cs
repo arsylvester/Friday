@@ -44,6 +44,7 @@ public class DilogueTutorialManager : MonoBehaviour
     public bool canSaveDialogue = false;
     //testing
     private bool skipStates = true;
+    public bool turnTutorialOff = false;
 
     IEnumerator interrogatePrompts()
     {
@@ -183,6 +184,8 @@ public class DilogueTutorialManager : MonoBehaviour
     [YarnCommand("tutorialprompt")]
     public void prompt()
     {
+        if (turnTutorialOff)
+            return;
         print("Running prompt with state: " + TutorialState.Current);
         switch(TutorialState.Current)
         {
@@ -233,6 +236,8 @@ public class DilogueTutorialManager : MonoBehaviour
 
     public void EndTutorial()
     {
+        if (turnTutorialOff)
+            return;
         print("Ending Tutorial");
         switch(TutorialState.Current)
         {
