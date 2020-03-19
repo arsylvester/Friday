@@ -46,6 +46,12 @@ public class DilogueTutorialManager : MonoBehaviour
     private bool skipStates = true;
     public bool turnTutorialOff = false;
 
+    private void Start()
+    {
+        if (turnTutorialOff == true)
+            canSaveDialogue = true;
+    }
+
     IEnumerator interrogatePrompts()
     {
         tutorialPrompt.StartPrompt(interHighlight, interrogatePrompt1, true);

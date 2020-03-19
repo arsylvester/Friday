@@ -49,7 +49,6 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-[[Back|AbbyMain]]
 [[What sort of relationship did you have with Friday?|AbbyQ1]]
 [[Was anyone else here when it happened?|AbbyQ2]]
 <<if $broke_into is true>>
@@ -58,6 +57,7 @@ position: 1163,357
 <<if $visited_pennies and $broke_into and $visited_alone>>
     [[Where were you when it happened?|AbbyWhere]]
 <<endif>>
+[[Back|AbbyMain]]
 ===
 
 title: AbbyInterogation

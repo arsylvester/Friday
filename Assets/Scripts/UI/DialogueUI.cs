@@ -161,6 +161,12 @@ namespace Yarn.Unity {
                                  "buttons to present them in. This will cause problems.");
             }
 
+            // Hide all the buttons
+            foreach (var button in optionButtons)
+            {
+                button.gameObject.SetActive(false);
+            }
+
             // Display each option in a button, and make it visible
             int i = 0;
 
