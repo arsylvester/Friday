@@ -49,15 +49,17 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-[[What sort of relationship did you have with Friday?|AbbyQ1]]
 [[Was anyone else here when it happened?|AbbyQ2]]
-<<if $broke_into is true>>
-    [[Broke into your apartment?|AbbyQ3]]
+<<if visited("AbbyQuestions") is true>>
+	[[What sort of relationship did you have with Friday?|AbbyQ1]]
+	<<if $broke_into is true>>
+		[[Broke into your apartment?|AbbyQ3]]
+	<<endif>>
+	<<if $visited_pennies and $broke_into and $visited_alone>>
+		[[Where were you when it happened?|AbbyWhere]]
+	<<endif>>
+	[[Back|AbbyMain]]
 <<endif>>
-<<if $visited_pennies and $broke_into and $visited_alone>>
-    [[Where were you when it happened?|AbbyWhere]]
-<<endif>>
-[[Back|AbbyMain]]
 ===
 
 title: AbbyInterogation
