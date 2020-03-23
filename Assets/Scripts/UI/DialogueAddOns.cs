@@ -29,8 +29,6 @@ public class DialogueAddOns : MonoBehaviour
             dialogUI.MarkLineComplete();
         }
 
-        print(dialogRunnner.isDialogueRunning);
-
         if (Input.GetKeyDown(KeyCode.Escape) && dialogRunnner.isDialogueRunning && (TutorialState.Current == "deduction" || TutorialState.Current == "done") && !fadeImage.GetComponent<Image>().enabled)
         {
             if (dialogRunnner.currentNodeName == "AbbyInterogation")

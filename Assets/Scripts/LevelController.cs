@@ -20,6 +20,7 @@ public class LevelController : MonoBehaviour
     string location;
     InputFreeLookCam cam;
     PlayerMovement playerMove;
+    Journal journal;
 
     PlayerInteractionAgent interact;
 
@@ -48,6 +49,8 @@ public class LevelController : MonoBehaviour
         playerMove = FindObjectOfType<PlayerMovement>();
 
         interact = FindObjectOfType<PlayerInteractionAgent>();
+
+        journal = FindObjectOfType<Journal>();
     }
 
     private void Update()
@@ -209,6 +212,8 @@ public class LevelController : MonoBehaviour
         mapMoveBack = true;
 
         cam.UnfreezeCamera();
+
+        journal.CanOpenJournals(true);
     }
 
     void MoveToLocation()

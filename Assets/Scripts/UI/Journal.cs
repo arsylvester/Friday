@@ -34,6 +34,7 @@ public class Journal : MonoBehaviour
     private int linesSaved = 0;
     private int NumOfEvidenceQuestioned = 0;
     private bool dialogSaveable = false;
+    private bool journalsOpenable = true;
     private bool keyDialog = false;
     private string keyName = "";
     private bool isQuestioning = false;
@@ -142,11 +143,11 @@ public class Journal : MonoBehaviour
     void Update()
     {
         // Open Journal panels
-        if (Input.GetKeyDown(KeyCode.Q) && !isQuestioning)
+        if (Input.GetKeyDown(KeyCode.Q) && !isQuestioning && journalsOpenable)
         {
             itemJournal.SetActive(!itemJournal.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.E) && !isQuestioning)
+        if (Input.GetKeyDown(KeyCode.E) && !isQuestioning && journalsOpenable)
         {
             dialogJournal.SetActive(!dialogJournal.activeSelf);
             UnhighlightAll();
@@ -261,10 +262,19 @@ public class Journal : MonoBehaviour
         dialogSaveable = canSave;
     }
 
+    public void CanOpenJournals(bool canOpen)
+    {
+        journalsOpenable = canOpen;
+    }
+
     //Open both panels. Meant for when dialogue begins.
     public void OpenJournals()
     {
-        StartCoroutine(OpenJournalsAfterFade());
+        print("Trying to open journal with bool: " + journalsOpenable);
+        if (journalsOpenable)
+        {
+            StartCoroutine(OpenJournalsAfterFade());
+        }
     }
 
     IEnumerator OpenJournalsAfterFade()
