@@ -6,10 +6,14 @@ position: 861,368
 <<if visited("AbbyStart") is false>>
 <<tutorialprompt DialogueContainer>>
 JACE: Let’s get this over with...
+<<deduction("This is a test deduction.", "Test description", "", "", "", "")>>
+<<objective("Get through this test.", "Hopefully this all works", "test_objective")>>
 JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 ABBY: Correction. Your crime scene is my apartment. Or it was.
 ABBY: Come in, come in.
 ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
+<<objectiveComplete Journal test_objective>>
+<<objective("This is a new objective.", "Hopefully this all works", "test_objective2")>>
 ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
 <<else>>
 <<nextTutState DialogueContainer>>
