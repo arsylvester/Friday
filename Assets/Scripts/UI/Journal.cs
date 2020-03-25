@@ -32,6 +32,7 @@ public class Journal : MonoBehaviour
     [SerializeField] Transform objectivePanel;
     [SerializeField] DeductionSummary deductionSummary;
     [SerializeField] DilogueTutorialManager dilogueTutorialManager;
+    [SerializeField] GameObject deletetionConfirmationPanel;
 
     private int linesSaved = 0;
     private int NumOfEvidenceQuestioned = 0;
@@ -342,6 +343,7 @@ public class Journal : MonoBehaviour
         }
     }
 
+    //This unhighlights.
     public void RemoveHighlighted(GameObject entry)
     {
             highlightedEntries.Remove(entry);
@@ -357,8 +359,23 @@ public class Journal : MonoBehaviour
             }
     }
 
+    //Brings up the delete confirmation.
+    public void ConfirmDeletion()
+    {
+        deletetionConfirmationPanel.SetActive(true);
+    }
+
+    //When deletion is canceled in the confirmation panel.
+    public void CancelDeletion()
+    {
+        deletetionConfirmationPanel.SetActive(false);
+        UnhighlightAll();
+    }
+
     public void DeleteAllHighlighted()
     {
+        deletetionConfirmationPanel.SetActive(false);
+
         foreach (GameObject lit in highlightedEntries)
         {
             if(lit.GetComponent<JournalElement>().keyID != "pennies" && lit.GetComponent<JournalElement>().keyID != "friday_alone")
