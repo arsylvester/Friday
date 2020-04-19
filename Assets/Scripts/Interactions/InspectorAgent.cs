@@ -25,7 +25,7 @@ public class InspectorAgent : MonoBehaviour
     public PlayerSideInspectEvent OnUnfocused;
 
     private IEnumerator focusCoroutine;
-    private Inspectable target;
+    public Inspectable target;
     private bool focused = false;
 
     private Dictionary<Inspectable, IEnumerator> unfocusCoroutines = new Dictionary<Inspectable, IEnumerator>();
@@ -50,7 +50,7 @@ public class InspectorAgent : MonoBehaviour
     {
         if(target != null)
         {
-            if(Input.GetButtonDown(InteractKey))
+            if(Input.GetButtonDown(InteractKey) || Input.GetKeyDown(KeyCode.Escape))
             {
                 
                 Ray cameraRay = InspectorCamera.ScreenPointToRay(Input.mousePosition);

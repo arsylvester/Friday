@@ -64,7 +64,7 @@ public class LevelController : MonoBehaviour
         OwnerButton.interactable = ownerOpen;
         //END
 
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && (cam.gameObject.activeSelf && !mapUI.activeSelf && !fadeImage.GetComponent<Image>().enabled))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && (cam.gameObject.activeSelf && !mapUI.activeSelf && !fadeImage.GetComponent<Image>().enabled) && FindObjectOfType<InspectorAgent>().target == null)
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);
