@@ -4,16 +4,24 @@ colorID: 0
 position: 861,368
 ---
 <<if visited("AbbyStart") is false>>
-<<tutorialprompt DialogueContainer>>
-JACE: Let’s get this over with...
-JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
-ABBY: Correction. Your crime scene is my apartment. Or it was.
-ABBY: Come in, come in.
-ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
-ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
+	<<set $Q1New to true>>
+	<<set $Q3New to true>>
+	<<set $Q4New to true>>
+	<<tutorialprompt DialogueContainer>>
+	JACE: Let’s get this over with...
+	<<deduction("This is a test deduction.", "Test description", "", "", "", "")>>
+	<<objective("Get through this test.", "Hopefully this all works", "test_objective")>>
+	<<set $new_question to true>>
+	JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
+	ABBY: Correction. Your crime scene is my apartment. Or it was.
+	ABBY: Come in, come in.
+	ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
+	<<objectiveComplete Journal test_objective>>
+	<<objective("This is a new objective.", "Hopefully this all works", "test_objective2")>>
+	ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
 <<else>>
-<<nextTutState DialogueContainer>>
-ABBY: What else do you need detective?
+	<<nextTutState DialogueContainer>>
+	ABBY: What else do you need detective?
 <<endif>>
 [[AbbyMain]]
 ===
@@ -38,8 +46,15 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<if $visited_pennies and $broke_into and $visited_alone>>
+	<<set $new_question to true>>
+<<endif>>
 [[Repeat conversation|AbbyRepeat]]
-[[Ask Questions|AbbyQuestions]]
+<<if $new_question is true>>
+	[[<color=green>Ask Questions</color>|AbbyQuestions]]
+	<<else>>
+	[[Ask Questions|AbbyQuestions]]
+<<endif>>
 [[Interrogate|AbbyInterogation]]
 <<tutorialprompt DialogueContainer>>
 ===
@@ -49,16 +64,31 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-[[Was anyone else here when it happened?|AbbyQ2]]
+<<set $new_question to false>>
 <<if visited("AbbyQuestions") is true>>
-	[[What sort of relationship did you have with Friday?|AbbyQ1]]
+	[[Was anyone else here when it happened?|AbbyQ2]]
+	<<if $Q1New is true>>
+		[[<color=green>What sort of relationship did you have with Friday?</color>|AbbyQ1]]
+	<<else>>
+		[[What sort of relationship did you have with Friday?|AbbyQ1]]
+	<<endif>>
 	<<if $broke_into is true>>
-		[[Broke into your apartment?|AbbyQ3]]
+		<<if $Q3New is true>>
+			[[<color=green>Broke into your apartment?</color>|AbbyQ3]]
+		<<else>>
+			[[Broke into your apartment?|AbbyQ3]]
+		<<endif>>
 	<<endif>>
 	<<if $visited_pennies and $broke_into and $visited_alone>>
-		[[Where were you when it happened?|AbbyWhere]]
+		<<if $Q4New is true>>
+			[[<color=green>Where were you when it happened?</color>|AbbyWhere]]
+		<<else>>
+			[[Where were you when it happened?|AbbyWhere]]
+		<<endif>>
 	<<endif>>
 	[[Back|AbbyMain]]
+<<else>>
+	[[<color=green>Was anyone else here when it happened?</color>|AbbyQ2]]
 <<endif>>
 ===
 
@@ -122,6 +152,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<set $Q1New to false>>
 ABBY: She was a... client of mine. Nothing personal. Walking in and finding her like that… It’s awful.
 JACE: If it wasn’t personal, why was she in your home?
 ABBY: She was here for an appointment. Every Thursday like clockwork.
@@ -154,6 +185,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<set $Q3New to false>>
 <<startkey Journal locked_door>>
 ABBY: Yeah! I locked the door when I left, just like I always do.
 <<endkey Journal>>
@@ -252,6 +284,7 @@ ABBY: Look around, Detective. This isn’t exactly the best place. If we had eno
 JACE: So you have no idea why it was shoved in Friday’s mouth, then?
 ABBY: I certainly didn’t put it there, if that’s what you mean.
 <<set $visited_pennies to true>>
+<<set $new_question to true>>
 [[AbbyMain]]
 ===
 
@@ -268,6 +301,7 @@ ABBY: Found her right in the middle of the room. I left her by herself to go get
 ABBY: She was dead in my apartment.
 ABBY: Someone broke into my apartment, Detective. Doesn’t that mean they had to be after me?
 <<set $broke_into to true>>
+<<set $new_question to true>>
 [[AbbyMain]]
 ===
 
@@ -296,6 +330,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<set $Q4New to false>>
 ABBY: Where was I when…? Oh, I get it.
 ABBY: She was killed in my apartment, so I had to have something to do with it. Riiight. I told you, I went to get my mail.
 ABBY: Bernard could vouch for my innocence. He saw me when I was coming back up.

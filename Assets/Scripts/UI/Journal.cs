@@ -28,8 +28,11 @@ public class Journal : MonoBehaviour
     [SerializeField] int maxNumOfEvidenceQuestioned = 2;
     [SerializeField] GameObject deductionElementPrefab;
     [SerializeField] Transform deductionPanel;
+    [SerializeField] GameObject objectiveElementPrefab;
+    [SerializeField] Transform objectivePanel;
     [SerializeField] DeductionSummary deductionSummary;
     [SerializeField] DilogueTutorialManager dilogueTutorialManager;
+    [SerializeField] GameObject deletetionConfirmationPanel;
 
     private int linesSaved = 0;
     private int NumOfEvidenceQuestioned = 0;
@@ -46,6 +49,7 @@ public class Journal : MonoBehaviour
     public List<GameObject> highlightedEntries;
 
     public List<GameObject> keyEntries;
+    private List<DeductionElement> currentObjectives = new List<DeductionElement>();
 
     public UnityEvent OnQuestionStart;
     public UnityEvent OnQuestionStop;
@@ -94,11 +98,19 @@ public class Journal : MonoBehaviour
             return false;
         });
 
+        //Objective(string mainText, string summaryText, string objKey)
+        dialogueRunner.RegisterFunction("objective", 3, delegate (Yarn.Value[] parameters)
+        {
+            var newDedElement = Instantiate(objectiveElementPrefab, objectivePanel);
+            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, parameters[2].AsString);
+            currentObjectives.Add(newDedElement.GetComponent<DeductionElement>());
+        });
+
         //Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
         dialogueRunner.RegisterFunction("deduction", 6, delegate (Yarn.Value[] parameters)
         {
             var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
-            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary);
+            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, "");
 
             List<GameObject> tempList = new List<GameObject>();
             for (int x = 0; x < keyEntries.Count; x++)
@@ -127,6 +139,7 @@ public class Journal : MonoBehaviour
                 Destroy(temp);
             }
 
+            print("Adding deduction and current step is: " + TutorialState.Current);
             if(TutorialState.Current == "deduction")
             {
                 dilogueTutorialManager.deductionButton = newDedElement.GetComponentInChildren<Button>();
@@ -330,6 +343,7 @@ public class Journal : MonoBehaviour
         }
     }
 
+    //This unhighlights.
     public void RemoveHighlighted(GameObject entry)
     {
             highlightedEntries.Remove(entry);
@@ -345,8 +359,23 @@ public class Journal : MonoBehaviour
             }
     }
 
+    //Brings up the delete confirmation.
+    public void ConfirmDeletion()
+    {
+        deletetionConfirmationPanel.SetActive(true);
+    }
+
+    //When deletion is canceled in the confirmation panel.
+    public void CancelDeletion()
+    {
+        deletetionConfirmationPanel.SetActive(false);
+        UnhighlightAll();
+    }
+
     public void DeleteAllHighlighted()
     {
+        deletetionConfirmationPanel.SetActive(false);
+
         foreach (GameObject lit in highlightedEntries)
         {
             if(lit.GetComponent<JournalElement>().keyID != "pennies" && lit.GetComponent<JournalElement>().keyID != "friday_alone")
@@ -441,6 +470,26 @@ public class Journal : MonoBehaviour
         UnhighlightAll();
         isQuestioning = false;
         itemQuestioningBox.SetActive(false);
+    }
+
+    [YarnCommand("objectiveComplete")]
+    public void ObjectiveComplete(string k)
+    {
+        DeductionElement element = null;
+        foreach(DeductionElement currObj in currentObjectives)
+        {
+            if(currObj.ObjKey == k)
+            {
+                element = currObj;
+                break;
+            }
+        }
+
+        if(element != null)
+        {
+            currentObjectives.Remove(element);
+            Destroy(element.gameObject);
+        }
     }
 /*
     [YarnCommand("deduction")]
