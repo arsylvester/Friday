@@ -181,7 +181,7 @@ public class AudioScript : MonoBehaviour
         audioPrefabClone = Instantiate(audioPrefab);
         if (audioPrefabParent != null)
         {
-            audioPrefabClone.transform.parent = audioPrefabParent.transform;
+            audioPrefabClone.transform.SetParent(audioPrefabParent.transform, false);
         }
         AudioSource audioPrefabSource = audioPrefabClone.GetComponent<AudioSource>();
         audioPrefabSource.clip = audioClips[clipNum];
