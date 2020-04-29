@@ -11,4 +11,10 @@ public class Interactable : MonoBehaviour
 
     public string DisplayName;
     public Vector2 DisplayOffset;
+    public GameObject NameTag;
+
+    public void Awake()
+    {
+        NameTag = Instantiate(NameTag, transform, false);
+    }
 }

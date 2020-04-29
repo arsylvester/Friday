@@ -11,12 +11,12 @@ using Yarn.Unity;
 public class PlayerInteractionAgent : MonoBehaviour
 {
     public string InteractKey;
-    public Text NameTag;
     public float InteractRange;
     public Transform Player;
 
     public Texture2D InteractCursor;
     public Texture2D NearCursor;
+    public Canvas Canvas;
     bool isInteracted;
 
     private Camera mainCamera;
@@ -83,11 +83,12 @@ public class PlayerInteractionAgent : MonoBehaviour
                 }
 
                 lastHovered = interactable;
-                NameTag.text = interactable.DisplayName;
+                lastHovered.NameTag.GetComponent<Text>().text = interactable.DisplayName;
+                lastHovered.NameTag.transform.SetParent(Canvas.transform, false);
 
-                Vector3 tpos = mainCamera.WorldToViewportPoint(interactable.transform.position + transform.right * interactable.DisplayOffset.x + transform.up * interactable.DisplayOffset.y);
-                Vector2 canvasSize = NameTag.transform.parent.GetComponentInParent<RectTransform>().rect.size;
-                NameTag.rectTransform.anchoredPosition = new Vector2(canvasSize.x * tpos.x, canvasSize.y * tpos.y);
+                Vector3 tpos = mainCamera.WorldToViewportPoint(interactable.transform.position);
+                Vector2 canvasSize = Canvas.GetComponent<RectTransform>().rect.size;
+                lastHovered.NameTag.GetComponent<RectTransform>().anchoredPosition = new Vector2(canvasSize.x * tpos.x + interactable.DisplayOffset.x, canvasSize.y * tpos.y + interactable.DisplayOffset.y);
             }
             else if (!isInteracted)
             {
@@ -96,8 +97,7 @@ public class PlayerInteractionAgent : MonoBehaviour
                 {
                     OnHoverEnd.Invoke(lastHovered);
                     lastHovered.OnHoverEnd.Invoke();
-                    Debug.Log("UNHOVER");
-                    NameTag.text = "";
+                    lastHovered.NameTag.GetComponent<Text>().text = "";
                     lastHovered = null;
                 }
             }
@@ -109,8 +109,7 @@ public class PlayerInteractionAgent : MonoBehaviour
             {
                 OnHoverEnd.Invoke(lastHovered);
                 lastHovered.OnHoverEnd.Invoke();
-                Debug.Log("UNHOVER");
-                NameTag.text = "";
+                lastHovered.NameTag.GetComponent<Text>().text = "";
                 lastHovered = null;
             }
         }
@@ -137,8 +136,7 @@ public class PlayerInteractionAgent : MonoBehaviour
         {
             OnHoverEnd.Invoke(lastHovered);
             lastHovered.OnHoverEnd.Invoke();
-            Debug.Log("UNHOVER");
-            NameTag.text = "";
+            lastHovered.NameTag.GetComponent<Text>().text = "";
             lastHovered = null;
         }
     }
