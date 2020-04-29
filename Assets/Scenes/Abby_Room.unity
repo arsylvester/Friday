@@ -581,6 +581,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DisplayName: Old TV
   DisplayOffset: {x: 0, y: 0}
+  NameTag: {fileID: 0}
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
@@ -845,6 +846,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DisplayName: Abby
   DisplayOffset: {x: 0, y: 1}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
   EntryNode: AbbyStart
 --- !u!136 &145008812
 CapsuleCollider:
@@ -1454,6 +1456,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DisplayName: Trash Can
   DisplayOffset: {x: 0, y: 0.2}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
@@ -4185,6 +4188,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DisplayName: Murder Weapon
   DisplayOffset: {x: 0, y: 0}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
@@ -4199,6 +4203,19 @@ MonoBehaviour:
   Description: Murder Weapon
   FlavorText: Murder Weapon
   Keyname: 
+--- !u!65 &1000005149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000005145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6502047, y: 0.37043712, z: 1.3243937}
+  m_Center: {x: -0.12212759, y: 0.0000001266883, z: -0.0000009871163}
 --- !u!1 &1002418673
 GameObject:
   m_ObjectHideFlags: 0
@@ -6114,6 +6131,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DisplayName: Old TV
   DisplayOffset: {x: 0, y: 0}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
@@ -6365,6 +6383,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   DisplayName: Chalk Outline
   DisplayOffset: {x: 0, y: 0}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
   OnFocused:
     m_PersistentCalls:
       m_Calls: []
@@ -6538,11 +6557,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: The World
       objectReference: {fileID: 0}
-    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+    - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
-      propertyPath: m_TagString
-      value: Fade
-      objectReference: {fileID: 0}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 1481138151}
     - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
@@ -6823,29 +6842,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 24.328001
       objectReference: {fileID: 0}
-    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 821035158, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781218285019154619, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2282810648346128304, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3298370810020090011, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
@@ -6955,20 +6951,33 @@ PrefabInstance:
       propertyPath: isDoneTalking
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 1481138151}
     - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 731285796436648263, guid: bad00f610cb8b724188ea05bf6e77074,
+    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 821035158, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781218285019154619, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282810648346128304, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 181535333, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_RootOrder
@@ -6977,6 +6986,11 @@ PrefabInstance:
     - target: {fileID: 1989800197, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fade
       objectReference: {fileID: 0}
     - target: {fileID: 2550094562005666733, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -6997,6 +7011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 941395480, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 731285796436648263, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1228537298, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
@@ -7034,7 +7053,7 @@ PrefabInstance:
     - target: {fileID: 528368006417069626, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -104.04
+      value: -104.04001
       objectReference: {fileID: 0}
     - target: {fileID: 9100805025067445280, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -8267,6 +8286,12 @@ PrefabInstance:
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1992322537}
+    - target: {fileID: 1858152581597618298, guid: 5fed1099eae1b65429c96f738836f1f5,
+        type: 3}
+      propertyPath: NameTag
+      value: 
+      objectReference: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fed1099eae1b65429c96f738836f1f5, type: 3}
 --- !u!1001 &5209427829032951697
