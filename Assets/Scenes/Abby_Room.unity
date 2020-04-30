@@ -1275,6 +1275,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &266537416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2660074529285337597, guid: bad00f610cb8b724188ea05bf6e77074,
+    type: 3}
+  m_PrefabInstance: {fileID: 1888381197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &285306315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3222,6 +3228,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2825411278885069187, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: startCamTutButton
+      value: 
+      objectReference: {fileID: 1584884729}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2803a47443bee214f8945245f24cd954, type: 3}
 --- !u!1 &762820006
@@ -4730,6 +4741,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 1147484512}
+--- !u!1 &1160291009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 870918263, guid: bad00f610cb8b724188ea05bf6e77074,
+    type: 3}
+  m_PrefabInstance: {fileID: 1888381197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1162046304
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,6 +5595,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 1531524085}
+--- !u!114 &1584884729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1253628868469626905, guid: 2803a47443bee214f8945245f24cd954,
+    type: 3}
+  m_PrefabInstance: {fileID: 751332455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1625994415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8327841558220827832, guid: 2803a47443bee214f8945245f24cd954,
+    type: 3}
+  m_PrefabInstance: {fileID: 751332455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1625994416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625994415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56caa119665596c4da54c7dc1c8a9821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inspectorPanel: {fileID: 1160291009}
+  camPromptPanel: {fileID: 266537416}
 --- !u!1001 &1657522525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6985,7 +7034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 870918263, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 563998259, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_IsActive
@@ -7014,27 +7063,27 @@ PrefabInstance:
     - target: {fileID: 528368006417069626, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 528368006417069626, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -82.5
+      value: -71
       objectReference: {fileID: 0}
     - target: {fileID: 528368006417069626, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -577.38
+      value: -577.4
       objectReference: {fileID: 0}
     - target: {fileID: 528368006417069626, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -304.8
+      value: -336.5
       objectReference: {fileID: 0}
     - target: {fileID: 528368006417069626, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -104.04
+      value: -104
       objectReference: {fileID: 0}
     - target: {fileID: 9100805025067445280, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -7054,8 +7103,70 @@ PrefabInstance:
     - target: {fileID: 1726183194401296778, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_Text
-      value: Clicking and dragging the right mouse button allows you to view things
-        from different angles. Let's try rotating this item.
+      value: Clicking and drag the right mouse button to rotate the item
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127724693, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127724693, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 148
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127724693, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582898150, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_Text
+      value: 'Left click off the item to exit inspection. Now, go ask Abby some follow
+        up questions. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660074529285337597, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171726580764703793, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 171726580764703793, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 171726580764703793, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -580.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 171726580764703793, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -321.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725006003733698601, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725006003733698601, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725006003733698601, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3838936581352646954, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_Text
+      value: Clicking and dragging the right mouse button allows you to view your
+        surroundings in new ways. Let's try searching for clues now.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}

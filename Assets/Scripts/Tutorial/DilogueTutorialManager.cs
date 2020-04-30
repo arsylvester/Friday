@@ -19,6 +19,9 @@ public class DilogueTutorialManager : MonoBehaviour
     [SerializeField] Button interrogateQuitButton;
     [SerializeField] Button continueButton;
     public Button deductionButton;
+
+    public Button startCamTutButton;
+    CameraTutorial camTutorial;
     
     [SerializeField] GameObject MM1Prompt;
     [SerializeField] GameObject leavePrompt;
@@ -50,6 +53,8 @@ public class DilogueTutorialManager : MonoBehaviour
     {
         if (turnTutorialOff == true)
             canSaveDialogue = true;
+
+        camTutorial = FindObjectOfType<CameraTutorial>();
     }
 
     IEnumerator interrogatePrompts()
@@ -274,6 +279,7 @@ public class DilogueTutorialManager : MonoBehaviour
                 break;
             case "free":
                 continueButton.onClick.SetPersistentListenerState(2, UnityEventCallState.Off);
+                startCamTutButton.onClick.AddListener(camTutorial.StartCamTut);
                 leaveButton.gameObject.SetActive(true);
                 break;
             case "deduction":

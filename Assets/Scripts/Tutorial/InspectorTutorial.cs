@@ -157,4 +157,10 @@ public class InspectorTutorial : MonoBehaviour
     {
         hasLeftItem = true;
     }
+
+    private bool hasDoneCamTut = false;
+    public void CamTut()
+    {
+        hasDoneCamTut = true;
+    }
 }
