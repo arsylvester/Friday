@@ -33,7 +33,7 @@ public class CameraTutorial : MonoBehaviour
 
     IEnumerator CamTut()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.6f);
 
         inspectorPanel.SetActive(true);
         camPromptPanel.SetActive(true);
