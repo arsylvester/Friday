@@ -20,12 +20,15 @@ public class ItemAgent : MonoBehaviour
         this.item = null;
     }
 
+    private Image cameraFlash;
+
     ////////////////////////////////////////////
     ///TUTORIAL ONLY
     InspectorTutorial tutorial;
     private void Start()
     {
         tutorial = GetComponent<InspectorTutorial>();
+        cameraFlash = GameObject.Find("CameraFlash").GetComponent<Image>();
     }
     ////////////////////////////////////////////
     
@@ -57,7 +60,7 @@ public class ItemAgent : MonoBehaviour
                 Sprite capture = Sprite.Create(td, new Rect(0, 0, rt.width, rt.height), new Vector2(rt.width / 2.0F, rt.height / 2.0F));
 
                 Journal jrnl = FindObjectOfType<Journal>();
-
+                StartCoroutine(Flash());
                 ////////////////////////////////////////////
                 ///TUTORIAL ONLY
                 tutorial.RecordItem();
@@ -79,6 +82,23 @@ public class ItemAgent : MonoBehaviour
         else
         {
             FlavorText.text = "";
+        }
+    }
+
+    public IEnumerator Flash()
+    {
+        float time = 0;
+        while (time < 1)
+        {
+            time += Time.deltaTime;
+            cameraFlash.color = Color.Lerp(Color.clear, Color.white, time);
+            yield return null;
+        }
+        while (time > 0)
+        {
+            time -= Time.deltaTime;
+            cameraFlash.color = Color.Lerp(Color.clear, Color.white, time);
+            yield return null;
         }
     }
 }
