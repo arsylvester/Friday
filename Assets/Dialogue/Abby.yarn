@@ -366,6 +366,7 @@ ABBY: After you, Detective.
 <<openlocation LevelController Bernard_Room>>
 <<openlocation LevelController Management_Office>>
 <<openlocation LevelController Owner_Suite_Test>>
-*You made it through our Alpha build!*
-*You can explore other rooms if you'd like, but note they might be buggy/incomplete.*
+<<objective("Talk to Bernard or Tristan", 
+	"I now should talk to either Bernard or Tristan.", 
+		"Bernard_objective")>>
 ===
