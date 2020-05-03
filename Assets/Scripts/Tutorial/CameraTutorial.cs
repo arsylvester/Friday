@@ -7,10 +7,13 @@ public class CameraTutorial : MonoBehaviour
     public GameObject inspectorPanel;
     public GameObject camPromptPanel;
 
+    bool isTutDone;
+
     // Start is called before the first frame update
     void Start()
     {
         camPromptPanel.SetActive(false);
+        isTutDone = false;
     }
 
     // Update is called once per frame
@@ -28,7 +31,11 @@ public class CameraTutorial : MonoBehaviour
 
     public void StartCamTut()
     {
-        StartCoroutine(CamTut());
+        if (!isTutDone)
+        {
+            StartCoroutine(CamTut());
+            isTutDone = true;
+        }
     }
 
     IEnumerator CamTut()
