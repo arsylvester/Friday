@@ -2048,7 +2048,7 @@ Transform:
   m_Children:
   - {fileID: 2095748873}
   m_Father: {fileID: 0}
-  m_RootOrder: 53
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416413608
 GameObject:
@@ -7285,8 +7285,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0, z: 0.01}
-  m_Center: {x: -0.000014, y: 0, z: 0.000032}
+  m_Size: {x: 0.0060688173, y: 0, z: 0.007984896}
+  m_Center: {x: -0.00021779488, y: 0, z: -0.00041028913}
 --- !u!1 &1481138151 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
@@ -8614,6 +8614,11 @@ PrefabInstance:
       propertyPath: fadeImage
       value: 
       objectReference: {fileID: 1481138151}
+    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fade
+      objectReference: {fileID: 0}
     - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
@@ -9043,11 +9048,6 @@ PrefabInstance:
     - target: {fileID: 1989800197, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_TagString
-      value: Fade
       objectReference: {fileID: 0}
     - target: {fileID: 2550094562005666733, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
