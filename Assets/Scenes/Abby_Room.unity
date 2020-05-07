@@ -1571,6 +1571,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.31717497, y: 0.45370686, z: 0.69929737}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &366201584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 366201585}
+  m_Layer: 0
+  m_Name: Abby Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &366201585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366201584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.05124, y: -0.44637585, z: -4.090338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2095748873}
+  m_Father: {fileID: 0}
+  m_RootOrder: 53
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &416413608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4700,7 +4731,7 @@ MonoBehaviour:
     type: 2}
   audioClips:
   - {fileID: 8300000, guid: 8afa5b2aa72a09d41896ff7e14627e6d, type: 3}
-  StartVolume: 0.595
+  StartVolume: 0.031
   StereoPan: 0
   loop: 1
   useClipsAsPlaylist: 0
@@ -6538,11 +6569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: The World
       objectReference: {fileID: 0}
-    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+    - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
-      propertyPath: m_TagString
-      value: Fade
-      objectReference: {fileID: 0}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 1481138151}
     - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
@@ -6823,29 +6854,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 24.328001
       objectReference: {fileID: 0}
-    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
-        type: 0}
-    - target: {fileID: 821035158, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781218285019154619, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2282810648346128304, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3298370810020090011, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
@@ -6955,20 +6963,33 @@ PrefabInstance:
       propertyPath: isDoneTalking
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 1481138151}
     - target: {fileID: 7822683449282999255, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 731285796436648263, guid: bad00f610cb8b724188ea05bf6e77074,
+    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 113255446, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 821035158, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2781218285019154619, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282810648346128304, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 181535333, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_RootOrder
@@ -6977,6 +6998,11 @@ PrefabInstance:
     - target: {fileID: 1989800197, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fade
       objectReference: {fileID: 0}
     - target: {fileID: 2550094562005666733, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -6997,6 +7023,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 941395480, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 731285796436648263, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1228537298, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
@@ -7999,6 +8030,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
+--- !u!1 &2095748872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095748873}
+  - component: {fileID: 2095748874}
+  m_Layer: 0
+  m_Name: Vent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2095748873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095748872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 366201585}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2095748874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095748872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: 989cc7454250cb140bffd90768b43329,
+    type: 3}
+  audioPrefabParent: {fileID: 0}
+  mixerTrack: {fileID: 7671558235606071021, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: 1a18651869526ec45bc8a4b3585001ca, type: 3}
+  StartVolume: 0.366
+  StereoPan: 0
+  loop: 1
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
 --- !u!1 &2120194431
 GameObject:
   m_ObjectHideFlags: 0
