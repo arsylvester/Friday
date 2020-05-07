@@ -48,10 +48,11 @@ public class InspectorTutorial : MonoBehaviour
                 obj.enabled = false;
         }
 
-        yield return new WaitForSeconds(2.6F);
+        cam.FreezeCamera();
+
+        yield return new WaitForSeconds(2.521F);
         //Suppress movement and all other interactions
         movement.StopMovement();
-        cam.FreezeCamera();
 
         //Click bills step
         prompt.StartPrompt(DummyHighlight, BillsPrompt, true);
