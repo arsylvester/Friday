@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ItemJournalElement : JournalElement
 {
     public string itemName = "";
     public string description = "";
     public string flavorText = "";
+    public string location = "";
     //public string keyID = "";
     public Sprite itemPhoto;
 
@@ -41,6 +43,7 @@ public class ItemJournalElement : JournalElement
         keyID = ID;
         journalParent = parent;
         itemPhotograph = photo;
+        location = SceneManager.GetActiveScene().name;
 
         nameTextbox.text = itemName;
         descTextbox.text = description;
@@ -79,6 +82,6 @@ public class ItemJournalElement : JournalElement
 
     public void ImageClicked()
     {
-        itemPhotograph.ExpandImage(itemPhoto, flavorText);
+        itemPhotograph.ExpandImage(itemPhoto, flavorText, itemName, location);
     }
 }
