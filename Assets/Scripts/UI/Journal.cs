@@ -335,6 +335,11 @@ public class Journal : MonoBehaviour
                 entry.GetComponent<JournalElement>().Highlight();
                 entry.transform.SetParent(itemQuestioningContent);
                 NumOfEvidenceQuestioned++;
+
+                if (entry.GetComponent<DialogueJournalElement>())
+                {
+                    entry.GetComponent<DialogueJournalElement>().ResizeSmall();
+                }
             }
         }
         else
@@ -461,11 +466,11 @@ public class Journal : MonoBehaviour
     [YarnCommand("startquestioning")]
     public void StartQuestioning()
     {
+        UnhighlightAll();
         OnQuestionStart.Invoke();
         isQuestioning = true;
         OpenJournals();
         itemQuestioningBox.SetActive(true);
-        UnhighlightAll();
     }
 
     [YarnCommand("stopquestioning")]
