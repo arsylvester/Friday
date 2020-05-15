@@ -13,6 +13,8 @@ public class DialogueJournalElement : JournalElement
     public Color markedColor;
     [SerializeField] float smallRectHeight = 100;
     [SerializeField] float smallRectWidth = 150;
+    [SerializeField] GameObject markImportantButton;
+    [SerializeField] GameObject deleteButton;
 
     private ColorBlock unMarkedColors;
 
@@ -56,6 +58,8 @@ public class DialogueJournalElement : JournalElement
         isHighlighted = true;
         unMarkedColors = button.colors;
         button.colors = highlightedColors;
+        markImportantButton.SetActive(true);
+        deleteButton.SetActive(true);
     }
 
     public override void Unhighlight()
@@ -63,6 +67,8 @@ public class DialogueJournalElement : JournalElement
         isHighlighted = false;
         button.colors = unMarkedColors;
         ResizeRegular();
+        markImportantButton.SetActive(false);
+        deleteButton.SetActive(false);
     }
 
     public override void MarkImportant()
@@ -92,5 +98,10 @@ public class DialogueJournalElement : JournalElement
         rectTransform.sizeDelta = new Vector2(rectWidth, rectHeight);
         textRect.sizeDelta = new Vector2(textWidth, textHeight);
         textRect.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+    }
+
+    public override void DeleteEntry()
+    {
+        journal.ConfirmDeletion();
     }
 }

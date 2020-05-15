@@ -17,6 +17,8 @@ public class ItemJournalElement : JournalElement
     [SerializeField] Text descTextbox;
     [SerializeField] Image itemImageBox;
     [SerializeField] GameObject markedImage;
+    [SerializeField] GameObject markImportantButton;
+    [SerializeField] GameObject deleteButton;
 
    // public ColorBlock highlightedColors = ColorBlock.defaultColorBlock;
    // public Transform journalParent;
@@ -65,14 +67,18 @@ public class ItemJournalElement : JournalElement
     public override void Highlight()
     {
         isHighlighted = true;
-        unMarkedColors = button.colors;
-        button.colors = highlightedColors;
+       // unMarkedColors = button.colors;
+       // button.colors = highlightedColors;
+        markImportantButton.SetActive(true);
+        deleteButton.SetActive(true);
     }
 
     public override void Unhighlight()
     {
         isHighlighted = false;
-        button.colors = unMarkedColors;
+       // button.colors = unMarkedColors;
+        markImportantButton.SetActive(false);
+        deleteButton.SetActive(false);
     }
 
     public override void MarkImportant()
@@ -83,5 +89,10 @@ public class ItemJournalElement : JournalElement
     public void ImageClicked()
     {
         itemPhotograph.ExpandImage(itemPhoto, flavorText, itemName, location);
+    }
+
+    public override void DeleteEntry()
+    {
+        journal.ConfirmDeletion();
     }
 }

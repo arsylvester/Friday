@@ -18,4 +18,5 @@ public abstract class JournalElement : MonoBehaviour
     public abstract void Unhighlight();
 
     public abstract void MarkImportant();
+    public abstract void DeleteEntry();
 }
