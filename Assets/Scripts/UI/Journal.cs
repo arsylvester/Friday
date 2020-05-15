@@ -471,6 +471,7 @@ public class Journal : MonoBehaviour
         isQuestioning = true;
         OpenJournals();
         itemQuestioningBox.SetActive(true);
+        itemQuestioningBox.GetComponent<Animator>().SetBool("PanelOn", true);
     }
 
     [YarnCommand("stopquestioning")]
@@ -479,7 +480,8 @@ public class Journal : MonoBehaviour
         OnQuestionStop.Invoke();
         UnhighlightAll();
         isQuestioning = false;
-        itemQuestioningBox.SetActive(false);
+        itemQuestioningBox.GetComponent<Animator>().SetBool("PanelOn", false);
+        //itemQuestioningBox.SetActive(false);
     }
 
     [YarnCommand("objectiveComplete")]
