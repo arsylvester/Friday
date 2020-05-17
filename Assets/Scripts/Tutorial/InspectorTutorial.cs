@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class InspectorTutorial : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class InspectorTutorial : MonoBehaviour
     
     public InputFreeLookCam cam;
     public PlayerMovement movement;
+
     /*
     private void Start()
     {
@@ -48,11 +50,9 @@ public class InspectorTutorial : MonoBehaviour
                 obj.enabled = false;
         }
 
-        cam.FreezeCamera();
-
-        yield return new WaitForSeconds(2.521F);
         //Suppress movement and all other interactions
         movement.StopMovement();
+        cam.FreezeCamera();
 
         //Click bills step
         prompt.StartPrompt(DummyHighlight, BillsPrompt, true);

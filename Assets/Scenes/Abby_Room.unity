@@ -1832,12 +1832,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.61633515, y: 0.80598927, z: 0.8378253}
   m_Center: {x: 0.000000029802326, y: 0.00000002980232, z: 0.00000004470349}
---- !u!1 &266537416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2660074529285337597, guid: bad00f610cb8b724188ea05bf6e77074,
-    type: 3}
-  m_PrefabInstance: {fileID: 1888381197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &274984186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,7 +3700,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1625994416, guid: 2803a47443bee214f8945245f24cd954, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2803a47443bee214f8945245f24cd954, type: 3}
 --- !u!1 &762820006
 GameObject:
@@ -5387,12 +5382,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3156399, y: 0.5864697, z: 0.34504482}
   m_Center: {x: 0, y: -0.00000001490116, z: 0.011552627}
---- !u!1 &1160291009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 870918263, guid: bad00f610cb8b724188ea05bf6e77074,
-    type: 3}
-  m_PrefabInstance: {fileID: 1888381197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1162046304
 GameObject:
   m_ObjectHideFlags: 0
@@ -7456,8 +7445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56caa119665596c4da54c7dc1c8a9821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inspectorPanel: {fileID: 1160291009}
-  camPromptPanel: {fileID: 266537416}
+  inspectorPanel: {fileID: 0}
+  camPromptPanel: {fileID: 0}
 --- !u!1001 &1657522525
 PrefabInstance:
   m_ObjectHideFlags: 0
