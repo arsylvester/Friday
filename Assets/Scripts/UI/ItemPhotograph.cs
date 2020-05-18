@@ -7,12 +7,16 @@ public class ItemPhotograph : MonoBehaviour
 {
     [SerializeField] Image photo;
     [SerializeField] Text flavorText;
+    [SerializeField] Text nameText;
+    [SerializeField] Text locationText;
     [SerializeField] Camera mainCamera;
 
-    public void ExpandImage(Sprite image, string flavor)
+    public void ExpandImage(Sprite image, string flavor, string name, string locationFound)
     {
         photo.sprite = image;
         flavorText.text = flavor;
+        nameText.text = name;
+        locationText.text = "Found in " + locationFound;
         gameObject.SetActive(true);
     }
 

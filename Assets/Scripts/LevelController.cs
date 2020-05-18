@@ -15,6 +15,7 @@ public class LevelController : MonoBehaviour
     public TextMeshProUGUI confirmLocationText;
     public GameObject mapBackLocation;
     public bool mapMoveBack = false;
+    LevelController levelController;
 
     public bool isPaused = false;
     string location;
@@ -51,6 +52,8 @@ public class LevelController : MonoBehaviour
         interact = FindObjectOfType<PlayerInteractionAgent>();
 
         journal = FindObjectOfType<Journal>();
+
+        levelController = FindObjectOfType<LevelController>();
     }
 
     private void Update()
@@ -78,6 +81,8 @@ public class LevelController : MonoBehaviour
             ResumeGame();
             DisableEnableJournalForPause(isPaused);
         }
+        else if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && mapUI.activeInHierarchy)
+            levelController.CloseMap();
 
         if (mapMoveBack)
         {

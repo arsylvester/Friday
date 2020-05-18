@@ -4,20 +4,20 @@ colorID: 0
 position: 861,368
 ---
 <<if visited("AbbyStart") is false>>
+	<<objective("Find out Abby's Alibi", 
+	"- Probably should take a look at where the body was. Maybe Abby knows more about it?", 
+		"abby1_objective")>>
 	<<set $Q1New to true>>
 	<<set $Q3New to true>>
 	<<set $Q4New to true>>
 	<<tutorialprompt DialogueContainer>>
 	JACE: Let’s get this over with...
-	<<deduction("This is a test deduction.", "Test description", "", "", "", "")>>
-	<<objective("Get through this test.", "Hopefully this all works", "test_objective")>>
+	//<<deduction("This is a test deduction.", "Test description", "", "", "", "")>>
 	<<set $new_question to true>>
 	JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 	ABBY: Correction. Your crime scene is my apartment. Or it was.
 	ABBY: Come in, come in.
 	ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
-	<<objectiveComplete Journal test_objective>>
-	<<objective("This is a new objective.", "Hopefully this all works", "test_objective2")>>
 	ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
 <<else>>
 	<<nextTutState DialogueContainer>>
@@ -186,6 +186,12 @@ colorID: 0
 position: 1163,357
 ---
 <<set $Q3New to false>>
+<<objectiveComplete Journal abby2_objective>>
+<<objective("Find out Abby's Alibi", 
+	"<S>- Probably should take a look at where the body was. Maybe Abby knows more about it?
+- Did she admit someone broke into her apartment? Better press her on that one.</s>
+- So she locked the door when she left AND Friday was alone? How could someone have gotten in then?", 
+		"abby3_objective")>>
 <<startkey Journal locked_door>>
 ABBY: Yeah! I locked the door when I left, just like I always do.
 <<endkey Journal>>
@@ -293,6 +299,11 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<objectiveComplete Journal abby1_objective>>
+<<objective("Find out Abby's Alibi", 
+	"<S>- Probably should take a look at where the body was. Maybe Abby knows more about it?</s>
+- Did she admit someone broke into her apartment? Better press her on that one.", 
+		"abby2_objective")>>
 JACE: So you were the one who found her body?
 ABBY: Yep. It was some nasty stuff.
 <<startkey Journal mail>>
@@ -310,6 +321,13 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<objectiveComplete Journal abby3_objective>>
+<<objective("Find out Abby's Alibi", 
+	"<S>- Probably should take a look at where the body was. Maybe Abby knows more about it?
+- Did she admit someone broke into her apartment? Better press her on that one.
+- So she locked the door when she left AND Friday was alone? How could someone have gotten in then?</s>
+- Then where was Abby?", 
+		"abby4_objective")>>
 JACE: Is there any other way into this room other than the front door? A fire escape, maybe?
 <<startkey Journal locked_patio>>
 ABBY: Huh? Well, we have patios, as you can see, but I keep mine locked up tight.
@@ -330,6 +348,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
+<<objectiveComplete Journal abby4_objective>>
 <<set $Q4New to false>>
 ABBY: Where was I when…? Oh, I get it.
 ABBY: She was killed in my apartment, so I had to have something to do with it. Riiight. I told you, I went to get my mail.
@@ -347,6 +366,7 @@ ABBY: After you, Detective.
 <<openlocation LevelController Bernard_Room>>
 <<openlocation LevelController Management_Office>>
 <<openlocation LevelController Owner_Suite_Test>>
-*You made it through our Alpha build!*
-*You can explore other rooms if you'd like, but note they might be buggy/incomplete.*
+<<objective("Talk to Bernard or Tristan", 
+	"I now should talk to either Bernard or Tristan.", 
+		"Bernard_objective")>>
 ===

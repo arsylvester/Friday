@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class InspectorTutorial : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class InspectorTutorial : MonoBehaviour
     
     public InputFreeLookCam cam;
     public PlayerMovement movement;
+
     /*
     private void Start()
     {
@@ -48,7 +50,6 @@ public class InspectorTutorial : MonoBehaviour
                 obj.enabled = false;
         }
 
-        yield return new WaitForSeconds(2.6F);
         //Suppress movement and all other interactions
         movement.StopMovement();
         cam.FreezeCamera();
@@ -156,5 +157,11 @@ public class InspectorTutorial : MonoBehaviour
     public void LeaveItem()
     {
         hasLeftItem = true;
+    }
+
+    private bool hasDoneCamTut = false;
+    public void CamTut()
+    {
+        hasDoneCamTut = true;
     }
 }
