@@ -64,13 +64,16 @@ public class ItemJournalElement : JournalElement
         }
     }
 
-    public override void Highlight()
+    public override void Highlight(bool buttons)
     {
         isHighlighted = true;
-       // unMarkedColors = button.colors;
-       // button.colors = highlightedColors;
-        markImportantButton.SetActive(true);
-        deleteButton.SetActive(true);
+        // unMarkedColors = button.colors;
+        // button.colors = highlightedColors;
+        if (buttons)
+        {
+            markImportantButton.SetActive(true);
+            deleteButton.SetActive(true);
+        }
     }
 
     public override void Unhighlight()

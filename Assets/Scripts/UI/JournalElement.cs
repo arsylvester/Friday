@@ -13,7 +13,7 @@ public abstract class JournalElement : MonoBehaviour
 
     public abstract void Clicked();
 
-    public abstract void Highlight();
+    public abstract void Highlight(bool buttons);
 
     public abstract void Unhighlight();
 

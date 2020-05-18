@@ -332,7 +332,7 @@ public class Journal : MonoBehaviour
             if (NumOfEvidenceQuestioned < maxNumOfEvidenceQuestioned)
             {
                 highlightedEntries.Add(entry);
-                //entry.GetComponent<JournalElement>().Highlight();
+                entry.GetComponent<JournalElement>().Highlight(false);
                 entry.transform.SetParent(itemQuestioningContent);
                 NumOfEvidenceQuestioned++;
 
@@ -346,7 +346,7 @@ public class Journal : MonoBehaviour
         {
             UnhighlightAll();
             highlightedEntries.Add(entry);
-            entry.GetComponent<JournalElement>().Highlight();
+            entry.GetComponent<JournalElement>().Highlight(true);
             /*if (!deleteButton.activeInHierarchy)
             {
                 ToggleButtonsOn();

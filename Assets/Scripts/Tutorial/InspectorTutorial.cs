@@ -46,7 +46,7 @@ public class InspectorTutorial : MonoBehaviour
         Interactable[] objs = FindObjectsOfType<Interactable>();
         foreach (Interactable obj in objs)
         {
-            if(obj.gameObject.name != "Bills")
+            if(obj.GetComponent<Item>() && obj.GetComponent<Item>().Keyname != "manage_bills")
                 obj.enabled = false;
         }
 

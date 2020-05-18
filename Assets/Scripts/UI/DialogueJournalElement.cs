@@ -53,13 +53,16 @@ public class DialogueJournalElement : JournalElement
         }
     }
 
-    public override void Highlight()
+    public override void Highlight(bool buttons)
     {
         isHighlighted = true;
         unMarkedColors = button.colors;
         button.colors = highlightedColors;
-        markImportantButton.SetActive(true);
-        deleteButton.SetActive(true);
+        if (buttons)
+        {
+            markImportantButton.SetActive(true);
+            deleteButton.SetActive(true);
+        }
     }
 
     public override void Unhighlight()
