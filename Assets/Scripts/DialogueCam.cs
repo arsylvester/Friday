@@ -11,7 +11,6 @@ public class DialogueCam : MonoBehaviour
     public float speed;
 
     CharacterController charController;
-    public bool movePlayer;
     public Quaternion tmpNpcRotation;
 
     public GameObject npc;
@@ -145,6 +144,7 @@ public class DialogueCam : MonoBehaviour
 
         if (isDoneTalking && TutorialState.Current == "deduction")
         {
+            playerMovement.enabled = true;
             playerMovement.ResumeMovement();
         }
     }

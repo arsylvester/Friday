@@ -51,7 +51,7 @@ public class InspectorTutorial : MonoBehaviour
         }
 
         //Suppress movement and all other interactions
-        movement.StopMovement();
+        movement.enabled = false;
         cam.FreezeCamera();
 
         //Click bills step
@@ -125,7 +125,6 @@ public class InspectorTutorial : MonoBehaviour
 
         //Unsuppress camera and movement
         cam.UnfreezeCamera();
-        movement.ResumeMovement();
     }
 
 
