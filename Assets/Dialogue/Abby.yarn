@@ -11,14 +11,13 @@ position: 861,368
 	<<set $Q3New to true>>
 	<<set $Q4New to true>>
 	<<tutorialprompt DialogueContainer>>
-	JACE: Let’s get this over with...
-	//<<deduction("This is a test deduction.", "Test description", "", "", "", "")>>
 	<<set $new_question to true>>
-	JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
+	JACE: Afternoon, ma’am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 	ABBY: Correction. Your crime scene is my apartment. Or it was.
-	ABBY: Come in, come in.
-	ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
-	ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
+	ABBY: I’d offer you a drink, but I don’t really have access to my fridge at the moment. 
+	JACE: It’s uh, no worries
+	ABBY: Feel free to look around like the other cops. I’ll just be outside, you know, hovering. Ask me whatever you need.
+	ABBY: Not that you asked, but I’m Abby by the way. Abby Adams.
 <<else>>
 	<<nextTutState DialogueContainer>>
 	ABBY: What else do you need detective?
@@ -32,12 +31,12 @@ colorID: 0
 position: 861,368
 ---
 <<tutorialprompt DialogueContainer>>
-JACE: Let’s get this over with...
-JACE: Afternoon, ma,am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
+JACE: Afternoon, ma’am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
 ABBY: Correction. Your crime scene is my apartment. Or it was.
-ABBY: Come in, come in.
-ABBY: I’d offer you a drink, but I’d rather just get this over with... You’re here about Friday, aren’t you?
-ABBY: I need to pack my things, so feel free to look around like the other cops. Ask me whatever you need.
+ABBY: I’d offer you a drink, but I don’t really have access to my fridge at the moment. 
+JACE: It’s uh, no worries
+ABBY: Feel free to look around like the other cops. I’ll just be outside, you know, hovering. Ask me whatever you need.
+ABBY: Not that you asked, but I’m Abby by the way. Abby Adams.
 [[AbbyMain]]
 ===
 
@@ -132,6 +131,14 @@ position: 1163,357
         <<stopquestioning Journal>>
 		<<set $tryagain to false>>
 		[[AbbyChalk]]
+	<<elseif question("locked_patio", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[AbbyLockedPatio]]
+	<<elseif question("abby_work", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[AbbyWork]]
     <<elseif question("friday_alone", "locked_door") is true>>
         <<stopquestioning Journal>>
 		<<set $tryagain to false>>
@@ -155,12 +162,11 @@ position: 1163,357
 <<set $Q1New to false>>
 ABBY: She was a... client of mine. Nothing personal. Walking in and finding her like that… It’s awful.
 JACE: If it wasn’t personal, why was she in your home?
-ABBY: She was here for an appointment. Every Thursday like clockwork.
-ABBY: She was getting real cozy here, though. She was always around the apartments. Almost too clingy for me.
-JACE: Friday being clingy? Doesn’t sound like my quiet assistant.
-ABBY: You, however, sound exactly like the inattentive dolt she described you as.
-JACE: Inattentive…?
-JACE: ( Dolt…? I was the one who solved all of our cases! )
+ABBY: She came in every Thursday like clockwork for her appoint- for our, uh, girl’s nights.
+ABBY: ... She was getting real cozy here, though. She was always around the apartments, sniffing around. Wondered if her detective work followed her home one too many times.
+JACE: Doesn’t sound like my quiet assistant.
+ABBY: ‘Quiet assistant’? Ha!
+ABBY: Don’t make me laugh. You barely knew her at all.
 [[AbbyMain]]
 ===
 
@@ -169,14 +175,13 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-ABBY: Gosh no. I don’t enjoy having company over often.
-ABBY: And I’d never have someone else over while handling my appointments.
+ABBY: Gosh no. I’m not much for big groups. It was just me and Friday, like every Thursday.
 <<startkey Journal friday_alone>>
 JACE: So, Friday was alone?
 <<tutorialprompt DialogueContainer>>
-ABBY: That’s what I’m saying! Friday was alone!
+ABBY: That’s what I told the other cops! Friday was alone!
 <<endkey Journal>>
-JACE: Just making sure...
+JACE: That seems like it might be important to note down.
 [[AbbyMain]]
 ===
 
@@ -200,13 +205,14 @@ ABBY: Actually, no…
 <<startkey Journal locked_door>>
 ABBY: I had to unlock it again.
 <<endkey Journal>>
-ABBY: Or I went through the motion, anyway. It may have been unlocked.
-ABBY: The door was closed, for sure.
+ABBY: It’s a cheap door. I know I had to unlock it again, because you have to jimmy the lock sometimes, and if you jimmy it too hard the door practically flies open...
+ABBY: I almost stepped right on top of her, because I was jimmying that lock...
 JACE: Nothing was stolen?
 ABBY: It… doesn’t appear that they took anything.
 JACE: Sounds like somebody had a grudge, then.
-ABBY: I-I told you! They were after me, Detective…! Should I be put into protective custody or something?
+ABBY: Were they after Friday, or were they after me, detective? Shouldn’t I be going into protective custody?
 JACE: I… don’t think that will be necessary, ma’am.
+JACE: We have no evidence to suggest that the killer... didn’t already get what they came for.
 [[AbbyMain]]
 ===
 
@@ -215,11 +221,11 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-NEWSCASTER: A young cop was murdered at the Sunnyview Apartment complex last night. 
 <<startkey Journal gang_violence>>
-NEWCASTER: Initial reports seem to connect the incident to a string of gang violence common in the area.
-ABBY:  Shame that the neighborhood has gotten so bad lately. It all seems so senseless.
+ABBY: Ugh, I don’t want to read that right now. It’ll just be more of the same. Constant, senseless gang-related violence.
+ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
 <<endkey Journal>>
+ABBY: If they’re not after money, what are they after?
 [[AbbyMain]]
 ===
 
@@ -229,14 +235,16 @@ colorID: 0
 position: 1163,357
 ---
 JACE: I take it you’re familiar with the gangs in the area, then?
-ABBY: I’m not familiar with them, Detective.
-ABBY: But it’s hard to live here without having heard of the muggings, stabbings, and shoot outs. I’m lucky I’ve never been involved in anything.
+ABBY: I’m not <I>familiar</I> with them, Detective.
+ABBY: Anybody with two brain cells to rub together knows better than to get involved with them.
+ABBY: I’ve been lucky to stay out of their way the whole time I’ve lived here.
 ABBY: Until now, anyway.
 JACE: So you think this was caused by a local gang?
 ABBY: Who else could it be?
 ABBY: The governor needs to make good on his claims to get rid of them already.
-ABBY: As long as it stays like this, it might  be me who they find dead on the floor next…!
-JACE: Let’s not jump to conclusions, now…
+ABBY: If anything, it seems like things have gotten worse since he was elected.
+JACE: ...Trust me when I say our governor isn’t the kind of politician to really make an effort to reduce gang violence.
+ABBY: ...
 [[AbbyMain]]
 ===
 
@@ -271,7 +279,7 @@ ABBY: He sends them almost daily now. Persistent bugger.
 <<startkey Journal raised_rent>>
 ABBY: He raised the rent for all the tenants because of all the gang violence scaring people out. Total crap.
 <<endkey Journal>>
-JACE: ( I don’t think that’s legal… )
+JACE: I’m not sure that’s legal...
 [[AbbyMain]]
 ===
 
@@ -281,14 +289,21 @@ colorID: 0
 position: 1163,357
 ---
 <<tutorialprompt DialogueContainer>>
-JACE: She was murdered with a stocking full of… pennies. That mean anything to you?
-ABBY: Why would it mean anything to me? It’s not my stocking. I wouldn’t be caught dead in cheap hose like that.
-JACE: I’m asking if anything else in the neighborhood sounds similar? Pennies used in other incidents?
-<<startkey Journal spare_money>>
-ABBY: Look around, Detective. This isn’t exactly the best place. If we had enough money to spare for crimes, we wouldn’t be living here.
-<<endkey Journal>>
-JACE: So you have no idea why it was shoved in Friday’s mouth, then?
-ABBY: I certainly didn’t put it there, if that’s what you mean.
+JACE: She was murdered with a gym sock full of… pennies. That mean anything to you?
+ABBY: Why would it mean anything to me? It’s not my sock. I wouldn’t be caught dead in cheap hose like that.
+JACE: You sure about that? 
+ABBY: Alright, you got me. What’s so damn interesting about a gym sock full of pennies?
+JACE: We just bagged a guy who killed two people by beating them to death with a stocking full of pennies - not a gym sock, but it’s close. 
+JACE: Actually, I think the last time I saw Friday we were reviewing the case file one last time, just yesterday. 
+ABBY: Oh my god, that’s horrible. 
+ABBY: But are you sure you got the right guy? 
+JACE: Oh yeah, he’s the right guy. Security footage nailed him. Just a weird coincidence, you know?
+ABBY: What if it’s a copycat killer? I heard about that on some police show Friday made me watch.
+JACE: Generally, copycats only copy big names. One rando in a small town who killed two people isn’t very inspiring - he can’t even be classified as a serial killer.
+ABBY: Huh. The more you know. I wonder why the gym sock then?
+//<<startkey Journal spare_money>>
+//ABBY: Look around, Detective. This isn’t exactly the best place. If we had enough money to spare for crimes, we wouldn’t be living here.
+//<<endkey Journal>>
 <<set $visited_pennies to true>>
 <<set $new_question to true>>
 [[AbbyMain]]
@@ -304,15 +319,43 @@ position: 1163,357
 	"<S>- Probably should take a look at where the body was. Maybe Abby knows more about it?</s>
 - Did she admit someone broke into her apartment? Better press her on that one.", 
 		"abby2_objective")>>
-JACE: So you were the one who found her body?
+JACE: So you were the one who found her body, sometime around 7pm?
 ABBY: Yep. It was some nasty stuff.
 <<startkey Journal mail>>
 ABBY: Found her right in the middle of the room. I left her by herself to go get my mail, and… yeah.
 <<endkey Journal>>
 ABBY: She was dead in my apartment.
-ABBY: Someone broke into my apartment, Detective. Doesn’t that mean they had to be after me?
+ABBY: I don’t know if this makes me selfish detective, but...
+ABBY: I can’t help but wonder. Friday is... gone, but they broke into my apartment to get to her. Was the killer trying to kill Friday, or trying to get to me?
 <<set $broke_into to true>>
 <<set $new_question to true>>
+[[AbbyMain]]
+===
+
+title: AbbyLockedPatio
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: I’m guessing you don’t give out your key often?
+ABBY: I don’t give out my key at all, Detective.
+JACE: Haven’t dropped it or lost it for a little while?
+ABBY: No. Listen, I’ll make it simple for you: the only other person with a key to give out is the landlord.
+JACE: Was he here at the time of the murder?
+ABBY: I don’t know what his schedule is like. I didn’t see him, but I don’t usually see him outside of his office, so that’s not weird.
+[[AbbyMain]]
+===
+
+title: AbbyWork
+tags: 
+colorID: 0
+position: 1163,357
+---
+ABBY: Don’t play coy. I’m an adult entertainer. Or, you know, an escort.
+JACE: And Friday was your…?
+ABBY: Client. We call them clients.
+JACE: No, I get that. I just have a hard time picturing Friday like…
+ABBY: You must not know her all that well, Jace.
 [[AbbyMain]]
 ===
 
@@ -335,9 +378,9 @@ ABBY: Huh? Well, we have patios, as you can see, but I keep mine locked up tight
 ABBY: The last time I was out there, that airhead Tristan was watering her plants and rained some on me.
 ABBY: A little water doesn’t hurt anyone, but it sure can make my mascara run.
 JACE: I’m sure it does. But could someone enter through that patio door?
-<<startkey>>
+<<startkey Journal locked_patio>>
 ABBY: They’d need a key if they wanted to enter from the back, but I suppose it’s possible.
-<<endkey>>
+<<endkey Journal>>
 <<set $visited_alone to true>>
 <<deduction("Friday was alone in a locked room when she was murdered.", "Friday was alone and the doors were locked. Altough its not impossible someone could got through the patio door with a key.", "friday_alone", "locked_door", "", "")>>
 [[AbbyMain]]
@@ -352,16 +395,16 @@ position: 1163,357
 <<set $Q4New to false>>
 ABBY: Where was I when…? Oh, I get it.
 ABBY: She was killed in my apartment, so I had to have something to do with it. Riiight. I told you, I went to get my mail.
-ABBY: Bernard could vouch for my innocence. He saw me when I was coming back up.
+ABBY: Bernard could vouch for my innocence. We talked for a bit in the mailroom before I came back up. He was mad about something, but I can’t remember what...
 JACE: Bernard is…?
-ABBY: He lives in an apartment above this one. Weird guy. Always making a ton of racket.
+ABBY: He lives in an apartment a couple stories up. Weird guy. His apartment is always noisy, and he’s always lugging around a case of beer - the bottled kind, not cans.
 ABBY: But if you’re going to see other tenants, I’d advise you to go see Tristan. She has some… issues.
-JACE: Why would she have any problems?
+JACE: What kind of issues?
 ABBY: Detective, I thought Friday was your partner.
 ABBY: … Tristan was Friday’s beau. Emphasis on was.
-ABBY: Actually, let me go with you if you’re going to visit Bernard. Something tells me you’ll get lost without me.
-ABBY: Besides, I need to get out of here. I can still see her body lying there.
-ABBY: After you, Detective.
+//ABBY: Actually, let me go with you if you’re going to visit Bernard. Something tells me you’ll get lost without me.
+//ABBY: Besides, I need to get out of here. I can still see her body lying there.
+//ABBY: After you, Detective.
 <<openlocation LevelController Tristan_Room>>
 <<openlocation LevelController Bernard_Room>>
 <<openlocation LevelController Management_Office>>
