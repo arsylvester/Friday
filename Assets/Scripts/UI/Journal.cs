@@ -64,11 +64,15 @@ public class Journal : MonoBehaviour
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
 
+    PlayerAnimController playerAnimController;
+
     void Start()
     {
         varStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         dialogueCam = FindObjectOfType<DialogueCam>();
+
+        playerAnimController = FindObjectOfType<PlayerAnimController>();
 
         // Register a function on startup called "question" that lets Yarn
         // scripts check if questioned right or not.
@@ -175,6 +179,7 @@ public class Journal : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && dialogSaveable && linesSaved < maxNumOfLinesSaveable && dilogueTutorialManager.canSaveDialogue)
         {
             SaveDialogue();
+            playerAnimController.ChangePlayerAnim(4);
         }
     }
 
