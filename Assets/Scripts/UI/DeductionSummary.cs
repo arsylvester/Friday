@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DeductionSummary : MonoBehaviour
 {
-    [SerializeField] Text summaryText;
+    [SerializeField] TextMeshProUGUI summaryText;
     [SerializeField] Text mainText;
 
     private bool open = false;

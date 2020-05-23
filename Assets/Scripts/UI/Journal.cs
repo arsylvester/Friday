@@ -50,6 +50,7 @@ public class Journal : MonoBehaviour
 
     public List<GameObject> keyEntries;
     private List<DeductionElement> currentObjectives = new List<DeductionElement>();
+    private List<string> objectivesComplete = new List<string>();
 
     public UnityEvent OnQuestionStart;
     public UnityEvent OnQuestionStop;
@@ -101,9 +102,13 @@ public class Journal : MonoBehaviour
         //Objective(string mainText, string summaryText, string objKey)
         dialogueRunner.RegisterFunction("objective", 3, delegate (Yarn.Value[] parameters)
         {
-            var newDedElement = Instantiate(objectiveElementPrefab, objectivePanel);
-            newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, parameters[2].AsString);
-            currentObjectives.Add(newDedElement.GetComponent<DeductionElement>());
+            if (!objectivesComplete.Contains(parameters[2].AsString))
+            {
+                var newDedElement = Instantiate(objectiveElementPrefab, objectivePanel);
+                newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, parameters[2].AsString);
+                currentObjectives.Add(newDedElement.GetComponent<DeductionElement>());
+                objectivesComplete.Add(parameters[2].AsString);
+            }
         });
 
         //Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
@@ -327,19 +332,25 @@ public class Journal : MonoBehaviour
             if (NumOfEvidenceQuestioned < maxNumOfEvidenceQuestioned)
             {
                 highlightedEntries.Add(entry);
-                entry.GetComponent<JournalElement>().Highlight();
+                //entry.GetComponent<JournalElement>().Highlight();
                 entry.transform.SetParent(itemQuestioningContent);
                 NumOfEvidenceQuestioned++;
+
+                if (entry.GetComponent<DialogueJournalElement>())
+                {
+                    entry.GetComponent<DialogueJournalElement>().ResizeSmall();
+                }
             }
         }
         else
         {
+            UnhighlightAll();
             highlightedEntries.Add(entry);
             entry.GetComponent<JournalElement>().Highlight();
-            if (!deleteButton.activeInHierarchy)
+            /*if (!deleteButton.activeInHierarchy)
             {
                 ToggleButtonsOn();
-            }
+            }*/
         }
     }
 
@@ -456,11 +467,12 @@ public class Journal : MonoBehaviour
     [YarnCommand("startquestioning")]
     public void StartQuestioning()
     {
+        UnhighlightAll();
         OnQuestionStart.Invoke();
         isQuestioning = true;
         OpenJournals();
         itemQuestioningBox.SetActive(true);
-        UnhighlightAll();
+        itemQuestioningBox.GetComponent<Animator>().SetBool("PanelOn", true);
     }
 
     [YarnCommand("stopquestioning")]
@@ -469,7 +481,8 @@ public class Journal : MonoBehaviour
         OnQuestionStop.Invoke();
         UnhighlightAll();
         isQuestioning = false;
-        itemQuestioningBox.SetActive(false);
+        itemQuestioningBox.GetComponent<Animator>().SetBool("PanelOn", false);
+        //itemQuestioningBox.SetActive(false);
     }
 
     [YarnCommand("objectiveComplete")]

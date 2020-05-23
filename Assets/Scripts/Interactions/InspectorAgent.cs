@@ -87,11 +87,11 @@ public class InspectorAgent : MonoBehaviour
     public void Inspect(Interactable interactable)
     {
         Inspectable inspectable = interactable.GetComponent<Inspectable>();
-        if(inspectable != null)
+        if (inspectable != null)
         {
             target = inspectable;
 
-            if(unfocusCoroutines.ContainsKey(inspectable) && unfocusCoroutines[inspectable] != null)
+            if (unfocusCoroutines.ContainsKey(inspectable) && unfocusCoroutines[inspectable] != null)
             {
                 StopCoroutine(unfocusCoroutines[inspectable]);
             }
@@ -101,7 +101,7 @@ public class InspectorAgent : MonoBehaviour
                 originalPositions[inspectable] = originalTransform.position;
                 originalRotations[inspectable] = originalTransform.rotation;
             }
-            
+
             //FlavorText.text = target.InspectorText;
             focusCoroutine = FocusObject(target.gameObject);
             StartCoroutine(focusCoroutine);

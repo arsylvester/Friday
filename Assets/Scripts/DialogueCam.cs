@@ -143,7 +143,7 @@ public class DialogueCam : MonoBehaviour
 
         fadeImage.enabled = false;
 
-        if (isDoneTalking)
+        if (isDoneTalking && TutorialState.Current == "deduction")
         {
             playerMovement.ResumeMovement();
         }
