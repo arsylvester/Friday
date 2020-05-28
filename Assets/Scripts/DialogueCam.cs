@@ -73,7 +73,7 @@ public class DialogueCam : MonoBehaviour
         dialogueCam.SetActive(true);
         questioningCam.SetActive(false);
 
-        playerAnimController.ChangePlayerAnim(3);
+        // playerAnimController.ChangePlayerAnim(3);
     }
 
     public void SwitchToQuestioningCam()
@@ -84,8 +84,6 @@ public class DialogueCam : MonoBehaviour
         cutsceneCam.SetActive(false);
         dialogueCam.SetActive(false);
         questioningCam.SetActive(true);
-
-        playerAnimController.ChangePlayerAnim(4);
     }
 
     public void SwitchToGameCam()
@@ -99,6 +97,7 @@ public class DialogueCam : MonoBehaviour
     public void StartFade(bool isDoneTalking)
     {
         fadeImage.enabled = true;
+        playerMovement.enabled = false;
         playerMovement.StopMovement();
 
         StartCoroutine("Fade", isDoneTalking);
@@ -138,12 +137,18 @@ public class DialogueCam : MonoBehaviour
         // fade out
         fadeImage.CrossFadeAlpha(0, fadeOut, false);
 
+        if (!isDoneTalking)
+            playerAnimController.ChangePlayerAnim(3);
+        else
+            playerAnimController.ChangePlayerAnim(5);
+
         yield return new WaitForSeconds(fadeOut);
 
         fadeImage.enabled = false;
-
+            
         if (isDoneTalking && TutorialState.Current == "deduction")
         {
+            yield return new WaitForSeconds(1.5f);
             playerMovement.enabled = true;
             playerMovement.ResumeMovement();
         }

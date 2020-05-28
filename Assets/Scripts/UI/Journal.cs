@@ -64,11 +64,15 @@ public class Journal : MonoBehaviour
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
 
+    PlayerAnimController playerAnimController;
+
     void Start()
     {
         varStorage = FindObjectOfType<InMemoryVariableStorage>();
 
         dialogueCam = FindObjectOfType<DialogueCam>();
+
+        playerAnimController = FindObjectOfType<PlayerAnimController>();
 
         // Register a function on startup called "question" that lets Yarn
         // scripts check if questioned right or not.
@@ -163,18 +167,28 @@ public class Journal : MonoBehaviour
         // Open Journal panels
         if (Input.GetKeyDown(KeyCode.Q) && !isQuestioning && journalsOpenable)
         {
-            itemJournal.SetActive(!itemJournal.activeSelf);
+            UnhighlightAll();
+            if (itemJournal.GetComponent<Animator>().GetBool("open"))
+            {
+                CloseJournals();
+            }
+            else
+            {
+                OpenJournals();
+            }
+            //itemJournal.SetActive(!itemJournal.activeSelf);
         }
-        if (Input.GetKeyDown(KeyCode.E) && !isQuestioning && journalsOpenable)
+        /*if (Input.GetKeyDown(KeyCode.E) && !isQuestioning && journalsOpenable)
         {
             dialogJournal.SetActive(!dialogJournal.activeSelf);
             UnhighlightAll();
-        }
+        }*/
 
         //Add dialogue to journal
         if (Input.GetKeyDown(KeyCode.F) && dialogSaveable && linesSaved < maxNumOfLinesSaveable && dilogueTutorialManager.canSaveDialogue)
         {
             SaveDialogue();
+            playerAnimController.ChangePlayerAnim(4);
         }
     }
 
@@ -291,7 +305,11 @@ public class Journal : MonoBehaviour
         print("Trying to open journal with bool: " + journalsOpenable);
         if (journalsOpenable)
         {
-            StartCoroutine(OpenJournalsAfterFade());
+            itemJournal.SetActive(true);
+            dialogJournal.SetActive(true);
+            itemJournal.GetComponent<Animator>().SetBool("open", true);
+            dialogJournal.GetComponent<Animator>().SetBool("open", true);
+            //StartCoroutine(OpenJournalsAfterFade());
         }
     }
 
@@ -302,14 +320,11 @@ public class Journal : MonoBehaviour
         if (!dialogueCam.isDoneTalking)
         {
             yield return new WaitForSeconds(1);
-            itemJournal.SetActive(true);
-            dialogJournal.SetActive(true);
         }
-        else
-        {
-            itemJournal.SetActive(true);
-            dialogJournal.SetActive(true);
-        }
+        itemJournal.SetActive(true);
+        dialogJournal.SetActive(true);
+        itemJournal.GetComponent<Animator>().SetBool("open", true);
+        dialogJournal.GetComponent<Animator>().SetBool("open", true);
     }
 
     IEnumerator StartDialogueAfterFade()
@@ -320,8 +335,10 @@ public class Journal : MonoBehaviour
     //Close both panels. Meant for when dialogue ends.
     public void CloseJournals()
     {
-        itemJournal.SetActive(false);
-        dialogJournal.SetActive(false);
+        //itemJournal.SetActive(false);
+        //dialogJournal.SetActive(false);
+        itemJournal.GetComponent<Animator>().SetBool("open", false);
+        dialogJournal.GetComponent<Animator>().SetBool("open", false);
     }
 
     public void AddHighlighted(GameObject entry)

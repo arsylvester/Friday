@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimController : MonoBehaviour
 {
-    public enum NPCState { none, idle, moving, talking }
+    public enum NPCState { none, idle, moving, takeOutNotebook, idleWithNotebook, writeInNotebook }
     public NPCState npcState;
 
     public Animator animator;
@@ -28,12 +28,22 @@ public class PlayerAnimController : MonoBehaviour
     {
         if (playerMovement.moveDirection.x == 0 && playerMovement.moveDirection.z == 0 && dialogueCam.isDoneTalking && !levelController.mapMoveBack)
             animator.SetInteger("MainCharAnim", (int)NPCState.idle);
-        else if (dialogueCam.isDoneTalking)
+        else if (dialogueCam.isDoneTalking && animator.GetInteger("MainCharAnim") != 5)
             animator.SetInteger("MainCharAnim", (int)NPCState.moving);
     }
 
     public void ChangePlayerAnim(int anim)
     {
         animator.SetInteger("MainCharAnim", anim);
+
+        if (anim == 4)
+        {
+            animator.SetBool("writing", true);
+        }
+    }
+
+    public void StopWritingAnim()
+    {
+        animator.SetBool("writing", false);
     }
 }
