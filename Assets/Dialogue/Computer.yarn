@@ -1,0 +1,78 @@
+title: ComputerMain
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<if $ComputerUnlocked is true>>
+	[[ComputerOpen]]
+<<endif>>
+<<startquestioning Journal>>
+<<if $tryagain is false>>
+	COMPUTER: PASSWORD?
+<<endif>>
+->Confirm
+	<<if question("queen_bee", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[ComputerCorrect]]
+	<<else>>
+		COMPUTER: INCORRECT PASSWORD. TRY AGAIN.
+		<<set $tryagain to true>>
+		[[LeonardInterogation]]
+	<<endif>>
+->Quit
+	<<stopquestioning Journal>>
+	<<set $tryagain to false>>
+===
+
+title: ComputerCorrect
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $ComputerUnlocked to true>>
+JACE: He seems to be a big fan of this pinup girl... Maybe “QueenBee” could be a password?
+COMPUTER: WELCOME, LEONARD.
+[[ComputerOpen]]
+===
+
+title: ComputerOpen
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<if $USBUsed is true>>
+	[[ComputerUSBUsed]]
+<<endif>>
+<<startquestioning Journal>>
+<<if $tryagain is false>>
+	COMPUTER: WELCOME, LEONARD.
+<<endif>>
+->Confirm
+	<<if question("usb", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[ComputerUSBUsed]]
+	<<else>>
+		JACE: I don’t think that will work...
+		<<set $tryagain to true>>
+		[[LeonardInterogation]]
+	<<endif>>
+->Quit
+	<<stopquestioning Journal>>
+	<<set $tryagain to false>>
+===
+
+title: ComputerUSBUsed
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $USBUsed to true>>
+JACE: I think I’ve found some kind of video footage. It’s stamped with the date and time. Let’s find yesterday, at about 6:45...
+JACE: I see Leonard leave his office, heading not up the stairs but through the sidedoor out to the alleyway. Where is he going?
+JACE: Next Bernard comes down the stairs. He knocks on the door, waits around a little while.
+JACE: Next, Abby comes down the stairs. She’s checking her mail... They talk for a while. Bernard looks pretty irritated.
+JACE: Abby heads back up the stairs. Bernard - yep, there he is, flipping the cameras off before heading back upstairs. I kind of thought he was kidding about that. 
+JACE: A few minutes after that, Leonard is back. He enters his office. The timestamp says... 7:09pm.
+===

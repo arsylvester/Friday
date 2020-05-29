@@ -1,0 +1,32 @@
+title: SafeMain
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<startquestioning Journal>>
+<<if $tryagain is false>>
+	SAFE: XXXX
+<<endif>>
+->Confirm
+	<<if question("stickynote", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[SafeCorrect]]
+	<<else>>
+		SAFE: INCORRECT
+		<<set $tryagain to true>>
+		[[LeonardInterogation]]
+	<<endif>>
+->Quit
+	<<stopquestioning Journal>>
+	<<set $tryagain to false>>
+===
+
+title: SafeCorrect
+tags: 
+colorID: 0
+position: 1163,357
+---
+SAFE: 5919
+//Call function to open the safe.
+===

@@ -1,0 +1,141 @@
+title: LeonardStart
+tags: 
+colorID: 0
+position: 861,368
+---
+<<if visited("LeonardStart") is false>>
+	<<set $LEOQ1New to true>>
+	Leonard: Didn’t I already tell you you needed a search warrant?
+	JACE: You did, and it was good advice. I’ve got a search warrant right here.
+	Leonard: ...
+	Leonard: Fine! Search the place if you want!
+	Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
+<<else>>
+	<<nextTutState DialogueContainer>>
+	Leonard: What is it?
+<<endif>>
+[[LeonardMain]]
+===
+
+title: LeonardRepeat
+tags: 
+colorID: 0
+position: 861,368
+---
+Leonard: Didn’t I already tell you you needed a search warrant?
+JACE: You did, and it was good advice. I’ve got a search warrant right here.
+Leonard: ...
+Leonard: Fine! Search the place if you want!
+Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
+[[LeonardMain]]
+===
+
+title: LeonardMain
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<if $visited_pennies and $broke_into and $visited_alone>>
+	<<set $new_question to true>>
+<<endif>>
+[[Repeat conversation|LeonardRepeat]]
+<<if $new_question is true>>
+	[[<color=green>Ask Questions</color>|LeonardQuestions]]
+	<<else>>
+	[[Ask Questions|LeonardQuestions]]
+<<endif>>
+[[Interrogate|LeonardInterogation]]
+<<tutorialprompt DialogueContainer>>
+===
+
+title: LeonardQuestions
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $new_question to false>>
+<<if $USBUsed is true>>
+	<<if $LeoQ1New is true>>
+		[[<color=green>I found some suspicious footage.</color>|LeonardQ1]]
+	<<else>>
+		[[I found some suspicious footage.|LeonardQ1]]
+	<<endif>>
+<<endif>>
+[[Back|LeonardMain]]
+===
+
+title: LeonardInterogation
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<startquestioning Journal>>
+<<if $tryagain is false>>
+	Leonard: What is it detective?
+<<endif>>
+->Confirm Interrogation Choices
+	<<if question("ledger", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[LeonardLedger]]
+    <<elseif question("ledger", "bill_fin") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[LeonardBF]]
+	<<else>>
+		Leonard: You have a search warrant, don’t you detective? Why don’t you try using it, and leave me alone.
+		<<set $tryagain to true>>
+		[[LeonardInterogation]]
+	<<endif>>
+->Quit Interrogation
+	<<stopquestioning Journal>>
+	<<set $tryagain to false>>
+	[[LeonardMain]]
+===
+
+title: LeonardQ1
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $Q1New to false>>
+LEONARD: You didn’t find anything. 
+JACE: Can you tell me where you were between 6:45pm and 7:09 pm last night?
+LEONARD: That’s not right. I thought I-
+LEONARD: Nevermind.
+[[LeonardMain]]
+===
+
+title: LeonardLedger
+tags: 
+colorID: 0
+position: 1163,357
+---
+LEONARD: That’s my ledger. 
+JACE: I see. TN must be “Tristan Nguyen”, BM must be “Bernard Miller”, FB must be “Friday Banmeke”, and AA must be “Abby Adams”...
+JACE: But who is BF? I don’t recognize these initials, but I thought I talked to everyone in the building. 
+LEONARD: He’s a contractor. Helps with the maintenance. 
+JACE: If he’s a contractor, then why is he the one paying you?
+LEONARD: Must be a mistake in my bookkeeping. Why do you care?
+JACE:You don’t seem the type to make bookkeeping mistakes. 
+[[LeonardMain]]
+===
+
+title: LeonardBF
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: Holding back doesn’t get you any less jail time, Leonard. What are you hiding?
+JACE: Does it have anything to do with this “B.F.” character sending you extra cash?
+LEONARD: ...
+LEONARD: This is bullshit. 
+LEONARD: I trashed that tape. No one should have been able to find it. 
+LEONARD: Bill Finn sold me out, that’s the only explanation!
+LEONARD: He’s the guy you want, not me!
+LEONARD: He needed this building empty so he could sell it to his buddies - I don’t know why, he never told me!
+LEONARD: I just did what he told me to do!  I just did what I had to do!
+JACE: Did he hold a gun to your head to make you murder my assistant, Leonard?
+LEONARD: You don’t know what he would have done to me, or my business! I had no choice!
+[[LeonardMain]]
+===

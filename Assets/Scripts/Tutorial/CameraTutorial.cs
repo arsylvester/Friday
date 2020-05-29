@@ -29,7 +29,7 @@ public class CameraTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (camPromptPanel.activeInHierarchy && Input.GetMouseButtonDown(1))
+        if (camPromptPanel && camPromptPanel.activeInHierarchy && Input.GetMouseButtonDown(1))
         {
             camPromptPanel.SetActive(false);
             inspectorPanel.SetActive(false);
