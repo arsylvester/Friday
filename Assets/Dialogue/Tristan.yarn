@@ -1,0 +1,354 @@
+title: TristanStart
+tags: 
+colorID: 0
+position: 861,368
+---
+<<if visited("TristanStart") is false>>
+	<<set $Q1New to true>>
+	<<set $Q2New to true>>
+	<<set $Q3New to true>>
+	<<set $new_question to true>>
+	JACE: Afternoon, ma’am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
+	TRISTAN: Detective... Acosta? Oh, I've heard of you...
+	JACE: From your tone, it doesn't sound like you've heard anything good.
+	TRISTAN: Friday had plenty to say. I'm Tristan, by the way. Tristan Chen.
+	JACE: Can I come in? Seems you've already heard the news.
+	TRISTAN: It's hard not to. We see a lot of cops around, but not like this. Anyway, come in.
+<<else>>
+	TRISTAN: What else do you need detective?
+<<endif>>
+[[TristanMain]]
+===
+
+title: TVStart
+tags: 
+colorID: 0
+position: 861,368
+---
+<<startkey Journal beautification_bill>>
+TV REPORTER: Governor Bill Finn has signed a new beautification bill into law today.
+<<endkey Journal>>
+[[TristanMain]]
+===
+
+title: TristanRepeat
+tags: 
+colorID: 0
+position: 861,368
+---
+JACE: Afternoon, ma’am. I’m Detective Jace Acosta from the Melvern Police Department. You’re in my crime scene.
+TRISTAN: Detective... Acosta? Oh, I've heard of you...
+JACE: From your tone, it doesn't sound like you've heard anything good.
+TRISTAN: Friday had plenty to say. I'm Tristan, by the way. Tristan Chen.
+JACE: Can I come in? Seems you've already heard the news.
+TRISTAN: It's hard not to. We see a lot of cops around, but not like this. Anyway, come in.
+[[TristanMain]]
+===
+
+title: TristanMain
+tags: 
+colorID: 0
+position: 1163,357
+---
+[[Repeat conversation|TristanRepeat]]
+<<if $new_question is true>>
+	[[<color=green>Ask Questions</color>|TristanQuestions]]
+<<else>>
+	[[Ask Questions|TristanQuestions]]
+<<endif>>
+[[Interrogate|TristanInterogation]]
+===
+
+title: TristanQuestions
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $new_question to false>>
+<<if visited("TristanQuestions") is true>>
+	[[So what was your relationship to Friday?|TristanQ1]]
+	<<if $landlord is true>>
+		<<if $Q2New is true>>
+			[[<color=green>Do you remember what the landlord was doing?</color>|TristanQ2]]
+		<<else>>
+			[[Do you remember what the landlord was doing?|TristanQ2]]
+		<<endif>>
+	<<endif>>
+	<<if $landlord_alibi is true>>
+		<<if $Q3New is true>>
+			[[<color=green>So the landlord can confirm your alibi?</color>|TristanQ3]]
+		<<else>>
+			[[So the landlord can confirm your alibi?|TristanQ3]]
+		<<endif>>
+	<<endif>>
+	[[Back|TristanMain]]
+<<else>>
+	[[<color=green>So what was your relationship to Friday?</color>|TristanQ1]]
+<<endif>>
+===
+
+title: TristanInterogation
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<startquestioning Journal>>
+<<if $tryagain is false>>
+	TRISTAN: What is it detective?
+<<endif>>
+->Confirm Interrogation Choices
+	<<if question("friday_cup", "-") is true>>
+		<<if $friday_cup_v2 is false>>
+			[[TristanCupV1]]
+		<<else>>
+			[[TristanCupV2]]
+		<<endif>>
+    <<elseif question("beautification_bill", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanBeautificationBill]]
+	<<elseif question("coupon_book", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanCouponBook]]
+	<<elseif (question("coupon_book", "abby_rent") is true) or (question("coupon_book", "bernard_eviction") is true) or (question("make_ends_meet", "abby_rent") is true) or (question("make_ends_meet", "bernard_eviction") is true)>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanRisingRent]]
+	<<elseif question("watering_can", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanWateringCan]]
+	<<elseif question("water_plants", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanWaterPlants]]
+	<<elseif question("landlord_patio", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanLandlordPatio]]
+	<<elseif question("were_together", "-") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanWereTogether]]
+	<<elseif (question("were_together", "abby_client") is true) or (question("were_together", "abby_escort") is true)>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[TristanWereTogether2]]
+	<<else>>
+		TRISTAN: I'm not sure what you're trying to do. I guess Friday wasn't bragging when she said she did most of the detective work.
+		<<set $tryagain to true>>
+		[[TristanInterogation]]
+	<<endif>>
+->Quit Interrogation
+	<<stopquestioning Journal>>
+	<<set $tryagain to false>>
+	[[TristanMain]]
+===
+
+title: TristanQ1
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $Q1New to false>>
+TRISTAN: Friday was my girlfriend, detective.
+TRISTAN: ...
+JACE: ...Can you elaborate on that, Tristan?
+<<startkey Journal were_together>>
+TRISTAN: Is it really crucial to the investigation that you know the details of our breakup? We were together, and now we're not.
+<<endkey Journal>>
+TRISTAN: There's really nothing else to it than that.
+TRISTAN: It happened not that long ago, so it still stings to talk about...
+JACE: Right... So, would you know anyone who would wanna hurt her?
+TRISTAN: Why are you looking at me while you say that?
+JACE: ... I'm asking you the question.
+TRISTAN: I loved Friday. I didn't want to hurt her. She was such a great girl, and now she's gone. It's so unfair.
+TRISTAN: To make it worse, it's you that has to solve her murder...
+TRISTAN: Excuse me for a second... I need a moment.
+[[TristanMain]]
+===
+
+title: TristanQ2
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $Q2New to false>>
+JACE: You saw the landlord on the patio last night. Can you remember what he was doing?
+TRISTAN: I heard the door shut. I don't know if he was leaving or entering, but he seemed like he was doing something with the patio door.
+<<deduction("The landlord was up to something on the night of the murder. It could be nothing but an inspection", "The landlord might've up to something on the night of the murder.", "friday_cup", "", "", "")>>
+===
+
+title: TristanQ3
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<set $Q3New to false>>
+TRISTAN: I was here, watering my plants.
+JACE: And the landlord can corroborate that?
+TRISTAN: Maybe. I don't know if he saw me.
+TRISTAN: ... Listen, detective, I didn't hurt her.
+JACE: Didn't say you did.
+TRISTAN: I know how it looks. I'm not exactly squeaky clean, and I'm the ex-girlfriend.
+TRISTAN: If it walks like a bat, and talks like a bat...!
+JACE: ( ... I almost feel bad for her... )
+JACE: And yet I'm the bad guy?
+TRISTAN: You're the guy who made the girl I loved's life hell, Detective. I'm not allowed to like you.
+TRISTAN: But I need you to find her killer, because you're the only one that can.
+<<deduction("Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "", "", "", "")>>
+===
+
+title: TristanCupV1
+tags: 
+colorID: 0
+position: 1163,357
+---
+TRISTAN: Haha, isn't it cute? I bought it because it reminded me of her. She liked it, she even wrote her name on the bottom in case she left it at work or something - "Friday Banmeke."
+TRISTAN: She forgot to take it whe she moved out, so I guess it's all I have left of her now.
+TRISTAN: I'm sorry detective, it's hard for me to talk about her.
+[[TristanMain]]
+===
+
+title: TristanCupV2
+tags: 
+colorID: 0
+position: 1163,357
+---
+TRISTAN: You already showed me that. It was Friday's.
+JACE: You seem like you really cared about her.
+TRISTAN: Well, of course I - detective, is this line of questioning necessary? This is painful to talk about, and my next counseling session isn't for another week.
+JACE: Friday is gone. You can do something more for her than just hold on to one of her cups.
+JACE: With your help, we might be able to put away her murderer. Don't you think she would want that?
+TRISTAN: ... You're right. She would want that.
+JACE: I need you to remember everything you can about last night, because even a minor detail might lead us to Friday's murder.
+TRISTAN: ...
+TRISTAN: Alright, detective.
+<<set $landlord to true>>
+<<set $new_question to true>>
+[[TristanMain]]
+===
+
+title: TristanBeautificationBill
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: I see you love gardening. Any thoughts on the new beautification bill?
+TRISTAN: It's true I love gardening, and I think having a little more flora and fauna around might brighten up this sad little town.
+TRISTAN: But while I may not pay attention to the news much, Friday always did. I picked up a few things from her. 
+TRISTAN: I can't help but wonder if that taxpayer money might not be better spent cleaning up the streets of crime, not trying to cover it all up with sweet-smelling annuals.
+<<startkey Journal bill_finn>>
+TRISTAN: And Friday never trusted that Bill Finn character.
+<<endkey Jorunal>>
+[[TristanMain]]
+===
+
+title: TristanCouponBook
+tags: 
+colorID: 0
+position: 1163,357
+---
+<<startkey Journal make_ends_meet>>
+TRISTAN: Sorry, you caught me in the middle of hoarding my savings. It's been a little hard to make ends meet right now.
+<<endkey Journal>>
+[[TristanMain]]
+===
+
+title: TristanRisingRent
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: Have you also been hit with the rising rent crisis, then?
+TRISTAN: I wouldn't call it a crisis, but yeah.
+TRISTAN: I've seen the landlord inspecting the building a lot lately. This place is old as dirt, and there's always something that needs fixing.
+TRISTAN: I wondered if that was why the rent kept going up.
+JACE: But you wouldn't call it a crisis? Some of your neighbors might disagree.
+TRISTAN: Well, I've got my own reasons for coupon-clipping.
+TRISTAN: You see, Friday and I used to live together, before... well, before she moved out. We split the costs of bills, so... Well, without half the income, you can imagine the challenge.
+JACE: Why not just move out?
+TRISTAN: And go where? There's not a lot of affordable housing out there, Detective.
+TRISTAN: Besides, my plants are comfy and cozy here. It might not be perfect, but it's home.
+[[TristanMain]]
+===
+
+title: TristanWateringCan
+tags: 
+colorID: 0
+position: 1163,357
+---
+TRISTAN: Interested in gardening? It's quite a relaxing hobby.
+TRISTAN: Helping something grow with just a little tender love and care is one of the best feelings you can experience.
+JACE: Uh... Sure. Are all these plants yours?
+<<startkey Journal water_plants>>
+TRISTAN: Yes! I go out onto the patio and water them every morning and every evening.
+<<endkey Journal>>
+TRISTAN: They're like my children, you know?
+JACE: Well - I suppose - ...
+JACE: ...No, not really.
+[[TristanMain]]
+===
+
+title: TristanWaterPlants
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: If you water them that regularly, does that mean you watered the plants on the patio last night?
+TRISTAN: Yes! It's nice to get fresh air every now and then. If you can call this air fresh, anyway...
+JACE: Do you recall what time that was?
+TRISTAN: Well, I usually water after my counseling sessions. We ended a little early yesterday, so it must have been around 6:45.
+TRISTAN: And there's quite a few plants out there, so I spend anywhere between 5 and 20 minutes caring for them every day.
+JACE: Ever see anyone out there?
+TRISTAN: Sometimes, but not often. Actually...
+JACE: Actually?
+<<startkey Journal landlord_patio>>
+TRISTAN: Last night, I did see the landlord on the patio below mine. I assume Abby's patio, since I see her down there sometimes.
+<<endkey Journal>>
+<<set $landlord_alibi to true>>
+<<set $new_question to true>>
+[[TristanMain]]
+===
+
+title: TristanLandlordPatio
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: You saw the landlord on the patio last night?
+TRISTAN: I did. I figured it was probably another inspection.
+JACE: Do you have any idea what he could have been inspecting?
+TRISTAN: No.
+JACE: You can't think of anything at all?
+TRISTAN: Nothing concrete, no.
+TRISTAN: Why would I know anything about building maintenance?
+<<set $friday_cup_v2 to true>>
+[[TristanMain]]
+===
+
+title: TristanWereTogether
+tags: 
+colorID: 0
+position: 1163,357
+---
+TRISTAN: We disagreed over where the relationship was going.
+TRISTAN: You know how it is, right? We both wanted different things.
+[[TristanMain]]
+===
+
+title: TristanWereTogether2
+tags: 
+colorID: 0
+position: 1163,357
+---
+JACE: So, you were aware of Friday seeing Abby?
+TRISTAN: Don't - just don't.
+JACE: I'll take that as a yes.
+TRISTAN: ... Yes, I was aware, eventually. And I didn't like it.
+TRISTAN: Friday changed when she started hanging around Abby.
+TRISTAN: We talked; we shared; we were happy. I know I'm not the easiest partner, but...
+TRISTAN: It hurts knowing I wasn't enough for her.
+[[TristanMain]]
+===
