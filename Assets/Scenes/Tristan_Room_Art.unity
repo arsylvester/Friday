@@ -3726,6 +3726,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1625994416, guid: 2803a47443bee214f8945245f24cd954, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2803a47443bee214f8945245f24cd954, type: 3}
 --- !u!1001 &1545513943
@@ -4050,19 +4054,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: The World
       objectReference: {fileID: 0}
-    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 289056192, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: DisplayName
-      value: NPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 289056192, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
-      propertyPath: EntryNode
-      value: TestNPC
-      objectReference: {fileID: 0}
     - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: pauseUI
@@ -4127,6 +4118,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 289056192, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: DisplayName
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 289056192, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
+      propertyPath: EntryNode
+      value: TestNPC
       objectReference: {fileID: 0}
     - target: {fileID: 9060236997420576344, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}

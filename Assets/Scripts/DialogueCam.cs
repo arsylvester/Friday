@@ -145,8 +145,8 @@ public class DialogueCam : MonoBehaviour
         yield return new WaitForSeconds(fadeOut);
 
         fadeImage.enabled = false;
-            
-        if (isDoneTalking && TutorialState.Current == "deduction")
+
+        if (isDoneTalking && (TutorialState.Current == "deduction" || TutorialState.Current == "done"))
         {
             yield return new WaitForSeconds(1.5f);
             playerMovement.enabled = true;

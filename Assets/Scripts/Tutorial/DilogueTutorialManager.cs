@@ -250,6 +250,7 @@ public class DilogueTutorialManager : MonoBehaviour
         if (turnTutorialOff)
             return;
         print("Ending Tutorial");
+        
         switch(TutorialState.Current)
         {
             case "mainMenu1":
@@ -289,6 +290,7 @@ public class DilogueTutorialManager : MonoBehaviour
             default:
                 break;
         }
+        
         tutorialPrompt.EndPrompt();
     }
 
