@@ -69,7 +69,7 @@ position: 1163,357
 ---
 <<startquestioning Journal>>
 <<if $tryagain is false>>
-	Leonard: What is it detective?
+	Leonard: What do you want?
 <<endif>>
 ->Confirm Interrogation Choices
 	<<if question("ledger", "-") is true>>

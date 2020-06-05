@@ -98,7 +98,14 @@ public class InspectorAgent : MonoBehaviour
             else
             {
                 Transform originalTransform = target.transform;
-                originalPositions[inspectable] = originalTransform.position;
+                if(inspectable.DisplayName == "Poster")
+                {
+                    originalPositions[inspectable] = originalTransform.position + new Vector3(1.5f, 0, 0);
+                }
+                else
+                {
+                    originalPositions[inspectable] = originalTransform.position;
+                }
                 originalRotations[inspectable] = originalTransform.rotation;
             }
 
