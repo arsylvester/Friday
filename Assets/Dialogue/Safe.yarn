@@ -15,7 +15,7 @@ position: 1163,357
 	<<else>>
 		SAFE: INCORRECT
 		<<set $tryagain to true>>
-		[[LeonardInterogation]]
+		[[SafeMain]]
 	<<endif>>
 ->Quit
 	<<stopquestioning Journal>>

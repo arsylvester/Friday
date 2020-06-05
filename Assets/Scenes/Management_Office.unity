@@ -1253,8 +1253,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   EntryName: USB
-  Description: 
-  FlavorText: 
+  Description: A USB
+  FlavorText: Yep thats a USB
   Keyname: usb
 --- !u!1 &152959264
 GameObject:
@@ -4894,6 +4894,151 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583076279}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &595583396
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_Name
+      value: Abby_Rigg
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e548b74e06cd57b45bb3fc92771383c0, type: 2}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.64
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9817537
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.19015698
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -158.076
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541922146498428529, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 214e42b4ce5fb844f935d1ad2c6ef5ab, type: 2}
+    - target: {fileID: 3851741385087481534, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 214e42b4ce5fb844f935d1ad2c6ef5ab, type: 2}
+    - target: {fileID: 4137360376990707587, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d03c6e0dd4a95e47b76ed93b688a48d, type: 2}
+    - target: {fileID: 8404345907364240554, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d03c6e0dd4a95e47b76ed93b688a48d, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 68eb85fe1fbc5c24180fcd98ceea6491, type: 3}
+--- !u!1 &595583397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 68eb85fe1fbc5c24180fcd98ceea6491,
+    type: 3}
+  m_PrefabInstance: {fileID: 595583396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &595583398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595583397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e542b6a94f964d49aea154dcd654874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DisplayName: Leonard
+  DisplayOffset: {x: 0, y: 1}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
+  EntryNode: LeonardStart
+--- !u!136 &595583399
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595583397}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8143184
+  m_Height: 2.6890683
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.6205013, z: 0.93950105}
 --- !u!1001 &602701192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18110,6 +18255,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1275456419, guid: 4f8f440e49920594d86a700c18b10975, type: 3}
+      propertyPath: m_Size.y
+      value: 0.10321573
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275456419, guid: 4f8f440e49920594d86a700c18b10975, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000000075752755
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275456419, guid: 4f8f440e49920594d86a700c18b10975, type: 3}
+      propertyPath: m_Center.y
+      value: -0.064843334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275456419, guid: 4f8f440e49920594d86a700c18b10975, type: 3}
+      propertyPath: m_Center.z
+      value: -6.513735e-24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f8f440e49920594d86a700c18b10975, type: 3}
 --- !u!4 &1455919168 stripped
@@ -18792,6 +18953,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.16, z: 0.12}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1592225933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592225929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e542b6a94f964d49aea154dcd654874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DisplayName: Safe
+  DisplayOffset: {x: 0, y: 1}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
+  EntryNode: SafeMain
 --- !u!1 &1634245684
 GameObject:
   m_ObjectHideFlags: 0
@@ -19144,6 +19336,69 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1651478165}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1656507771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6860961830843091074, guid: 63dc9dedb777cf5408e0c356b568149e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1316966316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1656507775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656507771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.0035609682, z: 0.01}
+  m_Center: {x: 0.00028056194, y: 0.001780483, z: 0}
+--- !u!114 &1656507776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656507771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ca35c7f1c36ea4dbc8e6218bf05348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DisplayName: Sticky Note
+  DisplayOffset: {x: 0, y: 0}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
+  OnFocused:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnUnfocused:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  EntryName: Sticky Note
+  Description: Looks to have a code on it.
+  FlavorText: Its a note, and sticky too.
+  Keyname: stickynote
 --- !u!1 &1664233830
 GameObject:
   m_ObjectHideFlags: 0
@@ -19311,6 +19566,43 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1694482028}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1696011765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3309975421019123932, guid: c6d1faf8a0a3a8c40a8d285a0e76213f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1869751459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1696011766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696011765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e542b6a94f964d49aea154dcd654874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DisplayName: Computer
+  DisplayOffset: {x: 0, y: 1}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
+  EntryNode: ComputerMain
 --- !u!1001 &1740433158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19920,69 +20212,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.017173097, y: 0.037766278, z: 0.017621847}
   m_Center: {x: 0.0006899702, y: 0.0016087119, z: -0.0002253443}
---- !u!1 &1828593232 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 63dc9dedb777cf5408e0c356b568149e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1316966316}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1828593233
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828593232}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.009439069, y: 0.0012578688, z: 0.009999999}
-  m_Center: {x: 0.00028054716, y: 0.0006289344, z: 0.00000011920929}
---- !u!114 &1828593234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828593232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ca35c7f1c36ea4dbc8e6218bf05348, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHoverStart:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHoverEnd:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  DisplayName: Sticky Note
-  DisplayOffset: {x: 0, y: 0}
-  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
-  OnFocused:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnUnfocused:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  EntryName: Sticky Note
-  Description: 
-  FlavorText: 
-  Keyname: stickynote
 --- !u!1001 &1859894080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20704,6 +20933,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1828965090407373488, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6712306294270293264, guid: 2803a47443bee214f8945245f24cd954,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -20714,6 +20948,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6712306294270293264, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1253628867031826503, guid: 2803a47443bee214f8945245f24cd954,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -20722,6 +20961,11 @@ PrefabInstance:
     - target: {fileID: 1253628867031826503, guid: 2803a47443bee214f8945245f24cd954,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253628867031826503, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1821632562100841067, guid: 2803a47443bee214f8945245f24cd954,
@@ -20779,6 +21023,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8140743932602779027, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0009765625
+      objectReference: {fileID: 0}
     - target: {fileID: 202279630, guid: 2803a47443bee214f8945245f24cd954, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -20794,6 +21043,31 @@ PrefabInstance:
     - target: {fileID: 1625994416, guid: 2803a47443bee214f8945245f24cd954, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253628866984604567, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100.79993
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253628868192246255, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100.79993
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825411278885069187, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: turnTutorialOff
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 77061894373697143, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253628868852879779, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0009765625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2803a47443bee214f8945245f24cd954, type: 3}

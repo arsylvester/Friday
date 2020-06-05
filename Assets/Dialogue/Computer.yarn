@@ -18,7 +18,7 @@ position: 1163,357
 	<<else>>
 		COMPUTER: INCORRECT PASSWORD. TRY AGAIN.
 		<<set $tryagain to true>>
-		[[LeonardInterogation]]
+		[[ComputerMain]]
 	<<endif>>
 ->Quit
 	<<stopquestioning Journal>>
@@ -56,7 +56,7 @@ position: 1163,357
 	<<else>>
 		JACE: I don’t think that will work...
 		<<set $tryagain to true>>
-		[[LeonardInterogation]]
+		[[ComputerOpen]]
 	<<endif>>
 ->Quit
 	<<stopquestioning Journal>>

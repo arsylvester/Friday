@@ -11,7 +11,6 @@ position: 861,368
 	Leonard: Fine! Search the place if you want!
 	Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
 <<else>>
-	<<nextTutState DialogueContainer>>
 	Leonard: What is it?
 <<endif>>
 [[LeonardMain]]
@@ -45,7 +44,6 @@ position: 1163,357
 	[[Ask Questions|LeonardQuestions]]
 <<endif>>
 [[Interrogate|LeonardInterogation]]
-<<tutorialprompt DialogueContainer>>
 ===
 
 title: LeonardQuestions
