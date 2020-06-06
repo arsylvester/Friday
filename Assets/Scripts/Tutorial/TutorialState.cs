@@ -6,6 +6,16 @@ using System;
 
 public class TutorialState : MonoBehaviour
 {
+    [SerializeField] bool skipTutorial = false;
+
+    private void Start()
+    {
+        if(skipTutorial)
+        {
+            state = "done";
+        }
+    }
+
     private static string[] STATES =
     {
         "tutorialStart",

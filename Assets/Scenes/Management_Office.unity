@@ -5615,6 +5615,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 677366682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &685726293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7555709344509756922, guid: 118fbbfdf7fabe140a89c3cfe65cc0d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1592225927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &695252369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17743,6 +17749,12 @@ MonoBehaviour:
   RandomVolumeMin: 1
   RandomPitchMax: 1
   RandomPitchMin: 1
+--- !u!1 &1268167792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4473984409997532297, guid: 118fbbfdf7fabe140a89c3cfe65cc0d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1592225927}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1293378340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19346,7 +19358,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 118fbbfdf7fabe140a89c3cfe65cc0d8,
         type: 3}
       propertyPath: m_Name
-      value: Friday_Safe
+      value: Safe
       objectReference: {fileID: 0}
     - target: {fileID: 2994372899236292404, guid: 118fbbfdf7fabe140a89c3cfe65cc0d8,
         type: 3}
@@ -19477,6 +19489,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1592225927}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592225930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592225929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ecf6ab88c61fc42912e6ee49af9ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openDoor: {fileID: 1268167792}
+  openKnob: {fileID: 685726293}
+  closeDoor: {fileID: 702978617}
+  closeKnob: {fileID: 1457635580}
 --- !u!114 &1592225931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21721,6 +21749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0009765625
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784867802903455511, guid: 2803a47443bee214f8945245f24cd954,
+        type: 3}
+      propertyPath: skipTutorial
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2803a47443bee214f8945245f24cd954, type: 3}
