@@ -12,6 +12,9 @@ position: 861,368
 	Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
 <<else>>
 	Leonard: What is it?
+	<<startkey Journal bill_fin>>
+	ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
+	<<endkey Journal>>
 <<endif>>
 [[LeonardMain]]
 ===
@@ -26,7 +29,10 @@ JACE: You did, and it was good advice. I’ve got a search warrant right here.
 Leonard: ...
 Leonard: Fine! Search the place if you want!
 Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
-[[LeonardMain]]
+<<deduction("Bill Finn is the one pulling the strings.", "Leonard may be the man responsible for Friday’s murder, but Bill Finn is the one pulling the strings. This isn’t over yet.", "", "", "", "")>>
+	<<openlocation LevelController Owner_Suite_Test>>
+	<<LeonardEnd Leonard>>
+//[[LeonardMain]]
 ===
 
 title: LeonardMain
@@ -125,15 +131,22 @@ colorID: 0
 position: 1163,357
 ---
 JACE: Holding back doesn’t get you any less jail time, Leonard. What are you hiding?
-JACE: Does it have anything to do with this “B.F.” character sending you extra cash?
-LEONARD: ...
-LEONARD: This is bullshit. 
-LEONARD: I trashed that tape. No one should have been able to find it. 
-LEONARD: Bill Finn sold me out, that’s the only explanation!
-LEONARD: He’s the guy you want, not me!
-LEONARD: He needed this building empty so he could sell it to his buddies - I don’t know why, he never told me!
-LEONARD: I just did what he told me to do!  I just did what I had to do!
-JACE: Did he hold a gun to your head to make you murder my assistant, Leonard?
-LEONARD: You don’t know what he would have done to me, or my business! I had no choice!
-[[LeonardMain]]
+<<if $Q1New is false>>
+	JACE: Does it have anything to do with this “B.F.” character sending you extra cash?
+	LEONARD: ...
+	LEONARD: This is bullshit. 
+	LEONARD: I trashed that tape. No one should have been able to find it. 
+	LEONARD: Bill Finn sold me out, that’s the only explanation!
+	LEONARD: He’s the guy you want, not me!
+	LEONARD: He needed this building empty so he could sell it to his buddies - I don’t know why, he never told me!
+	LEONARD: I just did what he told me to do!  I just did what I had to do!
+	JACE: Did he hold a gun to your head to make you murder my assistant, Leonard?
+	LEONARD: You don’t know what he would have done to me, or my business! I had no choice!
+	<<deduction("Bill Finn is the one pulling the strings.", "Leonard may be the man responsible for Friday’s murder, but Bill Finn is the one pulling the strings. This isn’t over yet.", "", "", "", "")>>
+	<<openlocation LevelController Owner_Suite_Test>>
+	<<LeonardEnd Leonard>>
+<<else>>
+	LEONARD: I see no reason why my ledger has anything to do with Friday’s death.
+	[[LeonardMain]]
+<<endif>>
 ===

@@ -194,7 +194,7 @@ public class LevelController : MonoBehaviour
     {
         if(ownerOpen)
         {
-            location = "Owner_Suite_Test";
+            location = "Owner_Room";
             confirmLocationText.text = "Owner's Suite?";
             confirmLocationUI.SetActive(true);
         }
@@ -272,7 +272,11 @@ public class LevelController : MonoBehaviour
                 managementOpen = true;
                 break;
             case "Owner_Suite_Test":
-                abbyOpen = true;
+                ownerOpen = true;
+                abbyOpen = false;
+                tristanOpen = false;
+                bernardOpen = false;
+                managementOpen = false;
                 break;
             default:
                 break;

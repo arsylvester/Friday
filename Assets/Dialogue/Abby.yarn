@@ -223,6 +223,8 @@ position: 1163,357
 ---
 <<startkey Journal gang_violence>>
 ABBY: Ugh, I don’t want to read that right now. It’ll just be more of the same. Constant, senseless gang-related violence.
+<<endkey Journal>>
+<<startkey Journal bill_fin>>
 ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
 <<endkey Journal>>
 ABBY: If they’re not after money, what are they after?
@@ -382,7 +384,7 @@ JACE: I’m sure it does. But could someone enter through that patio door?
 ABBY: They’d need a key if they wanted to enter from the back, but I suppose it’s possible.
 <<endkey Journal>>
 <<set $visited_alone to true>>
-<<deduction("Friday was alone in a locked room when she was murdered.", "Friday was alone and the doors were locked. Altough its not impossible someone could got through the patio door with a key.", "friday_alone", "locked_door", "", "")>>
+<<deduction("Friday was alone in a locked room when she was murdered.", "Friday was alone and the doors were locked. Altough its not impossible someone could got through the patio door with a key.", "", "", "", "")>>
 [[AbbyMain]]
 ===
 
@@ -408,7 +410,6 @@ ABBY: … Tristan was Friday’s beau. Emphasis on was.
 <<openlocation LevelController Tristan_Room>>
 <<openlocation LevelController Bernard_Room>>
 <<openlocation LevelController Management_Office>>
-<<openlocation LevelController Owner_Suite_Test>>
 <<objective("Talk to Bernard or Tristan", 
 	"I now should talk to either Bernard or Tristan.", 
 		"Bernard_objective")>>
