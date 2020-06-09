@@ -521,6 +521,18 @@ public class Journal : MonoBehaviour
             Destroy(element.gameObject);
         }
     }
+
+    public bool HasCompletedObjective(string objectiveKey)
+    {
+        foreach(DeductionElement element in currentObjectives)
+        {
+            if(element.ObjKey == objectiveKey)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 /*
     [YarnCommand("deduction")]
     public void Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
