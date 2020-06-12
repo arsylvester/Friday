@@ -177,6 +177,7 @@ position: 1163,357
 <<set $Q2New to false>>
 JACE: You saw the landlord on the patio last night. Can you remember what he was doing?
 TRISTAN: I heard the door shut. I don't know if he was leaving or entering, but he seemed like he was doing something with the patio door.
+<<set $tristanFin1 to true>>
 <<deduction("The landlord was up to something on the night of the murder. It could be nothing but an inspection", "The landlord might've up to something on the night of the murder.", "friday_cup", "", "", "")>>
 ===
 
@@ -197,6 +198,7 @@ JACE: ( ... I almost feel bad for her... )
 JACE: And yet I'm the bad guy?
 TRISTAN: You're the guy who made the girl I loved's life hell, Detective. I'm not allowed to like you.
 TRISTAN: But I need you to find her killer, because you're the only one that can.
+<<set $tristanFin2 to true>>
 <<deduction("Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "", "", "", "")>>
 ===
 

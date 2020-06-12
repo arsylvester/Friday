@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class Leonard : MonoBehaviour
 {
     public GameObject mapUI;
+    public float fadeIn;
     PlayerMovement playerMove;
-    InputFreeLookCam cam;
+    DialogueCam cam;
     Journal journal;
 
     [SerializeField] Image fadePanel;
@@ -17,24 +18,46 @@ public class Leonard : MonoBehaviour
     private void Start()
     {
         playerMove = FindObjectOfType<PlayerMovement>();
-        cam = FindObjectOfType<InputFreeLookCam>();
+        cam = FindObjectOfType<DialogueCam>();
         journal = FindObjectOfType<Journal>();
     }
 
-    IEnumerator OpenMapUI()
+    //When Leonard's room is finished
+    IEnumerator OpenMapUIEnd()
     {
         yield return new WaitForSeconds(5);
-        fadePanel.enabled = true;
-        mapUI.SetActive(true);
-
+        playerMove.enabled = false;
         playerMove.StopMovement();
+        
 
-        cam.FreezeCamera();
-
+        yield return new WaitForSeconds(5);
         journal.CloseJournals();
         journal.CanOpenJournals(false);
+        fadePanel.enabled = true;
+        fadePanel.canvasRenderer.SetAlpha(0f);
+        // fade in
+        fadePanel.CrossFadeAlpha(1, fadeIn, false);
+        yield return new WaitForSeconds(fadeIn);
+
+        mapUI.SetActive(true);
+
+       // cam.FreezeCamera();
+
 
         mapBackButton.SetActive(false);
+    }
+
+    //When kicked back to map for not having a warrent
+    IEnumerator OpenMapUIStart()
+    {
+        journal.CloseJournals();
+        journal.CanOpenJournals(false);
+        mapBackButton.SetActive(false);
+
+        mapUI.SetActive(true);
+        yield return new WaitForSeconds(5);
+        playerMove.enabled = false;
+        playerMove.StopMovement();  
     }
 
     IEnumerator FadeToBlack()
@@ -53,6 +76,13 @@ public class Leonard : MonoBehaviour
     {
         print("Leonard End started");
         //StartCoroutine(FadeToBlack());
-        StartCoroutine(OpenMapUI()); 
+        //cam.StartFade(true);
+        StartCoroutine(OpenMapUIEnd()); 
+    }
+
+    [YarnCommand("NoWarrent")]
+    public void NoWarrent()
+    {
+        StartCoroutine(OpenMapUIStart());
     }
 }

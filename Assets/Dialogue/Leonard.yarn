@@ -3,20 +3,36 @@ tags:
 colorID: 0
 position: 861,368
 ---
-<<if visited("LeonardStart") is false>>
-	<<set $LEOQ1New to true>>
-	Leonard: Didn’t I already tell you you needed a search warrant?
-	JACE: You did, and it was good advice. I’ve got a search warrant right here.
-	Leonard: ...
-	Leonard: Fine! Search the place if you want!
-	Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
+//<<set $tristanFin1 to true>>
+//<<set $tristanFin2 to true>>
+//<<set $bernardFin1 to true>>
+//<<set $bernardFin2 to true>>
+//<<if $bernardFin1 is true and $bernardFin2 is true and $tristanFin1 is true and $tristanFin2 is true>>
+	<<if $leonardStart is false>>
+		<<set $LEOQ1New to true>>
+		Leonard: Didn’t I already tell you you needed a search warrant?
+		JACE: You did, and it was good advice. I’ve got a search warrant right here.
+		Leonard: ...
+		Leonard: Fine! Search the place if you want!
+		Leonard: But don’t expect to find anything. Why would I kill one of my own tenants? It’s going to drive the property value down.
+		<<objective("Search the premises", 
+	"Leonard doesn’t want to talk, but I can still search the premises
+	- Any office in this part of town has secrets hidden somewhere..?", 
+		"Leo1_objective")>>
+		<<set $leonardStart to true>>
+	<<else>>
+		Leonard: What is it?
+		//TESTING: REMOVE
+		<<startkey Journal bill_fin>>
+		ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
+		<<endkey Journal>>
+		//
+	<<endif>>
+	[[LeonardMain]]
 <<else>>
-	Leonard: What is it?
-	<<startkey Journal bill_fin>>
-	ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
-	<<endkey Journal>>
+	LEONARD: “If you don’t have a search warrant, I’m not letting you search my office. Good luck finding Friday’s murderer, but you won’t find anything here.”
+	<<NoWarrent Leonard>>
 <<endif>>
-[[LeonardMain]]
 ===
 
 title: LeonardRepeat
@@ -86,6 +102,10 @@ position: 1163,357
         <<stopquestioning Journal>>
 		<<set $tryagain to false>>
 		[[LeonardBF]]
+	<<elseif question("ledger", "beautification_bill") is true>>
+        <<stopquestioning Journal>>
+		<<set $tryagain to false>>
+		[[LeonardBF]]
 	<<else>>
 		Leonard: You have a search warrant, don’t you detective? Why don’t you try using it, and leave me alone.
 		<<set $tryagain to true>>
@@ -122,6 +142,9 @@ LEONARD: He’s a contractor. Helps with the maintenance.
 JACE: If he’s a contractor, then why is he the one paying you?
 LEONARD: Must be a mistake in my bookkeeping. Why do you care?
 JACE:You don’t seem the type to make bookkeeping mistakes. 
+<<objective("Who is the “BF’ in the Ledger?", 
+	"- Those initials sound really familiar... Maybe Bernard or Tristan can tell me.", 
+		"BF1_objective")>>
 [[LeonardMain]]
 ===
 

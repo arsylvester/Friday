@@ -20,10 +20,13 @@ public class DeductionElement : MonoBehaviour
         summaryText = sumText;
         deductionSummary = panel;
         ObjKey = key;
+
+        mainTextbox.color = Color.magenta;
     }
 
     public void DeductionClicked()
     {
         deductionSummary.OpenSummary(mainText, summaryText);
+        mainTextbox.color = Color.black;
     }
 }

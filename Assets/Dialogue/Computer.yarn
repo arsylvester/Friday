@@ -9,6 +9,9 @@ position: 1163,357
 <<startquestioning Journal>>
 <<if $tryagain is false>>
 	COMPUTER: PASSWORD?
+	<<objective("Can I access Leonard's computer?", 
+	"I bet that computer has information, but it needs a password, and I doubt Leonard will just give it to me", 
+		"computer_objective")>>
 <<endif>>
 ->Confirm
 	<<if question("queen_bee", "-") is true>>
@@ -31,6 +34,7 @@ colorID: 0
 position: 1163,357
 ---
 <<set $ComputerUnlocked to true>>
+<<objectiveComplete Journal computer_objective>>
 JACE: He seems to be a big fan of this pinup girl... Maybe “QueenBee” could be a password?
 COMPUTER: WELCOME, LEONARD.
 [[ComputerOpen]]
@@ -69,6 +73,7 @@ colorID: 0
 position: 1163,357
 ---
 <<set $USBUsed to true>>
+<<objectiveComplete Journal Leo3_objective>>
 JACE: I think I’ve found some kind of video footage. It’s stamped with the date and time. Let’s find yesterday, at about 6:45...
 JACE: I see Leonard leave his office, heading not up the stairs but through the sidedoor out to the alleyway. Where is he going?
 JACE: Next Bernard comes down the stairs. He knocks on the door, waits around a little while.

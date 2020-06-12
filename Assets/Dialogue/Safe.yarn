@@ -4,6 +4,11 @@ colorID: 0
 position: 1163,357
 ---
 <<startquestioning Journal>>
+<<objectiveComplete Journal Leo1_objective>>
+<<objective("Search the premises", 
+	"<s>- Any office in this part of town has secrets hidden somewhere..?</s>
+	- A safe! The ideal place to keep secrets! Now, how to unlock it?", 
+		"Leo2_objective")>>
 <<if $tryagain is false>>
 	SAFE: XXXX
 <<endif>>
@@ -28,6 +33,12 @@ colorID: 0
 position: 1163,357
 ---
 SAFE: 5919
+<<objectiveComplete Journal Leo2_objective>>
+<<objective("Search the premises", 
+	"<s>- Any office in this part of town has secrets hidden somewhere..?
+	- A safe! The ideal place to keep secrets! Now, how to unlock it?</s>
+	- A USB Stick? Now I just need to find a place to plug it in to...", 
+		"Leo3_objective")>>
 <<OpenSafe Safe>>
 //Call function to open the safe.
 ===

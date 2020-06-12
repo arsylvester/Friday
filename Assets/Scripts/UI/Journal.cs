@@ -44,6 +44,7 @@ public class Journal : MonoBehaviour
     private string keyText1 = "";
     private string keyText2 = "";
     private InMemoryVariableStorage varStorage;
+    private bool hasBFEvidence = false;
     //public List<GameObject> highlightedText;
     //public List<GameObject> highlightedItems;
     public List<GameObject> highlightedEntries;
@@ -109,7 +110,15 @@ public class Journal : MonoBehaviour
             if (!objectivesComplete.Contains(parameters[2].AsString))
             {
                 var newDedElement = Instantiate(objectiveElementPrefab, objectivePanel);
-                newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, parameters[2].AsString);
+
+                if (parameters[2].AsString == "BF1_objective" && hasBFEvidence)
+                {
+                    newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, "”BF”... I know that name! Now if I can get Leonard to confirm it", deductionSummary, parameters[2].AsString);
+                }
+                else
+                {
+                    newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, parameters[2].AsString);
+                }
                 currentObjectives.Add(newDedElement.GetComponent<DeductionElement>());
                 objectivesComplete.Add(parameters[2].AsString);
             }
@@ -231,6 +240,16 @@ public class Journal : MonoBehaviour
         {
             newJournalText.GetComponent<DialogueJournalElement>().keyID = keyName;
             keyEntries.Add(newJournalText);
+
+            if(keyName == "bill_fin" || keyName == "beautification_bill")
+            {
+                hasBFEvidence = true;
+                if(objectivesComplete.Contains("BF1_objective"))
+                {
+                    ObjectiveComplete("BF1_objective");
+                    CreateObjective("Who is the “BF’ in the Ledger?", "”BF”... I know that name! Now if I can get Leonard to confirm it.", "BF2_objective");
+                }
+            }
         }
         linesSaved++;
         CanSaveDialogue(false);
@@ -532,6 +551,25 @@ public class Journal : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void CreateObjective(string title, string body, string objectiveKey)
+    {
+        if (!objectivesComplete.Contains(objectiveKey))
+        {
+            var newDedElement = Instantiate(objectiveElementPrefab, objectivePanel);
+
+            if (objectiveKey == "BF1_objective" && hasBFEvidence)
+            {
+                newDedElement.GetComponent<DeductionElement>().SetUpDeduction(title, "”BF”... I know that name! Now if I can get Leonard to confirm it", deductionSummary, objectiveKey);
+            }
+            else
+            {
+                newDedElement.GetComponent<DeductionElement>().SetUpDeduction(title, body, deductionSummary, objectiveKey);
+            }
+            currentObjectives.Add(newDedElement.GetComponent<DeductionElement>());
+            objectivesComplete.Add(objectiveKey);
+        }
     }
 /*
     [YarnCommand("deduction")]
