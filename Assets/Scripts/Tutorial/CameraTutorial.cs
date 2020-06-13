@@ -13,7 +13,7 @@ public class CameraTutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.sceneLoaded += ReloadCameraTutorial;
+        //SceneManager.sceneLoaded += ReloadCameraTutorial;
         ReloadCameraTutorial(SceneManager.GetActiveScene(), LoadSceneMode.Single);
 
         camPromptPanel.SetActive(false);

@@ -179,11 +179,24 @@ public class Journal : MonoBehaviour
             UnhighlightAll();
             if (itemJournal.GetComponent<Animator>().GetBool("open"))
             {
-                CloseJournals();
+                CloseLeftJournal();
             }
             else
             {
-                OpenJournals();
+                OpenLeftJournal();
+            }
+            //itemJournal.SetActive(!itemJournal.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.E) && !isQuestioning && journalsOpenable)
+        {
+            UnhighlightAll();
+            if (dialogJournal.GetComponent<Animator>().GetBool("open"))
+            {
+                CloseRightJournal();
+            }
+            else
+            {
+                OpenRightJournal();
             }
             //itemJournal.SetActive(!itemJournal.activeSelf);
         }
@@ -330,6 +343,28 @@ public class Journal : MonoBehaviour
             dialogJournal.GetComponent<Animator>().SetBool("open", true);
             //StartCoroutine(OpenJournalsAfterFade());
         }
+    }
+
+    public void OpenLeftJournal()
+    {
+        itemJournal.SetActive(true);
+        itemJournal.GetComponent<Animator>().SetBool("open", true);
+    }
+
+    public void OpenRightJournal()
+    {
+        dialogJournal.SetActive(true);
+        dialogJournal.GetComponent<Animator>().SetBool("open", true);
+    }
+
+    public void CloseLeftJournal()
+    {
+        itemJournal.GetComponent<Animator>().SetBool("open", false);
+    }
+
+    public void CloseRightJournal()
+    {
+        dialogJournal.GetComponent<Animator>().SetBool("open", false);
     }
 
     IEnumerator OpenJournalsAfterFade()

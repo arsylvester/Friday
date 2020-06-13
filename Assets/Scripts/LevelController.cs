@@ -203,6 +203,7 @@ public class LevelController : MonoBehaviour
     public void GoToLocation()
     {
         SceneManager.LoadScene(location);
+        journal.CanOpenJournals(true);
     }
 
     public void ReturnToMap()
