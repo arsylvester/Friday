@@ -65,6 +65,8 @@ public class Journal : MonoBehaviour
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
 
+    public static List<string> deductions = new List<string>();
+
     PlayerAnimController playerAnimController;
 
     void Start()
@@ -129,6 +131,7 @@ public class Journal : MonoBehaviour
         {
             var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
             newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, "");
+            deductions.Add(parameters[2].AsString);
 
             List<GameObject> tempList = new List<GameObject>();
             for (int x = 0; x < keyEntries.Count; x++)
@@ -576,7 +579,7 @@ public class Journal : MonoBehaviour
         }
     }
 
-    public bool HasCompletedObjective(string objectiveKey)
+    public bool HasCompletedDeduction(string objectiveKey)
     {
         foreach(DeductionElement element in currentObjectives)
         {
