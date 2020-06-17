@@ -607,6 +607,7 @@ public class Journal : MonoBehaviour
         }
     }
 /*
+    public static List<string> deductions = new List<string>();
     [YarnCommand("deduction")]
     public void Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
     {
@@ -625,5 +626,8 @@ public class Journal : MonoBehaviour
             }
         var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
         newDedElement.GetComponent<DeductionElement>().SetUpDeduction(mainText, summaryText);
+
+        //Add to list so that non-yarn scripts can access a deduction
+        deductions.add(key1);
     }*/
 }
