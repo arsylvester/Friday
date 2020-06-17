@@ -3,6 +3,11 @@ tags:
 colorID: 0
 position: 861,368
 ---
+<<if $abbyFin is true>>
+	<<objective("Visit Tristan's Apartment", 
+	"", 
+	"TristanA1_objective")>>
+<<endif>>
 <<if visited("TristanStart") is false>>
 	<<set $Q1New to true>>
 	<<set $Q2New to true>>
@@ -14,6 +19,10 @@ position: 861,368
 	TRISTAN: Friday had plenty to say. I'm Tristan, by the way. Tristan Chen.
 	JACE: Can I come in? Seems you've already heard the news.
 	TRISTAN: It's hard not to. We see a lot of cops around, but not like this. Anyway, come in.
+	<<objectiveComplete Journal TristanA1_objective>>
+	<<objective("Investigate Tristan's Apartment", 
+	"Abby mentioned something about Tristan doing something on her patio.", 
+	"TristanA2_objective")>>
 <<else>>
 	TRISTAN: What else do you need detective?
 <<endif>>
@@ -178,6 +187,7 @@ position: 1163,357
 JACE: You saw the landlord on the patio last night. Can you remember what he was doing?
 TRISTAN: I heard the door shut. I don't know if he was leaving or entering, but he seemed like he was doing something with the patio door.
 <<set $tristanFin1 to true>>
+<<objectiveComplete Journal TristanB4_objective>>
 <<deduction("The landlord was up to something on the night of the murder. It could be nothing but an inspection", "The landlord might've up to something on the night of the murder.", "friday_cup", "", "", "")>>
 ===
 
@@ -199,6 +209,7 @@ JACE: And yet I'm the bad guy?
 TRISTAN: You're the guy who made the girl I loved's life hell, Detective. I'm not allowed to like you.
 TRISTAN: But I need you to find her killer, because you're the only one that can.
 <<set $tristanFin2 to true>>
+<<objectiveComplete Journal TristanA4_objective>>
 <<deduction("Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "", "", "", "")>>
 ===
 
@@ -227,6 +238,10 @@ TRISTAN: ... You're right. She would want that.
 JACE: I need you to remember everything you can about last night, because even a minor detail might lead us to Friday's murder.
 TRISTAN: ...
 TRISTAN: Alright, detective.
+<<objectiveComplete Journal TristanB3_objective>>
+<<objective("What is the landlord up to?", 
+"I know she saw the landlord doing something suspicious", 
+"TristanB4_objective")>>
 <<set $landlord to true>>
 <<set $new_question to true>>
 [[TristanMain]]
@@ -290,6 +305,10 @@ TRISTAN: Yes! I go out onto the patio and water them every morning and every eve
 TRISTAN: They're like my children, you know?
 JACE: Well - I suppose - ...
 JACE: ...No, not really.
+<<objectiveComplete Journal TristanA2_objective>>
+<<objective("Investigate Tristan's Apartment", 
+"If Tristan's out on her patio often, could she have seen something?", 
+"TristanA3_objective")>>
 [[TristanMain]]
 ===
 
@@ -311,6 +330,13 @@ TRISTAN: Last night, I did see the landlord on the patio below mine. I assume Ab
 <<endkey Journal>>
 <<set $landlord_alibi to true>>
 <<set $new_question to true>>
+<<objectiveComplete Journal TristanA3_objective>>
+<<objective("Investigate Tristan's Apartment", 
+"If Tristan saw the landlord, maybe he can confirm her alibi.", 
+"TristanA4_objective")>>
+<<objective("What is the landlord up to?", 
+"What was the landlord doing on Abby's patio?", 
+"TristanB1_objective")>>
 [[TristanMain]]
 ===
 
@@ -327,6 +353,10 @@ JACE: You can't think of anything at all?
 TRISTAN: Nothing concrete, no.
 TRISTAN: Why would I know anything about building maintenance?
 <<set $friday_cup_v2 to true>>
+<<objectiveComplete Journal TristanB1_objective>>
+<<objective("What is the landlord up to?", 
+"Tristan seems like she's holding something back. Maybe there's something I can do to remind her what's at stake - justice for the woman she loved.", 
+"TristanB2_objective")>>
 [[TristanMain]]
 ===
 
