@@ -4,10 +4,15 @@ using UnityEngine;
 using Cinemachine;
 using Yarn.Unity;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueCam : MonoBehaviour
 {
-    public Transform target;
+    GameObject[] potentialTargets;
+    GameObject target;
+    float closestPlayerDistance;
+    bool firstLocation = true;
+
     public float speed;
 
     CharacterController charController;
@@ -16,9 +21,15 @@ public class DialogueCam : MonoBehaviour
     public GameObject npc;
 
     public GameObject gameCam;
-    public GameObject cutsceneCam;
-    public GameObject dialogueCam;
-    public GameObject questioningCam;
+
+    GameObject[] potentialDialogueCams;
+    float closestDialogueCam;
+    bool firstDialogueCam = true;
+    int index;
+
+    GameObject[] potentialQuestioningCams;
+    float closestQuestioningCam;
+    bool firstQuestioningCam = true;
 
     public bool isDoneTalking = true;
     public bool isQuestioning = false;
@@ -43,9 +54,6 @@ public class DialogueCam : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
 
         gameCam.SetActive(true);
-        cutsceneCam.SetActive(false);
-        dialogueCam.SetActive(false);
-        questioningCam.SetActive(false);
 
         playerAnimController = FindObjectOfType<PlayerAnimController>();
 
@@ -69,10 +77,49 @@ public class DialogueCam : MonoBehaviour
         isQuestioning = false;
 
         gameCam.SetActive(false);
-        cutsceneCam.SetActive(false);
-        dialogueCam.SetActive(true);
-        questioningCam.SetActive(false);
 
+        potentialDialogueCams = GameObject.FindGameObjectsWithTag("DialogueCam");
+        potentialQuestioningCams = GameObject.FindGameObjectsWithTag("QuestioningCam");
+
+        // find dialogue cam to turn on
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            float distance = Vector3.Distance(potentialTargets[i].transform.position, playerMovement.transform.position);
+            if (firstDialogueCam)
+            {
+                firstDialogueCam = false;
+
+                closestDialogueCam = distance;
+                index = i;
+            }
+            else if (distance < closestDialogueCam)
+            {
+                closestDialogueCam = distance;
+                index = i;
+            }
+        }
+
+        // turn on/off all dialogue cams
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            if (i == index)
+            {
+                potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 10;
+            }
+            else
+                potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+        }
+
+        // reset questioning cams
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            if (i == index)
+            {
+                potentialQuestioningCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+            }
+            else
+                potentialQuestioningCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+        }
         // playerAnimController.ChangePlayerAnim(3);
     }
 
@@ -81,17 +128,54 @@ public class DialogueCam : MonoBehaviour
         isQuestioning = true;
 
         gameCam.SetActive(false);
-        cutsceneCam.SetActive(false);
-        dialogueCam.SetActive(false);
-        questioningCam.SetActive(true);
+
+        potentialDialogueCams = GameObject.FindGameObjectsWithTag("DialogueCam");
+        potentialQuestioningCams = GameObject.FindGameObjectsWithTag("QuestioningCam");
+
+        // find questioning cam to turn on
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            float distance = Vector3.Distance(potentialTargets[i].transform.position, playerMovement.transform.position);
+            if (firstQuestioningCam)
+            {
+                firstQuestioningCam = false;
+
+                closestQuestioningCam = distance;
+                index = i;
+            }
+            else if (distance < closestQuestioningCam)
+            {
+                closestQuestioningCam = distance;
+                index = i;
+            }
+        }
+        // turn on/off all questioning cams
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            if (i == index)
+                potentialQuestioningCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 10;
+            else
+                potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+        }
+        // reset dialogue cams
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            if (i == index)
+                potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+            else
+                potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+        }
     }
 
     public void SwitchToGameCam()
     {
         gameCam.SetActive(true);
-        cutsceneCam.SetActive(false);
-        dialogueCam.SetActive(false);
-        questioningCam.SetActive(false);
+ 
+        for (int i = 0; i < potentialDialogueCams.Length; i++)
+        {
+            potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+            potentialDialogueCams[i].GetComponent<CinemachineVirtualCamera>().Priority = 9;
+        }
     }
 
     public void StartFade(bool isDoneTalking)
@@ -110,6 +194,25 @@ public class DialogueCam : MonoBehaviour
 
     IEnumerator Fade(bool isDoneTalking)
     {
+        // find closest dialogue location
+        potentialTargets = GameObject.FindGameObjectsWithTag("DialogueLocation");
+        foreach (GameObject obj in potentialTargets)
+        {
+            float distance = Vector3.Distance(obj.transform.position, playerMovement.transform.position);
+            if (firstLocation)
+            {
+                firstLocation = false;
+
+                target = obj;
+                closestPlayerDistance = distance;
+            }
+            else if (distance < closestPlayerDistance)
+            {
+                target = obj;
+                closestPlayerDistance = distance;
+            }
+        }
+
         fadeImage.canvasRenderer.SetAlpha(0f);
 
         // fade in
@@ -129,8 +232,8 @@ public class DialogueCam : MonoBehaviour
             npc.transform.rotation = tmpNpcRotation;
         }
 
-        transform.position = target.position;
-        transform.rotation = target.rotation;
+        transform.position = target.transform.position;
+        transform.rotation = target.transform.rotation;
 
         yield return new WaitForSeconds(fadeTranstition);
 
