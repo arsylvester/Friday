@@ -18,7 +18,7 @@ public class ChangeTextOnFlag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(journal.HasCompletedObjective(FlagName))
+        if(journal.HasCompletedDeduction(FlagName))
         {
             item.name = PostFlagText;
         }

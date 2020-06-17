@@ -65,6 +65,8 @@ public class Journal : MonoBehaviour
     // The dialogue runner that we want to attach the 'visited' function to
     [SerializeField] Yarn.Unity.DialogueRunner dialogueRunner;
 
+    public static List<string> deductions = new List<string>();
+
     PlayerAnimController playerAnimController;
 
     void Start()
@@ -129,6 +131,7 @@ public class Journal : MonoBehaviour
         {
             var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
             newDedElement.GetComponent<DeductionElement>().SetUpDeduction(parameters[0].AsString, parameters[1].AsString, deductionSummary, "");
+            deductions.Add(parameters[2].AsString);
 
             List<GameObject> tempList = new List<GameObject>();
             for (int x = 0; x < keyEntries.Count; x++)
@@ -576,7 +579,7 @@ public class Journal : MonoBehaviour
         }
     }
 
-    public bool HasCompletedObjective(string objectiveKey)
+    public bool HasCompletedDeduction(string objectiveKey)
     {
         foreach(DeductionElement element in currentObjectives)
         {
@@ -607,6 +610,7 @@ public class Journal : MonoBehaviour
         }
     }
 /*
+    public static List<string> deductions = new List<string>();
     [YarnCommand("deduction")]
     public void Deduction(string mainText, string summaryText, string key1, string key2, string key3, string key4)
     {
@@ -625,5 +629,8 @@ public class Journal : MonoBehaviour
             }
         var newDedElement = Instantiate(deductionElementPrefab, deductionPanel);
         newDedElement.GetComponent<DeductionElement>().SetUpDeduction(mainText, summaryText);
+
+        //Add to list so that non-yarn scripts can access a deduction
+        deductions.add(key1);
     }*/
 }
