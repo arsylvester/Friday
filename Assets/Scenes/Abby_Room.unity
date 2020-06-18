@@ -720,7 +720,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128313346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ea6de5f804492e4483f21e545737930, type: 3}
   m_Name: 
@@ -3551,7 +3551,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1000005150}
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnHoverStart:
@@ -3594,6 +3605,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6502047, y: 0.37043712, z: 1.3243937}
   m_Center: {x: -0.12212759, y: 0.0000001266883, z: -0.0000009871163}
+--- !u!114 &1000005150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000005145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: 989cc7454250cb140bffd90768b43329,
+    type: 3}
+  audioPrefabParent: {fileID: 1000005145}
+  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: ee5f65a28b2afb1488666d5e6b2a967c, type: 3}
+  StartVolume: 1
+  StereoPan: 0
+  loop: 0
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
 --- !u!1001 &1000517235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7472,6 +7519,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: The World
       objectReference: {fileID: 0}
+    - target: {fileID: 9060236996518765642, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 811063669}
+    - target: {fileID: 9060236996518765642, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 811063671}
+    - target: {fileID: 9060236996518765642, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StopMovement
+      objectReference: {fileID: 0}
+    - target: {fileID: 3438398152183196315, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695825103808448880, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: cameraTransform
+      value: 
+      objectReference: {fileID: 1888381204}
+    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 1481138151}
+    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7822683449282999254, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: fadeImage
@@ -7531,11 +7618,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7822683450161830183, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9060236997420576344, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -7858,25 +7940,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 1481138151}
-    - target: {fileID: 731285796436648261, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_TagString
-      value: Fade
-      objectReference: {fileID: 0}
     - target: {fileID: 2781218285019154619, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3438398152183196315, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.835
       objectReference: {fileID: 0}
     - target: {fileID: 821035159, guid: bad00f610cb8b724188ea05bf6e77074, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7985,11 +8052,6 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1.6
       objectReference: {fileID: 0}
-    - target: {fileID: 7695825103808448880, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: cameraTransform
-      value: 
-      objectReference: {fileID: 1888381204}
     - target: {fileID: 7695825103808448883, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
       propertyPath: target
@@ -8058,21 +8120,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9060236996518765642, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 811063669}
-    - target: {fileID: 9060236996518765642, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 811063671}
-    - target: {fileID: 9060236996518765642, guid: bad00f610cb8b724188ea05bf6e77074,
-        type: 3}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: StopMovement
       objectReference: {fileID: 0}
     - target: {fileID: 9060236996518765641, guid: bad00f610cb8b724188ea05bf6e77074,
         type: 3}
@@ -11218,7 +11265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
+  audioPrefab: {fileID: 1388270348251091532, guid: 989cc7454250cb140bffd90768b43329,
     type: 3}
   audioPrefabParent: {fileID: 2124169628}
   mixerTrack: {fileID: 0}
