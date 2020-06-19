@@ -11,6 +11,7 @@ public class Leonard : MonoBehaviour
     PlayerMovement playerMove;
     DialogueCam cam;
     Journal journal;
+    LevelController levelControl;
 
     [SerializeField] Image fadePanel;
     [SerializeField] GameObject mapBackButton;
@@ -20,6 +21,7 @@ public class Leonard : MonoBehaviour
         playerMove = FindObjectOfType<PlayerMovement>();
         cam = FindObjectOfType<DialogueCam>();
         journal = FindObjectOfType<Journal>();
+        levelControl = FindObjectOfType<LevelController>();
     }
 
     //When Leonard's room is finished
@@ -45,6 +47,7 @@ public class Leonard : MonoBehaviour
 
 
         mapBackButton.SetActive(false);
+        levelControl.cancloseMap = false;
     }
 
     //When kicked back to map for not having a warrent
@@ -53,6 +56,7 @@ public class Leonard : MonoBehaviour
         journal.CloseJournals();
         journal.CanOpenJournals(false);
         mapBackButton.SetActive(false);
+        levelControl.cancloseMap = false;
 
         mapUI.SetActive(true);
         yield return new WaitForSeconds(5);

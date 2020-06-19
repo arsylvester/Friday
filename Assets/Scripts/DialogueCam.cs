@@ -11,7 +11,6 @@ public class DialogueCam : MonoBehaviour
     GameObject[] potentialTargets;
     GameObject target;
     float closestPlayerDistance;
-    bool firstLocation = true;
 
     public float speed;
 
@@ -24,7 +23,6 @@ public class DialogueCam : MonoBehaviour
 
     GameObject[] potentialDialogueCams;
     float closestDialogueCam;
-    bool firstDialogueCam = true;
     int index;
 
     GameObject[] potentialQuestioningCams;
@@ -80,6 +78,8 @@ public class DialogueCam : MonoBehaviour
 
         potentialDialogueCams = GameObject.FindGameObjectsWithTag("DialogueCam");
         potentialQuestioningCams = GameObject.FindGameObjectsWithTag("QuestioningCam");
+
+        bool firstDialogueCam = true;
 
         // find dialogue cam to turn on
         for (int i = 0; i < potentialDialogueCams.Length; i++)
@@ -196,6 +196,7 @@ public class DialogueCam : MonoBehaviour
     {
         // find closest dialogue location
         potentialTargets = GameObject.FindGameObjectsWithTag("DialogueLocation");
+        bool firstLocation = true;
         foreach (GameObject obj in potentialTargets)
         {
             float distance = Vector3.Distance(obj.transform.position, playerMovement.transform.position);
