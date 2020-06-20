@@ -170,7 +170,7 @@ public class Journal : MonoBehaviour
 
         //TEST:
         //SaveItem("Vase", "Its a container to hold flowers.", "Just a fancy, temporary flowerpot.", testSprite1, "KeyVase");
-        SaveItem("Stocking Of Pennies", "The murder weapon.", "What a crude way to kill such an innocent woman.", stockingSprite, "pennies");
+        SaveItem("Sock Of Pennies", "The murder weapon.", "What a crude way to kill such an innocent woman.", stockingSprite, "pennies");
         CloseJournals();
     }
 

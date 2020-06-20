@@ -29,6 +29,11 @@ public class DialogueAddOns : MonoBehaviour
             dialogUI.MarkLineComplete();
         }
 
+        if(fadeImage == null)
+        {
+            fadeImage = GameObject.FindGameObjectWithTag("Fade");
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && dialogRunnner.isDialogueRunning && (TutorialState.Current == "deduction" || TutorialState.Current == "done") && !fadeImage.GetComponent<Image>().enabled)
         {
             if (dialogRunnner.currentNodeName == "AbbyInterogation")
