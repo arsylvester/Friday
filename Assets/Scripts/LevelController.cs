@@ -38,6 +38,7 @@ public class LevelController : MonoBehaviour
     public Button BernardButton;
     public Button ManagementButton;
     public Button OwnerButton;
+    public bool cancloseMap = true;
     //END
 
     public void Start()
@@ -81,7 +82,7 @@ public class LevelController : MonoBehaviour
             ResumeGame();
             DisableEnableJournalForPause(isPaused);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && mapUI.activeInHierarchy)
+        else if (Input.GetKeyDown(KeyCode.Escape) && !isPaused && mapUI.activeInHierarchy && cancloseMap)
             levelController.CloseMap();
 
         if (mapMoveBack)
@@ -204,6 +205,7 @@ public class LevelController : MonoBehaviour
     {
         SceneManager.LoadScene(location);
         journal.CanOpenJournals(true);
+        cancloseMap = true;
     }
 
     public void ReturnToMap()
