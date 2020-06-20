@@ -581,14 +581,7 @@ public class Journal : MonoBehaviour
 
     public bool HasCompletedDeduction(string objectiveKey)
     {
-        foreach(DeductionElement element in currentObjectives)
-        {
-            if(element.ObjKey == objectiveKey)
-            {
-                return true;
-            }
-        }
-        return false;
+        return deductions.Contains(objectiveKey);
     }
 
     public void CreateObjective(string title, string body, string objectiveKey)
