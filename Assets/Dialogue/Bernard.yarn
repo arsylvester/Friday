@@ -3,15 +3,6 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-Pink - Important Dialogue
-	Dark Pink - Important Dialogue for/from other Rooms, which does not exclude it from also being important in this room.
-Blue - Evidence.
-	Dark blue - Important evidence for/from other rooms, which does not exclude it from also being important in this room.
-Purple - Follow-up Questions
-Yellow - Deduction.
-
-INT. BERNARD’S APARTMENT -- DAY
-
 BERNARD: Please excuse the mess… I, uh, haven’t had a chance to clean lately.  
 BERNARD: My name is Bernard Miller if you didn’t know. Welcome to my apartment, I suppose. 
 BERNARD: So, what can I help you with?
@@ -22,10 +13,14 @@ BERNARD: I guess it doesn’t matter now. I can’t believe somebody wanted to kill 
 JACE: You mind if I look around a bit, sir? Seeing as you knew the victim?
 BERNARD: Sure... sure... I don’t know what you’d find in here to help your investigation, though…
 
-
 JACE GETS FOLLOWUP: CAN YOU CONFIRM ABBY’S ALIBI
+===
 
-
+title: FollowUp
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (Asking a Follow-Up)
 “I just talked to Abby earlier today. She says that you spotted her in the mailroom.”
@@ -39,17 +34,26 @@ BERNARD: I guess Bill Finn is doing a good thing with it, but if he would focus 
 JACE: ...Good luck with that, I suppose.
 JACE: Anyway, we suspect Friday was murdered right around 7 o’clock. If you’re lucky, we’ll find more concrete evidence that backs your alibi. 
 BERNARD: Oh... it hadn’t even occurred to me that I could be a suspect. Friday was my friend.
+===
 
-
-
+title: SeeingFriday
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (Shows him “ I was just going to go see her yesterday…”)
 Why were you going to go see her yesterday? 
 
 BERNARD: Yeah…! I was going to talk to her, but then the stupid landlord...
 BERNARD: I just can’t believe she’s dead!
+===
 
-
+title: AskAboutHisPlans
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him “The stupid landlord” or I was stopping by the landlord’s office)
 What were you going to talk to Friday about before the landlord interrupted?
@@ -59,8 +63,13 @@ BERNARD: Totally messed up my schedule for the evening. What kind of landlord mi
 JACE: A busy one, apparently.
 JACE: But that doesn’t answer my question.
 BERNARD: We were friends. It’s not suspicious that I was gonna go talk to one of my friends.
+===
 
-
+title: PictureOfFriday
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He show her the PICTURE OF FRIDAY)
 So, how did you know Friday, then?
@@ -72,10 +81,13 @@ BERNARD: Met her at the bar in that picture there one night, and we found out we
 BERNARD: For one, we both have a love of craft beer. 
 BERNARD: She did say she was drinking a lot because of her boss, though… Isn’t that you, Detective?
 JACE: Might have been her boss, but I ain’t responsible for what she does after hours, sir.
+===
 
-
-
-
+title: BeerBottlePreBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him the BEER BOTTLE)(if Jace DOES NOT KNOWS about the brewery)
 
@@ -84,21 +96,26 @@ JACE: No crime against drinking, no. Just… seems like you like a lot of beer, wi
 JACE: Are you sure Friday was the one with the drinking habit, and not you?
 BERNARD: I’m not an alcoholic, I just - 
 BERNARD: I just haven’t cleaned up in a while.
+===
 
-
-
-
-
-
-
+title: YeastPacketsPreBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him YEAST PACKETS)(if Jace DOES NOT KNOWS about the brewery)
 
 BERNARD: There’s nothing illegal about having yeast, detective. Bakers would be in a bit of a pickle if there was.
 JACE: ( … Is he trying to be funny? )
 BERNARD: … I’m joking. I use it to bake bread. Y’know, sourdough starters, or whatever?
+===
 
-
+title: MachinePreBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him the MACHINE?)(if Jace DOES NOT KNOWS about the brewery)
 
@@ -107,40 +124,50 @@ JACE: Pretty fancy water heater.
 JACE: Not that I know a lot about water heaters. Would it bother you if I asked a contractor buddy about it?
 BERNARD: Uhh - yeah, sure, go ahead I guess...
 JACE: Yeah, you definitely seem unbothered.
+===
 
-
+title: BeerBottlePostBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him the BEER BOTTLE)(if Jace KNOWS about the brewery)
 
 BERNARD: I think that’s from one our older batches. See how the logo is green instead of yellow?
 BENARD: I wasn’t lying when I said I hadn’t cleaned up in a while.
+===
 
-
-
-
-
-
-
+title: YeastPacketsPostBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him YEAST PACKETS)(if Jace KNOWS about the brewery)
 
 BERNARD: It’s crazy the science that goes into a good brew. 
 BERNARD: A lot of it really does come down to having good yeast, and providing the best environment for the yeast to grow!
 BERNARD: It was a little gross for me at first, but I got over it.
+===
 
-
-
-
+title: MachinePostBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him the BREWERY MACHINE)(if Jace KNOWS about the brewery)
 
 BERNARD: Yeah, that’s my at-home brewery machine. 
 BERNARD: It’s not fancy enough for me to require a permit, but it is fancy enough to be against the terms of my lease agreement...
- 
+===
 
-
-
-
+title: DeductionBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him For one, we both have a love of craft beer. + pick 1 (machine/yeast/beer bottles)(player must have recorded machine AND yeast AND beer)
 
@@ -152,8 +179,13 @@ BERNARD: I don’t know, but she was pretty serious about it.
 
 (now Jace KNOWS about the brewery)
 (change the name of “MACHINE?” to “BREWERY MACHINE”)
+===
 
-
+title: EvictionLetterPreBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him the EVICTION NOTICE.)(if Jace DOES NOT KNOW about the brewery)
 The tenants in this building just can’t get a break, can they?
@@ -162,41 +194,52 @@ BERNARD: Oh, right… Ignoring that won’t make it go away, huh?
 BERNARD: Showed up the other day out of the blue. Never had a problem paying my rent before or anything.
 BERNARD: Now he wants to throw me out, and won’t even tell me why!
 BERNARD: It has to be because of that… It’s the only explanation.
+===
 
-
-
-
-
-
+title: EvictionPreBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (Jace shows him Now he wants to throw me out, and won’t even tell me why! OR  It has to be because of that… It’s the only explanation)(if Jace does NOT KNOW about the brewery)
 
 JACE: Care to elaborate?
 BERNARD: Oh, uh. 
 BERNARD: I guess I just make too much noise or something.
+===
 
-
-
-
+title: EvictionPostBrewery
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He asks about  Now he wants to throw me out, and won’t even tell me why! OR  It has to be because of that… It’s the only explanation.)(if Jace KNOWS about the brewery)
 Care to elaborate?
 
 BERNARD: Only one other person who knew about the business, and also knows how to get in contact with the landlord!
 BERNARD: She’s gotta be the one who told him!
+===
 
-
-
-
+title: EvictionNoticeWithBusinessLetters
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He shows him (EVICTION NOTICE + FRIDAY AND I WERE BUSINESS PARTNERS) OR (She’s gotta be the one who told him!))
  
 BERNARD: I really liked Friday, and I thought I could trust her! I just don’t understand why she would sell me out to Leonard like that. 
 BERNARD: Leonard is your typical scummy landlord, and nobody who lives here likes him.  
 JACE: UNLOCKS FOLLOWUP: “You think Friday tried to get you evicted?”
+===
 
-
-
+title: EvictionFollowup
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (Asking a Follow-Up)
 You think Friday tried to get you evicted?
@@ -218,10 +261,13 @@ BERNARD: Why would Friday get me kicked out, though? It doesn’t seem like her at
 JACE: You might want to figure that one out yourself, before you become a suspect.
 
 Deduction Unlocked: Bernard is being evicted. He thinks Friday told the landlord about his brewery setup, but there’s no evidence of that.
+===
 
-
-
-
+title: MailroomFootageDeduction
+tags: 
+colorID: 0
+position: 1163,357
+---
 JACE
 (He asks about “I might have also flipped off the mailroom cameras on my way back up the stairs, I was so mad...”)
 
