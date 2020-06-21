@@ -7,7 +7,7 @@ position: 861,368
 //<<set $tristanFin2 to true>>
 //<<set $bernardFin1 to true>>
 //<<set $bernardFin2 to true>>
-<<if $bernardFin1 is true and $bernardFin2 is true and $tristanFin1 is true and $tristanFin2 is true>>
+<<if $bernardFin1 is true and $tristanFin1 is true and $tristanFin2 is true>>
 	<<if $leonardStart is false>>
 		<<set $LEOQ1New to true>>
 		Leonard: Didn’t I already tell you you needed a search warrant?
@@ -23,9 +23,9 @@ position: 861,368
 	<<else>>
 		Leonard: What is it?
 		//TESTING: REMOVE
-		<<startkey Journal bill_fin>>
-		ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
-		<<endkey Journal>>
+		//<<startkey Journal bill_fin>>
+		//ABBY: The weirdest part are the crimes themselves. A lot of assaults, random locals being accosted, but not a lot of muggings. Bill Finn said he’d clean it up when he got elected, but nothing’s changed. 
+		//<<endkey Journal>>
 		//
 	<<endif>>
 	[[LeonardMain]]

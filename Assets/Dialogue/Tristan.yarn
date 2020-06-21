@@ -108,8 +108,12 @@ position: 1163,357
 ->Confirm Interrogation Choices
 	<<if question("friday_cup", "-") is true>>
 		<<if $friday_cup_v2 is false>>
+			<<stopquestioning Journal>>
+			<<set $tryagain to false>>
 			[[TristanCupV1]]
 		<<else>>
+			<<stopquestioning Journal>>
+			<<set $tryagain to false>>
 			[[TristanCupV2]]
 		<<endif>>
     <<elseif question("beautification_bill", "-") is true>>

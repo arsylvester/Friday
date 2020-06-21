@@ -7,17 +7,17 @@ position: 1163,357
 	<<objective("Find out Bernard's Alibi", 
 	"- Probably should take a look at where the body was. Maybe Bernard knows more about it?", 
 		"bernard1_objective")>>
-	BERNARD: Please excuse the mess… I, uh, haven’t had a chance to clean lately.  
-	BERNARD: My name is Bernard Miller if you didn’t know. Welcome to my apartment, I suppose. 
+	BERNARD: Please excuse the mess... I, uh, haven't had a chance to clean lately.  
+	BERNARD: My name is Bernard Miller if you didn't know. Welcome to my apartment, I suppose. 
 	BERNARD: So, what can I help you with?
 	JACE: There was a murder downstairs. Her name was Friday. According to Abby, here, you two knew each other?
-	BERNARD: Wait, Friday is dead? That’s impossible…! 
+	BERNARD: Wait, Friday is dead? That's impossible...! 
 	<<startkey Journal going_to_see_friday>>
-		BERNARD: I was just going to go see her yesterday…
+		BERNARD: I was just going to go see her yesterday...
 	<<endkey Journal>>
-	BERNARD: I guess it doesn’t matter now. I can’t believe somebody wanted to kill her… Sure, she was a little stuck up on some stuff, but she was nice.
+	BERNARD: I guess it doesn't matter now. I can't believe somebody wanted to kill her... Sure, she was a little stuck up on some stuff, but she was nice.
 	JACE: You mind if I look around a bit, sir? Seeing as you knew the victim?
-	BERNARD: Sure... sure... I don’t know what you’d find in here to help your investigation, though…
+	BERNARD: Sure... sure... I don't know what you'd find in here to help your investigation, though...
 	<<set $Q1New to true>>
 	<<set $Q1Available to true>>
 	<<set $knowsBrewery to false>>
@@ -32,17 +32,17 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: Please excuse the mess… I, uh, haven’t had a chance to clean lately.  
-BERNARD: My name is Bernard Miller if you didn’t know. Welcome to my apartment, I suppose. 
+BERNARD: Please excuse the mess... I, uh, haven't had a chance to clean lately.  
+BERNARD: My name is Bernard Miller if you didn't know. Welcome to my apartment, I suppose. 
 BERNARD: So, what can I help you with?
 JACE: There was a murder downstairs. Her name was Friday. According to Abby, here, you two knew each other?
-BERNARD: Wait, Friday is dead? That’s impossible…! 
+BERNARD: Wait, Friday is dead? That's impossible...! 
 <<startkey Journal going_to_see_friday>>
-	BERNARD: I was just going to go see her yesterday…
+	BERNARD: I was just going to go see her yesterday...
 <<endkey Journal>>
-BERNARD: I guess it doesn’t matter now. I can’t believe somebody wanted to kill her… Sure, she was a little stuck up on some stuff, but she was nice.
+BERNARD: I guess it doesn't matter now. I can't believe somebody wanted to kill her... Sure, she was a little stuck up on some stuff, but she was nice.
 JACE: You mind if I look around a bit, sir? Seeing as you knew the victim?
-BERNARD: Sure... sure... I don’t know what you’d find in here to help your investigation, though…
+BERNARD: Sure... sure... I don't know what you'd find in here to help your investigation, though...
 [[BernardMain]]
 ===
 
@@ -90,43 +90,46 @@ position: 1163,357
 ---
 <<set $Q1New to false>>
 <<startkey Journal saw_abby>>
-	BERNARD: I did see her in the mailroom. I was stopping by the landlord’s office after work, and the door to his office is inside the mailroom.
+	BERNARD: I did see her in the mailroom. I was stopping by the landlord's office after work, and the door to his office is inside the mailroom.
 <<endkey Journal>>
 JACE: Can you recall the time?
 BERNARD: Well, like I said I had just come home from work. 
-BERNARD: I had a late meeting that didn’t end until 6:30, so it must have been sometime around 7 that I got home.
-BERNARD: You heard about that new beautification bill? Yeah well, it’s our department that helps handle the logistics of all that. 
+BERNARD: I had a late meeting that didn't end until 6:30, so it must have been sometime around 7 that I got home.
+BERNARD: You heard about that new beautification bill? Yeah well, it's our department that helps handle the logistics of all that. 
+<<startkey Journal bill_fin>>
 BERNARD: I guess Bill Finn is doing a good thing with it, but if he would focus on cleaning up crime instead of planting more flowers, I would have a lot less late meetings right now.
+<<endkey Journal>>
 JACE: ...Good luck with that, I suppose.
-JACE: Anyway, we suspect Friday was murdered right around 7 o’clock. If you’re lucky, we’ll find more concrete evidence that backs your alibi. 
-BERNARD: Oh... it hadn’t even occurred to me that I could be a suspect. Friday was my friend.
+JACE: Anyway, we suspect Friday was murdered right around 7 o'clock. If you're lucky, we'll find more concrete evidence that backs your alibi. 
+BERNARD: Oh... it hadn't even occurred to me that I could be a suspect. Friday was my friend.
 [[BernardMain]]
 ===
 
-title: BenardQ2
+title: BernardQ2
 tags: 
 colorID: 0
 position: 1163,357
 ---
 <<set $Q2New to false>>
 BERNARD: Friday was the only other person who knew about our brewery, so she had to have told the landlord.
-BERNARD: I don’t really get why she would, to be honest. I thought we were partners... friends, even!
+BERNARD: I don't really get why she would, to be honest. I thought we were partners... friends, even!
 BERNARD: I was going to ask her about it on the day she was killed, actually.
 BERNARD: Well, maybe a little more than ask her about it. I was pretty mad about getting kicked out of my apartment.
-JACE: Yeah, I’m gathering that.
+JACE: Yeah, I'm gathering that.
 BERNARD: I had set up a meeting with the landlord to ask him if there was any way I could keep my lease.
-BERNARD: Friday’s always home on Thursday evenings. She’s usually hanging out with Abby on Thursdays, and then I typically see her over the weekend, but this couldn’t wait.
-BERNARD: I figured I’d catch her after I talked to him.
-BERNARD: But the landlord skipped the meeting entirely! Didn’t even have the decency to call!
+BERNARD: Friday's always home on Thursday evenings. She's usually hanging out with Abby on Thursdays, and then I typically see her over the weekend, but this couldn't wait.
+BERNARD: I figured I'd catch her after I talked to him.
+BERNARD: But the landlord skipped the meeting entirely! Didn't even have the decency to call!
 BERNARD: By the time I got to go back upstairs, I was so mad at him that I forgot about being mad at Friday at all, actually.
 BERNARD: Heck, I even vented to Abby for a while since she was coming back in from getting her mail.
 <<startkey Journal flipped_off_camera>>
-	BERNARD: I might have also flipped off the mailroom cameras on my way back up the stairs, I was so mad...
+	BERNARD: <u>I might have also flipped off the mailroom cameras on my way back up the stairs, I was so mad...</u>
 <<endkey Journal>>
-BERNARD: Now that I’m thinking about it with a clearer head though, I still don’t even know for sure why I’m getting kicked out. The Eviction notice didn’t give a reason.
-BERNARD: Why would Friday get me kicked out, though? It doesn’t seem like her at all, now that I’ve cooled off a bit about it.
+BERNARD: Now that I'm thinking about it with a clearer head though, I still don't even know for sure why I'm getting kicked out. The eviction notice didn't give a reason.
+BERNARD: Why would Friday get me kicked out, though? It doesn't seem like her at all, now that I've cooled off a bit about it.
 JACE: You might want to figure that one out yourself, before you become a suspect.
-<<deduction("Bernard is being evicted.", "He thinks Friday told the landlord about his brewery setup, but there’s no evidence of that.", "", "", "", "")>>
+<<set $bernardFin1 to true>>
+<<deduction("Bernard is being evicted.", "He thinks Friday told the landlord about his brewery setup, but there's no evidence of that.", "", "", "", "")>>
 [[BernardMain]]
 ===
 
@@ -137,9 +140,9 @@ position: 1163,357
 ---
 JACE: Why were you going to go see her yesterday? 
 <<startkey Journal stupid_landlord>>
-	BERNARD: Yeah…! I was going to talk to her, but then the stupid landlord...
+	BERNARD: Yeah...! I was going to talk to her, but then the stupid landlord...
 <<endkey Journal>>
-BERNARD: I just can’t believe she’s dead!
+BERNARD: I just can't believe she's dead!
 [[BernardMain]]
 ===
 
@@ -150,11 +153,11 @@ position: 1163,357
 ---
 JACE: What were you going to talk to Friday about before the landlord interrupted?
 
-BERNARD: We were supposed to have a meeting that day - one that he didn’t even bother to show up to.
-BERNARD: Totally messed up my schedule for the evening. What kind of landlord misses a meeting he RSVP’d to?
+BERNARD: We were supposed to have a meeting that day - one that he didn't even bother to show up to.
+BERNARD: Totally messed up my schedule for the evening. What kind of landlord misses a meeting he RSVP'd to?
 JACE: A busy one, apparently.
-JACE: But that doesn’t answer my question.
-BERNARD: We were friends. It’s not suspicious that I was gonna go talk to one of my friends.
+JACE: But that doesn't answer my question.
+BERNARD: We were friends. It's not suspicious that I was gonna go talk to one of my friends.
 [[BernardMain]]
 ===
 
@@ -165,15 +168,15 @@ position: 1163,357
 ---
 JACE: So, how did you know Friday, then?
 
-BERNARD: Well, we live in the same building, detective. People see each other often enough, and they’ll start talking.
+BERNARD: Well, we live in the same building, detective. People see each other often enough, and they'll start talking.
 BERNARD: Had plenty to talk about, turns out.
-BERNARD: We were both government workers, helping maintain the order of society and all that! ‘Course, she worked longer hours most days.
+BERNARD: We were both government workers, helping maintain the order of society and all that! `Course, she worked longer hours most days.
 BERNARD: Met her at the bar in that picture there one night, and we found out we had some similar interests!
 <<startkey Journal love_of_beer>>
 	BERNARD: For one, we both have a love of craft beer. 
 <<endkey Journal>>
-BERNARD: She did say she was drinking a lot because of her boss, though… Isn’t that you, Detective?
-JACE: Might have been her boss, but I ain’t responsible for what she does after hours, sir.
+BERNARD: She did say she was drinking a lot because of her boss, though... Isn't that you, Detective?
+JACE: Might have been her boss, but I ain't responsible for what she does after hours, sir.
 [[BernardMain]]
 ===
 
@@ -183,10 +186,10 @@ colorID: 0
 position: 1163,357
 ---
 BERNARD: Yeah, I like beer. Nothing like a cold one after a long day, am I right?
-JACE: No crime against drinking, no. Just… seems like you like a lot of beer, with this many empty bottles around.
+JACE: No crime against drinking, no. Just... seems like you like a lot of beer, with this many empty bottles around.
 JACE: Are you sure Friday was the one with the drinking habit, and not you?
-BERNARD: I’m not an alcoholic, I just - 
-BERNARD: I just haven’t cleaned up in a while.
+BERNARD: I'm not an alcoholic, I just - 
+BERNARD: I just haven't cleaned up in a while.
 [[BernardMain]]
 ===
 
@@ -195,9 +198,9 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: There’s nothing illegal about having yeast, detective. Bakers would be in a bit of a pickle if there was.
-JACE: ( … Is he trying to be funny? )
-BERNARD: … I’m joking. I use it to bake bread. Y’know, sourdough starters, or whatever?
+BERNARD: There's nothing illegal about having yeast, detective. Bakers would be in a bit of a pickle if there was.
+JACE: ( ...Is he trying to be funny? )
+BERNARD: ...I'm joking. I use it to bake bread. Y'know, sourdough starters, or whatever?
 [[BernardMain]]
 ===
 
@@ -207,7 +210,7 @@ colorID: 0
 position: 1163,357
 ---
 JACE
-BERNARD: That? It’s a water heater. The landlord’s pretty cheap, so what can I do?
+BERNARD: That? It's a water heater. The landlord's pretty cheap, so what can I do?
 JACE: Pretty fancy water heater.
 JACE: Not that I know a lot about water heaters. Would it bother you if I asked a contractor buddy about it?
 BERNARD: Uhh - yeah, sure, go ahead I guess...
@@ -220,8 +223,8 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: I think that’s from one our older batches. See how the logo is green instead of yellow?
-BENARD: I wasn’t lying when I said I hadn’t cleaned up in a while.
+BERNARD: I think that's from one our older batches. See how the logo is green instead of yellow?
+BENARD: I wasn't lying when I said I hadn't cleaned up in a while.
 [[BernardMain]]
 ===
 
@@ -230,7 +233,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: It’s crazy the science that goes into a good brew. 
+BERNARD: It's crazy the science that goes into a good brew. 
 BERNARD: A lot of it really does come down to having good yeast, and providing the best environment for the yeast to grow!
 BERNARD: It was a little gross for me at first, but I got over it.
 [[BernardMain]]
@@ -241,8 +244,8 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: Yeah, that’s my at-home brewery machine. 
-BERNARD: It’s not fancy enough for me to require a permit, but it is fancy enough to be against the terms of my lease agreement...
+BERNARD: Yeah, that's my at-home brewery machine. 
+BERNARD: It's not fancy enough for me to require a permit, but it is fancy enough to be against the terms of my lease agreement...
 [[BernardMain]]
 ===
 
@@ -251,13 +254,13 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: Alright, alright, you got me. I’ve got a brewing machine, not a water heater. And the yeast and bottles are for brewing.
+BERNARD: Alright, alright, you got me. I've got a brewing machine, not a water heater. And the yeast and bottles are for brewing.
 <<startkey Journal friends_with_friday>>
 	BERNARD: See, Friday and I were more than friends. We were business partners. We started talking about it when we would drink together, and before you know it, we were working together in my apartment every weekend.
 <<endkey Journal>>
-BERNARD: Crafting beer, testing recipes… We were just about to go commercial. Guess it’s just me, now.
-JACE: She was developing a side business? When’d she have the time?
-BERNARD: I don’t know, but she was pretty serious about it.
+BERNARD: Crafting beer, testing recipes... We were just about to go commercial. Guess it's just me, now.
+JACE: She was developing a side business? When'd she have the time?
+BERNARD: I don't know, but she was pretty serious about it.
 <<deduction("Bernard has been running a brewery in his home.", "", "bernard_brewery", "", "", "")>>
 <<set $knowsBrewery to true>>
 [[BernardMain]]
@@ -268,13 +271,12 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-JACE: The tenants in this building just can’t get a break, can they?
-
-BERNARD: Oh, right… Ignoring that won’t make it go away, huh?
+JACE: The tenants in this building just can't get a break, can they?
+BERNARD: Oh, right... Ignoring that won't make it go away, huh?
 BERNARD: Showed up the other day out of the blue. Never had a problem paying my rent before or anything.
 <<startkey Journal wants_to_throw_out>>
-	BERNARD: Now he wants to throw me out, and won’t even tell me why!
-	BERNARD: It has to be because of that… It’s the only explanation.
+	BERNARD: Now he wants to throw me out, and won't even tell me why!
+	BERNARD: It has to be because of that... It's the only explanation.
 <<endkey Journal>>
 [[BernardMain]]
 ===
@@ -297,7 +299,7 @@ position: 1163,357
 ---
 BERNARD: Only one other person who knew about the business, and also knows how to get in contact with the landlord!
 <<startkey Journal snitch>>
-	BERNARD: She’s gotta be the one who told him!
+	BERNARD: She's gotta be the one who told him!
 <<endkey Journal>>
 [[BernardMain]]
 ===
@@ -307,7 +309,7 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-BERNARD: I really liked Friday, and I thought I could trust her! I just don’t understand why she would sell me out to Leonard like that. 
+BERNARD: I really liked Friday, and I thought I could trust her! I just don't understand why she would sell me out to Leonard like that. 
 BERNARD: Leonard is your typical scummy landlord, and nobody who lives here likes him.  
 <<set $Q2New to true>>
 <<set $Q2Available to true>>
@@ -319,11 +321,11 @@ tags:
 colorID: 0
 position: 1163,357
 ---
-JACE: I’m sorry, did you say the mailroom had cameras?
+JACE: I'm sorry, did you say the mailroom had cameras?
 BERNARD: Uh, yeah! We had a problem with package theft for a while, so the landlord had them installed. 
 BERNARD: He takes packages in his office and leaves slips in our mail when they arrive, so the camera points at his office door. 
 BERNARD: Hey, I wonder if that could be useful to me, actually! If you check that footage, you should see me flipping off the camera at the time of the... at around 7pm.
-BERNARD: Just... do me a favor and don’t put the footage online anywhere? I don’t think my bosses would like it very much.
+BERNARD: Just... do me a favor and don't put the footage online anywhere? I don't think my bosses would like it very much.
 <<deduction("Bernard claims the mailroom camera footage should exonerate him.", "", "", "", "", "")>>
 [[BernardMain]]
 ===
@@ -399,7 +401,7 @@ position: 1163,357
 		<<set $tryagain to false>>
 		[[BernardAskMailroomFootageDeduction]]
 	<<else>>
-		BERNARD: Uhh, maybe try again, detective? I think I’m starting to understand a little bit of why Friday drank so much.
+		BERNARD: Uhh, maybe try again, detective? I think I'm starting to understand a little bit of why Friday drank so much.
 		<<set $tryagain to true>>
 		[[BernardInterrogation]]
 	<<endif>>
