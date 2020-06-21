@@ -63,13 +63,13 @@ public class ItemAgent : MonoBehaviour
                 StartCoroutine(Flash());
                 ////////////////////////////////////////////
                 ///TUTORIAL ONLY
-                tutorial.RecordItem();
+                if(tutorial != null) tutorial.RecordItem();
                 ////////////////////////////////////////////
                 if (secret != null)
                 {
                     ////////////////////////////////////////////
                     ///TUTORIAL ONLY
-                    tutorial.RecordSecret();
+                    if(tutorial != null) tutorial.RecordSecret();
                     ////////////////////////////////////////////
                     jrnl.SaveItem(secret.EntryName, secret.Description, secret.FlavorText, capture, secret.Keyname);
                 }

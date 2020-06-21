@@ -52,7 +52,7 @@ public class InspectorAgent : MonoBehaviour
         {
             if(Input.GetButtonDown(InteractKey) || Input.GetKeyDown(KeyCode.Escape))
             {
-                
+                Debug.Log("INT");
                 Ray cameraRay = InspectorCamera.ScreenPointToRay(Input.mousePosition);
                 bool hit = Physics.Raycast(cameraRay, out RaycastHit rayInfo, 100F, ~LayerMask.NameToLayer("Inspector"));
 
@@ -60,7 +60,7 @@ public class InspectorAgent : MonoBehaviour
                 {
                     ////////////////////////////////////////////
                     ///TUTORIAL ONLY
-                    tutorial.LeaveItem();
+                    if(tutorial != null) tutorial.LeaveItem();
                     ////////////////////////////////////////////
                     Release();
                 }
@@ -72,7 +72,7 @@ public class InspectorAgent : MonoBehaviour
                 target.transform.Rotate(transform.up, -Input.GetAxis(HorizontalRotationAxis) * DragSpeed, Space.World);
                 ////////////////////////////////////////////
                 ///TUTORIAL ONLY
-                tutorial.RotateItem();
+                if(tutorial != null) tutorial.RotateItem();
                 ////////////////////////////////////////////
             }
         }

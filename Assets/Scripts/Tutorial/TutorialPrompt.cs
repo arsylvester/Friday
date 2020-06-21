@@ -50,8 +50,8 @@ public class TutorialPrompt : MonoBehaviour
         //temp.z = orgDepth;
         //highlighted.position = temp;
 
-        currentPrompts.SetActive(false);
-        fadePanel.SetActive(false);
+        if(currentPrompts != null) currentPrompts.SetActive(false);
+        if(fadePanel != null) fadePanel.SetActive(false);
 
         //Destroy(highlighted);
         if(shouldHighlightReturn)
