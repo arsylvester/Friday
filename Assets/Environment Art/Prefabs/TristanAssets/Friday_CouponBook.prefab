@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6407223476446535119}
   - component: {fileID: 853307494853271862}
   - component: {fileID: 906747769826094931}
+  - component: {fileID: 840342799}
+  - component: {fileID: 840342800}
   m_Layer: 0
   m_Name: Friday_CouponBook
   m_TagString: Untagged
@@ -26,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435338393272341994}
-  m_LocalRotation: {x: -0.14435251, y: 0.6898612, z: 0.6943654, w: 0.14529492}
+  m_LocalRotation: {x: -0.14435178, y: 0.6898607, z: 0.69436616, w: 0.14529444}
   m_LocalPosition: {x: -112.9, y: 261.9119, z: 187.5813}
-  m_LocalScale: {x: 0.09143836, y: 0.09143836, z: 0.09143836}
+  m_LocalScale: {x: 0.09143835, y: 0.09143836, z: 0.09143836}
   m_Children:
   - {fileID: 7035927651887018917}
   - {fileID: 3045954650384059482}
@@ -94,6 +96,108 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5947096, y: 3.1267638, z: 0.19426294}
   m_Center: {x: 0.004423525, y: -0.08842498, z: -0.057375684}
+--- !u!114 &840342799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435338393272341994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6587b48f041942341b167fcba205d656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPrefab: {fileID: 1388270348251091532, guid: 8a060a74ad333ae4aae3d98b8f956444,
+    type: 3}
+  audioPrefabParent: {fileID: 1435338393272341994}
+  mixerTrack: {fileID: 3750354352951766372, guid: df837096252a6c44cb301832456cae91,
+    type: 2}
+  audioClips:
+  - {fileID: 8300000, guid: ee5f65a28b2afb1488666d5e6b2a967c, type: 3}
+  StartVolume: 1
+  StereoPan: 0
+  loop: 0
+  useClipsAsPlaylist: 0
+  playlistClipDelay: 0
+  randomize: 0
+  smartRandomize: 0
+  stopSoundOnFadeOut: 0
+  letClipFinishOnStop: 0
+  FadeInSpeed: 0
+  FadeInEndVolume: 1
+  FadeOutSpeed: 0
+  FadeOutEndVolume: 0
+  RandomVolumeMax: 1
+  RandomVolumeMin: 1
+  RandomPitchMax: 1
+  RandomPitchMin: 1
+--- !u!114 &840342800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435338393272341994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ca35c7f1c36ea4dbc8e6218bf05348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 840342799}
+        m_MethodName: PlaySound
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: SelectBills
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnHoverEnd:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DisplayName: Coupon Book
+  DisplayOffset: {x: 0, y: 1}
+  NameTag: {fileID: 7641110666861196625, guid: 3e229b5159deda548a3e869a1a203ef2, type: 3}
+  OnFocused:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnUnfocused:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  EntryName: Coupon Book
+  Description: 
+  FlavorText: 
+  Keyname: coupon_book
 --- !u!1 &6130853192744114136
 GameObject:
   m_ObjectHideFlags: 0
