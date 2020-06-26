@@ -55,7 +55,7 @@ public class InspectorTutorial : MonoBehaviour
         cam.FreezeCamera();
 
         //Click bills step
-        prompt.StartPrompt(DummyHighlight, BillsPrompt, true);
+        prompt.StartPrompt(DummyHighlight, BillsPrompt, true, null);
         hasBillsBeenSelected = false;
         while (!hasBillsBeenSelected)
         {
@@ -70,7 +70,7 @@ public class InspectorTutorial : MonoBehaviour
         agent.SuppressRotation = true;
 
         //Record item step
-        prompt.StartPrompt(DummyHighlight, RecordPrompt, true);
+        prompt.StartPrompt(DummyHighlight, RecordPrompt, true, null);
         hasRecordedItem = false;
         while(!hasRecordedItem)
         {
@@ -83,7 +83,7 @@ public class InspectorTutorial : MonoBehaviour
         agent.SuppressRotation = false;
 
         //Rotate item step
-        prompt.StartPrompt(DummyHighlight, RotatePrompt, true);
+        prompt.StartPrompt(DummyHighlight, RotatePrompt, true, null);
         hasRotated = false;
         while(!hasRotated)
         {
@@ -93,7 +93,7 @@ public class InspectorTutorial : MonoBehaviour
         prompt.EndPrompt();
 
         //Record secret item step
-        prompt.StartPrompt(DummyHighlight, SecretsPrompt, true);
+        prompt.StartPrompt(DummyHighlight, SecretsPrompt, true, null);
         hasRecordedSecret = false;
         while(!hasRecordedSecret)
         {
@@ -112,7 +112,7 @@ public class InspectorTutorial : MonoBehaviour
         }
 
         //Leave item prompt
-        prompt.StartPrompt(DummyHighlight, LeavePrompt, true);
+        prompt.StartPrompt(DummyHighlight, LeavePrompt, true, null);
         hasLeftItem = false;
         while(!hasLeftItem)
         {

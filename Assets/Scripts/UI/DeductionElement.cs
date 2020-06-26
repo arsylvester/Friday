@@ -21,7 +21,7 @@ public class DeductionElement : MonoBehaviour
         deductionSummary = panel;
         ObjKey = key;
 
-        mainTextbox.color = Color.magenta;
+        mainTextbox.color = Color.red;
     }
 
     public void DeductionClicked()

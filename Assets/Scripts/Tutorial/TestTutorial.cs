@@ -15,7 +15,7 @@ public class TestTutorial : MonoBehaviour
 
     public void StartTest()
     {
-        tutorialPrompt.StartPrompt(gameObject, testPrompts, true);
+        tutorialPrompt.StartPrompt(gameObject, testPrompts, true, null);
         GetComponent<Button>().onClick.AddListener(EndTest);
         GetComponent<Button>().onClick.RemoveListener(StartTest);
     }

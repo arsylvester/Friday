@@ -59,7 +59,7 @@ public class DilogueTutorialManager : MonoBehaviour
 
     IEnumerator interrogatePrompts()
     {
-        tutorialPrompt.StartPrompt(interHighlight, interrogatePrompt1, true);
+        tutorialPrompt.StartPrompt(interHighlight, interrogatePrompt1, true, null);
 
         while(!Input.GetMouseButtonDown(0))
         {
@@ -92,7 +92,7 @@ public class DilogueTutorialManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         continuePressed = false;
-        tutorialPrompt.StartPrompt(continueButton.gameObject, interrogatePrompt4, true);
+        tutorialPrompt.StartPrompt(continueButton.gameObject, interrogatePrompt4, true, null);
         continueButton.onClick.AddListener(continueClicked);
 
         while(!continuePressed)
@@ -130,8 +130,8 @@ public class DilogueTutorialManager : MonoBehaviour
 
     IEnumerator comboAttempt()
     {
-        tutorialPrompt.StartPrompt(fridayAloneButton.gameObject, comboAttemptPrompt, false);
-        tutorialPrompt.StartPrompt(stockingButton.gameObject, comboAttemptPrompt, false);
+        tutorialPrompt.StartPrompt(fridayAloneButton.gameObject, comboAttemptPrompt, false, null);
+        tutorialPrompt.StartPrompt(stockingButton.gameObject, comboAttemptPrompt, false, null);
 
         fridayAloneButton.onClick.AddListener(fridayClicked);
         stockingButton.onClick.AddListener(stockingClicked);
@@ -144,14 +144,16 @@ public class DilogueTutorialManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        tutorialPrompt.StartPrompt(interrogateConfrimButton.gameObject, comboAttemptPrompt, true);
+        GameObject highlightDup = Instantiate(interrogateConfrimButton.gameObject, interrogateConfrimButton.gameObject.transform.position, interrogateConfrimButton.gameObject.transform.rotation, interrogateConfrimButton.gameObject.transform.parent);
+        highlightDup.transform.SetSiblingIndex(interrogateConfrimButton.gameObject.transform.GetSiblingIndex());
+        tutorialPrompt.StartPrompt(interrogateConfrimButton.gameObject, comboAttemptPrompt, true, highlightDup);
         interrogateConfrimButton.onClick.SetPersistentListenerState(2, UnityEventCallState.RuntimeOnly);
     }
 
     IEnumerator stockingAttempt()
     {
         yield return new WaitForSecondsRealtime(.1f);
-        tutorialPrompt.StartPrompt(stockingButton.gameObject, stockingPrompt, false);
+        tutorialPrompt.StartPrompt(stockingButton.gameObject, stockingPrompt, false, null);
 
         //stockingButton.onClick.AddListener(stockingClicked);
 
@@ -161,7 +163,9 @@ public class DilogueTutorialManager : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
         }
-        tutorialPrompt.StartPrompt(interrogateConfrimButton.gameObject, stockingPrompt, true);
+        GameObject highlightDup = Instantiate(interrogateConfrimButton.gameObject, interrogateConfrimButton.gameObject.transform.position, interrogateConfrimButton.gameObject.transform.rotation, interrogateConfrimButton.gameObject.transform.parent);
+        highlightDup.transform.SetSiblingIndex(interrogateConfrimButton.gameObject.transform.GetSiblingIndex());
+        tutorialPrompt.StartPrompt(interrogateConfrimButton.gameObject, stockingPrompt, true, highlightDup);
         interrogateConfrimButton.onClick.SetPersistentListenerState(2, UnityEventCallState.RuntimeOnly);
     }
 
@@ -173,7 +177,7 @@ public class DilogueTutorialManager : MonoBehaviour
     IEnumerator deductionStep()
     {
         yield return new WaitForSeconds(.1f);
-        tutorialPrompt.StartPrompt(deductionButton.gameObject, deduectionPrompt, true);
+        tutorialPrompt.StartPrompt(deductionButton.gameObject, deduectionPrompt, true, null);
         deductionButton.onClick.AddListener(deductionClicked);
         deductionPressed = false;
 
@@ -189,7 +193,9 @@ public class DilogueTutorialManager : MonoBehaviour
     IEnumerator waitThenPrompt(GameObject highlight, GameObject currrPrompt, float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
-        tutorialPrompt.StartPrompt(highlight, currrPrompt, true);
+        GameObject highlightDup = Instantiate(highlight, highlight.transform.position, highlight.transform.rotation, highlight.transform.parent);
+        highlightDup.transform.SetSiblingIndex(highlight.transform.GetSiblingIndex());
+        tutorialPrompt.StartPrompt(highlight, currrPrompt, true, highlightDup);
     }
 
     [YarnCommand("tutorialprompt")]
@@ -217,7 +223,7 @@ public class DilogueTutorialManager : MonoBehaviour
                 break;
             case "recordDialogue":
                 continueButton.onClick.SetPersistentListenerState(0, UnityEventCallState.Off);
-                tutorialPrompt.StartPrompt(recDiaHighlight, recDiaPrompt, true);
+                tutorialPrompt.StartPrompt(recDiaHighlight, recDiaPrompt, true, null);
                 canSaveDialogue = true;
                 break;
             case "mainMenu2":
