@@ -18,6 +18,10 @@ public class DilogueTutorialManager : MonoBehaviour
     [SerializeField] Button interrogateConfrimButton;
     [SerializeField] Button interrogateQuitButton;
     [SerializeField] Button continueButton;
+    [SerializeField] Button interogateButton1;
+    [SerializeField] Button interogateButton2;
+    [SerializeField] Button interogateButton3;
+    [SerializeField] Button interogateButton4;
     public Button deductionButton;
 
     public Button startCamTutButton;
@@ -60,32 +64,36 @@ public class DilogueTutorialManager : MonoBehaviour
     IEnumerator interrogatePrompts()
     {
         tutorialPrompt.StartPrompt(interHighlight, interrogatePrompt1, true, null);
+        continuePressed = false;
 
-        while(!Input.GetMouseButtonDown(0))
+        while (!continuePressed)
         {
              yield return null;
         }
 
+        continuePressed = false;
         interrogatePrompt1.SetActive(false);
         interrogatePrompt2.SetActive(true);
 
         yield return new WaitForEndOfFrame();
 
-        while(!Input.GetMouseButtonDown(0))
+        while(!continuePressed)
         {
              yield return null;
         }
 
+        continuePressed = false;
         interrogatePrompt2.SetActive(false);
         interrogatePrompt3.SetActive(true);
 
         yield return new WaitForEndOfFrame();
 
-        while(!Input.GetMouseButtonDown(0))
+        while(!continuePressed)
         {
              yield return null;
         }
 
+        continuePressed = false;
         interrogatePrompt3.SetActive(false);
         interrogatePrompt4.SetActive(true);
 
@@ -105,6 +113,11 @@ public class DilogueTutorialManager : MonoBehaviour
 
         EndTutorial();
         //prompt();
+    }
+
+    public void InterogateButtonPressed()
+    {
+        continuePressed = true;
     }
 
     public void fridayClicked()
