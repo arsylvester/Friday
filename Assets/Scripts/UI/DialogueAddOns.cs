@@ -36,7 +36,7 @@ public class DialogueAddOns : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && dialogRunnner.isDialogueRunning && (TutorialState.Current == "deduction" || TutorialState.Current == "done") && !fadeImage.GetComponent<Image>().enabled)
         {
-            if (dialogRunnner.currentNodeName == "AbbyInterogation")
+            if (dialogRunnner.currentNodeName == "AbbyInterogation" || dialogRunnner.currentNodeName == "BernardInterrogation" || dialogRunnner.currentNodeName == "LeonardInterogation" || dialogRunnner.currentNodeName == "TristanInterogation" || dialogRunnner.currentNodeName == "ComputerMain" || dialogRunnner.currentNodeName == "ComputerOpen" || dialogRunnner.currentNodeName == "SafeMain")
             {
                 dialogUI.SelectOption(1);
             }
