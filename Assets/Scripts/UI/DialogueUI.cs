@@ -76,6 +76,8 @@ namespace Yarn.Unity {
 
         public DialogueRunner.StringUnityEvent onCommand;
 
+        public string currentText;
+
         void Awake ()
         {
             // Start by hiding the container
@@ -98,14 +100,17 @@ namespace Yarn.Unity {
         /// Show a line of dialogue, gradually        
         private IEnumerator DoRunLine(Yarn.Line line, IDictionary<string,string> strings, System.Action onComplete) {
 
-            onLineStart?.Invoke();
-
             userRequestedNextLine = false;
             
             if (strings.TryGetValue(line.ID, out var text) == false) {
                 Debug.LogWarning($"Line {line.ID} doesn't have any localised text.");
                 text = line.ID;
             }
+
+            //Custom name handling
+            currentText = text;
+            onLineStart?.Invoke();
+            text = text.Substring(text.IndexOf(':') + 2);
 
             if (textSpeed > 0.0f) {
                 // Display the line one character at a time

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.UI;
+using System;
 
 public class DialogueAddOns : MonoBehaviour
 {
     private DialogueRunner dialogRunnner;
     private DialogueUI dialogUI;
     [SerializeField] Journal journal;
+    [SerializeField] Text NameTextbox;
 
     GameObject fadeImage;
 
@@ -64,4 +66,25 @@ public class DialogueAddOns : MonoBehaviour
         journal.CloseJournals();
     }
 
+    public void SetSpeakerName()
+    {
+        string currLine = dialogUI.currentText;
+        print("currLine: " + currLine);
+        if (currLine != "")
+        {
+            string[] separator = { ":" };
+            int count = 2;
+
+            // using the method 
+            string[] strlist = currLine.Split(separator, count,
+                   StringSplitOptions.RemoveEmptyEntries);
+            print(strlist);
+            NameTextbox.text = strlist[0];
+        }
+    }
+
+    public void ClearSpeakerName()
+    {
+        NameTextbox.text = "";
+    }
 }

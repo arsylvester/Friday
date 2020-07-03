@@ -32,6 +32,7 @@ public class Journal : MonoBehaviour
     [SerializeField] Transform objectivePanel;
     [SerializeField] DeductionSummary deductionSummary;
     [SerializeField] DilogueTutorialManager dilogueTutorialManager;
+    [SerializeField] DialogueUI dialogUI;
     [SerializeField] GameObject deletetionConfirmationPanel;
 
     private int linesSaved = 0;
@@ -219,8 +220,9 @@ public class Journal : MonoBehaviour
 
     private void SaveDialogue()
     {
-        string savedText = dialogText.text;
-        string speaker = savedText.Substring(0, savedText.IndexOf(':'));
+        string fullText = dialogUI.currentText;
+        string speaker = fullText.Substring(0, fullText.IndexOf(':'));
+        string savedText = fullText.Substring(fullText.IndexOf(':') + 2);
         Transform character = null;
         //Find the character subsection
         foreach (Text name in charSections)
