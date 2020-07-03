@@ -107,7 +107,7 @@ position: 1163,357
 <<endif>>
 ->Confirm Interrogation Choices
 	<<if question("friday_cup", "-") is true>>
-		<<if $friday_cup_v2 is false>>
+		<<if $friday_cup_v2 is false || $seen_friday_cup is false>>
 			<<stopquestioning Journal>>
 			<<set $tryagain to false>>
 			[[TristanCupV1]]
@@ -191,8 +191,15 @@ position: 1163,357
 JACE: You saw the landlord on the patio last night. Can you remember what he was doing?
 TRISTAN: I heard the door shut. I don't know if he was leaving or entering, but he seemed like he was doing something with the patio door.
 <<set $tristanFin1 to true>>
+<<objectiveComplete Journal TristanA4_objective>>
 <<objectiveComplete Journal TristanB4_objective>>
-<<deduction("The landlord was up to something on the night of the murder. It could be nothing but an inspection", "The landlord might've up to something on the night of the murder.", "friday_cup", "", "", "")>>
+<<objectiveComplete Journal TristanB3_objective>>
+<<objectiveComplete Journal TristanB2_objective>>
+<<objectiveComplete Journal TristanB1_objective>>
+<<if $gotDeduction1 is false>>
+	<<deduction("The landlord was up to something on the night of the murder. It could be nothing but an inspection", "The landlord might've up to something on the night of the murder.", "friday_cup", "", "", "")>>
+	<<set $gotDeduction1 to true>>
+<<endif>>
 ===
 
 title: TristanQ3
@@ -214,7 +221,14 @@ TRISTAN: You're the guy who made the girl I loved's life hell, Detective. I'm no
 TRISTAN: But I need you to find her killer, because you're the only one that can.
 <<set $tristanFin2 to true>>
 <<objectiveComplete Journal TristanA4_objective>>
-<<deduction("Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "", "", "", "")>>
+<<objectiveComplete Journal TristanB4_objective>>
+<<objectiveComplete Journal TristanB3_objective>>
+<<objectiveComplete Journal TristanB2_objective>>
+<<objectiveComplete Journal TristanB1_objective>>
+<<if $gotDeduction2 is false>>
+	<<deduction("Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "Leonard saw Tristan on the patio, and should be able to confirm her alibi.", "", "", "", "")>>
+	<<set $gotDeduction2 to true>>
+<<endif>>
 ===
 
 title: TristanCupV1
@@ -225,6 +239,7 @@ position: 1163,357
 TRISTAN: Haha, isn't it cute? I bought it because it reminded me of her. She liked it, she even wrote her name on the bottom in case she left it at work or something - "Friday Banmeke."
 TRISTAN: She forgot to take it whe she moved out, so I guess it's all I have left of her now.
 TRISTAN: I'm sorry detective, it's hard for me to talk about her.
+<<set $seen_friday_cup to true>>
 [[TristanMain]]
 ===
 
