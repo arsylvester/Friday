@@ -42,6 +42,7 @@ public class DilogueTutorialManager : MonoBehaviour
     [SerializeField] GameObject freePrompt;
     [SerializeField] GameObject deduectionPrompt;
     [SerializeField] TutorialPrompt tutorialPrompt;
+    [SerializeField] GameObject arrow;
 
     private bool stockingPressed = false;
     private bool fridayAlonePressed = false;
@@ -323,5 +324,11 @@ public class DilogueTutorialManager : MonoBehaviour
             skipStates = false;
         }
         print(TutorialState.Current);
+    }
+
+    [YarnCommand("MapArrow")]
+    public void MapArrow()
+    {
+        arrow.SetActive(true);
     }
 }
