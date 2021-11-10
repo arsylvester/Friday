@@ -10,9 +10,9 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void GoToSettings()
+    public void GoToInstructions()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene("Instructions");
     }
 
     public void GoToMainMenu()
