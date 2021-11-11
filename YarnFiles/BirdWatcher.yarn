@@ -1,0 +1,21 @@
+title: Start
+tags: 
+colorID: 0
+position: 1117,531
+---
+<<if $talked_to_Ranger_B is true>>
+    Bird Watcher: “Huh?  Endangered species in that restricted area over there?”
+    Bird Watcher: “Those must be some really sneaky critters, because I haven’t seen them in my many years watching the birds here in this park.”
+    Bird Watcher: “Come to think of it, I haven’t seen any animals in that area.”
+    Bird Watcher: “Not even squirrels or insects.”
+    Bird Watcher: “It's really strange, like they all vanished, or something.”
+    <<set $talked_to_Bird_Watcher to true>>
+    Bird Watcher: “I don’t believe in any of those stories, but even I think that’s as suspicious as it is spooky.”
+<<else>>
+    Bird Watcher: “It’s such a great day outside, isn’t it?”
+    Bird Watcher: “Perfect weather to see the birds singing and fluttering about.”
+    Bird Watcher: “This park has such a diverse population of feathered friends, so I spend practically every hour here that I can.”
+    Bird Watcher: “I’ve even been kicked out before for staying past visiting hours, if I lose track of the time.”
+    Bird Watcher: “It’s hard for anything to get past me and my trusty binoculars.”
+<<endif>>
+===
