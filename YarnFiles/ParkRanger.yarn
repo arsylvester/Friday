@@ -1,0 +1,44 @@
+title: Start
+tags: 
+colorID: 0
+position: 1007,474
+---
+<<if $finished_Ranger is true>>
+    Park Ranger: “Just…be careful.  Even I don’t know what goes on in there.”
+<<else if $talked_to_Old_Woman is true>>
+    Park Ranger: “Haha, you really believe that nonsense?”
+    Park Ranger: “That old woman doesn’t know what she’s talking about, those are just stories and fantasies.”
+    Park Ranger: “Besides, uh, the place is already under heavy and delicate surveillance by nature experts!”
+    Park Ranger: “That area is strictly off limits to others to keep wildlife safe and populated with this new species.”
+    <<set $talked_to_Ranger_B to true>>
+    Park Ranger: “I’m sure the guy you’re looking for just happened to waltz through here, but those experts certainly can tell you they saw nothing worth investigating.”
+<<else if $talked_to_Bird_Watcher is true>>
+    Park Ranger: “Ah, er, he’s not one of those experts I mentioned!  He’s not as well trained as they are!”
+    Park Ranger: “I’m telling you, sir, it’s not worth looking into those woods really!”
+    Park Ranger: “Now listen, I’m sorry to hear about the guy you’re looking for, but I don’t have time to keep listening to you ask me for access to restricted areas!”
+    Park Ranger: “Unless you got something proving your man is in those woods, leave me alone and let me do my job!!”
+    <<if $has_wallet is true>>
+        Park Ranger: The Detective flashes the wallet kept in his coat, explaining this was found near the forest.
+        Park Ranger: “W-wait, you found his wallet where?”
+        Park Ranger: “Ngh, erm, uh, y-you can’t get in because I need to talk with my boss first so-”
+        Park Ranger: “…what?”
+        Park Ranger: “Me?  A prime suspect?”
+        Park Ranger: “N-No, I didn’t kill nobody, I just-”
+        Park Ranger: “Please, I don’t want to go to jail!  I just don’t want to lose my job!”
+        Park Ranger: “My boss said to let [b]nobody[/b] in there, or else.”
+        Park Ranger: “…”
+        Park Ranger: “……”
+        Park Ranger: “O-Okay.  You can go into the restricted forest area.”
+        Park Ranger: “Just…be careful.  Even I don’t know what goes on in there.”
+    <<endif>>
+
+<<else>>
+    Park Ranger: “Hello sir, welcome to our beautiful national park!”
+    Park Ranger: “You’re welcome to see the sights as much as you like, so long as you abide by the park rules.”
+    Park Ranger: “You know, no littering, loitering, no entry to restricted areas, things like that.”
+    Park Ranger: “Investigation?  Oh yeah, you’re that detective sort my boss said we’d be expecting.”
+    Park Ranger: “Ok, well, stay out of the woods and you'll be fine to do what you like.”
+    <<set $talked_to_Ranger_A to true>>
+    Park Ranger: “Hey, I don’t make the rules.”
+<<endif>>
+===

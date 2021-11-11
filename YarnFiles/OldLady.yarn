@@ -1,0 +1,17 @@
+title: Start
+tags: 
+colorID: 0
+position: 1180,588
+---
+<<if $talked_to_Ranger_A is false>>
+    Old Woman: “Oh! Hello young man.”
+    Old Woman: “I’m sorry, I was a bit distracted and didn’t notice you there.”
+    Old Woman: “It’s just… hmm, it’s nothing dear, I forgot what I was thinking about anyways.”
+<<else>>
+    Old Woman: “That forest has been locked away for as long as I can remember.”
+    Old Woman: “Makes the locals superstitious and make up cute stories to tell around the campfire.”
+    Old Woman: “My mother once told me that people who get lost in the forest become part of it.”
+    <<set $talked_to_Old_Woman to true>>
+    Old Woman: “Though I’m sure it was just a little white lie to keep kids from getting lost in the woods.”
+<<endif>>
+===
