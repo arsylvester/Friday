@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] GameObject MainMenu;
+    [SerializeField] GameObject HowToPlay;
     public void GoToGame(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -13,6 +15,18 @@ public class MenuController : MonoBehaviour
     public void GoToInstructions()
     {
         SceneManager.LoadScene("Instructions");
+    }
+
+    public void ShowHowToPlay()
+    {
+        MainMenu.SetActive(false);
+        HowToPlay.SetActive(true);
+    }
+
+    public void HideHowToPlay()
+    {
+        HowToPlay.SetActive(false);
+        MainMenu.SetActive(true);
     }
 
     public void GoToMainMenu()
