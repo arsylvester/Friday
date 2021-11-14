@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class YarnCustomCommands : MonoBehaviour
 {
@@ -37,7 +38,12 @@ public class YarnCustomCommands : MonoBehaviour
     [YarnCommand("wallet")]
     public void Wallet()
     {
-        Debug.Log("Wallet code");
         wallet.SetActive(false);
+    }
+
+    [YarnCommand("theEnd")]
+    public void theEnd()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
