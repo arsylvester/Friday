@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Yarn.Unity;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
     public GameObject Forest;
     public GameObject DeepF;
     public TextMeshProUGUI TitleText;
+
+
     [SerializeField] AudioClip NormalBackgroundMusicClip;
     [SerializeField] AudioClip FairyBackgroundMusicClip;
     [SerializeField] AudioSource AudioSource;
@@ -98,4 +101,5 @@ public class GameController : MonoBehaviour
             AudioSource.Play();
         }
     }
+
 }

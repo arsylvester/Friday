@@ -5,6 +5,13 @@ position: 1007,474
 ---
 <<if $finished_Ranger is true>>
     Park Ranger: “Just…be careful.  Even I don’t know what goes on in there.”
+<<elseif $talked_to_Old_Woman is true>>
+    Park Ranger: “Haha, you really believe that nonsense?”
+    Park Ranger: “That old woman doesn’t know what she’s talking about, those are just stories and fantasies.”
+    Park Ranger: “Besides, uh, the place is already under heavy and delicate surveillance by nature experts!”
+    Park Ranger: “That area is strictly off limits to others to keep wildlife safe and populated with this new species.”
+    <<set $talked_to_Ranger_B to true>>
+    Park Ranger: “I’m sure the guy you’re looking for just happened to waltz through here, but those experts certainly can tell you they saw nothing worth investigating.”
 <<elseif $talked_to_Bird_Watcher is true>>
     Park Ranger: “Ah, er, he’s not one of those experts I mentioned!  He’s not as well trained as they are!”
     Park Ranger: “I’m telling you, sir, it’s not worth looking into those woods really!”
@@ -25,13 +32,7 @@ position: 1007,474
         Park Ranger: “Just…be careful.  Even I don’t know what goes on in there.”
         <<set $finished_Ranger to true>>
     <<endif>>
-<<elseif $talked_to_Old_Woman is true>>
-    Park Ranger: “Haha, you really believe that nonsense?”
-    Park Ranger: “That old woman doesn’t know what she’s talking about, those are just stories and fantasies.”
-    Park Ranger: “Besides, uh, the place is already under heavy and delicate surveillance by nature experts!”
-    Park Ranger: “That area is strictly off limits to others to keep wildlife safe and populated with this new species.”
-    <<set $talked_to_Ranger_B to true>>
-    Park Ranger: “I’m sure the guy you’re looking for just happened to waltz through here, but those experts certainly can tell you they saw nothing worth investigating.”
+
 <<else>>
     Park Ranger: “Hello sir, welcome to our beautiful national park!”
     Park Ranger: “You’re welcome to see the sights as much as you like, so long as you abide by the park rules.”
